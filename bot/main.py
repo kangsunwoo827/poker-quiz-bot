@@ -114,20 +114,35 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def cancel_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /cancel command - cancel current quiz"""
+    """Handle /cancel command - cancel/end current quiz"""
     chat_id = update.effective_chat.id
     
+    question = None
+    
+    # Check active_quiz_messages first
     if chat_id in active_quiz_messages:
         question = active_quiz_messages[chat_id]["question"]
         del active_quiz_messages[chat_id]
+    # Fall back to quiz_manager.current_question
+    elif quiz_manager.current_question:
+        question = quiz_manager.current_question
+    
+    if question:
+        # Clear quiz state
+        quiz_manager.current_question = None
+        quiz_manager.user_answers.clear()
         
-        # Also clear from quiz_manager if it's the current one
-        if quiz_manager.current_question and quiz_manager.current_question.id == question.id:
-            quiz_manager.current_question = None
-            quiz_manager.user_answers.clear()
+        # Save cleared state
+        save_state(
+            active_chats, dm_enabled_users,
+            None,  # no current question
+            quiz_manager.used_questions,
+            {}  # clear user answers
+        )
         
         await update.message.reply_text(
-            f"🚫 Quiz #{question.id} 취소됨\n\n다음 정규 시간에 새 퀴즈가 출제됩니다.",
+            f"🚫 Quiz #{question.id} 종료됨\n\n"
+            f"/quiz 로 새 문제를 받거나, 다음 정규 시간(6시/18시)에 자동 출제됩니다.",
             parse_mode=ParseMode.HTML
         )
     else:
