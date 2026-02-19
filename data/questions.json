@@ -202,8 +202,8 @@
       "Bet 4bb (33%)",
       "Bet 8bb (75%)"
     ],
-    "answer": 1,
-    "explanation": "**왜 Bet 4bb (33%)인가?**\n\nGTO 기준 K8는 이 spot에서:\n- Check: 25%\n- **Bet 33%: 60%** ✓\n- Bet 75%: 15%\n\nK8는 top pair weak kicker로 thin value.\n\n**작은 베팅 이유:**\n• BTN이 turn에서 콜 = Kx, 9x, 드로우 가능\n• 75% bet은 worse Kx만 fold시킴\n• 33% bet은 K9, 99, 44 제외하고 콜 받을 수 있음\n• Check는 약한 Kx 상대로 value 놓침\n\n**핵심:**\nWeak top pair = thin value bet\n사이징은 상대의 콜링 range에 맞춰야 함\n\n📊 Hero Range 구성 (BB River bet on K942-7)\n• Value: KK, 99, 44, K9, strong Kx (bet big)\n• Thin Value: K8, K7, 9x (bet small)\n• Bluff: missed draws, Ax high\n• Check: weak 9x, 포켓 페어",
+    "answer": 0,
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 100%** ✓\n- Bet: 0%\n\n**이유:**\n• Pot control이 중요한 스팟\n• Made hand지만 추가 밸류 어려움\n• 상대 range에 블러프캐처 많음\n• Check-call 또는 check-fold 라인 선호\n\n📊 River/Turn 전략:\n• 밸류벳 타겟이 좁으면 체크\n• 블러프캐칭 라인이 더 효율적",
     "terms": {
       "thin value": "약간의 이익만 있는 value bet",
       "콜링 range": "상대가 특정 베팅에 콜할 수 있는 핸드들"
@@ -381,8 +381,8 @@
       "Bet 3bb (33%)",
       "Bet 7.5bb (75%)"
     ],
-    "answer": 1,
-    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nGTO 기준 AA는 이 spot에서:\n- Check: 20%\n- **Bet 33%: 65%** ✓\n- Bet 75%: 15%\n\nAA는 river K 보드에서 thin value bet.\n\n**33% 사이징 이유:**\n• Turn check로 weakness 보임\n• River K는 BTN에게 유리할 수 있음\n• 작은 베팅으로 Jx, 77에서 value\n• 큰 베팅은 worse fold, Kx만 콜\n\n**Check 문제점:**\n• AA는 여전히 strong\n• Showdown value는 있지만 추가 value 가능\n\n📊 Hero Range 구성 (CO River bet on J723-K)\n• Value: KK, AA, JJ, 77, KJ (bet big)\n• Thin Value: AA, QQ, Jx good (bet small)\n• Bluff: missed draws, Qx, Tx\n• Check: weak Jx, 7x",
+    "answer": 0,
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 100%** ✓\n- Bet: 0%\n\n**이유:**\n• Pot control이 중요한 스팟\n• Made hand지만 추가 밸류 어려움\n• 상대 range에 블러프캐처 많음\n• Check-call 또는 check-fold 라인 선호\n\n📊 River/Turn 전략:\n• 밸류벳 타겟이 좁으면 체크\n• 블러프캐칭 라인이 더 효율적",
     "terms": {}
   },
   {
@@ -458,8 +458,8 @@
       "Bet 3bb (33%)",
       "Bet 6.5bb (75%)"
     ],
-    "answer": 1,
-    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nGTO 기준 KK는 이 spot에서:\n- Check: 30%\n- **Bet 33%: 55%** ✓\n- Bet 75%: 15%\n\nKK는 river A 이후에도 thin value bet.\n\n**Bet 이유:**\n• 모두 2번 체크 = weak range\n• KK는 A 제외 best hand일 확률 높음\n• 99, 88 있었으면 베팅했을 것\n• 작은 베팅으로 worse pair에서 value\n\n**Check 문제점:**\n• Value 포기\n• 상대가 A 없을 확률 높음\n\n📊 Hero Range 구성 (HJ River bet on 983-2-A)\n• Value: AA, 99, 88, 33 (bet big), KK, QQ (bet small)\n• Bluff: missed clubs, QJ, JT\n• Check: Ax (showdown), weak pairs",
+    "answer": 0,
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 100%** ✓\n- Bet: 0%\n\n**이유:**\n• Pot control이 중요한 스팟\n• Made hand지만 추가 밸류 어려움\n• 상대 range에 블러프캐처 많음\n• Check-call 또는 check-fold 라인 선호\n\n📊 River/Turn 전략:\n• 밸류벳 타겟이 좁으면 체크\n• 블러프캐칭 라인이 더 효율적",
     "terms": {}
   },
   {
@@ -535,8 +535,8 @@
       "Bet 3bb (33%)",
       "Bet 7.5bb (75%)"
     ],
-    "answer": 1,
-    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nGTO 기준 AK(TPTK)는 이 spot에서:\n- Check: 15%\n- **Bet 33%: 70%** ✓\n- Bet 75%: 15%\n\nAK는 turn에서 계속 value bet.\n\n**작은 베팅 이유:**\n• TPTK (Top Pair Top Kicker)\n• BTN은 flop call로 Ax, 9x, fd 가능\n• 작은 bet으로 worse Ax에서 value\n• 75%는 worse가 fold하기 쉬움\n\n**Check 문제점:**\n• AK는 clear value hand\n• Free card 주면 BTN catch up 가능\n\n📊 Hero Range 구성 (CO Turn bet on A946)\n• Value: AA, 99, 44, 66, AK, AQ, A9\n• Thin Value: AT-AJ (bet small)\n• Bluff: KQ, QJ, JT, missed draws\n• Check: weak Ax, 9x",
+    "answer": 0,
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 100%** ✓\n- Bet: 0%\n\n**이유:**\n• Pot control이 중요한 스팟\n• Made hand지만 추가 밸류 어려움\n• 상대 range에 블러프캐처 많음\n• Check-call 또는 check-fold 라인 선호\n\n📊 River/Turn 전략:\n• 밸류벳 타겟이 좁으면 체크\n• 블러프캐칭 라인이 더 효율적",
     "terms": {
       "TPTK": "Top Pair Top Kicker - 보드 탑카드 + 가장 높은 키커"
     }
@@ -581,8 +581,8 @@
       "Bet 3bb (33%)",
       "Bet 7bb (75%)"
     ],
-    "answer": 1,
-    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nGTO 기준 AT(top pair)는 이 spot에서:\n- Check: 30%\n- **Bet 33%: 55%** ✓\n- Bet 75%: 15%\n\nAT는 top pair로 thin value bet.\n\n**Bet 이유:**\n• CO turn check = capped range\n• AT는 likely best hand\n• 작은 bet으로 worse pair에서 value\n• 77, T7, 75 가능하지만 비중 작음\n\n**Check 문제점:**\n• CO check back이면 value 놓침\n• AT는 showdown value + thin value 둘 다\n\n📊 Hero Range 구성 (BB River probe after CO checks turn)\n• Value: TT, 77, 33, T7, AT, KT (bet)\n• Thin Value: QT, JT, T9, T8 (bet small)\n• Bluff: missed draws, Ax\n• Check: 7x, 5x, weak pairs",
+    "answer": 0,
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 100%** ✓\n- Bet: 0%\n\n**이유:**\n• Pot control이 중요한 스팟\n• Made hand지만 추가 밸류 어려움\n• 상대 range에 블러프캐처 많음\n• Check-call 또는 check-fold 라인 선호\n\n📊 River/Turn 전략:\n• 밸류벳 타겟이 좁으면 체크\n• 블러프캐칭 라인이 더 효율적",
     "terms": {
       "capped range": "특정 강한 핸드들이 제외된 range"
     }
