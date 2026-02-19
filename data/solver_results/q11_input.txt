@@ -1,0 +1,18 @@
+set_pot 8.0
+set_effective_stack 100.0
+set_board 6h,5h,2d
+set_range_ip AA,KK,QQ,JJ,TT,99,88,77,66,55,44,33,22,AKs,AQs,AJs,ATs,A9s,A8s,A7s,A6s,A5s,A4s,A3s,A2s,KQs,KJs,KTs,K9s,K8s,K7s,K6s,K5s,QJs,QTs,Q9s,Q8s,JTs,J9s,J8s,T9s,T8s,98s,97s,87s,86s,76s,75s,65s,64s,54s,53s,43s,AKo,AQo,AJo,ATo,A9o,KQo,KJo,KTo,QJo,QTo,JTo
+set_range_oop AA,KK,QQ,JJ,TT,99,88,77,66,55,44,33,22,AKs,AQs,AJs,ATs,A9s,A8s,A7s,A6s,A5s,A4s,A3s,A2s,KQs,KJs,KTs,K9s,K8s,K7s,K6s,QJs,QTs,Q9s,Q8s,Q7s,JTs,J9s,J8s,J7s,T9s,T8s,T7s,98s,97s,87s,86s,76s,75s,65s,64s,54s,53s,43s,AKo,AQo,AJo,ATo,A9o,A8o,KQo,KJo,KTo,K9o,QJo,QTo,JTo,J9o,T9o
+set_bet_sizes oop,flop,bet,33,75
+set_bet_sizes ip,flop,bet,33,75
+set_bet_sizes oop,flop,raise,100
+set_bet_sizes ip,flop,raise,100
+set_allin_threshold 0.67
+set_accuracy 1
+set_max_iteration 100
+set_thread_num 1
+set_print_interval 10
+set_use_isomorphism 1
+build_tree
+start_solve
+dump_result /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q11_result.json

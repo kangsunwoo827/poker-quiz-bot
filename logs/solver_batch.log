@@ -1,0 +1,130 @@
+Running solver for 21 postflop questions...
+
+==================================================
+Q5: Q♠T♠ on Qh,Jd,3s
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q5_input.txt
+  ✓ Solved!
+
+==================================================
+Q7: J♥T♥ on 9h,8h,2c
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q7_input.txt
+  ✓ Solved!
+
+==================================================
+Q8: 7♦7♣ on Ac,Kd,7s
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q8_input.txt
+  ✓ Solved!
+
+==================================================
+Q10: J♣J♦ on Ts,9s,4c
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q10_input.txt
+  ✓ Solved!
+
+==================================================
+Q11: 8♥7♥ on 6h,5h,2d
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q11_input.txt
+  ✓ Solved!
+
+==================================================
+Q14: 8♠7♠ on Js,Td,9c
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q14_input.txt
+  ✓ Solved!
+
+==================================================
+Q16: K♦Q♦ on As,7d,2c
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q16_input.txt
+  ✓ Solved!
+
+==================================================
+Q18: A♠A♥ on Kh,9c,4d
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q18_input.txt
+  ✓ Solved!
+
+==================================================
+Q20: 5♦4♦ on 8s,7s,6c
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q20_input.txt
+  ✓ Solved!
+
+==================================================
+Q22: A♣K♣ on Tc,6c,2h
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q22_input.txt
+  ✓ Solved!
+
+==================================================
+Q25: A♣K♣ on Qd,Jc,5h
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q25_input.txt
+  ✓ Solved!
+
+==================================================
+Q27: T♠T♣ on Ah,Ad,5c
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q27_input.txt
+  ✓ Solved!
+
+==================================================
+Q30: Q♥J♥ on Kc,Qs,7h
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q30_input.txt
+  ✓ Solved!
+
+==================================================
+Q31: T♦T♣ on As,Th,6c
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q31_input.txt
+  ✓ Solved!
+
+==================================================
+Q32: K♦Q♦ on Jd,8d,4s
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q32_input.txt
+  ✓ Solved!
+
+==================================================
+Q35: A♠A♦ on 7s,6s,2d
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q35_input.txt
+  ✓ Solved!
+
+==================================================
+Q38: Q♣Q♦ on Ks,Jc,Td
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q38_input.txt
+  ✓ Solved!
+
+==================================================
+Q41: Q♠9♠ on Qc,8d,4c
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q41_input.txt
+  ✓ Solved!
+
+==================================================
+Q44: A♦K♦ on 6d,5d,4c
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q44_input.txt
+  ✓ Solved!
+
+==================================================
+Q47: A♣2♣ on As,Jd,6s
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q47_input.txt
+  ✓ Solved!
+
+==================================================
+Q50: A♠K♠ on Qh,Qs,5c
+==================================================
+  Input: /home/ubuntu/AIde/projects/poker-quiz-bot/data/solver_results/q50_input.txt
+  ✓ Solved!
+
+
+Done!
