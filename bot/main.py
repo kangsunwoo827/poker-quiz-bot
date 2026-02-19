@@ -88,7 +88,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "• 오후 6시 (KST)\n\n"
             "<b>명령어:</b>\n"
             "/quiz - 현재 퀴즈 보기\n"
-            "/cancel - 퀴즈 취소\n"
+            "/explain - 해설 보기\n"
+            "/cancel - 퀴즈 종료\n"
             "/score - 내 점수\n"
             "/leaderboard - 순위표\n\n"
             f"⏰ 다음 해설까지: <b>{time_str}</b>",
@@ -425,6 +426,26 @@ async def send_explanation(chat_id: int, question, context: ContextTypes.DEFAULT
     logger.info(f"Explanation for Q#{question.id} sent to {chat_id}")
 
 
+async def explain_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle /explain command - show explanation for current or last question"""
+    chat_id = update.effective_chat.id
+    
+    question = None
+    
+    # Try to get current question
+    if chat_id in active_quiz_messages:
+        question = active_quiz_messages[chat_id]["question"]
+    elif quiz_manager.current_question:
+        question = quiz_manager.current_question
+    
+    if question:
+        await send_explanation(chat_id, question, context)
+    else:
+        await update.message.reply_text(
+            "현재 활성화된 퀴즈가 없습니다.\n/quiz 로 새 문제를 받으세요."
+        )
+
+
 async def score_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle /score command"""
     user_id = update.effective_user.id
@@ -481,6 +502,7 @@ def main():
     application.add_handler(CommandHandler("quiz", quiz_command))
     application.add_handler(CommandHandler("cancel", cancel_command))
     application.add_handler(CommandHandler("score", score_command))
+    application.add_handler(CommandHandler("explain", explain_command))
     application.add_handler(CommandHandler("leaderboard", leaderboard_command))
     application.add_handler(CallbackQueryHandler(handle_answer, pattern=r"^ans_\d+_\d+$"))
     application.add_handler(CallbackQueryHandler(handle_cancel_button, pattern=r"^cancel_\d+$"))
