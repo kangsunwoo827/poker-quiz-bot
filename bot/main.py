@@ -17,6 +17,7 @@ from config import (
 )
 from quiz import QuizManager
 from score import ScoreManager
+from persistence import load_state, save_state, format_time_until_explanation
 
 # Logging
 logging.basicConfig(
@@ -29,14 +30,19 @@ logger = logging.getLogger(__name__)
 quiz_manager = QuizManager()
 score_manager = ScoreManager()
 
+# Load persisted state
+_state = load_state()
+
 # Store chat_id for scheduled quizzes
-active_chats: set[int] = set()
+active_chats: set[int] = set(_state.get("active_chats", []))
 
 # Store users who started bot (can receive DM)
-dm_enabled_users: set[int] = set()
+dm_enabled_users: set[int] = set(_state.get("dm_enabled_users", []))
 
 # Current active quiz per chat
 active_quiz_messages: dict[int, dict] = {}  # chat_id -> {"message_id": x, "question": q}
+
+logger.info(f"Loaded state: {len(active_chats)} chats, {len(dm_enabled_users)} DM users")
 
 
 def escape_html(text: str) -> str:
@@ -51,6 +57,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     if update.effective_chat.type == "private":
         dm_enabled_users.add(user_id)
+        save_state(active_chats, dm_enabled_users)
         await update.message.reply_text(
             "🃏 <b>SunPokerQuizBot</b>에 오신 것을 환영합니다!\n\n"
             "이제 퀴즈 결과를 DM으로 받을 수 있습니다.\n"
@@ -59,6 +66,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
     else:
         active_chats.add(chat_id)
+        save_state(active_chats, dm_enabled_users)
+        
+        time_str = format_time_until_explanation()
         await update.message.reply_text(
             "🃏 <b>SunPokerQuizBot</b> 활성화!\n\n"
             "<b>퀴즈 시간:</b>\n"
@@ -66,9 +76,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "• 오후 6시 (KST)\n\n"
             "<b>명령어:</b>\n"
             "/quiz - 현재 퀴즈 보기\n"
+            "/cancel - 퀴즈 취소\n"
             "/score - 내 점수\n"
             "/leaderboard - 순위표\n\n"
-            "💡 봇에게 DM으로 /start 하면 정답을 DM으로 받아요!",
+            f"⏰ 다음 해설까지: <b>{time_str}</b>",
             parse_mode=ParseMode.HTML
         )
 
@@ -125,9 +136,12 @@ async def send_quiz(chat_id: int, context: ContextTypes.DEFAULT_TYPE, question=N
         reply_markup = InlineKeyboardMarkup(keyboard)
         
         # Format question text (HTML)
+        time_str = format_time_until_explanation()
+        
         text = f"🃏 <b>Poker Quiz #{question.id}</b>\n\n"
         text += f"<pre>{escape_html(question.situation)}</pre>\n\n"
         text += f"Hero's hand: <b>{question.hand}</b>\n\n"
+        text += f"⏰ 해설까지: {time_str}\n\n"
         text += "Your action?"
         
         # Send question
@@ -279,11 +293,16 @@ async def scheduled_quiz(context: ContextTypes.DEFAULT_TYPE):
     # Get new question (shared across all chats)
     question = quiz_manager.get_random_question()
     
+    # Save state with current question
+    save_state(active_chats, dm_enabled_users, question.id)
+    
     for chat_id in active_chats.copy():
         try:
             await send_quiz(chat_id, context, question)
         except Exception as e:
             logger.error(f"Failed scheduled quiz to {chat_id}: {e}")
+            active_chats.discard(chat_id)
+            save_state(active_chats, dm_enabled_users)
 
 
 async def scheduled_explanation(context: ContextTypes.DEFAULT_TYPE):
