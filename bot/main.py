@@ -97,28 +97,61 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "• 오후 6시 (KST)\n\n"
             "<b>명령어:</b>\n"
             "/quiz - 현재 퀴즈 보기\n"
-            "/explain - 해설 보기\n"
-            "/cancel - 퀴즈 종료\n"
+            "/explain - 이전 문제 해설\n"
             "/score - 내 점수\n"
-            "/leaderboard - 순위표\n\n"
+            "/leaderboard - 순위표\n"
+            "/help - 용어 설명\n\n"
             f"⏰ 다음 해설까지: <b>{time_str}</b>",
             parse_mode=ParseMode.HTML
         )
 
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /help command"""
+    """Handle /help command - show poker terms"""
     await update.message.reply_text(
-        "🃏 <b>Poker Quiz Bot</b>\n\n"
-        "<b>퀴즈 스케줄:</b>\n"
-        "• 오전 6시, 오후 6시 자동 출제\n"
-        "• 다음 퀴즈 10분 전에 해설 공개\n\n"
-        "<b>명령어:</b>\n"
-        "/quiz - 현재 퀴즈 보기\n"
-        "/cancel - 현재 퀴즈 취소\n"
-        "/score - 내 점수\n"
-        "/leaderboard - 순위표\n\n"
-        "🔥 매일 참여해서 스트릭 유지!",
+        "🃏 <b>Poker Quiz Bot - 용어 설명</b>\n\n"
+        
+        "<b>📍 포지션</b>\n"
+        "• <b>UTG</b> (Under The Gun): 빅블라인드 다음, 첫 액션\n"
+        "• <b>MP</b> (Middle Position): 중간 위치\n"
+        "• <b>CO</b> (Cutoff): 버튼 오른쪽\n"
+        "• <b>BTN</b> (Button): 딜러 위치, 가장 유리\n"
+        "• <b>SB</b> (Small Blind): 스몰 블라인드\n"
+        "• <b>BB</b> (Big Blind): 빅 블라인드\n"
+        "• <b>IP</b>: In Position (유리한 위치)\n"
+        "• <b>OOP</b>: Out of Position (불리한 위치)\n\n"
+        
+        "<b>🎯 액션</b>\n"
+        "• <b>Open/Raise</b>: 첫 번째 레이즈\n"
+        "• <b>3-bet</b>: 오픈에 대한 리레이즈\n"
+        "• <b>4-bet</b>: 3-bet에 대한 리레이즈\n"
+        "• <b>Cbet</b>: 프리플랍 레이저의 플랍 베팅\n"
+        "• <b>Donk bet</b>: 콜러가 먼저 베팅\n"
+        "• <b>Check-raise</b>: 체크 후 레이즈\n\n"
+        
+        "<b>🃏 핸드 & 보드</b>\n"
+        "• <b>Suited (s)</b>: 같은 무늬 (예: AKs)\n"
+        "• <b>Offsuit (o)</b>: 다른 무늬 (예: AKo)\n"
+        "• <b>Overpair</b>: 보드보다 높은 포켓페어\n"
+        "• <b>Set</b>: 포켓페어 + 보드 = 트리플\n"
+        "• <b>Dry board</b>: 드로우 없는 보드\n"
+        "• <b>Wet board</b>: 드로우 많은 보드\n\n"
+        
+        "<b>📊 전략 용어</b>\n"
+        "• <b>GTO</b>: Game Theory Optimal (최적 전략)\n"
+        "• <b>Equity</b>: 승률\n"
+        "• <b>EV</b>: Expected Value (기대값)\n"
+        "• <b>SPR</b>: Stack to Pot Ratio\n"
+        "• <b>Range</b>: 가능한 핸드 범위\n"
+        "• <b>Blocker</b>: 상대 핸드 확률 낮추는 카드\n"
+        "• <b>Fold equity</b>: 폴드시켜 얻는 가치\n\n"
+        
+        "<b>📈 Range Table 읽는 법</b>\n"
+        "• <b>R</b> = Raise (오픈)\n"
+        "• <b>3</b> = 3-bet\n"
+        "• <b>4</b> = 4-bet\n"
+        "• <b>C</b> = Call\n"
+        "• <b>.</b> = Fold",
         parse_mode=ParseMode.HTML
     )
 
@@ -530,7 +563,7 @@ def main():
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(CommandHandler("quiz", quiz_command))
-    application.add_handler(CommandHandler("cancel", cancel_command))
+    # /cancel removed - use cancel button on quiz instead
     application.add_handler(CommandHandler("score", score_command))
     application.add_handler(CommandHandler("explain", explain_command))
     application.add_handler(CommandHandler("leaderboard", leaderboard_command))
