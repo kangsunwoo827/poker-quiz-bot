@@ -19,21 +19,32 @@ def load_state() -> dict:
         "active_chats": [],
         "dm_enabled_users": [],
         "current_question_id": None,
-        "last_quiz_time": None
+        "used_questions": [],
+        "user_answers": {},
+        "last_quiz_time": None,
+        "last_quiz_date": None
     }
 
 
 def save_state(
     active_chats: set[int],
     dm_enabled_users: set[int],
-    current_question_id: Optional[int] = None
+    current_question_id: Optional[int] = None,
+    used_questions: Optional[set[int]] = None,
+    user_answers: Optional[dict[int, int]] = None
 ):
     """Save state to file"""
+    # Load existing state first to preserve fields we're not updating
+    existing = load_state()
+    
     state = {
         "active_chats": list(active_chats),
         "dm_enabled_users": list(dm_enabled_users),
-        "current_question_id": current_question_id,
-        "last_quiz_time": datetime.now().isoformat()
+        "current_question_id": current_question_id if current_question_id is not None else existing.get("current_question_id"),
+        "used_questions": list(used_questions) if used_questions is not None else existing.get("used_questions", []),
+        "user_answers": {str(k): v for k, v in user_answers.items()} if user_answers is not None else existing.get("user_answers", {}),
+        "last_quiz_time": datetime.now().isoformat(),
+        "last_quiz_date": datetime.now().strftime("%Y-%m-%d")
     }
     
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)

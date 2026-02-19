@@ -42,7 +42,19 @@ dm_enabled_users: set[int] = set(_state.get("dm_enabled_users", []))
 # Current active quiz per chat
 active_quiz_messages: dict[int, dict] = {}  # chat_id -> {"message_id": x, "question": q}
 
-logger.info(f"Loaded state: {len(active_chats)} chats, {len(dm_enabled_users)} DM users")
+# Restore quiz_manager state
+quiz_manager.used_questions = set(_state.get("used_questions", []))
+quiz_manager.user_answers = {int(k): v for k, v in _state.get("user_answers", {}).items()}
+
+# Restore current question if exists
+_current_q_id = _state.get("current_question_id")
+if _current_q_id:
+    for q in quiz_manager.questions:
+        if q.id == _current_q_id:
+            quiz_manager.current_question = q
+            break
+
+logger.info(f"Loaded state: {len(active_chats)} chats, {len(dm_enabled_users)} DM users, {len(quiz_manager.used_questions)} used questions")
 
 
 def escape_html(text: str) -> str:
@@ -229,6 +241,14 @@ async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         answer_index, is_correct
     )
     
+    # Save user answers to persist
+    save_state(
+        active_chats, dm_enabled_users,
+        current_q.id,
+        quiz_manager.used_questions,
+        quiz_manager.user_answers
+    )
+    
     # Prepare feedback
     correct_answer = current_q.options[current_q.answer]
     selected_answer = current_q.options[answer_index]
@@ -293,8 +313,13 @@ async def scheduled_quiz(context: ContextTypes.DEFAULT_TYPE):
     # Get new question (shared across all chats)
     question = quiz_manager.get_random_question()
     
-    # Save state with current question
-    save_state(active_chats, dm_enabled_users, question.id)
+    # Save state with current question and used questions
+    save_state(
+        active_chats, dm_enabled_users, 
+        question.id, 
+        quiz_manager.used_questions,
+        quiz_manager.user_answers
+    )
     
     for chat_id in active_chats.copy():
         try:
