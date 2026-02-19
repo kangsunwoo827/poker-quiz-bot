@@ -120,3 +120,13 @@ class ScoreManager:
         cursor = self.conn.cursor()
         cursor.execute("SELECT user_id FROM scores")
         return {row[0] for row in cursor.fetchall()}
+    
+    def get_usernames(self, user_ids: set[int]) -> list[str]:
+        """Get usernames for given user IDs"""
+        if not user_ids:
+            return []
+        cursor = self.conn.cursor()
+        placeholders = ",".join("?" * len(user_ids))
+        cursor.execute(f"SELECT username FROM scores WHERE user_id IN ({placeholders})", 
+                      tuple(user_ids))
+        return [row[0] for row in cursor.fetchall() if row[0]]

@@ -528,11 +528,12 @@ async def next_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     not_answered = leaderboard_users - answered_users
     
     if not_answered:
-        not_answered_count = len(not_answered)
+        not_answered_names = score_manager.get_usernames(not_answered)
         answered_count = len(answered_users)
         total_count = len(leaderboard_users)
+        names_str = ", ".join(not_answered_names) if not_answered_names else "알 수 없음"
         await update.message.reply_text(
-            f"아직 {not_answered_count}명이 안 풀었어요! ({answered_count}/{total_count}) 🎯"
+            f"아직 안 푼 사람: {names_str} ({answered_count}/{total_count}) 🎯"
         )
         return
     
