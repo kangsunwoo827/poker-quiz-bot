@@ -1,0 +1,3 @@
+# Copy this to .config and fill in your values
+TELEGRAM_BOT_TOKEN=your_bot_token_here
+BOT_NAME=YourBotName

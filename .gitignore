@@ -1,0 +1,23 @@
+# Config with secrets
+.config
+config.py
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Data (generated)
+data/scores.db
+
+# OS
+.DS_Store
