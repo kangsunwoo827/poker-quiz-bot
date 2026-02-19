@@ -1,0 +1,18 @@
+set_pot 11.5
+set_effective_stack 91.5
+set_board Kd,9s,4c,2h,7d
+set_range_ip KK,99,44,AK,KQ,KJ,KT,K9s,K8s,A9s,Q9s,J9s,T9s,98s,87s,76s,65s,QTs,JTs,TT,JJ,QQ
+set_range_oop KK,99,44,K9s,K4s,94s,AK,KQ,KJ,KT,K9,K8,K7,K6,K5,98s,87s,76s,65s,54s,A9s,A4s,Q9s,J9s,T9s,QTs,JTs
+set_bet_sizes oop,river,bet,33,75
+set_bet_sizes ip,river,bet,33,75
+set_raise_sizes oop,river,raise,100
+set_raise_sizes ip,river,raise,100
+set_allin_threshold 0.67
+set_accuracy 0.3
+set_max_iteration 200
+set_thread_num 1
+set_print_interval 20
+set_use_isomorphism 1
+build_tree
+start_solve
+dump_result data/solver_results/q12_river_result.json

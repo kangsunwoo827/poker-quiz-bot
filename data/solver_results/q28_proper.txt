@@ -1,0 +1,14 @@
+set_pot 15
+set_effective_stack 88
+set_board 9c,8c,3h,2d,As
+set_range_ip AA,KK,QQ,JJ,TT,99,88,33,A9,A8,98s,87s,97s
+set_range_oop AA,KK,QQ,JJ,TT,99,88,33,22,AK,A9,A8,98s,87s,76s
+set_bet_sizes oop,river,bet,33,75
+set_bet_sizes ip,river,bet,33,75
+set_allin_threshold 0.67
+set_accuracy 0.3
+set_max_iteration 200
+set_thread_num 1
+build_tree
+start_solve
+dump_result data/solver_results/q28_proper_result.json

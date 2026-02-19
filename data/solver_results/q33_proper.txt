@@ -1,0 +1,14 @@
+set_pot 10
+set_effective_stack 93
+set_board As,9d,4c,6h
+set_range_ip AA,99,44,AK,AQ,AJ,AT,A9,KK,QQ,JJ,TT,98s,87s
+set_range_oop AA,99,44,AK,AQ,AJ,AT,A9,A6,A4,KK,QQ,JJ,TT,98s,87s,76s
+set_bet_sizes oop,turn,bet,33,75
+set_bet_sizes ip,turn,bet,33,75
+set_allin_threshold 0.67
+set_accuracy 0.3
+set_max_iteration 200
+set_thread_num 1
+build_tree
+start_solve
+dump_result data/solver_results/q33_proper_result.json

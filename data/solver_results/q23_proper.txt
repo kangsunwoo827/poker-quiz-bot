@@ -1,0 +1,14 @@
+set_pot 9
+set_effective_stack 93
+set_board Jh,7d,2s,3c,Ks
+set_range_ip AA,KK,JJ,77,22,AK,AJ,KJ,QJ,JT,J9,QQ,TT,99,88
+set_range_oop AA,KK,JJ,77,22,AK,AJ,KJ,QJ,JT,J9,A7,87s,76s,65s
+set_bet_sizes oop,river,bet,33,75
+set_bet_sizes ip,river,bet,33,75
+set_allin_threshold 0.67
+set_accuracy 0.3
+set_max_iteration 200
+set_thread_num 1
+build_tree
+start_solve
+dump_result data/solver_results/q23_proper_result.json
