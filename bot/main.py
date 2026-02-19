@@ -155,11 +155,12 @@ async def send_quiz(chat_id: int, context: ContextTypes.DEFAULT_TYPE, question=N
         if question is None:
             question = quiz_manager.get_random_question()
         
-        # Create keyboard
+        # Create keyboard - options + cancel button
         keyboard = [
             [InlineKeyboardButton(opt, callback_data=f"ans_{question.id}_{i}")]
             for i, opt in enumerate(question.options)
         ]
+        keyboard.append([InlineKeyboardButton("❌ 취소", callback_data=f"cancel_{question.id}")])
         reply_markup = InlineKeyboardMarkup(keyboard)
         
         # Format question text (HTML)
@@ -307,6 +308,28 @@ async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
             logger.error(f"Reply failed: {e}")
     
     logger.info(f"User {username} answered Q#{question_id}: {'correct' if is_correct else 'wrong'}")
+
+
+async def handle_cancel_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle cancel button press - delete the quiz message"""
+    query = update.callback_query
+    chat_id = query.message.chat_id
+    message_id = query.message.message_id
+    
+    # Delete the message
+    try:
+        await query.message.delete()
+        await query.answer("퀴즈 메시지가 삭제되었습니다.")
+        
+        # Remove from active_quiz_messages if this was the active one
+        if chat_id in active_quiz_messages:
+            if active_quiz_messages[chat_id].get("message_id") == message_id:
+                del active_quiz_messages[chat_id]
+        
+        logger.info(f"Quiz message deleted in chat {chat_id}")
+    except Exception as e:
+        logger.error(f"Failed to delete quiz message: {e}")
+        await query.answer("메시지 삭제 실패", show_alert=True)
 
 
 async def delete_message(context: ContextTypes.DEFAULT_TYPE):
@@ -460,6 +483,7 @@ def main():
     application.add_handler(CommandHandler("score", score_command))
     application.add_handler(CommandHandler("leaderboard", leaderboard_command))
     application.add_handler(CallbackQueryHandler(handle_answer, pattern=r"^ans_\d+_\d+$"))
+    application.add_handler(CallbackQueryHandler(handle_cancel_button, pattern=r"^cancel_\d+$"))
     application.add_error_handler(error_handler)
     
     # Schedule quizzes (06:00, 18:00 KST = 21:00, 09:00 UTC)
