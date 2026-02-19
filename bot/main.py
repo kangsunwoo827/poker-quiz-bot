@@ -457,8 +457,8 @@ async def send_explanation(chat_id: int, question, context: ContextTypes.DEFAULT
     
     correct_option = question.options[question.answer]
     
-    # Format explanation with HTML
-    explanation_html = question.explanation
+    # Format explanation with HTML - escape first, then apply formatting
+    explanation_html = escape_html(question.explanation)
     explanation_html = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', explanation_html)
     
     text = f"📖 <b>Quiz #{question.id} 해설</b>\n\n"
