@@ -114,3 +114,9 @@ class ScoreManager:
                 "accuracy": row[1] / row[2] * 100 if row[2] > 0 else 0
             }
         return None
+    
+    def get_leaderboard_user_ids(self) -> set[int]:
+        """Get all user IDs in the leaderboard"""
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT user_id FROM scores")
+        return {row[0] for row in cursor.fetchall()}

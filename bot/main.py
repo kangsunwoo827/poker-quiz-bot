@@ -522,9 +522,18 @@ async def next_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("현재 문제가 없습니다. /quiz 로 시작하세요.")
         return
     
-    # Check if user answered current question
-    if user_id not in quiz_manager.user_answers:
-        await update.message.reply_text("먼저 문제를 풀어주세요! 🎯")
+    # Check if all leaderboard users answered
+    leaderboard_users = score_manager.get_leaderboard_user_ids()
+    answered_users = set(quiz_manager.user_answers.keys())
+    not_answered = leaderboard_users - answered_users
+    
+    if not_answered:
+        not_answered_count = len(not_answered)
+        answered_count = len(answered_users)
+        total_count = len(leaderboard_users)
+        await update.message.reply_text(
+            f"아직 {not_answered_count}명이 안 풀었어요! ({answered_count}/{total_count}) 🎯"
+        )
         return
     
     # Show explanation for current question
