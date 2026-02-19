@@ -54,6 +54,15 @@ if _current_q_id:
             quiz_manager.current_question = q
             break
 
+# Store last question for /explain command
+last_question = None
+_last_q_id = _state.get("last_question_id")
+if _last_q_id:
+    for q in quiz_manager.questions:
+        if q.id == _last_q_id:
+            last_question = q
+            break
+
 logger.info(f"Loaded state: {len(active_chats)} chats, {len(dm_enabled_users)} DM users, {len(quiz_manager.used_questions)} used questions")
 
 
@@ -197,8 +206,10 @@ async def send_quiz(chat_id: int, context: ContextTypes.DEFAULT_TYPE, question=N
 
 async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle /quiz command - shows current active quiz or creates one if none exists"""
+    global last_question
     chat_id = update.effective_chat.id
     active_chats.add(chat_id)
+    save_state(active_chats, dm_enabled_users)
     
     # Check if there's an active quiz for this chat
     if chat_id in active_quiz_messages:
@@ -211,9 +222,22 @@ async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             # Use the current global question
             await send_quiz(chat_id, context, quiz_manager.current_question)
         else:
+            # Save current as last before creating new
+            if quiz_manager.current_question:
+                last_question = quiz_manager.current_question
+            
             # Create new quiz (first time or after explanation cleared it)
             question = quiz_manager.get_random_question()
             await send_quiz(chat_id, context, question)
+            
+            # Save state
+            save_state(
+                active_chats, dm_enabled_users,
+                question.id,
+                quiz_manager.used_questions,
+                quiz_manager.user_answers,
+                last_question.id if last_question else None
+            )
 
 
 async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -347,17 +371,23 @@ async def delete_message(context: ContextTypes.DEFAULT_TYPE):
 
 async def scheduled_quiz(context: ContextTypes.DEFAULT_TYPE):
     """Send new quiz to all active chats"""
+    global last_question
     logger.info("Scheduled quiz triggered")
+    
+    # Save current question as last question before getting new one
+    if quiz_manager.current_question:
+        last_question = quiz_manager.current_question
     
     # Get new question (shared across all chats)
     question = quiz_manager.get_random_question()
     
-    # Save state with current question and used questions
+    # Save state with current question, last question, and used questions
     save_state(
         active_chats, dm_enabled_users, 
         question.id, 
         quiz_manager.used_questions,
-        quiz_manager.user_answers
+        quiz_manager.user_answers,
+        last_question.id if last_question else None
     )
     
     for chat_id in active_chats.copy():
@@ -427,22 +457,22 @@ async def send_explanation(chat_id: int, question, context: ContextTypes.DEFAULT
 
 
 async def explain_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /explain command - show explanation for current or last question"""
+    """Handle /explain command - show explanation for last question"""
+    global last_question
     chat_id = update.effective_chat.id
     
-    question = None
-    
-    # Try to get current question
-    if chat_id in active_quiz_messages:
-        question = active_quiz_messages[chat_id]["question"]
+    # Show last question's explanation (previous quiz)
+    if last_question:
+        await send_explanation(chat_id, last_question, context)
     elif quiz_manager.current_question:
-        question = quiz_manager.current_question
-    
-    if question:
-        await send_explanation(chat_id, question, context)
+        # If no last question, show current one
+        await update.message.reply_text(
+            "이전 문제가 없습니다. 현재 문제 해설을 보시겠습니까?\n"
+            "현재 문제: /quiz 로 확인"
+        )
     else:
         await update.message.reply_text(
-            "현재 활성화된 퀴즈가 없습니다.\n/quiz 로 새 문제를 받으세요."
+            "표시할 해설이 없습니다.\n/quiz 로 새 문제를 받으세요."
         )
 
 
