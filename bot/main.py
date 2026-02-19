@@ -80,13 +80,35 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "<b>퀴즈 스케줄:</b>\n"
         "• 오전 6시, 오후 6시 자동 출제\n"
         "• 다음 퀴즈 10분 전에 해설 공개\n\n"
-        "<b>사용법:</b>\n"
-        "1. 퀴즈가 오면 버튼으로 답변\n"
-        "2. 즉시 정답 여부 확인\n"
-        "3. 해설에서 자세한 설명 확인\n\n"
+        "<b>명령어:</b>\n"
+        "/quiz - 현재 퀴즈 보기\n"
+        "/cancel - 현재 퀴즈 취소\n"
+        "/score - 내 점수\n"
+        "/leaderboard - 순위표\n\n"
         "🔥 매일 참여해서 스트릭 유지!",
         parse_mode=ParseMode.HTML
     )
+
+
+async def cancel_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle /cancel command - cancel current quiz"""
+    chat_id = update.effective_chat.id
+    
+    if chat_id in active_quiz_messages:
+        question = active_quiz_messages[chat_id]["question"]
+        del active_quiz_messages[chat_id]
+        
+        # Also clear from quiz_manager if it's the current one
+        if quiz_manager.current_question and quiz_manager.current_question.id == question.id:
+            quiz_manager.current_question = None
+            quiz_manager.user_answers.clear()
+        
+        await update.message.reply_text(
+            f"🚫 Quiz #{question.id} 취소됨\n\n다음 정규 시간에 새 퀴즈가 출제됩니다.",
+            parse_mode=ParseMode.HTML
+        )
+    else:
+        await update.message.reply_text("현재 활성화된 퀴즈가 없습니다.")
 
 
 async def send_quiz(chat_id: int, context: ContextTypes.DEFAULT_TYPE, question=None) -> Optional[int]:
@@ -198,11 +220,11 @@ async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     selected_answer = current_q.options[answer_index]
     
     if is_correct:
-        feedback = f"✅ 정답! ({selected_answer})"
+        feedback = "✅ 정답!"
         popup = "✅ 정답입니다!"
     else:
-        feedback = f"❌ 오답 ({selected_answer})\n정답: {correct_answer}"
-        popup = "❌ 오답입니다."
+        feedback = "❌ 오답"
+        popup = "❌ 오답입니다. 해설에서 정답을 확인하세요."
     
     await query.answer(popup)
     
@@ -375,6 +397,7 @@ def main():
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(CommandHandler("quiz", quiz_command))
+    application.add_handler(CommandHandler("cancel", cancel_command))
     application.add_handler(CommandHandler("score", score_command))
     application.add_handler(CommandHandler("leaderboard", leaderboard_command))
     application.add_handler(CallbackQueryHandler(handle_answer, pattern=r"^ans_\d+_\d+$"))

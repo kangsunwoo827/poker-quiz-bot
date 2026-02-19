@@ -100,7 +100,7 @@
         "3   C  .  .  .  .  .  .  .  .  .  .  3  .",
         "2   C  .  .  .  .  .  .  .  .  .  .  .  ."
       ],
-      "legend": "3 = 3-bet | C = Call | . = Fold"
+      "legend": "3=3bet C=Call .=Fold"
     },
     "BB_defend_vs_BTN": {
       "description": "BB Defend vs BTN Open (~55%)",
@@ -122,7 +122,7 @@
         "3   C  .  .  .  .  .  .  .  C  C  C  3  3",
         "2   C  .  .  .  .  .  .  .  .  C  C  C  ."
       ],
-      "legend": "3 = 3-bet | C = Call | . = Fold"
+      "legend": "3=3bet C=Call .=Fold"
     },
     "CO_vs_BTN_3bet": {
       "description": "CO vs BTN 3-bet Response",
@@ -145,7 +145,7 @@
         "3   .  .  .  .  .  .  .  .  .  .  .  .  .",
         "2   .  .  .  .  .  .  .  .  .  .  .  .  ."
       ],
-      "legend": "4 = 4-bet | C = Call | . = Fold"
+      "legend": "4=4bet C=Call .=Fold"
     }
   }
 }
