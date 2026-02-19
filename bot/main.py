@@ -514,11 +514,17 @@ async def next_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle /next command - show explanation and move to next question"""
     global last_question
     chat_id = update.effective_chat.id
+    user_id = update.effective_user.id
     
     current_q = quiz_manager.current_question
     
     if not current_q:
         await update.message.reply_text("현재 문제가 없습니다. /quiz 로 시작하세요.")
+        return
+    
+    # Check if user answered current question
+    if user_id not in quiz_manager.user_answers:
+        await update.message.reply_text("먼저 문제를 풀어주세요! 🎯")
         return
     
     # Show explanation for current question
