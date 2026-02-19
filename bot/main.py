@@ -524,7 +524,8 @@ async def next_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     # Check if all leaderboard users answered
     leaderboard_users = score_manager.get_leaderboard_user_ids()
-    answered_users = set(quiz_manager.user_answers.keys())
+    # Convert to int for comparison (user_answers keys might be strings)
+    answered_users = {int(uid) for uid in quiz_manager.user_answers.keys()}
     not_answered = leaderboard_users - answered_users
     
     if not_answered:
