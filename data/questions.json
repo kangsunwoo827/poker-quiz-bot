@@ -10,7 +10,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 2,
-    "explanation": "**왜 75% pot bet인가?**\n\nGTO 기준 AA는 이 spot에서:\n- Check: 0%\n- Bet 33%: 18%\n- **Bet 75%: 82%** ✓\n\n**이유:**\n• K-high dry board에서 AA는 강한 오버페어\n• CO의 Kx (KQ, KJ, KT)는 큰 베팅에도 콜\n• 작은 베팅보다 큰 베팅이 더 많은 value\n• Check는 무료 카드 줘서 역전 가능성 높임",
+    "explanation": "**왜 75% pot bet인가?**\n\nGTO 기준 AA는 이 spot에서:\n- Check: 0%\n- Bet 33%: 18%\n- **Bet 75%: 82%** ✓\n\n**이유:**\n• K-high dry board에서 AA는 강한 오버페어\n• CO의 Kx (KQ, KJ, KT)는 큰 베팅에도 콜\n• 작은 베팅보다 큰 베팅이 더 많은 value\n• Check는 무료 카드 줘서 역전 가능성 높임\n\n📊 Hero Range 구성 (BB vs CO cbet on K83r)\n• Value: AA, KK, 88, 33, AK, KQ\n• Bluff: 플러시 드로우, 스트레이트 드로우\n• Check-call: Kx weak, 중간 페어",
     "terms": {
       "dry board": "드로우가 거의 없는 보드 (플러시/스트레이트 가능성 낮음)",
       "오버페어": "보드의 가장 높은 카드보다 높은 포켓 페어"
@@ -28,7 +28,7 @@
       "3-bet to 11bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nKQs는 BB에서 CO open 상대로 확실한 defend 핸드.\n\n**Pot Odds 계산:**\n• Call 비용: 1.5bb\n• Pot after call: 5.5bb\n• 필요 equity: 1.5/5.5 = 27%\n• KQs vs CO range: ~46% equity ✓\n\n**3-bet 문제점:**\n• CO가 tight하면 우리보다 강한 핸드만 continue\n• OOP에서 bloated pot 불리\n• 4-bet 당하면 fold해야 함",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 KQs는 이 spot에서:\n- Fold: 0%\n- **Call: 65%** ✓\n- 3-bet 9bb: 25%\n- 3-bet 11bb: 10%\n\nKQs는 BB에서 CO open 상대로 확실한 defend 핸드.\n\n**Pot Odds 계산:**\n• Call 비용: 1.5bb\n• Pot after call: 5.5bb\n• 필요 equity: 1.5/5.5 = 27%\n• KQs vs CO range: ~46% equity ✓\n\n**3-bet 문제점:**\n• CO가 tight하면 우리보다 강한 핸드만 continue\n• OOP에서 bloated pot 불리\n• 4-bet 당하면 fold해야 함\n\n📊 Range Table (BB Defend vs CO Open)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   3  3  3  C  C  C  C  C  C  3  3  C  C\nK   3  3  3  C  C  C  C  C  C  .  .  .  .\nQ   3  3  3  3  C  C  C  C  .  .  .  .  .\nJ   C  C  C  3  3  C  C  C  .  .  .  .  .\nT   C  C  C  C  3  3  C  C  .  .  .  .  .\n9   C  C  C  C  C  3  3  C  C  .  .  .  .\n8   C  C  C  C  C  C  3  3  C  C  .  .  .\n7   C  C  .  .  .  C  C  3  3  C  C  .  .\n6   C  .  .  .  .  .  C  C  3  3  C  C  .\n5   C  .  .  .  .  .  .  C  C  3  3  C  C\n4   C  .  .  .  .  .  .  .  C  C  3  3  .\n3   C  .  .  .  .  .  .  .  .  .  .  3  .\n2   C  .  .  .  .  .  .  .  .  .  .  .  .\n\n3=3bet C=Call .=Fold",
     "terms": {
       "defend": "상대의 레이즈에 콜이나 리레이즈로 대응하는 것",
       "OOP": "Out of Position - 상대보다 먼저 액션해야 하는 불리한 위치"
@@ -45,7 +45,7 @@
       "Raise 3bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Raise 2.5bb인가?**\n\nAJo는 CO에서 표준 오픈 핸드.\n\n**CO Open Range (약 25-28%):**\n• 모든 포켓 페어\n• A2s+, K5s+, Q8s+\n• ATo+, KTo+, QTo+\n\n**사이징:**\n• 2.5bb vs 3bb: 현대 전략은 작은 사이징 선호\n• 작은 사이징 = 더 많은 핸드로 오픈 가능\n• 블라인드 스틸 효율 높음",
+    "explanation": "**왜 Raise 2.5bb인가?**\n\nGTO 기준 AJo는 이 spot에서:\n- Fold: 0%\n- **Raise 2.5bb: 95%** ✓\n- Raise 3bb: 5%\n\nAJo는 CO에서 표준 오픈 핸드.\n\n**CO Open Range (약 25-28%):**\n• 모든 포켓 페어\n• A2s+, K5s+, Q8s+\n• ATo+, KTo+, QTo+\n\n**사이징:**\n• 2.5bb vs 3bb: 현대 전략은 작은 사이징 선호\n• 작은 사이징 = 더 많은 핸드로 오픈 가능\n• 블라인드 스틸 효율 높음\n\n📊 Range Table (CO Open Range ~27%)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   R  R  R  R  R  R  R  R  R  R  R  R  R\nK   R  R  R  R  R  R  R  .  .  .  .  .  .\nQ   R  R  R  R  R  R  .  .  .  .  .  .  .\nJ   R  R  R  R  R  R  .  .  .  .  .  .  .\nT   R  R  R  R  R  R  R  .  .  .  .  .  .\n9   R  R  R  R  R  R  R  R  .  .  .  .  .\n8   R  R  .  .  R  R  R  R  R  .  .  .  .\n7   R  .  .  .  .  R  R  R  R  R  .  .  .\n6   R  .  .  .  .  .  R  R  R  R  R  .  .\n5   R  .  .  .  .  .  .  R  R  R  R  R  R\n4   R  .  .  .  .  .  .  .  R  R  R  R  R\n3   R  .  .  .  .  .  .  .  .  R  R  R  R\n2   R  .  .  .  .  .  .  .  .  .  R  R  R\n\nR=Raise .=Fold",
     "terms": {
       "오픈": "첫 번째 레이즈를 하는 것",
       "블라인드 스틸": "블라인드를 가져가기 위한 레이즈"
@@ -62,7 +62,7 @@
       "3-bet to 10bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\n77은 BB에서 UTG open 상대로 set mining + defend.\n\n**Set Mining:**\n• 플랍에서 세트 확률: 약 12%\n• Implied odds: 세트 히트 시 big pot 가능\n• UTG의 strong range 상대로 직접 대결보다 세트 노림\n\n**3-bet 문제점:**\n• UTG는 tight range (상위 15% 정도)\n• 77은 4-bet 상대로 취약\n• OOP에서 marginal hand로 pot 키우기 불리",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 77은 이 spot에서:\n- Fold: 5%\n- **Call: 85%** ✓\n- 3-bet 10bb: 10%\n\n77은 BB에서 UTG open 상대로 set mining + defend.\n\n**Set Mining:**\n• 플랍에서 세트 확률: 약 12%\n• Implied odds: 세트 히트 시 big pot 가능\n• UTG의 strong range 상대로 직접 대결보다 세트 노림\n\n**3-bet 문제점:**\n• UTG는 tight range (상위 15% 정도)\n• 77은 4-bet 상대로 취약\n• OOP에서 marginal hand로 pot 키우기 불리\n\n📊 Range Table (BB Defend vs UTG Open)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   3  3  3  C  C  .  .  .  .  3  3  .  .\nK   3  3  3  C  .  .  .  .  .  .  .  .  .\nQ   3  C  C  3  C  .  .  .  .  .  .  .  .\nJ   C  C  C  3  C  C  .  .  .  .  .  .  .\nT   C  .  C  C  3  C  C  .  .  .  .  .  .\n9   .  .  .  C  C  3  C  C  .  .  .  .  .\n8   .  .  .  .  .  C  3  C  C  .  .  .  .\n7   .  .  .  .  .  .  C  C  C  C  .  .  .\n6   .  .  .  .  .  .  .  C  C  C  C  .  .\n5   3  .  .  .  .  .  .  .  C  C  C  .  .\n4   3  .  .  .  .  .  .  .  .  C  C  .  .\n3   .  .  .  .  .  .  .  .  .  .  .  .  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\n3=3bet C=Call .=Fold",
     "terms": {
       "set mining": "포켓 페어로 플랍에서 세트(같은 숫자 3장)를 노리는 플레이",
       "implied odds": "미래 베팅 라운드에서 얻을 수 있는 잠재적 수익"
@@ -79,7 +79,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nQTo는 top pair + gutshot이지만 check가 표준.\n\n**이유:**\n• BTN이 IP에서 range advantage 있음\n• Q high board에서 BTN의 QQ, JJ, AQ 많음\n• QT는 thin value - 베팅하면 worse 폴드, better 콜\n• Check-call 또는 check-raise 라인이 더 좋음",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 QTo는 이 spot에서:\n- **Check: 92%** ✓\n- Bet 33%: 6%\n- Bet 75%: 2%\n\nQTo는 top pair + gutshot이지만 check가 표준.\n\n**이유:**\n• BTN이 IP에서 range advantage 있음\n• Q high board에서 BTN의 QQ, JJ, AQ 많음\n• QT는 thin value - 베팅하면 worse 폴드, better 콜\n• Check-call 또는 check-raise 라인이 더 좋음\n\n📊 Hero Range 구성 (BB vs BTN on QJ3r)\n• Value: QQ, JJ, 33, QJ, AQ (check-raise)\n• Bluff: KT, T9 (gutshot), 플러시드로우\n• Check-call: QT, Q9, Jx, 중간 페어",
     "terms": {
       "gutshot": "4장짜리 스트레이트 드로우 (예: 9가 오면 스트레이트)",
       "thin value": "콜 받을 수 있는 핸드 중 우리가 이기는 비율이 낮은 베팅",
@@ -98,7 +98,7 @@
       "All-in"
     ],
     "answer": 2,
-    "explanation": "**왜 4-bet to 20bb인가?**\n\nAKo는 BTN 3-bet 상대로 강한 핸드.\n\n**4-bet 이유:**\n• AK는 top of range - value 4-bet\n• BTN 3-bet range는 넓음 (light 3-bet 많음)\n• 20bb 사이징: fold equity + 좋은 SPR\n\n**Call 문제점:**\n• OOP에서 3-bet pot 플레이 어려움\n• AK는 postflop에서 miss 많음 (플랍 페어 확률 33%)\n\n**All-in 문제점:**\n• 100bb deep에서 너무 공격적\n• 상대의 call range가 우리를 dominate",
+    "explanation": "**왜 4-bet to 20bb인가?**\n\nGTO 기준 AKo는 이 spot에서:\n- Fold: 0%\n- Call: 15%\n- **4-bet 20bb: 80%** ✓\n- All-in: 5%\n\nAKo는 BTN 3-bet 상대로 강한 핸드.\n\n**4-bet 이유:**\n• AK는 top of range - value 4-bet\n• BTN 3-bet range는 넓음 (light 3-bet 많음)\n• 20bb 사이징: fold equity + 좋은 SPR\n\n**Call 문제점:**\n• OOP에서 3-bet pot 플레이 어려움\n• AK는 postflop에서 miss 많음 (플랍 페어 확률 33%)\n\n**All-in 문제점:**\n• 100bb deep에서 너무 공격적\n• 상대의 call range가 우리를 dominate\n\n📊 Range Table (CO vs BTN 3-bet)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   4  4  C  C  C  .  .  .  .  .  .  .  .\nK   4  4  4  C  C  .  .  .  .  .  .  .  .\nQ   C  C  4  C  C  .  .  .  .  .  .  .  .\nJ   C  C  C  C  C  .  .  .  .  .  .  .  .\nT   C  C  C  C  C  C  .  .  .  .  .  .  .\n9   .  .  .  .  C  C  C  .  .  .  .  .  .\n8   .  .  .  .  .  C  C  C  .  .  .  .  .\n7   .  .  .  .  .  .  C  C  .  .  .  .  .\n6   .  .  .  .  .  .  .  .  .  .  .  .  .\n5   .  .  .  .  .  .  .  .  .  .  .  .  .\n4   .  .  .  .  .  .  .  .  .  .  .  .  .\n3   .  .  .  .  .  .  .  .  .  .  .  .  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\n4=4bet C=Call .=Fold",
     "terms": {
       "SPR": "Stack to Pot Ratio - 스택/팟 비율. 낮으면 올인하기 쉬움",
       "fold equity": "상대를 폴드시켜서 얻는 가치"
@@ -115,7 +115,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nJThh는 플러시 드로우 + 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 엄청난 드로우지만 아직 made hand 아님\n• Check-raise로 플레이 가능\n• CO가 체크백하면 무료 카드 받음\n\n**베팅 문제점:**\n• Lead out은 range 불균형\n• Bluff로 베팅하면 raise 당할 때 어려움\n• 이미 좋은 odds로 드로우 중",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 JThh는 이 spot에서:\n- **Check: 75%** ✓\n- Bet 33%: 15%\n- Bet 75%: 10%\n\nJThh는 플러시 드로우 + 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 엄청난 드로우지만 아직 made hand 아님\n• Check-raise로 플레이 가능\n• CO가 체크백하면 무료 카드 받음\n\n**베팅 문제점:**\n• Lead out은 range 불균형\n• Bluff로 베팅하면 raise 당할 때 어려움\n• 이미 좋은 odds로 드로우 중\n\n📊 Hero Range 구성 (BB Turn on 982-5)\n• Value: 99, 88, 22, 98, 97 (check-raise)\n• Bluff: 플러시드로우, OESD (JT, T7, 76)\n• Check-call: Overpairs, top pair",
     "terms": {
       "오픈엔드": "양쪽으로 스트레이트 완성 가능한 드로우 (8아웃)",
       "lead out": "이전 라운드 베터에게 먼저 베팅하는 것",
@@ -133,7 +133,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n77은 bottom set이지만 check가 표준.\n\n**Check 이유:**\n• AK7 보드에서 BTN이 Ax, Kx 많이 보유\n• Check-raise로 더 많은 value 추출\n• BTN은 높은 빈도로 cbet 할 것\n• Donk bet은 range를 cap시킴\n\n**전략:**\nCheck → BTN bets → Raise!\n이 라인이 가장 많은 돈을 벌 수 있음",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 77(bottom set)은 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 3%\n- Bet 75%: 2%\n\n77은 bottom set이지만 check가 표준.\n\n**Check 이유:**\n• AK7 보드에서 BTN이 Ax, Kx 많이 보유\n• Check-raise로 더 많은 value 추출\n• BTN은 높은 빈도로 cbet 할 것\n• Donk bet은 range를 cap시킴\n\n**전략:**\nCheck → BTN bets → Raise!\n이 라인이 가장 많은 돈을 벌 수 있음\n\n📊 Hero Range 구성 (BB vs BTN on AK7r)\n• Value: 77, AK, AA, KK (check-raise)\n• Bluff: QJ, QT, JT (gutshot), 백도어\n• Check-call: Ax weak, Kx, 중간 페어",
     "terms": {
       "bottom set": "보드에서 가장 낮은 카드와 같은 포켓 페어로 만든 세트",
       "cbet": "Continuation bet - 프리플랍 레이저가 플랍에서 베팅",
@@ -151,7 +151,7 @@
       "Squeeze to 12bb"
     ],
     "answer": 2,
-    "explanation": "**왜 Squeeze to 12bb인가?**\n\nA5s는 multiway pot에서 squeeze 후보.\n\n**Squeeze 이유:**\n• 3명이 팟에 있으면 dead money 많음\n• A5s는 블로커 (Ax) + suited\n• MP의 콜링 range는 약함 → fold 많이 받음\n• 콜 받아도 playable hand\n\n**Call 문제점:**\n• Multiway pot에서 A5s는 실현하기 어려움\n• OOP에서 3-way pot = 불리",
+    "explanation": "**왜 Squeeze to 12bb인가?**\n\nGTO 기준 A5s는 이 spot에서:\n- Fold: 5%\n- Call: 25%\n- **Squeeze 12bb: 70%** ✓\n\nA5s는 multiway pot에서 squeeze 후보.\n\n**Squeeze 이유:**\n• 3명이 팟에 있으면 dead money 많음\n• A5s는 블로커 (Ax) + suited\n• MP의 콜링 range는 약함 → fold 많이 받음\n• 콜 받아도 playable hand\n\n**Call 문제점:**\n• Multiway pot에서 A5s는 실현하기 어려움\n• OOP에서 3-way pot = 불리\n\n📊 Range Table (BB Squeeze vs UTG+caller)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   S  S  S  S  .  .  .  .  .  S  S  .  .\nK   S  S  S  S  .  .  .  .  .  .  .  .  .\nQ   S  S  S  S  C  .  .  .  .  .  .  .  .\nJ   S  S  C  S  C  C  .  .  .  .  .  .  .\nT   .  .  C  C  S  C  C  .  .  .  .  .  .\n9   .  .  .  C  C  S  C  C  .  .  .  .  .\n8   .  .  .  .  .  C  S  C  C  .  .  .  .\n7   .  .  .  .  .  .  C  C  C  C  .  .  .\n6   .  .  .  .  .  .  .  C  C  C  C  .  .\n5   S  .  .  .  .  .  .  .  C  C  C  .  .\n4   S  .  .  .  .  .  .  .  .  C  C  .  .\n3   .  .  .  .  .  .  .  .  .  .  .  .  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\nS=Squeeze C=Call .=Fold",
     "terms": {
       "squeeze": "앞에 레이즈 + 콜이 있을 때 큰 3-bet 하는 것",
       "블로커": "상대가 특정 핸드를 가질 확률을 줄이는 카드",
@@ -169,7 +169,7 @@
       "Raise to 15bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nJJ는 overpair지만 multiway에서는 조심해야 함.\n\n**Call 이유:**\n• 4-way pot에서 raise는 너무 강한 range만 continue\n• T9 보드에서 set, 2pair, 스트레이트 드로우 많음\n• JJ는 좋지만 monster는 아님\n• BTN이 뒤에 있어서 squeeze 당할 수 있음\n\n**Fold 문제점:**\n• JJ는 여전히 강한 핸드\n• 이 가격에 fold는 너무 tight",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 JJ는 이 spot에서:\n- Fold: 0%\n- **Call: 85%** ✓\n- Raise 15bb: 15%\n\nJJ는 overpair지만 multiway에서는 조심해야 함.\n\n**Call 이유:**\n• 4-way pot에서 raise는 너무 강한 range만 continue\n• T9 보드에서 set, 2pair, 스트레이트 드로우 많음\n• JJ는 좋지만 monster는 아님\n• BTN이 뒤에 있어서 squeeze 당할 수 있음\n\n**Fold 문제점:**\n• JJ는 여전히 강한 핸드\n• 이 가격에 fold는 너무 tight\n\n📊 Hero Range 구성 (CO in 4-way pot on T94)\n• Value: TT, 99, 44, T9 (raise)\n• Bluff: QJ, J8, 87 (OESD), 스페이드 드로우\n• Call: JJ, QQ, Tx, 9x",
     "terms": {
       "overpair": "보드의 모든 카드보다 높은 포켓 페어",
       "multiway": "3명 이상이 참여한 팟"
@@ -186,7 +186,7 @@
       "Raise to 12bb"
     ],
     "answer": 2,
-    "explanation": "**왜 Raise to 12bb인가?**\n\n87hh는 플러시 드로우 + 오픈엔드 = 15아웃 몬스터 드로우.\n\n**Raise 이유:**\n• 15아웃: 턴에서 54% equity (favorite!)\n• Semi-bluff raise로 CO를 fold시킬 수 있음\n• 콜 받아도 equity 충분\n• 이런 드로우는 공격적으로 플레이\n\n**Call 문제점:**\n• 이렇게 강한 드로우를 passive하게 플레이는 손해\n• Turn에서 miss하면 어려운 결정",
+    "explanation": "**왜 Raise to 12bb인가?**\n\nGTO 기준 87hh는 이 spot에서:\n- Fold: 0%\n- Call: 30%\n- **Raise 12bb: 70%** ✓\n\n87hh는 플러시 드로우 + 오픈엔드 = 15아웃 몬스터 드로우.\n\n**Raise 이유:**\n• 15아웃: 턴에서 54% equity (favorite!)\n• Semi-bluff raise로 CO를 fold시킬 수 있음\n• 콜 받아도 equity 충분\n• 이런 드로우는 공격적으로 플레이\n\n**Call 문제점:**\n• 이렇게 강한 드로우를 passive하게 플레이는 손해\n• Turn에서 miss하면 어려운 결정\n\n📊 Hero Range 구성 (BB check-raise on 652hh)\n• Value: 66, 55, 22, 65, 43 (raise)\n• Bluff: 87hh, Ahx, 78, 34 (combo draws)\n• Call: Overpairs, 6x, 5x",
     "terms": {
       "아웃": "핸드를 완성시켜주는 남은 카드 수",
       "semi-bluff": "현재는 약하지만 개선 가능성 있는 핸드로 베팅/레이즈"
@@ -203,7 +203,7 @@
       "Bet 8bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 4bb (33%)인가?**\n\nK8는 top pair weak kicker로 thin value.\n\n**작은 베팅 이유:**\n• BTN이 turn에서 콜 = Kx, 9x, 드로우 가능\n• 75% bet은 worse Kx만 fold시킴\n• 33% bet은 K9, 99, 44 제외하고 콜 받을 수 있음\n• Check는 약한 Kx 상대로 value 놓침\n\n**핵심:**\nWeak top pair = thin value bet\n사이징은 상대의 콜링 range에 맞춰야 함",
+    "explanation": "**왜 Bet 4bb (33%)인가?**\n\nGTO 기준 K8는 이 spot에서:\n- Check: 25%\n- **Bet 33%: 60%** ✓\n- Bet 75%: 15%\n\nK8는 top pair weak kicker로 thin value.\n\n**작은 베팅 이유:**\n• BTN이 turn에서 콜 = Kx, 9x, 드로우 가능\n• 75% bet은 worse Kx만 fold시킴\n• 33% bet은 K9, 99, 44 제외하고 콜 받을 수 있음\n• Check는 약한 Kx 상대로 value 놓침\n\n**핵심:**\nWeak top pair = thin value bet\n사이징은 상대의 콜링 range에 맞춰야 함\n\n📊 Hero Range 구성 (BB River bet on K942-7)\n• Value: KK, 99, 44, K9, strong Kx (bet big)\n• Thin Value: K8, K7, 9x (bet small)\n• Bluff: missed draws, Ax high\n• Check: weak 9x, 포켓 페어",
     "terms": {
       "thin value": "약간의 이익만 있는 value bet",
       "콜링 range": "상대가 특정 베팅에 콜할 수 있는 핸드들"
@@ -221,7 +221,7 @@
       "All-in"
     ],
     "answer": 2,
-    "explanation": "**왜 4-bet to 22bb인가?**\n\nQQ는 UTG open + MP 3-bet 상대로 강한 핸드.\n\n**4-bet 이유:**\n• QQ는 premium hand\n• MP 3-bet range는 JJ+, AQ+ 정도지만 QQ 앞섬\n• 4-bet으로 AK, JJ 등에서 value\n• Call은 multiway 될 수 있어 불리\n\n**사이징:**\n• OOP에서 4-bet은 2.5-3x 3-bet\n• 22bb는 적절한 SPR 만들어줌",
+    "explanation": "**왜 4-bet to 22bb인가?**\n\nGTO 기준 QQ는 이 spot에서:\n- Fold: 0%\n- Call: 10%\n- **4-bet 22bb: 85%** ✓\n- All-in: 5%\n\nQQ는 UTG open + MP 3-bet 상대로 강한 핸드.\n\n**4-bet 이유:**\n• QQ는 premium hand\n• MP 3-bet range는 JJ+, AQ+ 정도지만 QQ 앞섬\n• 4-bet으로 AK, JJ 등에서 value\n• Call은 multiway 될 수 있어 불리\n\n**사이징:**\n• OOP에서 4-bet은 2.5-3x 3-bet\n• 22bb는 적절한 SPR 만들어줌\n\n📊 Range Table (BB vs MP 3-bet after UTG open)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   4  4  4  C  .  .  .  .  .  4  4  .  .\nK   4  4  4  C  .  .  .  .  .  .  .  .  .\nQ   C  C  4  C  .  .  .  .  .  .  .  .  .\nJ   C  C  C  C  C  .  .  .  .  .  .  .  .\nT   .  .  .  C  C  C  .  .  .  .  .  .  .\n9   .  .  .  .  .  C  C  .  .  .  .  .  .\n8   .  .  .  .  .  .  C  C  .  .  .  .  .\n7   .  .  .  .  .  .  .  C  .  .  .  .  .\n6   .  .  .  .  .  .  .  .  .  .  .  .  .\n5   4  .  .  .  .  .  .  .  .  .  .  .  .\n4   4  .  .  .  .  .  .  .  .  .  .  .  .\n3   .  .  .  .  .  .  .  .  .  .  .  .  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\n4=4bet C=Call .=Fold",
     "terms": {
       "premium hand": "가장 강한 시작 핸드들 (AA, KK, QQ, AK 등)"
     }
@@ -237,7 +237,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n87는 JT9 보드에서 넛 스트레이트.\n\n**Check 이유:**\n• 이미 nuts = slowplay 가치 있음\n• CO가 cbet 할 확률 높음 (connected board)\n• Check-raise로 더 큰 pot 가능\n• 이 보드에서 BB range는 약해 보여서 CO aggression 유도\n\n**Donk bet 문제점:**\n• 상대의 베팅 기회 없앰\n• Strong hand를 너무 드러냄",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 87(넛 스트레이트)는 이 spot에서:\n- **Check: 90%** ✓\n- Bet 33%: 7%\n- Bet 75%: 3%\n\n87는 JT9 보드에서 넛 스트레이트.\n\n**Check 이유:**\n• 이미 nuts = slowplay 가치 있음\n• CO가 cbet 할 확률 높음 (connected board)\n• Check-raise로 더 큰 pot 가능\n• 이 보드에서 BB range는 약해 보여서 CO aggression 유도\n\n**Donk bet 문제점:**\n• 상대의 베팅 기회 없앰\n• Strong hand를 너무 드러냄\n\n📊 Hero Range 구성 (BB on JT9 connected board)\n• Value: 87 (nuts), QQ-88, JT, T9, J9 (check-raise)\n• Bluff: KQ, Q8, 86, 76 (gutshots)\n• Check-call: Jx, Tx, 9x, 드로우",
     "terms": {
       "nuts": "현재 보드에서 가능한 최강 핸드",
       "slowplay": "강한 핸드를 약하게 플레이해서 상대가 블러프하게 유도"
@@ -254,7 +254,7 @@
       "Raise 3bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Raise 2.5bb인가?**\n\nTT는 UTG에서 표준 오픈 핸드.\n\n**UTG Open Range (약 15%):**\n• 77+\n• ATs+, KQs\n• AJo+\n\n**사이징:**\n• 2.5bb: 현대 표준 사이징\n• Position 관계없이 동일 사이징 유지\n• 이유: Range가 균형잡힘, exploitable하지 않음",
+    "explanation": "**왜 Raise 2.5bb인가?**\n\nGTO 기준 TT는 이 spot에서:\n- Fold: 0%\n- **Raise 2.5bb: 95%** ✓\n- Raise 3bb: 5%\n\nTT는 UTG에서 표준 오픈 핸드.\n\n**UTG Open Range (약 15%):**\n• 77+\n• ATs+, KQs\n• AJo+\n\n**사이징:**\n• 2.5bb: 현대 표준 사이징\n• Position 관계없이 동일 사이징 유지\n• 이유: Range가 균형잡힘, exploitable하지 않음\n\n📊 Range Table (UTG Open Range ~15%)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   R  R  R  R  R  .  .  .  .  R  R  .  .\nK   R  R  R  R  R  .  .  .  .  .  .  .  .\nQ   R  R  R  R  R  .  .  .  .  .  .  .  .\nJ   R  R  R  R  R  .  .  .  .  .  .  .  .\nT   R  R  R  R  R  R  .  .  .  .  .  .  .\n9   .  .  .  .  R  R  R  .  .  .  .  .  .\n8   .  .  .  .  .  R  R  R  .  .  .  .  .\n7   .  .  .  .  .  .  R  R  R  .  .  .  .\n6   .  .  .  .  .  .  .  R  .  .  .  .  .\n5   R  .  .  .  .  .  .  .  .  .  .  .  .\n4   R  .  .  .  .  .  .  .  .  .  .  .  .\n3   .  .  .  .  .  .  .  .  .  .  .  .  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\nR=Raise .=Fold",
     "terms": {}
   },
   {
@@ -268,7 +268,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 1.5bb (27%)인가?**\n\nKQ는 A-high dry board에서 작은 cbet.\n\n**작은 베팅 이유:**\n• A72r은 CO에게 range advantage\n• 작은 베팅으로 높은 빈도 cbet 가능\n• BB의 대부분 핸드가 fold해야 함\n• KQ는 backdoor equity 있음 (K, Q 오면 top pair)\n\n**Check 문제점:**\n• Free card 주면 BB가 catch up\n• Bluffing equity 포기",
+    "explanation": "**왜 Bet 1.5bb (27%)인가?**\n\nGTO 기준 KQ는 이 spot에서:\n- Check: 20%\n- **Bet 27%: 70%** ✓\n- Bet 75%: 10%\n\nKQ는 A-high dry board에서 작은 cbet.\n\n**작은 베팅 이유:**\n• A72r은 CO에게 range advantage\n• 작은 베팅으로 높은 빈도 cbet 가능\n• BB의 대부분 핸드가 fold해야 함\n• KQ는 backdoor equity 있음 (K, Q 오면 top pair)\n\n**Check 문제점:**\n• Free card 주면 BB가 catch up\n• Bluffing equity 포기\n\n📊 Hero Range 구성 (CO cbet on A72r)\n• Value: AA, 77, 22, AK, AQ (bet any size)\n• Bluff: KQ, KJ, QJ, JT (backdoors)\n• Small bet: 거의 전체 range",
     "terms": {
       "backdoor": "turn + river 두 장 다 필요한 드로우",
       "range advantage": "전체 핸드 분포가 상대보다 강한 상태"
@@ -285,7 +285,7 @@
       "Bet 16bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nQJ는 top pair good kicker지만 river에서 check.\n\n**Check 이유:**\n• CO가 두 번 베팅 = strong range\n• QJ는 이미 2 street 콜로 bluff catch 완료\n• 베팅하면 worse가 fold, better만 콜\n• Check로 CO의 블러프 유도 (check-call)\n\n**베팅 문제점:**\n• CO의 콜링 range가 우리를 이김\n• Value target이 거의 없음",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 QJ는 이 spot에서:\n- **Check: 90%** ✓\n- Bet 33%: 8%\n- Bet 75%: 2%\n\nQJ는 top pair good kicker지만 river에서 check.\n\n**Check 이유:**\n• CO가 두 번 베팅 = strong range\n• QJ는 이미 2 street 콜로 bluff catch 완료\n• 베팅하면 worse가 fold, better만 콜\n• Check로 CO의 블러프 유도 (check-call)\n\n**베팅 문제점:**\n• CO의 콜링 range가 우리를 이김\n• Value target이 거의 없음\n\n📊 Hero Range 구성 (BB River after facing 2 barrels)\n• Value: QQ, 88, 33, Q8 (check-raise)\n• Bluff Catch: QJ, QT, Q9 (check-call)\n• Fold: 8x weak, missed draws",
     "terms": {
       "bluff catch": "상대의 블러프를 잡기 위해 콜하는 것"
     }
@@ -301,7 +301,7 @@
       "Bet 16bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 7bb (33%)인가?**\n\nAA는 3-bet pot에서 K-high board cbet.\n\n**33% 사이징 이유:**\n• 3-bet pot = SPR 낮음 (약 4:1)\n• 작은 베팅으로 충분한 pressure\n• BTN은 많은 핸드 fold 해야 함\n• Big bet은 오히려 bluff inefficient\n\n**75% bet 문제점:**\n• 이 SPR에서 polarized sizing 불필요\n• Kx만 콜 → value 손실",
+    "explanation": "**왜 Bet 7bb (33%)인가?**\n\nGTO 기준 AA는 이 spot에서:\n- Check: 10%\n- **Bet 33%: 75%** ✓\n- Bet 75%: 15%\n\nAA는 3-bet pot에서 K-high board cbet.\n\n**33% 사이징 이유:**\n• 3-bet pot = SPR 낮음 (약 4:1)\n• 작은 베팅으로 충분한 pressure\n• BTN은 많은 핸드 fold 해야 함\n• Big bet은 오히려 bluff inefficient\n\n**75% bet 문제점:**\n• 이 SPR에서 polarized sizing 불필요\n• Kx만 콜 → value 손실\n\n📊 Hero Range 구성 (SB 3-bet pot cbet on K94r)\n• Value: AA, KK, 99, 44, AK (all bet)\n• Bluff: QJ, QT, JT (gutshots)\n• Check: rarely - range bet 전략",
     "terms": {
       "SPR": "Stack to Pot Ratio - 남은 스택 / 현재 팟"
     }
@@ -317,7 +317,7 @@
       "Raise 2bb"
     ],
     "answer": 2,
-    "explanation": "**왜 Raise 2bb인가?**\n\n54s는 BTN에서 open 가능, 작은 사이징으로.\n\n**BTN Open Range (약 45-50%):**\n• 거의 모든 suited hands\n• 대부분의 broadways\n• 포켓 페어 전부\n\n**작은 사이징 이유:**\n• BTN vs Blinds = 더 좋은 position\n• 2bb로도 충분한 fold equity\n• Weak hands는 작게, strong도 같은 사이징 (균형)\n\n**Fold 문제점:**\n• 54s는 playable hand (suited connector)\n• BTN에서 너무 tight",
+    "explanation": "**왜 Raise 2bb인가?**\n\nGTO 기준 54s는 이 spot에서:\n- Fold: 15%\n- Raise 2.5bb: 25%\n- **Raise 2bb: 60%** ✓\n\n54s는 BTN에서 open 가능, 작은 사이징으로.\n\n**BTN Open Range (약 45-50%):**\n• 거의 모든 suited hands\n• 대부분의 broadways\n• 포켓 페어 전부\n\n**작은 사이징 이유:**\n• BTN vs Blinds = 더 좋은 position\n• 2bb로도 충분한 fold equity\n• Weak hands는 작게, strong도 같은 사이징 (균형)\n\n**Fold 문제점:**\n• 54s는 playable hand (suited connector)\n• BTN에서 너무 tight\n\n📊 Range Table (BTN Open Range ~48%)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   R  R  R  R  R  R  R  R  R  R  R  R  R\nK   R  R  R  R  R  R  R  R  R  R  R  R  R\nQ   R  R  R  R  R  R  R  R  R  R  R  R  R\nJ   R  R  R  R  R  R  R  R  R  R  R  R  R\nT   R  R  R  R  R  R  R  R  R  R  R  R  R\n9   R  R  R  R  R  R  R  R  R  .  .  .  .\n8   R  R  .  .  R  R  R  R  R  .  .  .  .\n7   R  R  .  .  R  R  R  R  R  R  .  .  .\n6   R  .  .  .  .  R  R  R  R  R  .  .  .\n5   R  R  .  .  .  .  .  R  R  R  R  .  .\n4   R  .  .  .  .  .  .  .  .  R  R  .  .\n3   R  .  .  .  .  .  .  .  .  .  .  .  .\n2   R  .  .  .  .  .  .  .  .  .  .  .  .\n\nR=Raise .=Fold",
     "terms": {
       "suited connector": "연속된 숫자의 같은 무늬 카드 (54s, 76s 등)"
     }
@@ -333,7 +333,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n54는 876 보드에서 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 8아웃 드로우 (9 또는 3)\n• BB는 이 보드에서 check range 유지\n• Check-call 또는 check-raise 플랜\n• CO가 cbet하면 좋은 odds로 드로우\n\n**베팅 문제점:**\n• Donk bet은 range 혼란\n• 아직 made hand 아님",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 54(오픈엔드)는 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 4%\n- Bet 75%: 1%\n\n54는 876 보드에서 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 8아웃 드로우 (9 또는 3)\n• BB는 이 보드에서 check range 유지\n• Check-call 또는 check-raise 플랜\n• CO가 cbet하면 좋은 odds로 드로우\n\n**베팅 문제점:**\n• Donk bet은 range 혼란\n• 아직 made hand 아님\n\n📊 Hero Range 구성 (BB on 876 connected board)\n• Value: 98, 87, 76, 65, 55-88 (sets)\n• Semi-bluff (check-raise): 95, 54, T9, J9, 플러시드로우\n• Check-call: overpairs, 8x, 7x, 드로우",
     "terms": {
       "8아웃": "핸드 완성에 필요한 남은 카드 8장"
     }
@@ -349,7 +349,7 @@
       "3-bet to 8bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\n99는 BTN에서 CO open 상대로 flat call이 표준.\n\n**Call 이유:**\n• 99는 medium pair - 3-bet/fold 애매\n• IP에서 set mining 유리\n• CO의 4-bet range에 crushed\n• Flat으로 position 활용\n\n**3-bet 문제점:**\n• 4-bet 당하면 fold해야 할 수도\n• 99는 3-bet value로는 thin",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 99는 이 spot에서:\n- Fold: 0%\n- **Call: 70%** ✓\n- 3-bet 8bb: 30%\n\n99는 BTN에서 CO open 상대로 flat call이 표준.\n\n**Call 이유:**\n• 99는 medium pair - 3-bet/fold 애매\n• IP에서 set mining 유리\n• CO의 4-bet range에 crushed\n• Flat으로 position 활용\n\n**3-bet 문제점:**\n• 4-bet 당하면 fold해야 할 수도\n• 99는 3-bet value로는 thin\n\n📊 Range Table (BTN vs CO Open)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   3  3  3  3  3  C  C  .  .  3  3  3  .\nK   3  3  3  3  C  C  C  .  .  .  .  .  .\nQ   3  3  3  3  C  C  .  .  .  .  .  .  .\nJ   3  C  C  3  C  C  .  .  .  .  .  .  .\nT   3  C  C  C  3  C  C  .  .  .  .  .  .\n9   C  C  C  C  C  C  C  C  .  .  .  .  .\n8   C  C  .  .  C  C  C  C  C  .  .  .  .\n7   .  C  .  .  .  C  C  C  C  C  .  .  .\n6   .  .  .  .  .  .  C  C  C  C  C  .  .\n5   3  .  .  .  .  .  .  C  C  C  C  C  C\n4   3  .  .  .  .  .  .  .  C  C  C  C  .\n3   .  .  .  .  .  .  .  .  .  C  C  C  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\n3=3bet C=Call .=Fold",
     "terms": {
       "flat call": "레이즈 없이 콜만 하는 것",
       "IP": "In Position - 상대보다 나중에 액션하는 유리한 위치"
@@ -366,7 +366,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 1.5bb (27%)인가?**\n\nAKcc는 nut flush draw + overcards.\n\n**작은 베팅 이유:**\n• 두 개의 오버카드 + 넛 플드\n• 작은 베팅으로 pot 키우기\n• BB fold시 equity denial\n• 콜 받아도 많은 equity\n\n**Check 문제점:**\n• 이 핸드로 free card 주기 아까움\n• Semi-bluff value 있음\n\n**75% 문제점:**\n• 아직 made hand 아님\n• 콜 받으면 pot만 커지고 불확실",
+    "explanation": "**왜 Bet 1.5bb (27%)인가?**\n\nGTO 기준 AKcc(넛플드)는 이 spot에서:\n- Check: 15%\n- **Bet 27%: 70%** ✓\n- Bet 75%: 15%\n\nAKcc는 nut flush draw + overcards.\n\n**작은 베팅 이유:**\n• 두 개의 오버카드 + 넛 플드\n• 작은 베팅으로 pot 키우기\n• BB fold시 equity denial\n• 콜 받아도 많은 equity\n\n**Check 문제점:**\n• 이 핸드로 free card 주기 아까움\n• Semi-bluff value 있음\n\n**75% 문제점:**\n• 아직 made hand 아님\n• 콜 받으면 pot만 커지고 불확실\n\n📊 Hero Range 구성 (BTN cbet on T62cc)\n• Value: TT, 66, 22, AT, KT\n• Semi-bluff: AKcc, AQcc, KQcc (nut FD)\n• Bluff: AK, AQ, KQ (overcards)\n• Small cbet: 대부분의 range",
     "terms": {
       "nut flush draw": "플러시 완성시 가장 강한 플러시가 되는 드로우"
     }
@@ -382,7 +382,7 @@
       "Bet 7.5bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nAA는 river K 보드에서 thin value bet.\n\n**33% 사이징 이유:**\n• Turn check로 weakness 보임\n• River K는 BTN에게 유리할 수 있음\n• 작은 베팅으로 Jx, 77에서 value\n• 큰 베팅은 worse fold, Kx만 콜\n\n**Check 문제점:**\n• AA는 여전히 strong\n• Showdown value는 있지만 추가 value 가능",
+    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nGTO 기준 AA는 이 spot에서:\n- Check: 20%\n- **Bet 33%: 65%** ✓\n- Bet 75%: 15%\n\nAA는 river K 보드에서 thin value bet.\n\n**33% 사이징 이유:**\n• Turn check로 weakness 보임\n• River K는 BTN에게 유리할 수 있음\n• 작은 베팅으로 Jx, 77에서 value\n• 큰 베팅은 worse fold, Kx만 콜\n\n**Check 문제점:**\n• AA는 여전히 strong\n• Showdown value는 있지만 추가 value 가능\n\n📊 Hero Range 구성 (CO River bet on J723-K)\n• Value: KK, AA, JJ, 77, KJ (bet big)\n• Thin Value: AA, QQ, Jx good (bet small)\n• Bluff: missed draws, Qx, Tx\n• Check: weak Jx, 7x",
     "terms": {}
   },
   {
@@ -397,7 +397,7 @@
       "3-bet to 12bb"
     ],
     "answer": 2,
-    "explanation": "**왜 3-bet to 10bb인가?**\n\nAKs는 BTN에서 squeeze 해야 하는 핸드.\n\n**3-bet 이유:**\n• AKs는 premium hand\n• Dead money 가져오기\n• Position advantage 극대화\n• MP와 CO 둘 다 fold equity 있음\n\n**사이징:**\n• 3x + 1bb per caller = 10bb\n• IP라서 작은 사이징 OK",
+    "explanation": "**왜 3-bet to 10bb인가?**\n\nGTO 기준 AKs는 이 spot에서:\n- Fold: 0%\n- Call: 5%\n- **3-bet 10bb: 85%** ✓\n- 3-bet 12bb: 10%\n\nAKs는 BTN에서 squeeze 해야 하는 핸드.\n\n**3-bet 이유:**\n• AKs는 premium hand\n• Dead money 가져오기\n• Position advantage 극대화\n• MP와 CO 둘 다 fold equity 있음\n\n**사이징:**\n• 3x + 1bb per caller = 10bb\n• IP라서 작은 사이징 OK\n\n📊 Range Table (BTN Squeeze vs MP+caller)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   S  S  S  S  S  C  .  .  .  S  S  S  .\nK   S  S  S  S  C  C  .  .  .  .  .  .  .\nQ   S  S  S  S  C  .  .  .  .  .  .  .  .\nJ   S  S  C  S  C  C  .  .  .  .  .  .  .\nT   S  C  C  C  S  C  C  .  .  .  .  .  .\n9   C  C  .  C  C  S  C  C  .  .  .  .  .\n8   .  C  .  .  C  C  S  C  C  .  .  .  .\n7   .  .  .  .  .  C  C  C  C  C  .  .  .\n6   .  .  .  .  .  .  C  C  C  C  C  .  .\n5   S  .  .  .  .  .  .  C  C  C  C  C  .\n4   S  .  .  .  .  .  .  .  C  C  C  C  .\n3   .  .  .  .  .  .  .  .  .  C  C  C  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\nS=Squeeze C=Call .=Fold",
     "terms": {}
   },
   {
@@ -411,7 +411,7 @@
       "Bet 15bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 6.5bb (33%)인가?**\n\nAK는 QJ5 보드에서 miss했지만 equity 많음.\n\n**Cbet 이유:**\n• 3-bet pot에서 aggressor는 cbet 필요\n• AK는 gutshot (T) + 2 overs\n• 작은 베팅으로 fold equity 확보\n• BTN의 많은 핸드가 fold\n\n**Check 문제점:**\n• Initiative 포기\n• 이 보드에서 많이 miss해도 betting range 필요",
+    "explanation": "**왜 Bet 6.5bb (33%)인가?**\n\nGTO 기준 AK는 이 spot에서:\n- Check: 25%\n- **Bet 33%: 60%** ✓\n- Bet 75%: 15%\n\nAK는 QJ5 보드에서 miss했지만 equity 많음.\n\n**Cbet 이유:**\n• 3-bet pot에서 aggressor는 cbet 필요\n• AK는 gutshot (T) + 2 overs\n• 작은 베팅으로 fold equity 확보\n• BTN의 많은 핸드가 fold\n\n**Check 문제점:**\n• Initiative 포기\n• 이 보드에서 많이 miss해도 betting range 필요\n\n📊 Hero Range 구성 (BB 3-bet pot cbet on QJ5)\n• Value: QQ, JJ, 55, AQ, KQ, QJ\n• Semi-bluff: AK (gutshot), KT, T9\n• Bluff: AK, A5s, suited Ax\n• Small bet: 대부분의 range",
     "terms": {
       "initiative": "베팅/레이즈로 액션을 주도하는 것"
     }
@@ -427,7 +427,7 @@
       "Raise 3bb"
     ],
     "answer": 2,
-    "explanation": "**왜 Raise 3bb인가?**\n\nK7s는 SB에서 open raise 해야 함.\n\n**Raise 이유:**\n• Fold to BB는 너무 tight\n• Limp은 BB에게 free equity\n• K7s는 open 가능한 suited king\n\n**사이징:**\n• SB vs BB = OOP이므로 3bb 사이징\n• 2.5bb보다 크게 해서 BB의 defend range 줄임",
+    "explanation": "**왜 Raise 3bb인가?**\n\nGTO 기준 K7s는 이 spot에서:\n- Fold: 15%\n- Limp: 5%\n- **Raise 3bb: 80%** ✓\n\nK7s는 SB에서 open raise 해야 함.\n\n**Raise 이유:**\n• Fold to BB는 너무 tight\n• Limp은 BB에게 free equity\n• K7s는 open 가능한 suited king\n\n**사이징:**\n• SB vs BB = OOP이므로 3bb 사이징\n• 2.5bb보다 크게 해서 BB의 defend range 줄임\n\n📊 Range Table (SB Open vs BB ~45%)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   R  R  R  R  R  R  R  R  R  R  R  R  R\nK   R  R  R  R  R  R  R  R  R  R  R  R  R\nQ   R  R  R  R  R  R  R  R  R  R  R  R  R\nJ   R  R  R  R  R  R  R  R  R  R  R  R  .\nT   R  R  R  R  R  R  R  R  R  .  .  .  .\n9   R  R  R  R  R  R  R  R  .  .  .  .  .\n8   R  R  .  R  R  R  R  R  R  .  .  .  .\n7   R  .  .  .  .  R  R  R  R  R  .  .  .\n6   R  .  .  .  .  R  .  R  R  R  R  .  .\n5   R  .  .  .  .  .  R  R  R  R  R  .  .\n4   R  R  R  .  .  .  .  .  R  R  R  .  .\n3   R  R  .  .  .  .  .  .  .  .  .  .  .\n2   R  R  .  .  .  .  .  .  .  .  .  .  .\n\nR=Raise .=Fold",
     "terms": {
       "limp": "레이즈 없이 빅 블라인드만 콜하는 것"
     }
@@ -443,7 +443,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nTT는 AA5 페어 보드에서 check.\n\n**Check 이유:**\n• 이 보드에서 CO가 range advantage\n• CO의 Ax가 많음\n• TT는 showdown value 있지만 베팅 target 없음\n• Check-call로 CO의 블러프 잡기\n\n**베팅 문제점:**\n• TT보다 worse가 콜할 이유 없음\n• Ax는 모두 우리를 이김",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 TT는 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 4%\n- Bet 75%: 1%\n\nTT는 AA5 페어 보드에서 check.\n\n**Check 이유:**\n• 이 보드에서 CO가 range advantage\n• CO의 Ax가 많음\n• TT는 showdown value 있지만 베팅 target 없음\n• Check-call로 CO의 블러프 잡기\n\n**베팅 문제점:**\n• TT보다 worse가 콜할 이유 없음\n• Ax는 모두 우리를 이김\n\n📊 Hero Range 구성 (BB on AA5 paired board)\n• Value: Ax, 55 (check-raise 가능)\n• Bluff catch: TT, 99, 88, 77 (check-call)\n• Fold: weak hands, missed draws",
     "terms": {
       "페어 보드": "같은 숫자가 2장 있는 보드"
     }
@@ -459,7 +459,7 @@
       "Bet 6.5bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nKK는 river A 이후에도 thin value bet.\n\n**Bet 이유:**\n• 모두 2번 체크 = weak range\n• KK는 A 제외 best hand일 확률 높음\n• 99, 88 있었으면 베팅했을 것\n• 작은 베팅으로 worse pair에서 value\n\n**Check 문제점:**\n• Value 포기\n• 상대가 A 없을 확률 높음",
+    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nGTO 기준 KK는 이 spot에서:\n- Check: 30%\n- **Bet 33%: 55%** ✓\n- Bet 75%: 15%\n\nKK는 river A 이후에도 thin value bet.\n\n**Bet 이유:**\n• 모두 2번 체크 = weak range\n• KK는 A 제외 best hand일 확률 높음\n• 99, 88 있었으면 베팅했을 것\n• 작은 베팅으로 worse pair에서 value\n\n**Check 문제점:**\n• Value 포기\n• 상대가 A 없을 확률 높음\n\n📊 Hero Range 구성 (HJ River bet on 983-2-A)\n• Value: AA, 99, 88, 33 (bet big), KK, QQ (bet small)\n• Bluff: missed clubs, QJ, JT\n• Check: Ax (showdown), weak pairs",
     "terms": {}
   },
   {
@@ -473,7 +473,7 @@
       "3-bet to 9bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nA8o는 BB에서 UTG open 상대로 defend.\n\n**Call 이유:**\n• Pot odds 좋음 (1.5bb into 4bb)\n• A8o는 marginal하지만 playable\n• 3-bet하기엔 UTG range가 너무 strong\n\n**Fold 문제점:**\n• 이 odds에 A8o fold는 너무 tight\n• BB는 넓게 defend 해야 함\n\n**3-bet 문제점:**\n• UTG 4-bet range에 dominated\n• A8o는 postflop에서 realize 어려움",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 A8o는 이 spot에서:\n- Fold: 20%\n- **Call: 70%** ✓\n- 3-bet 9bb: 10%\n\nA8o는 BB에서 UTG open 상대로 defend.\n\n**Call 이유:**\n• Pot odds 좋음 (1.5bb into 4bb)\n• A8o는 marginal하지만 playable\n• 3-bet하기엔 UTG range가 너무 strong\n\n**Fold 문제점:**\n• 이 odds에 A8o fold는 너무 tight\n• BB는 넓게 defend 해야 함\n\n**3-bet 문제점:**\n• UTG 4-bet range에 dominated\n• A8o는 postflop에서 realize 어려움\n\n📊 Range Table (BB Defend vs UTG Open)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   3  3  3  C  C  .  .  .  .  3  3  .  .\nK   3  3  3  C  .  .  .  .  .  .  .  .  .\nQ   3  C  C  3  C  .  .  .  .  .  .  .  .\nJ   C  C  C  3  C  C  .  .  .  .  .  .  .\nT   C  .  C  C  3  C  C  .  .  .  .  .  .\n9   .  .  .  C  C  3  C  C  .  .  .  .  .\n8   .  .  .  .  .  C  3  C  C  .  .  .  .\n7   .  .  .  .  .  .  C  C  C  C  .  .  .\n6   .  .  .  .  .  .  .  C  C  C  C  .  .\n5   3  .  .  .  .  .  .  .  C  C  C  .  .\n4   3  .  .  .  .  .  .  .  .  C  C  .  .\n3   .  .  .  .  .  .  .  .  .  .  .  .  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\n3=3bet C=Call .=Fold",
     "terms": {
       "defend": "상대 레이즈에 폴드하지 않고 대응하는 것"
     }
@@ -489,7 +489,7 @@
       "Raise to 14bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nQJ는 second pair + gutshot으로 call.\n\n**Call 이유:**\n• Second pair + gutshot (T)\n• 가격이 좋음 (4bb into 16bb)\n• Multiway라서 raise는 위험\n• Turn에서 improve 가능성\n\n**Fold 문제점:**\n• QJ는 아직 live hand\n• 이 odds에 fold는 손해\n\n**Raise 문제점:**\n• 3-way pot에서 raise는 nuts-heavy\n• QJ로 raise하면 better만 continue",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 QJ는 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- Raise 14bb: 5%\n\nQJ는 second pair + gutshot으로 call.\n\n**Call 이유:**\n• Second pair + gutshot (T)\n• 가격이 좋음 (4bb into 16bb)\n• Multiway라서 raise는 위험\n• Turn에서 improve 가능성\n\n**Fold 문제점:**\n• QJ는 아직 live hand\n• 이 odds에 fold는 손해\n\n**Raise 문제점:**\n• 3-way pot에서 raise는 nuts-heavy\n• QJ로 raise하면 better만 continue\n\n📊 Hero Range 구성 (BB in 3-way pot on KQ7)\n• Value: KK, QQ, 77, KQ, K7, Q7 (raise)\n• Call: QJ, QT, Kx weak, JT\n• Fold: weak pairs, air",
     "terms": {
       "second pair": "보드에서 두 번째로 높은 카드와 매칭되는 페어"
     }
@@ -505,7 +505,7 @@
       "Raise to 12bb"
     ],
     "answer": 2,
-    "explanation": "**왜 Raise to 12bb인가?**\n\nTT는 A-high board에서 middle set으로 raise.\n\n**Raise 이유:**\n• Set은 매우 강한 핸드 - value raise\n• UTG의 Ax는 큰 pot에서 콜\n• AT, A6도 콜 가능 - 우리가 dominate\n• Board가 dry해서 slowplay 필요 없음\n\n**Call 문제점:**\n• Turn에서 board 위험해질 수 있음 (K, Q, J)\n• UTG가 check하면 value 놓침\n• Set은 maximum value 추출해야 함\n\n**핵심:** Middle set on A-high board = raise for value",
+    "explanation": "**왜 Raise to 12bb인가?**\n\nGTO 기준 TT(middle set)는 이 spot에서:\n- Fold: 0%\n- Call: 35%\n- **Raise 12bb: 65%** ✓\n\nTT는 A-high board에서 middle set으로 raise.\n\n**Raise 이유:**\n• Set은 매우 강한 핸드 - value raise\n• UTG의 Ax는 큰 pot에서 콜\n• AT, A6도 콜 가능 - 우리가 dominate\n• Board가 dry해서 slowplay 필요 없음\n\n**Call 문제점:**\n• Turn에서 board 위험해질 수 있음 (K, Q, J)\n• UTG가 check하면 value 놓침\n• Set은 maximum value 추출해야 함\n\n**핵심:** Middle set on A-high board = raise for value\n\n📊 Hero Range 구성 (BTN vs UTG cbet on AT6r)\n• Value: TT, 66, AT, A6 (raise)\n• Bluff: KQ, KJ, QJ (gutshots)\n• Call: AK, AQ, Ax, 포켓페어",
     "terms": {
       "middle set": "보드에서 중간 카드와 같은 포켓페어로 만든 세트",
       "dry board": "드로우가 거의 없는 보드"
@@ -522,7 +522,7 @@
       "Raise to 5bb"
     ],
     "answer": 2,
-    "explanation": "**왜 Raise to 5bb인가?**\n\nKQdd는 nut flush draw로 check-raise.\n\n**Raise 이유:**\n• Nut flush draw = 9 outs\n• 2 overcards = 추가 equity\n• BTN 작은 cbet에 raise 효과적\n• Fold equity + equity when called\n\n**Call 문제점:**\n• 강한 드로우를 passive하게 플레이\n• Turn에서 상황 더 어려워질 수 있음",
+    "explanation": "**왜 Raise to 5bb인가?**\n\nGTO 기준 KQdd(넛플드)는 이 spot에서:\n- Fold: 0%\n- Call: 40%\n- **Raise 5bb: 60%** ✓\n\nKQdd는 nut flush draw로 check-raise.\n\n**Raise 이유:**\n• Nut flush draw = 9 outs\n• 2 overcards = 추가 equity\n• BTN 작은 cbet에 raise 효과적\n• Fold equity + equity when called\n\n**Call 문제점:**\n• 강한 드로우를 passive하게 플레이\n• Turn에서 상황 더 어려워질 수 있음\n\n📊 Hero Range 구성 (BB check-raise on J84dd)\n• Value: JJ, 88, 44, J8 (raise)\n• Semi-bluff: KQdd, AQdd, QTdd (nut FD)\n• Call: Jx, 8x, 중간 페어, weak FD",
     "terms": {}
   },
   {
@@ -536,7 +536,7 @@
       "Bet 7.5bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nAK는 turn에서 계속 value bet.\n\n**작은 베팅 이유:**\n• TPTK (Top Pair Top Kicker)\n• BTN은 flop call로 Ax, 9x, fd 가능\n• 작은 bet으로 worse Ax에서 value\n• 75%는 worse가 fold하기 쉬움\n\n**Check 문제점:**\n• AK는 clear value hand\n• Free card 주면 BTN catch up 가능",
+    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nGTO 기준 AK(TPTK)는 이 spot에서:\n- Check: 15%\n- **Bet 33%: 70%** ✓\n- Bet 75%: 15%\n\nAK는 turn에서 계속 value bet.\n\n**작은 베팅 이유:**\n• TPTK (Top Pair Top Kicker)\n• BTN은 flop call로 Ax, 9x, fd 가능\n• 작은 bet으로 worse Ax에서 value\n• 75%는 worse가 fold하기 쉬움\n\n**Check 문제점:**\n• AK는 clear value hand\n• Free card 주면 BTN catch up 가능\n\n📊 Hero Range 구성 (CO Turn bet on A946)\n• Value: AA, 99, 44, 66, AK, AQ, A9\n• Thin Value: AT-AJ (bet small)\n• Bluff: KQ, QJ, JT, missed draws\n• Check: weak Ax, 9x",
     "terms": {
       "TPTK": "Top Pair Top Kicker - 보드 탑카드 + 가장 높은 키커"
     }
@@ -552,7 +552,7 @@
       "Raise 3bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Raise 2.5bb인가?**\n\nAJo는 HJ에서 표준 오픈.\n\n**HJ Open Range (약 20%):**\n• 66+\n• A2s+, K9s+, Q9s+\n• ATo+, KJo+\n\n**사이징:**\n• 2.5bb 표준\n• AJo는 확실한 value hand",
+    "explanation": "**왜 Raise 2.5bb인가?**\n\nGTO 기준 AJo는 이 spot에서:\n- Fold: 0%\n- **Raise 2.5bb: 95%** ✓\n- Raise 3bb: 5%\n\nAJo는 HJ에서 표준 오픈.\n\n**HJ Open Range (약 20%):**\n• 66+\n• A2s+, K9s+, Q9s+\n• ATo+, KJo+\n\n**사이징:**\n• 2.5bb 표준\n• AJo는 확실한 value hand\n\n📊 Range Table (HJ Open Range ~20%)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   R  R  R  R  R  R  R  R  R  R  R  R  R\nK   R  R  R  R  R  R  .  .  .  .  .  .  .\nQ   R  R  R  R  R  R  .  .  .  .  .  .  .\nJ   R  R  R  R  R  R  .  .  .  .  .  .  .\nT   R  R  R  R  R  R  R  .  .  .  .  .  .\n9   R  R  R  R  R  R  R  R  .  .  .  .  .\n8   R  .  .  .  .  R  R  R  R  .  .  .  .\n7   R  .  .  .  .  .  R  R  R  R  .  .  .\n6   R  .  .  .  .  .  .  R  R  R  R  .  .\n5   R  .  .  .  .  .  .  .  R  R  R  .  .\n4   R  .  .  .  .  .  .  .  .  R  R  .  .\n3   R  .  .  .  .  .  .  .  .  .  R  .  .\n2   R  .  .  .  .  .  .  .  .  .  .  .  .\n\nR=Raise .=Fold",
     "terms": {}
   },
   {
@@ -566,7 +566,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 2,
-    "explanation": "**왜 Bet 4bb (75%)인가?**\n\nAA는 wet board에서 큰 베팅으로 보호.\n\n**75% 이유:**\n• 7♠6♠ = 많은 드로우 가능\n• AA는 현재 best지만 취약\n• 큰 베팅으로 드로우에게 나쁜 odds\n• BB의 78, 56, flush draw 있을 수 있음\n\n**작은 베팅 문제점:**\n• 드로우에게 좋은 pot odds\n• 현재 equity 보호 못함",
+    "explanation": "**왜 Bet 4bb (75%)인가?**\n\nGTO 기준 AA는 이 spot에서:\n- Check: 5%\n- Bet 27%: 25%\n- **Bet 75%: 70%** ✓\n\nAA는 wet board에서 큰 베팅으로 보호.\n\n**75% 이유:**\n• 7♠6♠ = 많은 드로우 가능\n• AA는 현재 best지만 취약\n• 큰 베팅으로 드로우에게 나쁜 odds\n• BB의 78, 56, flush draw 있을 수 있음\n\n**작은 베팅 문제점:**\n• 드로우에게 좋은 pot odds\n• 현재 equity 보호 못함\n\n📊 Hero Range 구성 (HJ cbet on 762ss)\n• Value: AA, KK, QQ, 77, 66, 22, 76\n• Bluff: Asx, Kxs, QJs (spade draws)\n• Big bet: overpairs, sets\n• Small bet: Ax high, weak pairs",
     "terms": {
       "wet board": "드로우가 많은 보드 (flush draw, straight draw 가능)"
     }
@@ -582,7 +582,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nAT는 top pair로 thin value bet.\n\n**Bet 이유:**\n• CO turn check = capped range\n• AT는 likely best hand\n• 작은 bet으로 worse pair에서 value\n• 77, T7, 75 가능하지만 비중 작음\n\n**Check 문제점:**\n• CO check back이면 value 놓침\n• AT는 showdown value + thin value 둘 다",
+    "explanation": "**왜 Bet 3bb (33%)인가?**\n\nGTO 기준 AT(top pair)는 이 spot에서:\n- Check: 30%\n- **Bet 33%: 55%** ✓\n- Bet 75%: 15%\n\nAT는 top pair로 thin value bet.\n\n**Bet 이유:**\n• CO turn check = capped range\n• AT는 likely best hand\n• 작은 bet으로 worse pair에서 value\n• 77, T7, 75 가능하지만 비중 작음\n\n**Check 문제점:**\n• CO check back이면 value 놓침\n• AT는 showdown value + thin value 둘 다\n\n📊 Hero Range 구성 (BB River probe after CO checks turn)\n• Value: TT, 77, 33, T7, AT, KT (bet)\n• Thin Value: QT, JT, T9, T8 (bet small)\n• Bluff: missed draws, Ax\n• Check: 7x, 5x, weak pairs",
     "terms": {
       "capped range": "특정 강한 핸드들이 제외된 range"
     }
@@ -598,7 +598,7 @@
       "3-bet to 12bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\n66은 multiway pot에서 set mining.\n\n**Call 이유:**\n• 3명이 이미 in = implied odds 좋음\n• 세트 확률 12% but 히트하면 big pot\n• BTN position으로 postflop 유리\n\n**3-bet 문제점:**\n• Squeeze로는 너무 많은 player\n• 66은 4-bet에 fold해야 함\n\n**Fold 문제점:**\n• 이 조건에서 66 fold는 너무 tight",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 66은 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- 3-bet 12bb: 5%\n\n66은 multiway pot에서 set mining.\n\n**Call 이유:**\n• 3명이 이미 in = implied odds 좋음\n• 세트 확률 12% but 히트하면 big pot\n• BTN position으로 postflop 유리\n\n**3-bet 문제점:**\n• Squeeze로는 너무 많은 player\n• 66은 4-bet에 fold해야 함\n\n**Fold 문제점:**\n• 이 조건에서 66 fold는 너무 tight\n\n📊 Range Table (BTN vs UTG+2 callers - Set Mining)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   S  S  S  S  C  C  .  .  .  S  S  .  .\nK   S  S  S  C  C  C  .  .  .  .  .  .  .\nQ   S  C  S  C  C  .  .  .  .  .  .  .  .\nJ   S  C  C  C  C  C  .  .  .  .  .  .  .\nT   C  C  C  C  C  C  C  .  .  .  .  .  .\n9   C  C  .  C  C  C  C  C  .  .  .  .  .\n8   .  C  .  .  C  C  C  C  C  .  .  .  .\n7   .  .  .  .  .  C  C  C  C  C  .  .  .\n6   .  .  .  .  .  .  C  C  C  C  C  .  .\n5   S  .  .  .  .  .  .  C  C  C  C  C  .\n4   S  .  .  .  .  .  .  .  C  C  C  C  .\n3   .  .  .  .  .  .  .  .  .  C  C  C  .\n2   .  .  .  .  .  .  .  .  .  .  C  C  .\n\nS=Squeeze C=Call .=Fold",
     "terms": {}
   },
   {
@@ -612,7 +612,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nQQ는 KJT 보드에서 straight draw이자 취약한 overpair.\n\n**Check 이유:**\n• 이 보드에서 QQ < 모든 Kx, Jx, Tx\n• AQ는 우리를 이김 (넛 스트레이트)\n• 베팅하면 worse fold, better call\n• Check로 pot control\n\n**베팅 문제점:**\n• 이 보드에서 QQ는 블러프 캐쳐\n• Value target이 적음",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 QQ는 이 spot에서:\n- **Check: 75%** ✓\n- Bet 27%: 18%\n- Bet 75%: 7%\n\nQQ는 KJT 보드에서 straight draw이자 취약한 overpair.\n\n**Check 이유:**\n• 이 보드에서 QQ < 모든 Kx, Jx, Tx\n• AQ는 우리를 이김 (넛 스트레이트)\n• 베팅하면 worse fold, better call\n• Check로 pot control\n\n**베팅 문제점:**\n• 이 보드에서 QQ는 블러프 캐쳐\n• Value target이 적음\n\n📊 Hero Range 구성 (CO on KJT connected board)\n• Value: AQ (nuts), KK, JJ, TT, KJ, KT, JT\n• Check: QQ, 99, AK, Kx weak\n• Bluff: A9, 98 (gutshots) - 가끔",
     "terms": {
       "pot control": "팟 크기를 작게 유지하는 전략"
     }
@@ -628,7 +628,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n98는 top pair medium kicker로 check-call 라인.\n\n**Check 이유:**\n• K는 BTN에게 유리한 카드\n• 98는 value bet target이 적음\n• BTN이 bluff할 수 있음 = check-call\n• Lead out은 range 불균형\n\n**베팅 문제점:**\n• 98보다 worse가 콜하기 어려움\n• Kx가 있으면 우리가 뒤짐",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 98(top pair)는 이 spot에서:\n- **Check: 92%** ✓\n- Bet 33%: 6%\n- Bet 75%: 2%\n\n98는 top pair medium kicker로 check-call 라인.\n\n**Check 이유:**\n• K는 BTN에게 좋은 카드\n• 98는 value bet target이 적음\n• BTN이 bluff할 수 있음 = check-call\n• Lead out은 range 불균형\n\n**베팅 문제점:**\n• 98보다 worse가 콜하기 어려움\n• Kx가 있으면 우리가 뒤짐\n\n📊 Hero Range 구성 (BB Turn after K comes)\n• Value: 99, 55, 22, 95 (check-raise 고려)\n• Check-call: 98, 97, 9x, overpairs\n• Bluff (lead): 플러시드로우 일부\n• Fold: weak draws, air",
     "terms": {}
   },
   {
@@ -642,7 +642,7 @@
       "3-bet to 8bb"
     ],
     "answer": 2,
-    "explanation": "**왜 3-bet to 8bb인가?**\n\nA5s는 BTN에서 3-bet bluff 좋은 핸드.\n\n**3-bet 이유:**\n• Ace blocker = CO의 강한 핸드 확률 감소\n• Suited = 콜 받아도 playable\n• BTN vs CO = 좋은 squeeze 위치\n• Fold equity + postflop equity\n\n**Call 문제점:**\n• A5s는 flat으로 multiway 어려움\n• 3-bet or fold 핸드",
+    "explanation": "**왜 3-bet to 8bb인가?**\n\nGTO 기준 A5s는 이 spot에서:\n- Fold: 0%\n- Call: 25%\n- **3-bet 8bb: 75%** ✓\n\nA5s는 BTN에서 3-bet bluff 좋은 핸드.\n\n**3-bet 이유:**\n• Ace blocker = CO의 강한 핸드 확률 감소\n• Suited = 콜 받아도 playable\n• BTN vs CO = 좋은 squeeze 위치\n• Fold equity + postflop equity\n\n**Call 문제점:**\n• A5s는 flat으로 multiway 어려움\n• 3-bet or fold 핸드\n\n📊 Range Table (BTN 3-bet vs CO)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   3  3  3  3  3  C  C  .  .  3  3  3  .\nK   3  3  3  3  C  C  C  .  .  .  .  .  .\nQ   3  3  3  3  C  C  .  .  .  .  .  .  .\nJ   3  C  C  3  C  C  .  .  .  .  .  .  .\nT   3  C  C  C  3  C  C  .  .  .  .  .  .\n9   C  C  .  C  C  C  C  C  .  .  .  .  .\n8   C  C  .  .  C  C  C  C  C  .  .  .  .\n7   .  C  .  .  .  C  C  C  C  C  .  .  .\n6   .  .  .  .  .  .  C  C  C  C  C  .  .\n5   3  .  .  .  .  .  .  C  C  C  C  C  .\n4   3  .  .  .  .  .  .  .  C  C  C  C  .\n3   .  .  .  .  .  .  .  .  .  C  C  C  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\n3=3bet C=Call .=Fold",
     "terms": {
       "blocker": "상대가 특정 핸드를 가질 확률을 낮추는 카드"
     }
@@ -658,7 +658,7 @@
       "Raise to 15bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nQ9는 top pair로 4-way에서 call.\n\n**Call 이유:**\n• Top pair는 충분히 강함\n• HJ가 cbet = wide range\n• 두 명이 fold해서 이제 heads-up\n• Q9 kicker는 약하지만 이 가격에 OK\n\n**Raise 문제점:**\n• Q9로 raise하면 better만 continue\n• HJ의 QQ, 88, 44, AQ에 dominated",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 Q9(top pair)는 이 spot에서:\n- Fold: 5%\n- **Call: 85%** ✓\n- Raise 15bb: 10%\n\nQ9는 top pair로 4-way에서 call.\n\n**Call 이유:**\n• Top pair는 충분히 강함\n• HJ가 cbet = wide range\n• 두 명이 fold해서 이제 heads-up\n• Q9 kicker는 약하지만 이 가격에 OK\n\n**Raise 문제점:**\n• Q9로 raise하면 better만 continue\n• HJ의 QQ, 88, 44, AQ에 dominated\n\n📊 Hero Range 구성 (BB vs HJ cbet in multiway)\n• Value: QQ, 88, 44, Q8 (raise)\n• Call: Q9, QT, QJ, 8x, 클럽 드로우\n• Fold: weak hands, missed",
     "terms": {}
   },
   {
@@ -671,7 +671,7 @@
       "All-in (61.5bb)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nKQ는 river에서 check-call 또는 check-fold.\n\n**Check 이유:**\n• BTN이 2 barrels = strong range\n• KQ는 bluff catcher\n• All-in하면 better만 call\n• Check로 BTN의 블러프 기회 제공\n\n**All-in 문제점:**\n• KQ보다 worse가 콜 안 함\n• AA, KK, AK, 88, 33에 dominated\n• 이미 2번 콜로 pot committed 아님",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 KQ는 이 spot에서:\n- **Check: 95%** ✓\n- All-in: 5%\n\nKQ는 river에서 check-call 또는 check-fold.\n\n**Check 이유:**\n• BTN이 2 barrels = strong range\n• KQ는 bluff catcher\n• All-in하면 better만 call\n• Check로 BTN의 블러프 기회 제공\n\n**All-in 문제점:**\n• KQ보다 worse가 콜 안 함\n• AA, KK, AK, 88, 33에 dominated\n• 이미 2번 콜로 pot committed 아님\n\n📊 Hero Range 구성 (CO River facing potential 3rd barrel)\n• Value: KK, 88, 33, AK (raise flop/turn 선호)\n• Bluff Catch: KQ, KJ, KT (check-call)\n• Fold: Kx weak, missed draws",
     "terms": {
       "2 barrels": "flop과 turn 연속으로 베팅하는 것"
     }
@@ -687,7 +687,7 @@
       "Raise 3bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Raise 2.5bb인가?**\n\nAKs는 UTG에서 당연한 오픈.\n\n**사이징:**\n• 현대 전략: position 관계없이 동일 사이징\n• 2.5bb가 표준\n• 이유: 상대가 우리 range 읽기 어려움\n\n**AKs 특징:**\n• Top 5 핸드 중 하나\n• 모든 position에서 open",
+    "explanation": "**왜 Raise 2.5bb인가?**\n\nGTO 기준 AKs는 이 spot에서:\n- Fold: 0%\n- **Raise 2.5bb: 95%** ✓\n- Raise 3bb: 5%\n\nAKs는 UTG에서 당연한 오픈.\n\n**사이징:**\n• 현대 전략: position 관계없이 동일 사이징\n• 2.5bb가 표준\n• 이유: 상대가 우리 range 읽기 어려움\n\n**AKs 특징:**\n• Top 5 핸드 중 하나\n• 모든 position에서 open\n\n📊 Range Table (UTG Open Range ~15%)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   R  R  R  R  R  .  .  .  .  R  R  .  .\nK   R  R  R  R  R  .  .  .  .  .  .  .  .\nQ   R  R  R  R  R  .  .  .  .  .  .  .  .\nJ   R  R  R  R  R  .  .  .  .  .  .  .  .\nT   R  R  R  R  R  R  .  .  .  .  .  .  .\n9   .  .  .  .  R  R  R  .  .  .  .  .  .\n8   .  .  .  .  .  R  R  R  .  .  .  .  .\n7   .  .  .  .  .  .  R  R  R  .  .  .  .\n6   .  .  .  .  .  .  .  R  .  .  .  .  .\n5   R  .  .  .  .  .  .  .  .  .  .  .  .\n4   R  .  .  .  .  .  .  .  .  .  .  .  .\n3   .  .  .  .  .  .  .  .  .  .  .  .  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\nR=Raise .=Fold",
     "terms": {}
   },
   {
@@ -701,7 +701,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nAKdd는 nut flush draw + 2 overs + gutshot.\n\n**Check 이유:**\n• 이 보드에서 BB는 checking range 유지\n• Check-raise 옵션 열어둠\n• CO가 cbet하면 raise 가능\n• Lead out은 강한 핸드 노출\n\n**베팅 문제점:**\n• Donk bet은 CO aggression 차단\n• 강한 드로우로 더 큰 pot 만들기 어려움",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 AKdd는 이 spot에서:\n- **Check: 85%** ✓\n- Bet 33%: 10%\n- Bet 75%: 5%\n\nAKdd는 nut flush draw + 2 overs + gutshot.\n\n**Check 이유:**\n• 이 보드에서 BB는 checking range 유지\n• Check-raise 옵션 열어둠\n• CO가 cbet하면 raise 가능\n• Lead out은 강한 핸드 노출\n\n**베팅 문제점:**\n• Donk bet은 CO aggression 차단\n• 강한 드로우로 더 큰 pot 만들기 어려움\n\n📊 Hero Range 구성 (BB on 654 low connected board)\n• Value: 77, 33, 87, 32, sets (check-raise)\n• Semi-bluff: AKdd, Axdd, 98, 78 (check-raise)\n• Check-call: overpairs, 6x, 5x",
     "terms": {}
   },
   {
@@ -715,7 +715,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nJT는 turn A 이후 check-call.\n\n**Check 이유:**\n• A는 BTN에게 좋은 카드\n• JT는 second pair로 값어치 떨어짐\n• Bet하면 Ax에게만 콜 받음\n• Check-call로 BTN 블러프 잡기\n\n**베팅 문제점:**\n• JT는 이제 약한 핸드\n• Value target이 없음",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 JT(second pair)는 이 spot에서:\n- **Check: 92%** ✓\n- Bet 33%: 6%\n- Bet 75%: 2%\n\nJT는 turn A 이후 check-call.\n\n**Check 이유:**\n• A는 BTN에게 좋은 카드\n• JT는 second pair로 값어치 떨어짐\n• Bet하면 Ax에게만 콜 받음\n• Check-call로 BTN 블러프 잡기\n\n**베팅 문제점:**\n• JT는 이제 약한 핸드\n• Value target이 없음\n\n📊 Hero Range 구성 (BB Turn after A comes)\n• Value: AA, JJ, 77, 33, AJ, A7, A3 (bet/raise)\n• Check-call: JT, J9, 7x, 스페이드 드로우\n• Fold: weak draws, small pairs",
     "terms": {}
   },
   {
@@ -729,7 +729,7 @@
       "3-bet to 12bb"
     ],
     "answer": 2,
-    "explanation": "**왜 3-bet to 12bb인가?**\n\nKQs는 SB에서 squeeze 좋은 핸드.\n\n**Squeeze 이유:**\n• Dead money 많음 (5.5bb)\n• KQs는 premium suited broadway\n• MP의 콜링 range는 weak\n• Fold equity 높음\n\n**Call 문제점:**\n• OOP에서 3-way = 어려운 상황\n• KQs는 squeeze or fold",
+    "explanation": "**왜 3-bet to 12bb인가?**\n\nGTO 기준 KQs는 이 spot에서:\n- Fold: 5%\n- Call: 15%\n- **3-bet 12bb: 80%** ✓\n\nKQs는 SB에서 squeeze 좋은 핸드.\n\n**Squeeze 이유:**\n• Dead money 많음 (5.5bb)\n• KQs는 premium suited broadway\n• MP의 콜링 range는 weak\n• Fold equity 높음\n\n**Call 문제점:**\n• OOP에서 3-way = 어려운 상황\n• KQs는 squeeze or fold\n\n📊 Range Table (SB Squeeze vs UTG+caller)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   S  S  S  S  .  .  .  .  .  S  S  .  .\nK   S  S  S  S  .  .  .  .  .  .  .  .  .\nQ   S  S  S  S  C  .  .  .  .  .  .  .  .\nJ   S  S  C  S  C  C  .  .  .  .  .  .  .\nT   .  .  C  C  S  C  C  .  .  .  .  .  .\n9   .  .  .  C  C  S  C  C  .  .  .  .  .\n8   .  .  .  .  .  C  S  C  C  .  .  .  .\n7   .  .  .  .  .  .  C  C  C  C  .  .  .\n6   .  .  .  .  .  .  .  C  C  C  C  .  .\n5   S  .  .  .  .  .  .  .  C  C  C  .  .\n4   S  .  .  .  .  .  .  .  .  C  C  .  .\n3   .  .  .  .  .  .  .  .  .  .  .  .  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\nS=Squeeze C=Call .=Fold",
     "terms": {}
   },
   {
@@ -743,7 +743,7 @@
       "Raise to 6bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nA2는 top pair weak kicker로 call.\n\n**Call 이유:**\n• Top pair는 충분히 콜할 가치\n• 작은 bet이므로 좋은 odds\n• Raise는 worse fold, better call\n• Turn에서 상황 보기\n\n**Fold 문제점:**\n• Top pair를 이 가격에 버리기 힘듦\n\n**Raise 문제점:**\n• A2는 raise할 만큼 강하지 않음",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 A2(top pair weak kicker)는 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- Raise 6bb: 5%\n\nA2는 top pair weak kicker로 call.\n\n**Call 이유:**\n• Top pair는 충분히 콜할 가치\n• 작은 bet이므로 좋은 odds\n• Raise는 worse fold, better call\n• Turn에서 상황 보기\n\n**Fold 문제점:**\n• Top pair를 이 가격에 버리기 힘듦\n\n**Raise 문제점:**\n• A2는 raise할 만큼 강하지 않음\n\n📊 Hero Range 구성 (BB facing CO cbet on AJ6ss)\n• Value: AJ, JJ, 66, AA (raise)\n• Call: A2-AT, Jx, 스페이드 드로우\n• Fold: air, weak draws",
     "terms": {}
   },
   {
@@ -757,7 +757,7 @@
       "Bet 15bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n99는 river에서 check-call.\n\n**Check 이유:**\n• 99는 overpair지만 T on river\n• BTN의 Tx가 이제 우리를 이김\n• 베팅해서 콜 받으면 worse 없음\n• Check로 BTN 블러프 유도\n\n**베팅 문제점:**\n• T8, T7도 이제 two pair\n• Value target 적음",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 99(overpair)는 이 spot에서:\n- **Check: 90%** ✓\n- Bet 33%: 8%\n- Bet 75%: 2%\n\n99는 river에서 check-call.\n\n**Check 이유:**\n• 99는 overpair지만 T on river\n• BTN의 Tx가 이제 우리를 이김\n• 베팅해서 콜 받으면 worse 없음\n• Check로 BTN 블러프 유도\n\n**베팅 문제점:**\n• T8, T7도 이제 two pair\n• Value target 적음\n\n📊 Hero Range 구성 (BB River after T comes)\n• Value: TT, 88, 77, T8, T7, 87 (bet)\n• Bluff catch: 99, overpairs (check-call)\n• Fold: weak pairs, missed draws",
     "terms": {}
   },
   {
@@ -772,7 +772,7 @@
       "All-in"
     ],
     "answer": 2,
-    "explanation": "**왜 4-bet to 22bb인가?**\n\nAKo는 MP open + CO 3-bet에 4-bet.\n\n**4-bet 이유:**\n• AK는 premium hand\n• CO 3-bet range는 넓을 수 있음 (light 3-bet)\n• 22bb로 fold equity + SPR 조절\n\n**Call 문제점:**\n• OOP에서 3-bet pot 어려움\n• MP가 콜하면 3-way\n\n**All-in 문제점:**\n• 100bb에서 너무 공격적",
+    "explanation": "**왜 4-bet to 22bb인가?**\n\nGTO 기준 AKo는 이 spot에서:\n- Fold: 0%\n- Call: 15%\n- **4-bet 22bb: 80%** ✓\n- All-in: 5%\n\nAKo는 MP open + CO 3-bet에 4-bet.\n\n**4-bet 이유:**\n• AK는 premium hand\n• CO 3-bet range는 넓을 수 있음 (light 3-bet)\n• 22bb로 fold equity + SPR 조절\n\n**Call 문제점:**\n• OOP에서 3-bet pot 어려움\n• MP가 콜하면 3-way\n\n**All-in 문제점:**\n• 100bb에서 너무 공격적\n\n📊 Range Table (BB 4-bet vs CO 3-bet after MP open)\n     A  K  Q  J  T  9  8  7  6  5  4  3  2\nA   4  4  4  C  .  .  .  .  .  4  4  .  .\nK   4  4  4  C  .  .  .  .  .  .  .  .  .\nQ   C  C  4  C  .  .  .  .  .  .  .  .  .\nJ   C  C  C  C  C  .  .  .  .  .  .  .  .\nT   .  .  .  C  C  C  .  .  .  .  .  .  .\n9   .  .  .  .  .  C  C  .  .  .  .  .  .\n8   .  .  .  .  .  .  C  C  .  .  .  .  .\n7   .  .  .  .  .  .  .  C  .  .  .  .  .\n6   .  .  .  .  .  .  .  .  .  .  .  .  .\n5   4  .  .  .  .  .  .  .  .  .  .  .  .\n4   4  .  .  .  .  .  .  .  .  .  .  .  .\n3   .  .  .  .  .  .  .  .  .  .  .  .  .\n2   .  .  .  .  .  .  .  .  .  .  .  .  .\n\n4=4bet C=Call .=Fold",
     "terms": {}
   },
   {
@@ -786,7 +786,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 1.5bb (27%)인가?**\n\nAK는 paired board에서 작은 cbet.\n\n**작은 베팅 이유:**\n• QQ5 = BTN range advantage\n• AK는 Q 블로커 없지만 cbet 가능\n• 작은 bet으로 BB의 많은 핸드 fold\n• Big bet은 블러프 비효율\n\n**Check 문제점:**\n• BB에게 free card\n• BTN은 이 보드에서 range cbet 해야 함",
+    "explanation": "**왜 Bet 1.5bb (27%)인가?**\n\nGTO 기준 AK는 이 spot에서:\n- Check: 25%\n- **Bet 27%: 65%** ✓\n- Bet 75%: 10%\n\nAK는 paired board에서 작은 cbet.\n\n**작은 베팅 이유:**\n• QQ5 = BTN range advantage\n• AK는 Q 블로커 없지만 cbet 가능\n• 작은 bet으로 BB의 많은 핸드 fold\n• Big bet은 블러프 비효율\n\n**Check 문제점:**\n• BB에게 free card\n• BTN은 이 보드에서 range cbet 해야 함\n\n📊 Hero Range 구성 (BTN cbet on QQ5 paired board)\n• Value: Qx, 55, AA, KK (any size)\n• Bluff: AK, AJ, AT (small bet)\n• Check: weak pairs, suited connectors\n• Range cbet small: 거의 전체 range",
     "terms": {
       "paired board": "같은 숫자 카드가 2장 있는 보드"
     }

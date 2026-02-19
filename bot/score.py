@@ -46,9 +46,14 @@ class ScoreManager:
         
         if row:
             correct, total, streak, best_streak = row
-            correct += 1 if is_correct else 0
+            # +1 for correct, -1 for wrong (minimum 0)
+            if is_correct:
+                correct += 1
+                streak += 1
+            else:
+                correct = max(0, correct - 1)  # 감점 (최소 0)
+                streak = 0
             total += 1
-            streak = streak + 1 if is_correct else 0
             best_streak = max(best_streak, streak)
             
             cursor.execute("""

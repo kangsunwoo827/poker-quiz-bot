@@ -210,8 +210,7 @@ async def send_quiz(chat_id: int, context: ContextTypes.DEFAULT_TYPE, question=N
         time_str = format_time_until_explanation()
         
         text = f"🃏 <b>Poker Quiz #{question.id}</b>\n\n"
-        text += f"<pre>{escape_html(question.situation)}</pre>\n\n"
-        text += f"Hero's hand: <b>{question.hand}</b>\n\n"
+        text += f"<pre>{escape_html(question.situation)}\n\nHero's hand: {question.hand}</pre>\n\n"
         text += f"⏰ 해설까지: {time_str}\n\n"
         text += "Your action?"
         
@@ -322,6 +321,35 @@ async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         quiz_manager.used_questions,
         quiz_manager.user_answers
     )
+    
+    # Check if all members answered → auto next question
+    try:
+        member_count = await context.bot.get_chat_member_count(chat_id)
+        # Subtract 1 for the bot itself
+        expected_answers = member_count - 1
+        current_answers = len(quiz_manager.user_answers)
+        
+        if current_answers >= expected_answers and expected_answers > 0:
+            # All members answered! Send explanation and next quiz
+            logger.info(f"All {current_answers} members answered, sending next quiz")
+            await send_explanation(chat_id, current_q, context)
+            
+            # Clear and get next question
+            global last_question
+            last_question = current_q
+            quiz_manager.user_answers.clear()
+            
+            new_question = quiz_manager.get_random_question()
+            save_state(
+                active_chats, dm_enabled_users,
+                new_question.id,
+                quiz_manager.used_questions,
+                quiz_manager.user_answers,
+                last_question.id if last_question else None
+            )
+            await send_quiz(chat_id, context, new_question)
+    except Exception as e:
+        logger.warning(f"Could not check member count: {e}")
     
     # Prepare feedback
     correct_answer = current_q.options[current_q.answer]

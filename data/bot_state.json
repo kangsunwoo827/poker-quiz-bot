@@ -3,10 +3,16 @@
     -5162511716
   ],
   "dm_enabled_users": [],
-  "current_question_id": null,
+  "current_question_id": 36,
   "last_question_id": null,
-  "used_questions": [],
-  "user_answers": {},
-  "last_quiz_time": null,
-  "last_quiz_date": null
+  "used_questions": [
+    36
+  ],
+  "user_answers": {
+    "7029804330": 1,
+    "7350741531": 1,
+    "282078287": 1
+  },
+  "last_quiz_time": "2026-02-19T11:04:51.187693",
+  "last_quiz_date": "2026-02-19"
 }
