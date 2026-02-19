@@ -1,21 +1,16 @@
-2026-02-19 07:44:17,234 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2026-02-19 07:44:17,234 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2026-02-19 07:44:17,234 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2026-02-19 07:44:17,235 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2026-02-19 07:44:17,235 - __main__ - INFO - Starting SunPokerQuizBot...
-2026-02-19 07:44:17,235 - __main__ - INFO - Quiz times: 06:00 KST (21:00 UTC), 18:00 KST (09:00 UTC)
-2026-02-19 07:44:17,235 - __main__ - INFO - Explanation times: 05:50 KST (20:50 UTC), 17:50 KST (08:50 UTC)
-2026-02-19 07:44:17,918 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getMe "HTTP/1.1 200 OK"
-2026-02-19 07:44:18,144 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/deleteWebhook "HTTP/1.1 200 OK"
-2026-02-19 07:44:18,146 - apscheduler.scheduler - INFO - Added job "quiz_21_0" to job store "default"
-2026-02-19 07:44:18,146 - apscheduler.scheduler - INFO - Added job "quiz_9_0" to job store "default"
-2026-02-19 07:44:18,146 - apscheduler.scheduler - INFO - Added job "explain_20_50" to job store "default"
-2026-02-19 07:44:18,146 - apscheduler.scheduler - INFO - Added job "explain_8_50" to job store "default"
-2026-02-19 07:44:18,146 - apscheduler.scheduler - INFO - Scheduler started
-2026-02-19 07:44:18,146 - telegram.ext.Application - INFO - Application started
-2026-02-19 07:44:25,124 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
-2026-02-19 07:44:25,968 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/answerCallbackQuery "HTTP/1.1 200 OK"
-2026-02-19 07:44:31,849 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
-2026-02-19 07:44:32,714 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/answerCallbackQuery "HTTP/1.1 200 OK"
-2026-02-19 07:44:37,401 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
-2026-02-19 07:44:37,813 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/sendMessage "HTTP/1.1 200 OK"
+2026-02-19 08:10:51,430 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-19 08:10:51,431 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-19 08:10:51,431 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-19 08:10:51,431 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-19 08:10:51,431 - __main__ - INFO - Starting SunPokerQuizBot...
+2026-02-19 08:10:51,431 - __main__ - INFO - Quiz times: 06:00 KST (21:00 UTC), 18:00 KST (09:00 UTC)
+2026-02-19 08:10:51,431 - __main__ - INFO - Explanation times: 05:50 KST (20:50 UTC), 17:50 KST (08:50 UTC)
+2026-02-19 08:10:52,194 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getMe "HTTP/1.1 200 OK"
+2026-02-19 08:10:52,446 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-19 08:10:52,447 - apscheduler.scheduler - INFO - Added job "quiz_21_0" to job store "default"
+2026-02-19 08:10:52,447 - apscheduler.scheduler - INFO - Added job "quiz_9_0" to job store "default"
+2026-02-19 08:10:52,447 - apscheduler.scheduler - INFO - Added job "explain_20_50" to job store "default"
+2026-02-19 08:10:52,447 - apscheduler.scheduler - INFO - Added job "explain_8_50" to job store "default"
+2026-02-19 08:10:52,447 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-19 08:10:52,448 - telegram.ext.Application - INFO - Application started
+2026-02-19 08:11:03,203 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"

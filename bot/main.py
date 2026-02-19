@@ -131,23 +131,24 @@ async def send_quiz(chat_id: int, context: ContextTypes.DEFAULT_TYPE, question=N
 
 
 async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /quiz command - shows current active quiz"""
+    """Handle /quiz command - shows current active quiz or creates one if none exists"""
     chat_id = update.effective_chat.id
     active_chats.add(chat_id)
     
-    # Check if there's an active quiz
+    # Check if there's an active quiz for this chat
     if chat_id in active_quiz_messages:
+        # Show existing quiz
         question = active_quiz_messages[chat_id]["question"]
         await send_quiz(chat_id, context, question)
     else:
-        # No active quiz
-        await update.message.reply_text(
-            "현재 활성화된 퀴즈가 없습니다.\n\n"
-            "다음 퀴즈 시간:\n"
-            "• 오전 6시 (KST)\n"
-            "• 오후 6시 (KST)",
-            parse_mode=ParseMode.HTML
-        )
+        # No active quiz - check if there's a global current question
+        if quiz_manager.current_question is not None:
+            # Use the current global question
+            await send_quiz(chat_id, context, quiz_manager.current_question)
+        else:
+            # Create new quiz (first time or after explanation cleared it)
+            question = quiz_manager.get_random_question()
+            await send_quiz(chat_id, context, question)
 
 
 async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -294,6 +295,11 @@ async def send_explanation(chat_id: int, question, context: ContextTypes.DEFAULT
     text = f"📖 <b>Quiz #{question.id} 해설</b>\n\n"
     text += f"<b>정답:</b> {escape_html(correct_option)}\n\n"
     text += explanation_html
+    
+    # Add range table for preflop questions
+    range_table = quiz_manager.get_range_table(question)
+    if range_table:
+        text += f"\n\n<pre>{escape_html(range_table)}</pre>"
     
     if question.terms:
         text += "\n\n<b>📚 용어 설명</b>\n"

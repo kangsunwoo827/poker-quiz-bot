@@ -2,7 +2,7 @@ import json
 import random
 from pathlib import Path
 from typing import Optional
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 @dataclass
 class Question:
@@ -14,6 +14,7 @@ class Question:
     answer: int
     explanation: str
     terms: dict
+    range_key: str = ""  # Key to lookup range table
 
 class QuizManager:
     def __init__(self):
@@ -21,7 +22,9 @@ class QuizManager:
         self.used_questions: set[int] = set()
         self.current_question: Optional[Question] = None
         self.user_answers: dict[int, int] = {}  # user_id -> answer_index
+        self.preflop_ranges: dict = {}
         self._load_questions()
+        self._load_ranges()
     
     def _load_questions(self):
         data_path = Path(__file__).parent.parent / "data" / "questions.json"
@@ -37,10 +40,57 @@ class QuizManager:
                 options=q["options"],
                 answer=q["answer"],
                 explanation=q["explanation"],
-                terms=q.get("terms", {})
+                terms=q.get("terms", {}),
+                range_key=q.get("range_key", "")
             )
             for q in data
         ]
+    
+    def _load_ranges(self):
+        """Load preflop range charts"""
+        range_path = Path(__file__).parent.parent / "data" / "preflop_ranges.json"
+        if range_path.exists():
+            with open(range_path, encoding="utf-8") as f:
+                data = json.load(f)
+            self.preflop_ranges = data.get("6max_100bb", {})
+    
+    def get_range_table(self, question: Question) -> Optional[str]:
+        """Get range table for a question based on situation analysis"""
+        if question.type != "preflop":
+            return None
+        
+        situation = question.situation.lower()
+        
+        # Auto-detect range key from situation
+        range_key = question.range_key
+        if not range_key:
+            if "hero is bb" in situation:
+                if "co raises" in situation or "co open" in situation:
+                    range_key = "BB_defend_vs_CO"
+                elif "btn raises" in situation:
+                    range_key = "BB_defend_vs_BTN"
+            elif "hero is co" in situation:
+                if "3-bet" in situation or "3bet" in situation:
+                    range_key = "CO_vs_BTN_3bet"
+                elif "folds to hero" in situation:
+                    range_key = "CO_open"
+            elif "hero is btn" in situation and "folds to hero" in situation:
+                range_key = "BTN_open"
+            elif "hero is sb" in situation and "folds to hero" in situation:
+                range_key = "SB_open"
+            elif "hero is utg" in situation:
+                range_key = "UTG_open"
+        
+        if range_key and range_key in self.preflop_ranges:
+            range_data = self.preflop_ranges[range_key]
+            table_lines = range_data.get("table", [])
+            legend = range_data.get("legend", "R = Raise/Open")
+            desc = range_data.get("description", "")
+            
+            table_str = "\n".join(table_lines)
+            return f"📊 {desc}\n\n{table_str}\n\n{legend}"
+        
+        return None
     
     def get_random_question(self) -> Question:
         available = [q for q in self.questions if q.id not in self.used_questions]
