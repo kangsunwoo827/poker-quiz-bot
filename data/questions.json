@@ -10,7 +10,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 33%: 4%\n- Bet 75%: 38%\n\n**이유:**\n• BB는 OOP - 체크레이즈 옵션 유지가 중요\n• AA는 disguised strength - CO가 cbet하면 체크레이즈 가능\n• K-high board에서 CO는 자주 cbet → trap 기회\n• 직접 베팅하면 CO는 약한 핸드 폴드, 강한 핸드만 콜/레이즈\n\n📊 Solver 전략 (BB on K♥8♦3♣)\n• Check-raise value: AA, 88, 33, K8s\n• Check-call: Kx, 중간 페어\n• Donk bet (38%): 주로 thin value + protection",
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 33%: 4%\n- Bet 75%: 38%\n\n**이유:**\n• BB는 OOP - 체크레이즈 옵션 유지가 중요\n• AA는 disguised strength - CO가 cbet하면 체크레이즈 가능\n• K-high board에서 CO는 자주 cbet → trap 기회\n• 직접 베팅하면 CO는 약한 핸드 폴드, 강한 핸드만 콜/레이즈\n\n📊 BB 전략 (K♥ 8♦ 3♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "disguised strength": "상대가 알기 어려운 숨겨진 강한 핸드",
       "trap": "강한 핸드로 체크하여 상대의 블러프나 벨류벳을 유도"
@@ -79,7 +79,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 QTo는 이 spot에서:\n- **Check: 92%** ✓\n- Bet 33%: 6%\n- Bet 75%: 2%\n\nQTo는 top pair + gutshot이지만 check가 표준.\n\n**이유:**\n• BTN이 IP에서 range advantage 있음\n• Q high board에서 BTN의 QQ, JJ, AQ 많음\n• QT는 thin value - 베팅하면 worse 폴드, better 콜\n• Check-call 또는 check-raise 라인이 더 좋음\n\n📊 Hero Range 구성 (BB vs BTN on QJ3r)\n• Value: QQ, JJ, 33, QJ, AQ (check-raise)\n• Bluff: KT, T9 (gutshot), 플러시드로우\n• Check-call: QT, Q9, Jx, 중간 페어",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 QTo는 이 spot에서:\n- **Check: 92%** ✓\n- Bet 33%: 6%\n- Bet 75%: 2%\n\nQTo는 top pair + gutshot이지만 check가 표준.\n\n**이유:**\n• BTN이 IP에서 range advantage 있음\n• Q high board에서 BTN의 QQ, JJ, AQ 많음\n• QT는 thin value - 베팅하면 worse 폴드, better 콜\n• Check-call 또는 check-raise 라인이 더 좋음\n\n📊 BB 전략 (Q♥ J♦ 3♠) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "gutshot": "4장짜리 스트레이트 드로우 (예: 9가 오면 스트레이트)",
       "thin value": "콜 받을 수 있는 핸드 중 우리가 이기는 비율이 낮은 베팅",
@@ -115,7 +115,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 JThh는 이 spot에서:\n- **Check: 75%** ✓\n- Bet 33%: 15%\n- Bet 75%: 10%\n\nJThh는 플러시 드로우 + 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 엄청난 드로우지만 아직 made hand 아님\n• Check-raise로 플레이 가능\n• CO가 체크백하면 무료 카드 받음\n\n**베팅 문제점:**\n• Lead out은 range 불균형\n• Bluff로 베팅하면 raise 당할 때 어려움\n• 이미 좋은 odds로 드로우 중\n\n📊 Hero Range 구성 (BB Turn on 982-5)\n• Value: 99, 88, 22, 98, 97 (check-raise)\n• Bluff: 플러시드로우, OESD (JT, T7, 76)\n• Check-call: Overpairs, top pair",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 JThh는 이 spot에서:\n- **Check: 75%** ✓\n- Bet 33%: 15%\n- Bet 75%: 10%\n\nJThh는 플러시 드로우 + 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 엄청난 드로우지만 아직 made hand 아님\n• Check-raise로 플레이 가능\n• CO가 체크백하면 무료 카드 받음\n\n**베팅 문제점:**\n• Lead out은 range 불균형\n• Bluff로 베팅하면 raise 당할 때 어려움\n• 이미 좋은 odds로 드로우 중\n\n📊 BB 전략 (9♥ 8♥ 2♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "오픈엔드": "양쪽으로 스트레이트 완성 가능한 드로우 (8아웃)",
       "lead out": "이전 라운드 베터에게 먼저 베팅하는 것",
@@ -133,7 +133,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 77(bottom set)은 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 3%\n- Bet 75%: 2%\n\n77은 bottom set이지만 check가 표준.\n\n**Check 이유:**\n• AK7 보드에서 BTN이 Ax, Kx 많이 보유\n• Check-raise로 더 많은 value 추출\n• BTN은 높은 빈도로 cbet 할 것\n• Donk bet은 range를 cap시킴\n\n**전략:**\nCheck → BTN bets → Raise!\n이 라인이 가장 많은 돈을 벌 수 있음\n\n📊 Hero Range 구성 (BB vs BTN on AK7r)\n• Value: 77, AK, AA, KK (check-raise)\n• Bluff: QJ, QT, JT (gutshot), 백도어\n• Check-call: Ax weak, Kx, 중간 페어",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 77(bottom set)은 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 3%\n- Bet 75%: 2%\n\n77은 bottom set이지만 check가 표준.\n\n**Check 이유:**\n• AK7 보드에서 BTN이 Ax, Kx 많이 보유\n• Check-raise로 더 많은 value 추출\n• BTN은 높은 빈도로 cbet 할 것\n• Donk bet은 range를 cap시킴\n\n**전략:**\nCheck → BTN bets → Raise!\n이 라인이 가장 많은 돈을 벌 수 있음\n\n📊 BB 전략 (A♣ K♦ 7♠) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "bottom set": "보드에서 가장 낮은 카드와 같은 포켓 페어로 만든 세트",
       "cbet": "Continuation bet - 프리플랍 레이저가 플랍에서 베팅",
@@ -169,7 +169,7 @@
       "Raise to 15bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nGTO 기준 JJ는 이 spot에서:\n- Fold: 0%\n- **Call: 85%** ✓\n- Raise 15bb: 15%\n\nJJ는 overpair지만 multiway에서는 조심해야 함.\n\n**Call 이유:**\n• 4-way pot에서 raise는 너무 강한 range만 continue\n• T9 보드에서 set, 2pair, 스트레이트 드로우 많음\n• JJ는 좋지만 monster는 아님\n• BTN이 뒤에 있어서 squeeze 당할 수 있음\n\n**Fold 문제점:**\n• JJ는 여전히 강한 핸드\n• 이 가격에 fold는 너무 tight\n\n📊 Hero Range 구성 (CO in 4-way pot on T94)\n• Value: TT, 99, 44, T9 (raise)\n• Bluff: QJ, J8, 87 (OESD), 스페이드 드로우\n• Call: JJ, QQ, Tx, 9x",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 JJ는 이 spot에서:\n- Fold: 0%\n- **Call: 85%** ✓\n- Raise 15bb: 15%\n\nJJ는 overpair지만 multiway에서는 조심해야 함.\n\n**Call 이유:**\n• 4-way pot에서 raise는 너무 강한 range만 continue\n• T9 보드에서 set, 2pair, 스트레이트 드로우 많음\n• JJ는 좋지만 monster는 아님\n• BTN이 뒤에 있어서 squeeze 당할 수 있음\n\n**Fold 문제점:**\n• JJ는 여전히 강한 핸드\n• 이 가격에 fold는 너무 tight\n\n📊 CO 전략 (T♠ 9♠ 4♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "overpair": "보드의 모든 카드보다 높은 포켓 페어",
       "multiway": "3명 이상이 참여한 팟"
@@ -186,7 +186,7 @@
       "Raise to 12bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과 (CO 4bb bet 대응):\n- Fold: 0.5%\n- **Call: 99%** ✓\n- Raise: 0%\n\n**이유:**\n• 8♥7♥는 오픈엔드 + 플러시드로우 (15 아웃)\n• 강력한 드로우지만 레이즈하면 fold equity 적음\n• CO는 cbet 후 좋은 핸드만 continue\n• Implied odds 좋음 - 히트하면 big pot 가능\n\n📊 왜 Raise가 아닌가?\n• Solver는 이 spot에서 거의 pure call\n• Semi-bluff raise는 equity 낭비\n• 포지션 불리해서 check-raise 라인 비효율",
+    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과 (CO 4bb bet 대응):\n- Fold: 0.5%\n- **Call: 99%** ✓\n- Raise: 0%\n\n**이유:**\n• 8♥7♥는 오픈엔드 + 플러시드로우 (15 아웃)\n• 강력한 드로우지만 레이즈하면 fold equity 적음\n• CO는 cbet 후 좋은 핸드만 continue\n• Implied odds 좋음 - 히트하면 big pot 가능\n\n📊 BB 전략 (6♥ 5♥ 2♦) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "아웃": "핸드를 완성시켜주는 남은 카드 수",
       "semi-bluff": "현재는 약하지만 개선 가능성 있는 핸드로 베팅/레이즈"
@@ -203,7 +203,7 @@
       "Bet 8bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 BB 전략 (K♦ 9♠ 4♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "thin value": "약간의 이익만 있는 value bet",
       "콜링 range": "상대가 특정 베팅에 콜할 수 있는 핸드들"
@@ -237,7 +237,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 87(넛 스트레이트)는 이 spot에서:\n- **Check: 90%** ✓\n- Bet 33%: 7%\n- Bet 75%: 3%\n\n87는 JT9 보드에서 넛 스트레이트.\n\n**Check 이유:**\n• 이미 nuts = slowplay 가치 있음\n• CO가 cbet 할 확률 높음 (connected board)\n• Check-raise로 더 큰 pot 가능\n• 이 보드에서 BB range는 약해 보여서 CO aggression 유도\n\n**Donk bet 문제점:**\n• 상대의 베팅 기회 없앰\n• Strong hand를 너무 드러냄\n\n📊 Hero Range 구성 (BB on JT9 connected board)\n• Value: 87 (nuts), QQ-88, JT, T9, J9 (check-raise)\n• Bluff: KQ, Q8, 86, 76 (gutshots)\n• Check-call: Jx, Tx, 9x, 드로우",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 87(넛 스트레이트)는 이 spot에서:\n- **Check: 90%** ✓\n- Bet 33%: 7%\n- Bet 75%: 3%\n\n87는 JT9 보드에서 넛 스트레이트.\n\n**Check 이유:**\n• 이미 nuts = slowplay 가치 있음\n• CO가 cbet 할 확률 높음 (connected board)\n• Check-raise로 더 큰 pot 가능\n• 이 보드에서 BB range는 약해 보여서 CO aggression 유도\n\n**Donk bet 문제점:**\n• 상대의 베팅 기회 없앰\n• Strong hand를 너무 드러냄\n\n📊 BB 전략 (J♠ T♦ 9♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "nuts": "현재 보드에서 가능한 최강 핸드",
       "slowplay": "강한 핸드를 약하게 플레이해서 상대가 블러프하게 유도"
@@ -268,7 +268,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• A-high 보드에서 CO는 range disadvantage\n• K♦Q♦는 A 없어서 showdown value 낮음\n• 체크하고 BB의 액션 보기\n• BB가 체크하면 free card, bet하면 fold equity 확인\n\n📊 Range 분석:\n• BB는 Ax 많이 보유\n• CO의 cbet은 자주 콜/레이즈 당함",
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• A-high 보드에서 CO는 range disadvantage\n• K♦Q♦는 A 없어서 showdown value 낮음\n• 체크하고 BB의 액션 보기\n• BB가 체크하면 free card, bet하면 fold equity 확인\n\n📊 CO 전략 (A♠ 7♦ 2♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "backdoor": "turn + river 두 장 다 필요한 드로우",
       "range advantage": "전체 핸드 분포가 상대보다 강한 상태"
@@ -285,7 +285,7 @@
       "Bet 16bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 BB 전략 (Q♠ 8♦ 3♣) [Solver]\n• 체크: (다양한 핸드)\n• 벳: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "bluff catch": "상대의 블러프를 잡기 위해 콜하는 것"
     }
@@ -333,7 +333,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 54(오픈엔드)는 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 4%\n- Bet 75%: 1%\n\n54는 876 보드에서 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 8아웃 드로우 (9 또는 3)\n• BB는 이 보드에서 check range 유지\n• Check-call 또는 check-raise 플랜\n• CO가 cbet하면 좋은 odds로 드로우\n\n**베팅 문제점:**\n• Donk bet은 range 혼란\n• 아직 made hand 아님\n\n📊 Hero Range 구성 (BB on 876 connected board)\n• Value: 98, 87, 76, 65, 55-88 (sets)\n• Semi-bluff (check-raise): 95, 54, T9, J9, 플러시드로우\n• Check-call: overpairs, 8x, 7x, 드로우",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 54(오픈엔드)는 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 4%\n- Bet 75%: 1%\n\n54는 876 보드에서 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 8아웃 드로우 (9 또는 3)\n• BB는 이 보드에서 check range 유지\n• Check-call 또는 check-raise 플랜\n• CO가 cbet하면 좋은 odds로 드로우\n\n**베팅 문제점:**\n• Donk bet은 range 혼란\n• 아직 made hand 아님\n\n📊 BB 전략 (8♠ 7♠ 6♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "8아웃": "핸드 완성에 필요한 남은 카드 8장"
     }
@@ -366,7 +366,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• A♣K♣는 백도어 플러시드로우 + 오버카드\n• T-high 보드에서 BTN advantage 있지만 AK는 체크 선호\n• 상대가 bet하면 콜 or raise 가능\n• 체크레이즈 라인도 유효\n\n📊 AK 전략:\n• Made hand 없을 때 체크 빈도 높음\n• Bet은 주로 밸류핸드 (탑페어+)",
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• A♣K♣는 백도어 플러시드로우 + 오버카드\n• T-high 보드에서 BTN advantage 있지만 AK는 체크 선호\n• 상대가 bet하면 콜 or raise 가능\n• 체크레이즈 라인도 유효\n\n📊 BTN 전략 (T♣ 6♣ 2♥) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "nut flush draw": "플러시 완성시 가장 강한 플러시가 되는 드로우"
     }
@@ -382,7 +382,7 @@
       "Bet 7.5bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 CO 전략 (J♥ 7♦ 2♠) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {}
   },
   {
@@ -443,7 +443,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 TT는 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 4%\n- Bet 75%: 1%\n\nTT는 AA5 페어 보드에서 check.\n\n**Check 이유:**\n• 이 보드에서 CO가 range advantage\n• CO의 Ax가 많음\n• TT는 showdown value 있지만 베팅 target 없음\n• Check-call로 CO의 블러프 잡기\n\n**베팅 문제점:**\n• TT보다 worse가 콜할 이유 없음\n• Ax는 모두 우리를 이김\n\n📊 Hero Range 구성 (BB on AA5 paired board)\n• Value: Ax, 55 (check-raise 가능)\n• Bluff catch: TT, 99, 88, 77 (check-call)\n• Fold: weak hands, missed draws",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 TT는 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 4%\n- Bet 75%: 1%\n\nTT는 AA5 페어 보드에서 check.\n\n**Check 이유:**\n• 이 보드에서 CO가 range advantage\n• CO의 Ax가 많음\n• TT는 showdown value 있지만 베팅 target 없음\n• Check-call로 CO의 블러프 잡기\n\n**베팅 문제점:**\n• TT보다 worse가 콜할 이유 없음\n• Ax는 모두 우리를 이김\n\n📊 BB 전략 (A♥ A♦ 5♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "페어 보드": "같은 숫자가 2장 있는 보드"
     }
@@ -459,7 +459,7 @@
       "Bet 6.5bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 HJ 전략 (9♣ 8♣ 3♥) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {}
   },
   {
@@ -489,7 +489,7 @@
       "Raise to 14bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nGTO 기준 QJ는 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- Raise 14bb: 5%\n\nQJ는 second pair + gutshot으로 call.\n\n**Call 이유:**\n• Second pair + gutshot (T)\n• 가격이 좋음 (4bb into 16bb)\n• Multiway라서 raise는 위험\n• Turn에서 improve 가능성\n\n**Fold 문제점:**\n• QJ는 아직 live hand\n• 이 odds에 fold는 손해\n\n**Raise 문제점:**\n• 3-way pot에서 raise는 nuts-heavy\n• QJ로 raise하면 better만 continue\n\n📊 Hero Range 구성 (BB in 3-way pot on KQ7)\n• Value: KK, QQ, 77, KQ, K7, Q7 (raise)\n• Call: QJ, QT, Kx weak, JT\n• Fold: weak pairs, air",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 QJ는 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- Raise 14bb: 5%\n\nQJ는 second pair + gutshot으로 call.\n\n**Call 이유:**\n• Second pair + gutshot (T)\n• 가격이 좋음 (4bb into 16bb)\n• Multiway라서 raise는 위험\n• Turn에서 improve 가능성\n\n**Fold 문제점:**\n• QJ는 아직 live hand\n• 이 odds에 fold는 손해\n\n**Raise 문제점:**\n• 3-way pot에서 raise는 nuts-heavy\n• QJ로 raise하면 better만 continue\n\n📊 BB 전략 (K♣ Q♠ 7♥) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "second pair": "보드에서 두 번째로 높은 카드와 매칭되는 페어"
     }
@@ -505,7 +505,7 @@
       "Raise to 12bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과 (IP bet 대응):\n- Fold: 0.5%\n- **Call: 99%** ✓\n- Raise: 0%\n\n**이유:**\n• 세트 (TT on T보드)는 슬로우플레이 가능\n• 상대 Ax가 많아서 value 계속 뽑을 수 있음\n• 레이즈하면 약한 핸드 폴드시킴\n• Turn에서 더 큰 pot 만들기\n\n📊 트랩 vs 레이즈:\n• GTO는 이 스팟에서 세트로 거의 콜만 함\n• 레이즈는 밸류 타겟 좁힘",
+    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과 (IP bet 대응):\n- Fold: 0.5%\n- **Call: 99%** ✓\n- Raise: 0%\n\n**이유:**\n• 세트 (TT on T보드)는 슬로우플레이 가능\n• 상대 Ax가 많아서 value 계속 뽑을 수 있음\n• 레이즈하면 약한 핸드 폴드시킴\n• Turn에서 더 큰 pot 만들기\n\n📊 BTN 전략 (A♠ T♥ 6♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "middle set": "보드에서 중간 카드와 같은 포켓페어로 만든 세트",
       "dry board": "드로우가 거의 없는 보드"
@@ -522,7 +522,7 @@
       "Raise to 5bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과:\n- Fold: 0.9%\n- **Call: 98%** ✓\n- Raise: 0.6%\n\n**이유:**\n• K♦Q♦는 플러시드로우 + 2개 오버카드\n• 9 아웃 (플러시) + 6 아웃 (K, Q) = 강력한 드로우\n• 콜하고 턴 봐야 함 - 레이즈는 overfold 당함\n\n📊 드로우 전략:\n• 플러시드로우는 콜 > 레이즈 (대부분 spot)\n• 레이즈는 fold equity 있을 때만",
+    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과:\n- Fold: 0.9%\n- **Call: 98%** ✓\n- Raise: 0.6%\n\n**이유:**\n• K♦Q♦는 플러시드로우 + 2개 오버카드\n• 9 아웃 (플러시) + 6 아웃 (K, Q) = 강력한 드로우\n• 콜하고 턴 봐야 함 - 레이즈는 overfold 당함\n\n📊 BB 전략 (J♦ 8♦ 4♠) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {}
   },
   {
@@ -536,7 +536,7 @@
       "Bet 7.5bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 CO 전략 (A♠ 9♦ 4♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "TPTK": "Top Pair Top Kicker - 보드 탑카드 + 가장 높은 키커"
     }
@@ -566,7 +566,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• 7♠6♠2♦ 보드는 로우/드로우 보드\n• AA 오버페어지만 상대 range와 잘 안 맞음\n• BB는 76s, 65s, 54s 등 보유 가능\n• 체크하고 상대 액션에 대응\n\n📊 Wet board 전략:\n• 오버페어도 체크 빈도 있음\n• Protection보다 pot control 우선",
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• 7♠6♠2♦ 보드는 로우/드로우 보드\n• AA 오버페어지만 상대 range와 잘 안 맞음\n• BB는 76s, 65s, 54s 등 보유 가능\n• 체크하고 상대 액션에 대응\n\n📊 HJ 전략 (7♠ 6♠ 2♦) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "wet board": "드로우가 많은 보드 (flush draw, straight draw 가능)"
     }
@@ -582,7 +582,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 BB 전략 (T♥ 7♣ 3♦) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "capped range": "특정 강한 핸드들이 제외된 range"
     }
@@ -612,7 +612,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 QQ는 이 spot에서:\n- **Check: 75%** ✓\n- Bet 27%: 18%\n- Bet 75%: 7%\n\nQQ는 KJT 보드에서 straight draw이자 취약한 overpair.\n\n**Check 이유:**\n• 이 보드에서 QQ < 모든 Kx, Jx, Tx\n• AQ는 우리를 이김 (넛 스트레이트)\n• 베팅하면 worse fold, better call\n• Check로 pot control\n\n**베팅 문제점:**\n• 이 보드에서 QQ는 블러프 캐쳐\n• Value target이 적음\n\n📊 Hero Range 구성 (CO on KJT connected board)\n• Value: AQ (nuts), KK, JJ, TT, KJ, KT, JT\n• Check: QQ, 99, AK, Kx weak\n• Bluff: A9, 98 (gutshots) - 가끔",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 QQ는 이 spot에서:\n- **Check: 75%** ✓\n- Bet 27%: 18%\n- Bet 75%: 7%\n\nQQ는 KJT 보드에서 straight draw이자 취약한 overpair.\n\n**Check 이유:**\n• 이 보드에서 QQ < 모든 Kx, Jx, Tx\n• AQ는 우리를 이김 (넛 스트레이트)\n• 베팅하면 worse fold, better call\n• Check로 pot control\n\n**베팅 문제점:**\n• 이 보드에서 QQ는 블러프 캐쳐\n• Value target이 적음\n\n📊 CO 전략 (K♠ J♣ T♦) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "pot control": "팟 크기를 작게 유지하는 전략"
     }
@@ -628,7 +628,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 BB 전략 (9♥ 5♥ 2♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {}
   },
   {
@@ -658,7 +658,7 @@
       "Raise to 15bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nGTO 기준 Q9(top pair)는 이 spot에서:\n- Fold: 5%\n- **Call: 85%** ✓\n- Raise 15bb: 10%\n\nQ9는 top pair로 4-way에서 call.\n\n**Call 이유:**\n• Top pair는 충분히 강함\n• HJ가 cbet = wide range\n• 두 명이 fold해서 이제 heads-up\n• Q9 kicker는 약하지만 이 가격에 OK\n\n**Raise 문제점:**\n• Q9로 raise하면 better만 continue\n• HJ의 QQ, 88, 44, AQ에 dominated\n\n📊 Hero Range 구성 (BB vs HJ cbet in multiway)\n• Value: QQ, 88, 44, Q8 (raise)\n• Call: Q9, QT, QJ, 8x, 클럽 드로우\n• Fold: weak hands, missed",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 Q9(top pair)는 이 spot에서:\n- Fold: 5%\n- **Call: 85%** ✓\n- Raise 15bb: 10%\n\nQ9는 top pair로 4-way에서 call.\n\n**Call 이유:**\n• Top pair는 충분히 강함\n• HJ가 cbet = wide range\n• 두 명이 fold해서 이제 heads-up\n• Q9 kicker는 약하지만 이 가격에 OK\n\n**Raise 문제점:**\n• Q9로 raise하면 better만 continue\n• HJ의 QQ, 88, 44, AQ에 dominated\n\n📊 BB 전략 (Q♣ 8♦ 4♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {}
   },
   {
@@ -701,7 +701,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 AKdd는 이 spot에서:\n- **Check: 85%** ✓\n- Bet 33%: 10%\n- Bet 75%: 5%\n\nAKdd는 nut flush draw + 2 overs + gutshot.\n\n**Check 이유:**\n• 이 보드에서 BB는 checking range 유지\n• Check-raise 옵션 열어둠\n• CO가 cbet하면 raise 가능\n• Lead out은 강한 핸드 노출\n\n**베팅 문제점:**\n• Donk bet은 CO aggression 차단\n• 강한 드로우로 더 큰 pot 만들기 어려움\n\n📊 Hero Range 구성 (BB on 654 low connected board)\n• Value: 77, 33, 87, 32, sets (check-raise)\n• Semi-bluff: AKdd, Axdd, 98, 78 (check-raise)\n• Check-call: overpairs, 6x, 5x",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 AKdd는 이 spot에서:\n- **Check: 85%** ✓\n- Bet 33%: 10%\n- Bet 75%: 5%\n\nAKdd는 nut flush draw + 2 overs + gutshot.\n\n**Check 이유:**\n• 이 보드에서 BB는 checking range 유지\n• Check-raise 옵션 열어둠\n• CO가 cbet하면 raise 가능\n• Lead out은 강한 핸드 노출\n\n**베팅 문제점:**\n• Donk bet은 CO aggression 차단\n• 강한 드로우로 더 큰 pot 만들기 어려움\n\n📊 BB 전략 (6♦ 5♦ 4♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {}
   },
   {
@@ -715,7 +715,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 BB 전략 (J♠ 7♠ 3♦) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {}
   },
   {
@@ -743,7 +743,7 @@
       "Raise to 6bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nGTO 기준 A2(top pair weak kicker)는 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- Raise 6bb: 5%\n\nA2는 top pair weak kicker로 call.\n\n**Call 이유:**\n• Top pair는 충분히 콜할 가치\n• 작은 bet이므로 좋은 odds\n• Raise는 worse fold, better call\n• Turn에서 상황 보기\n\n**Fold 문제점:**\n• Top pair를 이 가격에 버리기 힘듦\n\n**Raise 문제점:**\n• A2는 raise할 만큼 강하지 않음\n\n📊 Hero Range 구성 (BB facing CO cbet on AJ6ss)\n• Value: AJ, JJ, 66, AA (raise)\n• Call: A2-AT, Jx, 스페이드 드로우\n• Fold: air, weak draws",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 A2(top pair weak kicker)는 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- Raise 6bb: 5%\n\nA2는 top pair weak kicker로 call.\n\n**Call 이유:**\n• Top pair는 충분히 콜할 가치\n• 작은 bet이므로 좋은 odds\n• Raise는 worse fold, better call\n• Turn에서 상황 보기\n\n**Fold 문제점:**\n• Top pair를 이 가격에 버리기 힘듦\n\n**Raise 문제점:**\n• A2는 raise할 만큼 강하지 않음\n\n📊 BB 전략 (A♠ J♦ 6♠) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {}
   },
   {
@@ -757,7 +757,7 @@
       "Bet 15bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 BB 전략 (8♥ 7♥ 2♠) [Solver]\n• 체크: (다양한 핸드)\n• 벳: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {}
   },
   {
@@ -786,7 +786,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• Q♥Q♠5♣ 페어보드\n• A♠K♠는 상대 Qx에 dominated\n• 베팅해도 Qx는 폴드 안 함\n• 체크하고 free showdown 노리기\n\n📊 페어보드 전략:\n• Range가 잘 안 맞으면 체크 선호\n• Bluff catch 라인으로 전환",
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• Q♥Q♠5♣ 페어보드\n• A♠K♠는 상대 Qx에 dominated\n• 베팅해도 Qx는 폴드 안 함\n• 체크하고 free showdown 노리기\n\n📊 BTN 전략 (Q♥ Q♠ 5♣) [Solver]\n• 체크: AA, KK, QQ, JJ, TT, 99 등",
     "terms": {
       "paired board": "같은 숫자 카드가 2장 있는 보드"
     }

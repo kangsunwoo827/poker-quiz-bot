@@ -1,0 +1,547 @@
+Starting solver runs at Fri Feb 20 08:43:20 UTC 2026
+Using nice 19 for minimal CPU impact
+=== Q10 starting at Fri Feb 20 08:43:20 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 17.867
+command not recognized: 
+Q10: SUCCESS - Fri Feb 20 08:43:54 UTC 2026
+
+=== Q11 starting at Fri Feb 20 08:43:54 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 18.865
+command not recognized: 
+Q11: SUCCESS - Fri Feb 20 08:44:30 UTC 2026
+
+=== Q12 starting at Fri Feb 20 08:44:30 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.006
+command not recognized: 
+Q12: SUCCESS - Fri Feb 20 08:44:30 UTC 2026
+
+=== Q14 starting at Fri Feb 20 08:44:30 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 17.594
+command not recognized: 
+Q14: SUCCESS - Fri Feb 20 08:45:03 UTC 2026
+
+=== Q16 starting at Fri Feb 20 08:45:03 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 18.157
+command not recognized: 
+Q16: SUCCESS - Fri Feb 20 08:45:37 UTC 2026
+
+=== Q17 starting at Fri Feb 20 08:45:37 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.6874984
+player 1 exploitability 1.3749923
+Total exploitability 18.749914 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.032
+command not recognized: 
+Q17: SUCCESS - Fri Feb 20 08:45:37 UTC 2026
+
+=== Q18 starting at Fri Feb 20 08:45:37 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 1.7083266
+player 1 exploitability 5.1249967
+Total exploitability 16.666643 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 90.985
+command not recognized: 
+Q18: SUCCESS - Fri Feb 20 08:47:26 UTC 2026
+
+=== Q1 starting at Fri Feb 20 08:47:26 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 18.107
+command not recognized: 
+Q1: SUCCESS - Fri Feb 20 08:48:01 UTC 2026
+
+=== Q20 starting at Fri Feb 20 08:48:01 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 18.121
+command not recognized: 
+Q20: SUCCESS - Fri Feb 20 08:48:35 UTC 2026
+
+=== Q22 starting at Fri Feb 20 08:48:35 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 18.365
+command not recognized: 
+Q22: SUCCESS - Fri Feb 20 08:49:10 UTC 2026
+
+=== Q23 starting at Fri Feb 20 08:49:10 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.006
+command not recognized: 
+Q23: SUCCESS - Fri Feb 20 08:49:10 UTC 2026
+
+=== Q25 starting at Fri Feb 20 08:49:10 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 1.7083282
+player 1 exploitability 5.1249924
+Total exploitability 16.666636 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 95.28
+command not recognized: 
+Q25: SUCCESS - Fri Feb 20 08:51:03 UTC 2026
+
+=== Q27 starting at Fri Feb 20 08:51:03 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 18.029
+command not recognized: 
+Q27: SUCCESS - Fri Feb 20 08:51:40 UTC 2026
+
+=== Q28 starting at Fri Feb 20 08:51:40 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.006
+command not recognized: 
+Q28: SUCCESS - Fri Feb 20 08:51:40 UTC 2026
+
+=== Q30 starting at Fri Feb 20 08:51:40 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 17.568
+command not recognized: 
+Q30: SUCCESS - Fri Feb 20 08:52:13 UTC 2026
+
+=== Q31 starting at Fri Feb 20 08:52:13 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 17.295
+command not recognized: 
+Q31: SUCCESS - Fri Feb 20 08:52:46 UTC 2026
+
+=== Q32 starting at Fri Feb 20 08:52:46 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 17.891
+command not recognized: 
+Q32: SUCCESS - Fri Feb 20 08:53:20 UTC 2026
+
+=== Q33 starting at Fri Feb 20 08:53:20 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.36
+command not recognized: 
+Q33: SUCCESS - Fri Feb 20 08:53:21 UTC 2026
+
+=== Q35 starting at Fri Feb 20 08:53:21 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 18.719
+command not recognized: 
+Q35: SUCCESS - Fri Feb 20 08:53:57 UTC 2026
+
+=== Q36 starting at Fri Feb 20 08:53:57 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.006
+command not recognized: 
+Q36: SUCCESS - Fri Feb 20 08:53:57 UTC 2026
+
+=== Q38 starting at Fri Feb 20 08:53:57 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 17.047
+command not recognized: 
+Q38: SUCCESS - Fri Feb 20 08:54:29 UTC 2026
+
+=== Q39 starting at Fri Feb 20 08:54:29 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.342
+command not recognized: 
+Q39: SUCCESS - Fri Feb 20 08:54:30 UTC 2026
+
+=== Q41 starting at Fri Feb 20 08:54:30 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 18.067
+command not recognized: 
+Q41: SUCCESS - Fri Feb 20 08:55:04 UTC 2026
+
+=== Q42 starting at Fri Feb 20 08:55:04 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 1.7083291
+player 1 exploitability 5.124999
+Total exploitability 16.666655 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.056
+command not recognized: 
+Q42: SUCCESS - Fri Feb 20 08:55:04 UTC 2026
+
+=== Q44 starting at Fri Feb 20 08:55:04 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 19.292
+command not recognized: 
+Q44: SUCCESS - Fri Feb 20 08:55:40 UTC 2026
+
+=== Q45 starting at Fri Feb 20 08:55:40 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.337
+command not recognized: 
+Q45: SUCCESS - Fri Feb 20 08:55:41 UTC 2026
+
+=== Q47 starting at Fri Feb 20 08:55:41 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 17.669
+command not recognized: 
+Q47: SUCCESS - Fri Feb 20 08:56:15 UTC 2026
+
+=== Q48 starting at Fri Feb 20 08:56:15 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.6875001
+player 1 exploitability 1.3749945
+Total exploitability 18.749952 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.034
+command not recognized: 
+Q48: SUCCESS - Fri Feb 20 08:56:15 UTC 2026
+
+=== Q50 starting at Fri Feb 20 08:56:15 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 18.076
+command not recognized: 
+Q50: SUCCESS - Fri Feb 20 08:56:49 UTC 2026
+
+=== Q5 starting at Fri Feb 20 08:56:49 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 18.004
+command not recognized: 
+Q5: SUCCESS - Fri Feb 20 08:57:24 UTC 2026
+
+=== Q7 starting at Fri Feb 20 08:57:24 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 0.363
+command not recognized: 
+Q7: SUCCESS - Fri Feb 20 08:57:25 UTC 2026
+
+=== Q8 starting at Fri Feb 20 08:57:25 UTC 2026 ===
+
+<<<START SOLVING>>>
+Using 1 threads
+Iter: 0
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+-------------------
+Iter: 51
+player 0 exploitability 0.0
+player 1 exploitability 0.0
+Total exploitability 0.0 precent
+time used: 17.137
+command not recognized: 
+Q8: SUCCESS - Fri Feb 20 08:57:58 UTC 2026
+
+All solvers completed at Fri Feb 20 08:57:58 UTC 2026
