@@ -4,7 +4,7 @@ import logging
 from datetime import datetime, timedelta
 from typing import Optional
 
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
 from telegram.ext import (
     Application, CommandHandler, CallbackQueryHandler, ContextTypes
 )
@@ -612,14 +612,28 @@ async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
     logger.error(f"Exception: {context.error}")
 
 
+async def post_init(application):
+    """Set bot commands after initialization"""
+    commands = [
+        BotCommand("quiz", "현재 퀴즈 보기"),
+        BotCommand("explain", "이전 문제 해설"),
+        BotCommand("next", "해설 + 다음 문제"),
+        BotCommand("score", "내 점수 확인"),
+        BotCommand("leaderboard", "순위표"),
+        BotCommand("help", "포커 용어 설명"),
+    ]
+    await application.bot.set_my_commands(commands)
+    logger.info("Bot commands registered")
+
+
 def main():
     """Start the bot"""
     if not TELEGRAM_BOT_TOKEN:
         logger.error("TELEGRAM_BOT_TOKEN not set!")
         return
     
-    # Build application
-    application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
+    # Build application with post_init
+    application = Application.builder().token(TELEGRAM_BOT_TOKEN).post_init(post_init).build()
     
     # Add handlers
     application.add_handler(CommandHandler("start", start))

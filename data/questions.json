@@ -186,7 +186,7 @@
       "Raise to 12bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과 (CO 4bb bet 대응):\n- Fold: 0.5%\n- **Call: 99%** ✓\n- Raise: 0%\n\n**이유:**\n• 8♥7♥는 오픈엔드 + 플러시드로우 (15 아웃)\n• 강력한 드로우지만 레이즈하면 fold equity 적음\n• CO는 cbet 후 좋은 핸드만 continue\n• Implied odds 좋음 - 히트하면 big pot 가능\n\n📊 왜 Raise가 아닌가?\n• Solver는 이 spot에서 거의 pure call\n• Semi-bluff raise는 equity 낭비\n• 포지션 불리해서 check-raise 라인 비효율",
+    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과 (CO 4bb bet 대응):\n- Fold: 0.5%\n- **Call: 99%** ✓\n- Raise: 0%\n\n**이유:**\n• 8♥7♥는 오픈엔드 + 플러시드로우 (15 아웃)\n• 강력한 드로우지만 레이즈하면 fold equity 적음\n• CO는 cbet 후 좋은 핸드만 continue\n• Implied odds 좋음 - 히트하면 big pot 가능\n\n📊 왜 Raise가 아닌가?\n• Solver는 이 spot에서 거의 pure call\n• Semi-bluff raise는 equity 낭비\n• 포지션 불리해서 check-raise 라인 비효율\n\n📊 BB 전략 (6♥5♥2♦ vs CO cbet)\n• 레이즈: 세트, 투페어, 76s, 강한 콤보드로우\n• 콜: 플러시드로우, 스트레이트드로우, 오버페어\n• 폴드: 노 에쿼티, 약한 핸드",
     "terms": {
       "아웃": "핸드를 완성시켜주는 남은 카드 수",
       "semi-bluff": "현재는 약하지만 개선 가능성 있는 핸드로 베팅/레이즈"
@@ -203,7 +203,7 @@
       "Bet 8bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 전략 (K♦9♠4♣2♥7♦)\n• 밸류벳 (작게): Kx weak kicker, 투페어\n• 밸류벳 (크게): 풀하우스, 트립스\n• 체크: 블러프캐쳐, 약한 메이드핸드",
     "terms": {
       "thin value": "약간의 이익만 있는 value bet",
       "콜링 range": "상대가 특정 베팅에 콜할 수 있는 핸드들"
@@ -268,7 +268,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• A-high 보드에서 CO는 range disadvantage\n• K♦Q♦는 A 없어서 showdown value 낮음\n• 체크하고 BB의 액션 보기\n• BB가 체크하면 free card, bet하면 fold equity 확인\n\n📊 Range 분석:\n• BB는 Ax 많이 보유\n• CO의 cbet은 자주 콜/레이즈 당함",
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• A-high 보드에서 CO는 range disadvantage\n• K♦Q♦는 A 없어서 showdown value 낮음\n• 체크하고 BB의 액션 보기\n• BB가 체크하면 free card, bet하면 fold equity 확인\n\n📊 Range 분석:\n• BB는 Ax 많이 보유\n• CO의 cbet은 자주 콜/레이즈 당함\n\n📊 CO c-bet 전략 (A♠7♦2♣)\n• 벳 (작게): 모든 Ax, 약한 페어\n• 벳 (크게): 셋, 투페어, 강한 블러프\n• 체크: 에어, 약한 broadway (KQ, KJ 등)",
     "terms": {
       "backdoor": "turn + river 두 장 다 필요한 드로우",
       "range advantage": "전체 핸드 분포가 상대보다 강한 상태"
@@ -285,7 +285,7 @@
       "Bet 16bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 전략 (Q♠8♦3♣4♥2♠)\n• 밸류벳: Qx (탑페어), 투페어+\n• 블러프: 미스드 드로우, 블로커\n• 체크: 블러프캐쳐, 중간 페어",
     "terms": {
       "bluff catch": "상대의 블러프를 잡기 위해 콜하는 것"
     }
@@ -366,7 +366,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• A♣K♣는 백도어 플러시드로우 + 오버카드\n• T-high 보드에서 BTN advantage 있지만 AK는 체크 선호\n• 상대가 bet하면 콜 or raise 가능\n• 체크레이즈 라인도 유효\n\n📊 AK 전략:\n• Made hand 없을 때 체크 빈도 높음\n• Bet은 주로 밸류핸드 (탑페어+)",
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• A♣K♣는 백도어 플러시드로우 + 오버카드\n• T-high 보드에서 BTN advantage 있지만 AK는 체크 선호\n• 상대가 bet하면 콜 or raise 가능\n• 체크레이즈 라인도 유효\n\n📊 AK 전략:\n• Made hand 없을 때 체크 빈도 높음\n• Bet은 주로 밸류핸드 (탑페어+)\n\n📊 BTN c-bet 전략 (T♣6♣2♥)\n• 벳: 오버페어, 탑페어, 약한 Ax\n• 체크: 강한 드로우 (슬로우플레이), AK/AQ\n• 체크 이유: 넛 플러시드로우는 턴 프리카드 선호",
     "terms": {
       "nut flush draw": "플러시 완성시 가장 강한 플러시가 되는 드로우"
     }
@@ -382,7 +382,7 @@
       "Bet 7.5bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 CO 리버 전략 (J♥7♦2♠3♣K♠)\n• 밸류벳: AA, KK, Kx, JJ\n• 블러프: 미스드 드로우, A-high\n• 체크: 중간 페어, 블러프캐쳐",
     "terms": {}
   },
   {
@@ -459,7 +459,7 @@
       "Bet 6.5bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 HJ 리버 전략 (9♣8♣3♥2♦A♠)\n• 밸류벳: 오버페어 (AA, KK), 투페어+\n• 블러프: 미스드 플러시드로우, Qx\n• 체크: 98, 77 등 약한 쇼다운 밸류",
     "terms": {}
   },
   {
@@ -522,7 +522,7 @@
       "Raise to 5bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과:\n- Fold: 0.9%\n- **Call: 98%** ✓\n- Raise: 0.6%\n\n**이유:**\n• K♦Q♦는 플러시드로우 + 2개 오버카드\n• 9 아웃 (플러시) + 6 아웃 (K, Q) = 강력한 드로우\n• 콜하고 턴 봐야 함 - 레이즈는 overfold 당함\n\n📊 드로우 전략:\n• 플러시드로우는 콜 > 레이즈 (대부분 spot)\n• 레이즈는 fold equity 있을 때만",
+    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과:\n- Fold: 0.9%\n- **Call: 98%** ✓\n- Raise: 0.6%\n\n**이유:**\n• K♦Q♦는 플러시드로우 + 2개 오버카드\n• 9 아웃 (플러시) + 6 아웃 (K, Q) = 강력한 드로우\n• 콜하고 턴 봐야 함 - 레이즈는 overfold 당함\n\n📊 드로우 전략:\n• 플러시드로우는 콜 > 레이즈 (대부분 spot)\n• 레이즈는 fold equity 있을 때만\n\n📊 BB 전략 (J♦8♦4♠ vs BTN cbet)\n• 레이즈: 세트, 투페어, 강한 콤보드로우\n• 콜: 플러시드로우, 탑페어, 거터\n• 폴드: 노 에쿼티, 약한 핸드",
     "terms": {}
   },
   {
@@ -536,7 +536,7 @@
       "Bet 7.5bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 CO 턴 전략 (A♠9♦4♣6♥)\n• 벳 (작게): 탑페어 전체, 약한 Ax\n• 벳 (크게): 셋, 투페어, 블러프\n• 체크: 포기, 팟컨트롤",
     "terms": {
       "TPTK": "Top Pair Top Kicker - 보드 탑카드 + 가장 높은 키커"
     }
@@ -566,7 +566,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• 7♠6♠2♦ 보드는 로우/드로우 보드\n• AA 오버페어지만 상대 range와 잘 안 맞음\n• BB는 76s, 65s, 54s 등 보유 가능\n• 체크하고 상대 액션에 대응\n\n📊 Wet board 전략:\n• 오버페어도 체크 빈도 있음\n• Protection보다 pot control 우선",
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• 7♠6♠2♦ 보드는 로우/드로우 보드\n• AA 오버페어지만 상대 range와 잘 안 맞음\n• BB는 76s, 65s, 54s 등 보유 가능\n• 체크하고 상대 액션에 대응\n\n📊 Wet board 전략:\n• 오버페어도 체크 빈도 있음\n• Protection보다 pot control 우선\n\n📊 HJ c-bet 전략 (7♠6♠2♦)\n• 벳: 오버페어 (QQ-JJ), 78s, 탑페어\n• 체크: AA/KK (트랩), 에어, 백도어만\n• 체크 이유: AA는 레인지 어드밴티지 적은 보드에서 슬로우플레이",
     "terms": {
       "wet board": "드로우가 많은 보드 (flush draw, straight draw 가능)"
     }
@@ -582,7 +582,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 전략 (T♥7♣3♦5♠2♥)\n• 밸류벳: Tx (탑페어), 투페어+\n• 블러프: 미스드 드로우, Ax\n• 체크: 블러프캐쳐, 중간 페어",
     "terms": {
       "capped range": "특정 강한 핸드들이 제외된 range"
     }
@@ -628,7 +628,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 턴 동크벳 전략 (9♥5♥2♣K♠)\n• 동크벳: 탑페어 (K 맞음), 미들페어 (99 등), 드로우\n• 체크-콜: 플러시드로우, 중간 페어\n• 체크-폴드: 에어\n• K가 뜨면 BB 레인지 강화 → 동크벳 유리",
     "terms": {}
   },
   {
@@ -671,7 +671,7 @@
       "All-in (61.5bb)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 CO 리버 전략 (K♦8♠3♥4♣2♦)\n• 올인: 탑페어 좋은 키커, 세트+\n• 체크-콜: 블러프캐쳐\n• 체크-폴드: 미스드 드로우\n• 팟이 크고 SPR 낮아서 탑탑은 커밋",
     "terms": {
       "2 barrels": "flop과 turn 연속으로 베팅하는 것"
     }
@@ -715,7 +715,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 턴 동크벳 전략 (J♠7♠3♦A♣)\n• 동크벳: Ax (A 맞음), JT 등 중간 밸류\n• 체크-레이즈: AA, AJ (슬로우플레이)\n• 체크-콜: 플러시드로우, 약한 J\n• A가 뜨면 BB 레인지 강화 → 동크벳 유리",
     "terms": {}
   },
   {
@@ -757,7 +757,7 @@
       "Bet 15bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 전략 (8♥7♥2♠3♦T♣)\n• 밸류벳: 99, TT, 투페어+, 스트레이트\n• 블러프: 미스드 플러시드로우\n• 체크: 76, 87 (약한 쇼다운)",
     "terms": {}
   },
   {
@@ -786,7 +786,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• Q♥Q♠5♣ 페어보드\n• A♠K♠는 상대 Qx에 dominated\n• 베팅해도 Qx는 폴드 안 함\n• 체크하고 free showdown 노리기\n\n📊 페어보드 전략:\n• Range가 잘 안 맞으면 체크 선호\n• Bluff catch 라인으로 전환",
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• Q♥Q♠5♣ 페어보드\n• A♠K♠는 상대 Qx에 dominated\n• 베팅해도 Qx는 폴드 안 함\n• 체크하고 free showdown 노리기\n\n📊 페어보드 전략:\n• Range가 잘 안 맞으면 체크 선호\n• Bluff catch 라인으로 전환\n\n📊 BTN c-bet 전략 (Q♥Q♠5♣)\n• 벳: Qx (트립스), 풀하우스\n• 체크: AK/AJ (쇼다운 밸류), 에어\n• 페어보드에서 레인지벳 안함 - 극화 전략",
     "terms": {
       "paired board": "같은 숫자 카드가 2장 있는 보드"
     }

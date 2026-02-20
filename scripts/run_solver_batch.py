@@ -90,10 +90,10 @@ set_bet_sizes ip,flop,bet,33,75
 set_bet_sizes oop,flop,raise,100
 set_bet_sizes ip,flop,raise,100
 set_allin_threshold 0.67
-set_accuracy 1
-set_max_iteration 100
+set_accuracy 0.5
+set_max_iteration 200
 set_thread_num 1
-set_print_interval 10
+set_print_interval 25
 set_use_isomorphism 1
 build_tree
 start_solve
@@ -112,7 +112,7 @@ def run_solver(input_file: Path) -> bool:
             ['nice', '-n', '19', SOLVER_PATH, '-i', str(input_file)],
             capture_output=True,
             text=True,
-            timeout=300  # 5 min max
+            timeout=600  # 10 min max (200 iter takes ~3min)
         )
         return result.returncode == 0
     except subprocess.TimeoutExpired:
