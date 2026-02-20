@@ -6394,3 +6394,76 @@ ModuleNotFoundError: No module named 'telegram'
 2026-02-20 08:58:10,541 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
 2026-02-20 08:58:21,223 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
 2026-02-20 08:58:31,449 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:58:36,606 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:58:36,607 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2026-02-20 08:58:36,607 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2026-02-20 08:58:36,617 - telegram.ext.Application - INFO - Application.stop() complete
+2026-02-20 08:58:36,848 - __main__ - INFO - Loaded state: 1 chats, 0 DM users, 5 used questions
+2026-02-20 08:58:36,925 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-20 08:58:36,926 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-20 08:58:36,926 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-20 08:58:36,926 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-20 08:58:36,926 - __main__ - INFO - Starting SunPokerQuizBot...
+2026-02-20 08:58:36,926 - __main__ - INFO - Quiz times: 06:00 KST (21:00 UTC), 18:00 KST (09:00 UTC)
+2026-02-20 08:58:36,926 - __main__ - INFO - Explanation times: 05:50 KST (20:50 UTC), 17:50 KST (08:50 UTC)
+2026-02-20 08:58:37,610 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getMe "HTTP/1.1 200 OK"
+2026-02-20 08:58:38,003 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/setMyCommands "HTTP/1.1 200 OK"
+2026-02-20 08:58:38,003 - __main__ - INFO - Bot commands registered
+2026-02-20 08:58:38,229 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-20 08:58:38,231 - apscheduler.scheduler - INFO - Added job "quiz_21_0" to job store "default"
+2026-02-20 08:58:38,231 - apscheduler.scheduler - INFO - Added job "quiz_9_0" to job store "default"
+2026-02-20 08:58:38,231 - apscheduler.scheduler - INFO - Added job "explain_20_50" to job store "default"
+2026-02-20 08:58:38,231 - apscheduler.scheduler - INFO - Added job "explain_8_50" to job store "default"
+2026-02-20 08:58:38,231 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-20 08:58:38,231 - telegram.ext.Application - INFO - Application started
+2026-02-20 08:58:48,910 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:58:59,135 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:59:09,363 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:59:19,589 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:59:29,814 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:59:40,042 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:59:45,992 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:59:47,079 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/sendMessage "HTTP/1.1 200 OK"
+2026-02-20 08:59:53,388 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:59:54,242 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-20 08:59:54,650 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/editMessageText "HTTP/1.1 200 OK"
+2026-02-20 09:00:00,006 - apscheduler.executors.default - INFO - Running job "quiz_9_0 (trigger: cron[day_of_week='sun,mon,tue,wed,thu,fri,sat', hour='9', minute='0', second='0'], next run at: 2026-02-21 09:00:00 UTC)" (scheduled at 2026-02-20 09:00:00+00:00)
+2026-02-20 09:00:00,006 - __main__ - INFO - Scheduled quiz triggered
+2026-02-20 09:00:00,891 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/sendMessage "HTTP/1.1 200 OK"
+2026-02-20 09:00:00,892 - __main__ - INFO - Quiz #31 sent to chat -5162511716
+2026-02-20 09:00:00,893 - apscheduler.executors.default - INFO - Job "quiz_9_0 (trigger: cron[day_of_week='sun,mon,tue,wed,thu,fri,sat', hour='9', minute='0', second='0'], next run at: 2026-02-21 09:00:00 UTC)" executed successfully
+2026-02-20 09:00:03,617 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:00:13,844 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:00:17,047 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:00:27,274 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:00:30,678 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:00:31,539 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-20 09:00:31,949 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/sendMessage "HTTP/1.1 200 OK"
+2026-02-20 09:00:31,952 - apscheduler.scheduler - INFO - Added job "delete_message" to job store "default"
+2026-02-20 09:00:31,952 - __main__ - INFO - User juho0708 answered Q#31: wrong
+2026-02-20 09:00:40,916 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:00:41,953 - apscheduler.scheduler - INFO - Removed job 72ad6dfe4be441d7832f2925c8f42a8e
+2026-02-20 09:00:41,953 - apscheduler.executors.default - INFO - Running job "delete_message (trigger: date[2026-02-20 09:00:41 UTC], next run at: 2026-02-20 09:00:41 UTC)" (scheduled at 2026-02-20 09:00:41.951369+00:00)
+2026-02-20 09:00:42,606 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:00:42,806 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/deleteMessage "HTTP/1.1 200 OK"
+2026-02-20 09:00:42,806 - apscheduler.executors.default - INFO - Job "delete_message (trigger: date[2026-02-20 09:00:41 UTC], next run at: 2026-02-20 09:00:41 UTC)" executed successfully
+2026-02-20 09:00:52,035 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:00:56,094 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:00:56,963 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-20 09:00:57,371 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/editMessageText "HTTP/1.1 200 OK"
+2026-02-20 09:01:06,321 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:01:16,557 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:01:26,785 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:01:29,433 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:01:30,282 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-20 09:01:30,692 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/editMessageText "HTTP/1.1 200 OK"
+2026-02-20 09:01:39,664 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:01:49,892 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:02:00,121 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:02:10,348 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:02:20,576 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:02:30,802 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:02:41,027 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:02:51,255 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:03:01,481 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 09:03:11,707 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"

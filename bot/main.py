@@ -451,6 +451,8 @@ async def handle_skip_vote(update: Update, context: ContextTypes.DEFAULT_TYPE):
     leaderboard_users = score_manager.get_leaderboard_user_ids()
     required_majority = len(leaderboard_users) // 2 + 1
     
+    logger.info(f"Skip vote: yes={yes_count}, no={no_count}, leaderboard={len(leaderboard_users)}, required={required_majority}")
+    
     if yes_count >= required_majority:
         # Majority reached - proceed to next question
         await query.answer("⏭️ 과반수 찬성! 다음 문제로 넘어갑니다.")

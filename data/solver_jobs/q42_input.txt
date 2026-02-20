@@ -6,8 +6,8 @@ set_range_oop AA,KK,QQ,JJ,TT,99,88,77,66,55,44,33,22,AKs,AQs,AJs,ATs,A9s,A8s,A7s
 set_bet_sizes oop,river,bet,6,15
 set_bet_sizes ip,river,bet,6,15
 set_allin_threshold 0.67
-set_accuracy 0.3
-set_max_iteration 500
+set_accuracy 0.2
+set_max_iteration 1000
 set_thread_num 1
 set_print_interval 50
 build_tree
