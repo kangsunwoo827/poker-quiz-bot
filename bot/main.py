@@ -137,6 +137,15 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "• <b>Dry board</b>: 드로우 없는 보드\n"
         "• <b>Wet board</b>: 드로우 많은 보드\n\n"
         
+        "<b>🎰 Draws & Outs</b>\n"
+        "• <b>Outs</b>: 핸드 완성에 필요한 남은 카드 수\n"
+        "• <b>NFD</b>: Nut Flush Draw (A높이 FD, 9 outs)\n"
+        "• <b>FD</b>: Flush Draw (플러시드로우, 9 outs)\n"
+        "• <b>OESD</b>: Open-Ended Straight Draw (8 outs)\n"
+        "• <b>Gutshot</b>: 속 스트레이트 (4 outs)\n"
+        "• <b>Combo draw</b>: FD + OESD 등 (12+ outs)\n"
+        "• <b>Outs → 확률</b>: 9→35%, 8→31%, 4→16%\n\n"
+        
         "<b>📊 전략 용어</b>\n"
         "• <b>GTO</b>: Game Theory Optimal (최적 전략)\n"
         "• <b>Equity</b>: 승률\n"

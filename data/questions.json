@@ -186,7 +186,7 @@
       "Raise to 12bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과 (CO 4bb bet 대응):\n- Fold: 0.5%\n- **Call: 99%** ✓\n- Raise: 0%\n\n**이유:**\n• 8♥7♥는 오픈엔드 + 플러시드로우 (15 아웃)\n• 강력한 드로우지만 레이즈하면 fold equity 적음\n• CO는 cbet 후 좋은 핸드만 continue\n• Implied odds 좋음 - 히트하면 big pot 가능\n\n📊 왜 Raise가 아닌가?\n• Solver는 이 spot에서 거의 pure call\n• Semi-bluff raise는 equity 낭비\n• 포지션 불리해서 check-raise 라인 비효율\n\n📊 BB 전략 (6♥5♥2♦ vs CO cbet)\n• 레이즈: 66, 55, 22, 65s, 87s+콤보드로우\n• 콜: A♥x♥, K♥x♥, 87s, 43s, 77-TT\n• 폴드: Kx high, Qx high, 약한 Ax",
+    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과 (CO 4bb bet 대응):\n- Fold: 0.5%\n- **Call: 99%** ✓\n- Raise: 0%\n\n**이유:**\n• 8♥7♥는 오픈엔드 + FD (15 아웃)\n• 강력한 드로우지만 레이즈하면 fold equity 적음\n• CO는 cbet 후 좋은 핸드만 continue\n• Implied odds 좋음 - 히트하면 big pot 가능\n\n📊 왜 Raise가 아닌가?\n• Solver는 이 spot에서 거의 pure call\n• Semi-bluff raise는 equity 낭비\n• 포지션 불리해서 check-raise 라인 비효율\n\n📊 BB 전략 (6♥5♥2♦ vs CO cbet)\n• 레이즈: 66, 55, 22, 65s, 87s+combo draw\n• 콜: A♥2♥+, K♥2♥+, 87s, 43s, 77-TT\n• 폴드: K2o+ (weak), Q2o+ (weak), 약한 Ax",
     "terms": {
       "아웃": "핸드를 완성시켜주는 남은 카드 수",
       "semi-bluff": "현재는 약하지만 개선 가능성 있는 핸드로 베팅/레이즈"
@@ -203,7 +203,7 @@
       "Bet 8bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 벳 전략 (K♦9♠4♣2♥7♦)\n• 벳 33%: K8-KT, K7, K4, K2, 97s 등\n• 벳 75%: KJ+, 99, 77, 44, 22\n• 체크: 9x, Ax no pair, QJ 등",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 벳 전략 (K♦9♠4♣2♥7♦)\n• 벳 33%: K8-KT, K7, K4, K2, 97s 등\n• 벳 75%: KJ+, 99, 77, 44, 22\n• 체크: 92+, Ax no pair, QJ 등",
     "terms": {
       "thin value": "약간의 이익만 있는 value bet",
       "콜링 range": "상대가 특정 베팅에 콜할 수 있는 핸드들"
@@ -285,7 +285,7 @@
       "Bet 16bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 전략 (Q♠8♦3♣4♥2♠)\n• 벳 33%: QJ-QT, Q9s, 88, 33, 44 등\n• 벳 75%: QQ, Q8s, 22, sets\n• 체크: 8x, Ax no pair, KJ 등",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 전략 (Q♠8♦3♣4♥2♠)\n• 벳 33%: QJ-QT, Q9s, 88, 33, 44 등\n• 벳 75%: QQ, Q8s, 22, sets\n• 체크: 82+, Ax no pair, KJ 등",
     "terms": {
       "bluff catch": "상대의 블러프를 잡기 위해 콜하는 것"
     }
@@ -366,7 +366,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• A♣K♣는 백도어 플러시드로우 + 오버카드\n• T-high 보드에서 BTN advantage 있지만 AK는 체크 선호\n• 상대가 bet하면 콜 or raise 가능\n• 체크레이즈 라인도 유효\n\n📊 BTN c-bet 전략 (T♣6♣2♥)\n• 벳 27%: TT, 66, 22, A6s-A2s 등\n• 벳 75%: T9s+, JJ+\n• 체크: AKcc, AQcc, KQcc (넛드로우)",
+    "explanation": "**왜 Check인가?**\n\n🎯 TexasSolver GTO 결과:\n- **Check: 58%** ✓\n- Bet 27%: 42%\n- Bet 75%: 0%\n\n**이유:**\n• A♣K♣는 백도어 FD + 오버카드\n• T-high 보드에서 BTN advantage 있지만 AK는 체크 선호\n• 상대가 bet하면 콜 or raise 가능\n• 체크레이즈 라인도 유효\n\n📊 BTN c-bet 전략 (T♣6♣2♥)\n• 벳 27%: TT, 66, 22, A6s-A2s 등\n• 벳 75%: T9s+, JJ+\n• 체크: AKcc, AQcc, KQcc (NFD)",
     "terms": {
       "nut flush draw": "플러시 완성시 가장 강한 플러시가 되는 드로우"
     }
@@ -522,7 +522,7 @@
       "Raise to 5bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과:\n- Fold: 0.9%\n- **Call: 98%** ✓\n- Raise: 0.6%\n\n**이유:**\n• K♦Q♦는 플러시드로우 + 2개 오버카드\n• 9 아웃 (플러시) + 6 아웃 (K, Q) = 강력한 드로우\n• 콜하고 턴 봐야 함 - 레이즈는 overfold 당함\n\n📊 BB 전략 (J♦8♦4♠ vs BTN cbet)\n• 레이즈: JJ, 88, 44, J8s, 97dd\n• 콜: K♦x♦, Q♦x♦, J9s-JTs, 87s, 99-TT\n• 폴드: Kx high, Qx high",
+    "explanation": "**왜 Call인가?**\n\n🎯 TexasSolver GTO 결과:\n- Fold: 0.9%\n- **Call: 98%** ✓\n- Raise: 0.6%\n\n**이유:**\n• K♦Q♦는 FD + 2개 오버카드\n• 9 아웃 (플러시) + 6 아웃 (K, Q) = 강력한 드로우\n• 콜하고 턴 봐야 함 - 레이즈는 overfold 당함\n\n📊 BB 전략 (J♦8♦4♠ vs BTN cbet)\n• 레이즈: JJ, 88, 44, J8s, 97dd\n• 콜: K♦2♦+, Q♦2♦+, J9s-JTs, 87s, 99-TT\n• 폴드: K2o+ (weak), Q2o+ (weak)",
     "terms": {}
   },
   {
@@ -582,7 +582,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 전략 (T♥7♣3♦5♠2♥)\n• 벳 33%: AT, KT, QT, JT, T9s, T8s 등\n• 벳 75%: TT, 77, 33, 55, 22\n• 체크: 7x, 5x, Ax no pair 등",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 전략 (T♥7♣3♦5♠2♥)\n• 벳 33%: AT, KT, QT, JT, T9s, T8s 등\n• 벳 75%: TT, 77, 33, 55, 22\n• 체크: 72+, 52+, Ax no pair 등",
     "terms": {
       "capped range": "특정 강한 핸드들이 제외된 range"
     }
@@ -628,7 +628,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 턴 동크벳 전략 (9♥5♥2♣K♠)\n• 벳 33%: Kx (K9s-K2s), 99, 55, 22 등\n• 벳 75%: KK, KQs, sets\n• 체크-콜: A♥x♥, 9x, 55 등",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 턴 동크벳 전략 (9♥5♥2♣K♠)\n• 벳 33%: Kx (K9s-K2s), 99, 55, 22 등\n• 벳 75%: KK, KQs, sets\n• 체크-콜: A♥2♥+, 92+, 55 등",
     "terms": {}
   },
   {
@@ -757,7 +757,7 @@
       "Bet 15bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 전략 (8♥7♥2♠3♦T♣)\n• 벳 33%: 99, TT, T8s, 98s, 87s 등\n• 벳 75%: 65s (스트레이트), sets\n• 체크: 77, 88, Ax♥ 미스드 등",
+    "explanation": "**왜 Bet인가?**\n\n🎯 TexasSolver GTO 결과:\n- Check: 0%\n- **Bet 33%: 50%**\n- **Bet 75%: 50%**\n\nSolver는 이 스팟에서 betting을 선호합니다. \n두 사이즈 모두 EV가 비슷하지만, 체크는 확실히 -EV입니다.\n\n**이유:**\n• Made hand로 thin value 추출\n• 상대의 bluff catcher들이 콜할 확률 높음\n• 체크하면 free showdown 줘서 손해\n\n📊 Value bet 원칙:\n• River에서 value가 있으면 bet\n• 특히 top pair+ 핸드는 거의 항상 bet\n\n📊 BB 리버 전략 (8♥7♥2♠3♦T♣)\n• 벳 33%: 99, TT, T8s, 98s, 87s 등\n• 벳 75%: 65s (스트레이트), sets\n• 체크: 77, 88, A♥2♥+ 미스드 등",
     "terms": {}
   },
   {
