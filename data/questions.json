@@ -115,7 +115,7 @@
       "Bet 7bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 JThh는 이 spot에서:\n- **Check: 75%** ✓\n- Bet 33%: 15%\n- Bet 75%: 10%\n\nJThh는 플러시 드로우 + 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 엄청난 드로우지만 아직 made hand 아님\n• Check-raise로 플레이 가능\n• CO가 체크백하면 무료 카드 받음\n\n**베팅 문제점:**\n• Lead out은 range 불균형\n• Bluff로 베팅하면 raise 당할 때 어려움\n• 이미 좋은 odds로 드로우 중\n\n📊 CO c-bet 전략 (9♥8♥2♣)\n• 벳 33%: AA-JJ, ATs, KTs, T9s, 77 등\n• 벳 75%: TT, T7s, 74s, 44\n• 체크: AK, AQ, KQs, 98s 등",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 JThh는 이 spot에서:\n- **Check: 75%** ✓\n- Bet 33%: 15%\n- Bet 75%: 10%\n\nJThh는 플러시 드로우 + 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 엄청난 드로우지만 아직 made hand 아님\n• Check-raise로 플레이 가능\n• CO가 체크백하면 무료 카드 받음\n\n**베팅 문제점:**\n• Lead out은 range 불균형\n• Bluff로 베팅하면 raise 당할 때 어려움\n• 이미 좋은 odds로 드로우 중\n\n📊 BB 전략 (9♥8♥2♣-5♦ 턴)\n• 체크-레이즈: J♥T♥ (FD+OESD), 99, 88, 55, 98s\n• 체크-콜: 오버페어, 탑페어, 약한 FD\n• 동크벳: 투페어, 세트 일부",
     "terms": {
       "오픈엔드": "양쪽으로 스트레이트 완성 가능한 드로우 (8아웃)",
       "lead out": "이전 라운드 베터에게 먼저 베팅하는 것",
@@ -169,7 +169,7 @@
       "Raise to 15bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nGTO 기준 JJ는 이 spot에서:\n- Fold: 0%\n- **Call: 85%** ✓\n- Raise 15bb: 15%\n\nJJ는 overpair지만 multiway에서는 조심해야 함.\n\n**Call 이유:**\n• 4-way pot에서 raise는 너무 강한 range만 continue\n• T9 보드에서 set, 2pair, 스트레이트 드로우 많음\n• JJ는 좋지만 monster는 아님\n• BTN이 뒤에 있어서 squeeze 당할 수 있음\n\n**Fold 문제점:**\n• JJ는 여전히 강한 핸드\n• 이 가격에 fold는 너무 tight\n\n📊 BTN c-bet 전략 (T♠9♠4♣)\n• 벳 33%: AA-TT, A9s, A8s, 98s, 85s 등\n• 벳 75%: 99, 88, 55, 98s, 95s\n• 체크: AK, AQ, KQs, 76s 등",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 JJ는 이 spot에서:\n- Fold: 0%\n- **Call: 85%** ✓\n- Raise 15bb: 15%\n\nJJ는 overpair지만 multiway에서는 조심해야 함.\n\n**Call 이유:**\n• 4-way pot에서 raise는 너무 강한 range만 continue\n• T9 보드에서 set, 2pair, 스트레이트 드로우 많음\n• JJ는 좋지만 monster는 아님\n• BTN이 뒤에 있어서 squeeze 당할 수 있음\n\n**Fold 문제점:**\n• JJ는 여전히 강한 핸드\n• 이 가격에 fold는 너무 tight\n\n📊 CO 전략 (T♠9♠4♣ vs HJ cbet)\n• 레이즈: TT, 99, 44, T9s, combo draw\n• 콜: JJ, QQ, T8s+, 98s, FD\n• 폴드: Ax no pair, Kx high",
     "terms": {
       "overpair": "보드의 모든 카드보다 높은 포켓 페어",
       "multiway": "3명 이상이 참여한 팟"
@@ -237,7 +237,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 87(넛 스트레이트)는 이 spot에서:\n- **Check: 90%** ✓\n- Bet 33%: 7%\n- Bet 75%: 3%\n\n87는 JT9 보드에서 넛 스트레이트.\n\n**Check 이유:**\n• 이미 nuts = slowplay 가치 있음\n• CO가 cbet 할 확률 높음 (connected board)\n• Check-raise로 더 큰 pot 가능\n• 이 보드에서 BB range는 약해 보여서 CO aggression 유도\n\n**Donk bet 문제점:**\n• 상대의 베팅 기회 없앰\n• Strong hand를 너무 드러냄\n\n📊 CO c-bet 전략 (J♠T♦9♣)\n• 벳 33%: AA-QQ, AJs, KJs, JTs, J9s 등\n• 벳 75%: JJ, 77, 22, J7s, 72s\n• 체크: AK, AQ, KQ, T9s 등",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 87(넛 스트레이트)는 이 spot에서:\n- **Check: 90%** ✓\n- Bet 33%: 7%\n- Bet 75%: 3%\n\n87는 JT9 보드에서 넛 스트레이트.\n\n**Check 이유:**\n• 이미 nuts = slowplay 가치 있음\n• CO가 cbet 할 확률 높음 (connected board)\n• Check-raise로 더 큰 pot 가능\n• 이 보드에서 BB range는 약해 보여서 CO aggression 유도\n\n**Donk bet 문제점:**\n• 상대의 베팅 기회 없앰\n• Strong hand를 너무 드러냄\n\n📊 BB 전략 (J♠T♦9♣)\n• 체크-레이즈: 87s (넛 스트레이트!), QQ+, JTs\n• 체크-콜: Jx, Tx, OESD\n• 체크-폴드: weak Ax, Kx",
     "terms": {
       "nuts": "현재 보드에서 가능한 최강 핸드",
       "slowplay": "강한 핸드를 약하게 플레이해서 상대가 블러프하게 유도"
@@ -333,7 +333,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 54(오픈엔드)는 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 4%\n- Bet 75%: 1%\n\n54는 876 보드에서 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 8아웃 드로우 (9 또는 3)\n• BB는 이 보드에서 check range 유지\n• Check-call 또는 check-raise 플랜\n• CO가 cbet하면 좋은 odds로 드로우\n\n**베팅 문제점:**\n• Donk bet은 range 혼란\n• 아직 made hand 아님\n\n📊 HJ c-bet 전략 (8♠7♠6♣)\n• 벳 33%: AA-TT, AK, KQs, KJs, K9s 등\n• 벳 75%: KK, 99, 44, K9s, K4s\n• 체크: QJs, JTs, T9s, 87s 등",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 54(오픈엔드)는 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 4%\n- Bet 75%: 1%\n\n54는 876 보드에서 오픈엔드 스트레이트 드로우.\n\n**Check 이유:**\n• 8아웃 드로우 (9 또는 3)\n• BB는 이 보드에서 check range 유지\n• Check-call 또는 check-raise 플랜\n• CO가 cbet하면 좋은 odds로 드로우\n\n**베팅 문제점:**\n• Donk bet은 range 혼란\n• 아직 made hand 아님\n\n📊 BB 전략 (8♠7♠6♣)\n• 체크-레이즈: 54 (넛 스트레이트!), 95s, 88, 77, 66\n• 체크-콜: 98s, 76s, FD, OESD\n• 체크-폴드: Ax high, Kx high",
     "terms": {
       "8아웃": "핸드 완성에 필요한 남은 카드 8장"
     }
@@ -411,7 +411,7 @@
       "Bet 15bb (75%)"
     ],
     "answer": 1,
-    "explanation": "**왜 Bet 6.5bb (33%)인가?**\n\nGTO 기준 AK는 이 spot에서:\n- Check: 25%\n- **Bet 33%: 60%** ✓\n- Bet 75%: 15%\n\nAK는 QJ5 보드에서 miss했지만 equity 많음.\n\n**Cbet 이유:**\n• 3-bet pot에서 aggressor는 cbet 필요\n• AK는 gutshot (T) + 2 overs\n• 작은 베팅으로 fold equity 확보\n• BTN의 많은 핸드가 fold\n\n**Check 문제점:**\n• Initiative 포기\n• 이 보드에서 많이 miss해도 betting range 필요\n\n📊 BB c-bet 전략 (Q♦J♣5♥ in 3bet pot)\n• 벳 33%: AK, AQ, AJ, KK-TT, QJs 등\n• 벳 75%: QQ, JJ, 55, QJ, sets\n• 체크: AA, KK (트랩), 66-99 등",
+    "explanation": "**왜 Bet 6.5bb (33%)인가?**\n\nGTO 기준 AK는 이 spot에서:\n- Check: 25%\n- **Bet 33%: 60%** ✓\n- Bet 75%: 15%\n\nAK는 QJ5 보드에서 miss했지만 equity 많음.\n\n**Cbet 이유:**\n• 3-bet pot에서 aggressor는 cbet 필요\n• AK는 gutshot (T) + 2 overs\n• 작은 베팅으로 fold equity 확보\n• BTN의 많은 핸드가 fold\n\n**Check 문제점:**\n• Initiative 포기\n• 이 보드에서 많이 miss해도 betting range 필요\n\n📊 BB c-bet 전략 (Q♦J♣5♥ 3bet pot)\n• 벳 33%: AK, AQ, AJ, KK-TT, QJs 등\n• 벳 75%: QQ, JJ, 55, QJ, sets\n• 체크: AA (트랩), 66-99 등",
     "terms": {
       "initiative": "베팅/레이즈로 액션을 주도하는 것"
     }
@@ -443,7 +443,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 TT는 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 4%\n- Bet 75%: 1%\n\nTT는 AA5 페어 보드에서 check.\n\n**Check 이유:**\n• 이 보드에서 CO가 range advantage\n• CO의 Ax가 많음\n• TT는 showdown value 있지만 베팅 target 없음\n• Check-call로 CO의 블러프 잡기\n\n**베팅 문제점:**\n• TT보다 worse가 콜할 이유 없음\n• Ax는 모두 우리를 이김\n\n📊 CO 턴 전략 (A♥A♦5♣)\n• 벳 33%: QQ, JJ, QJs, QTs, JTs, 88 등\n• 벳 75%: 55, Q8s, J8s, sets\n• 체크: AK, AT, KTs, 99 등",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 TT는 이 spot에서:\n- **Check: 95%** ✓\n- Bet 33%: 4%\n- Bet 75%: 1%\n\nTT는 AA5 페어 보드에서 check.\n\n**Check 이유:**\n• 이 보드에서 CO가 range advantage\n• CO의 Ax가 많음\n• TT는 showdown value 있지만 베팅 target 없음\n• Check-call로 CO의 블러프 잡기\n\n**베팅 문제점:**\n• TT보다 worse가 콜할 이유 없음\n• Ax는 모두 우리를 이김\n\n📊 BB 전략 (A♥A♦5♣)\n• 체크-콜: TT-KK, 55, A5s, A2s-A4s\n• 체크-폴드: 22-99, weak suited\n• 동크벳: 거의 없음 (CO가 대부분 cbet)",
     "terms": {
       "페어 보드": "같은 숫자가 2장 있는 보드"
     }
@@ -489,7 +489,7 @@
       "Raise to 14bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nGTO 기준 QJ는 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- Raise 14bb: 5%\n\nQJ는 second pair + gutshot으로 call.\n\n**Call 이유:**\n• Second pair + gutshot (T)\n• 가격이 좋음 (4bb into 16bb)\n• Multiway라서 raise는 위험\n• Turn에서 improve 가능성\n\n**Fold 문제점:**\n• QJ는 아직 live hand\n• 이 odds에 fold는 손해\n\n**Raise 문제점:**\n• 3-way pot에서 raise는 nuts-heavy\n• QJ로 raise하면 better만 continue\n\n📊 CO 리버 전략 (K♣Q♠7♥)\n• 벳 33%: AA, A9, A6, A4, A2, 99 등\n• 벳 75%: sets, AA\n• 체크: KK, QQ, JJ, TT 등",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 QJ는 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- Raise 14bb: 5%\n\nQJ는 second pair + gutshot으로 call.\n\n**Call 이유:**\n• Second pair + gutshot (T)\n• 가격이 좋음 (4bb into 16bb)\n• Multiway라서 raise는 위험\n• Turn에서 improve 가능성\n\n**Fold 문제점:**\n• QJ는 아직 live hand\n• 이 odds에 fold는 손해\n\n**Raise 문제점:**\n• 3-way pot에서 raise는 nuts-heavy\n• QJ로 raise하면 better만 continue\n\n📊 BB 전략 (K♣Q♠7♥ vs 2 bets)\n• 레이즈: KQ, 77, K7s, Q7s\n• 콜: QJ, QT, Kx, 77, FD\n• 폴드: Ax no pair, weak pairs",
     "terms": {
       "second pair": "보드에서 두 번째로 높은 카드와 매칭되는 페어"
     }
@@ -612,7 +612,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 QQ는 이 spot에서:\n- **Check: 75%** ✓\n- Bet 27%: 18%\n- Bet 75%: 7%\n\nQQ는 KJT 보드에서 straight draw이자 취약한 overpair.\n\n**Check 이유:**\n• 이 보드에서 QQ < 모든 Kx, Jx, Tx\n• AQ는 우리를 이김 (넛 스트레이트)\n• 베팅하면 worse fold, better call\n• Check로 pot control\n\n**베팅 문제점:**\n• 이 보드에서 QQ는 블러프 캐쳐\n• Value target이 적음\n\n📊 BB 턴 전략 (K♠J♣T♦)\n• 체크-레이즈: AA, 77, 55, 33, A7s, A5s\n• 체크-콜: A3s, 75s, 53s, 76s 등\n• 동크벳: A9s-ATs, 64s 등",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 QQ는 이 spot에서:\n- **Check: 75%** ✓\n- Bet 27%: 18%\n- Bet 75%: 7%\n\nQQ는 KJT 보드에서 straight draw이자 취약한 overpair.\n\n**Check 이유:**\n• 이 보드에서 QQ < 모든 Kx, Jx, Tx\n• AQ는 우리를 이김 (넛 스트레이트)\n• 베팅하면 worse fold, better call\n• Check로 pot control\n\n**베팅 문제점:**\n• 이 보드에서 QQ는 블러프 캐쳐\n• Value target이 적음\n\n📊 CO c-bet 전략 (K♠J♣T♦)\n• 벳 27%: KQ, KJ, JT, TT, 99\n• 벳 75%: KK, JJ, TT, KJ, AQ (스트레이트)\n• 체크: QQ (straight 보드에서 위험), AK (SD value)",
     "terms": {
       "pot control": "팟 크기를 작게 유지하는 전략"
     }
@@ -658,7 +658,7 @@
       "Raise to 15bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nGTO 기준 Q9(top pair)는 이 spot에서:\n- Fold: 5%\n- **Call: 85%** ✓\n- Raise 15bb: 10%\n\nQ9는 top pair로 4-way에서 call.\n\n**Call 이유:**\n• Top pair는 충분히 강함\n• HJ가 cbet = wide range\n• 두 명이 fold해서 이제 heads-up\n• Q9 kicker는 약하지만 이 가격에 OK\n\n**Raise 문제점:**\n• Q9로 raise하면 better만 continue\n• HJ의 QQ, 88, 44, AQ에 dominated\n\n📊 CO c-bet 전략 (Q♣8♦4♣)\n• 벳 33%: AA-TT, AJs, KJs, JTs, J9s 등\n• 벳 75%: JJ, 88, 44, J8s, 84s\n• 체크: AK, AQ, KQ, T9s 등",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 Q9(top pair)는 이 spot에서:\n- Fold: 5%\n- **Call: 85%** ✓\n- Raise 15bb: 10%\n\nQ9는 top pair로 4-way에서 call.\n\n**Call 이유:**\n• Top pair는 충분히 강함\n• HJ가 cbet = wide range\n• 두 명이 fold해서 이제 heads-up\n• Q9 kicker는 약하지만 이 가격에 OK\n\n**Raise 문제점:**\n• Q9로 raise하면 better만 continue\n• HJ의 QQ, 88, 44, AQ에 dominated\n\n📊 BB 전략 (Q♣8♦4♣ vs HJ cbet)\n• 레이즈: QQ, 88, 44, Q8s, NFD\n• 콜: Q9-QT, Qxs, FD, 88-JJ\n• 폴드: Ax no pair, Kx no FD",
     "terms": {}
   },
   {
@@ -701,7 +701,7 @@
       "Bet 4bb (75%)"
     ],
     "answer": 0,
-    "explanation": "**왜 Check인가?**\n\nGTO 기준 AKdd는 이 spot에서:\n- **Check: 85%** ✓\n- Bet 33%: 10%\n- Bet 75%: 5%\n\nAKdd는 nut flush draw + 2 overs + gutshot.\n\n**Check 이유:**\n• 이 보드에서 BB는 checking range 유지\n• Check-raise 옵션 열어둠\n• CO가 cbet하면 raise 가능\n• Lead out은 강한 핸드 노출\n\n**베팅 문제점:**\n• Donk bet은 CO aggression 차단\n• 강한 드로우로 더 큰 pot 만들기 어려움\n\n📊 BTN c-bet 전략 (6♦5♦4♣)\n• 벳 33%: AA-JJ, ATs, KTs, T9s, T8s 등\n• 벳 75%: TT, 66, 33, T6s, 63s\n• 체크: AK, AQ, KQs, 98s 등",
+    "explanation": "**왜 Check인가?**\n\nGTO 기준 AKdd는 이 spot에서:\n- **Check: 85%** ✓\n- Bet 33%: 10%\n- Bet 75%: 5%\n\nAKdd는 nut flush draw + 2 overs + gutshot.\n\n**Check 이유:**\n• 이 보드에서 BB는 checking range 유지\n• Check-raise 옵션 열어둠\n• CO가 cbet하면 raise 가능\n• Lead out은 강한 핸드 노출\n\n**베팅 문제점:**\n• Donk bet은 CO aggression 차단\n• 강한 드로우로 더 큰 pot 만들기 어려움\n\n📊 BB 전략 (6♦5♦4♣)\n• 체크-레이즈: 78 (넛 스트레이트), 66, 55, 44, NFD (A♦K♦)\n• 체크-콜: OESD, weak FD, 오버페어\n• 동크벳: 일부 스트레이트, combo draw",
     "terms": {}
   },
   {
@@ -743,7 +743,7 @@
       "Raise to 6bb"
     ],
     "answer": 1,
-    "explanation": "**왜 Call인가?**\n\nGTO 기준 A2(top pair weak kicker)는 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- Raise 6bb: 5%\n\nA2는 top pair weak kicker로 call.\n\n**Call 이유:**\n• Top pair는 충분히 콜할 가치\n• 작은 bet이므로 좋은 odds\n• Raise는 worse fold, better call\n• Turn에서 상황 보기\n\n**Fold 문제점:**\n• Top pair를 이 가격에 버리기 힘듦\n\n**Raise 문제점:**\n• A2는 raise할 만큼 강하지 않음\n\n📊 CO 턴 전략 (A♠J♦6♠)\n• 벳 33%: KK, JJ, KQs-KTs, KJs, JTs 등\n• 벳 75%: 77, 22, K7s, J7s\n• 체크: AA, QQ, TT, 99 등",
+    "explanation": "**왜 Call인가?**\n\nGTO 기준 A2(top pair weak kicker)는 이 spot에서:\n- Fold: 5%\n- **Call: 90%** ✓\n- Raise 6bb: 5%\n\nA2는 top pair weak kicker로 call.\n\n**Call 이유:**\n• Top pair는 충분히 콜할 가치\n• 작은 bet이므로 좋은 odds\n• Raise는 worse fold, better call\n• Turn에서 상황 보기\n\n**Fold 문제점:**\n• Top pair를 이 가격에 버리기 힘듦\n\n**Raise 문제점:**\n• A2는 raise할 만큼 강하지 않음\n\n📊 BB 전략 (A♠J♦6♠ vs CO cbet)\n• 레이즈: AJ, 66, A6s, NFD\n• 콜: A2-AT, Jx, FD, 66-TT\n• 폴드: Kx no pair, Qx no pair",
     "terms": {}
   },
   {
