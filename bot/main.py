@@ -42,6 +42,9 @@ dm_enabled_users: set[int] = set(_state.get("dm_enabled_users", []))
 # Current active quiz per chat
 active_quiz_messages: dict[int, dict] = {}  # chat_id -> {"message_id": x, "question": q}
 
+# Skip votes per chat: chat_id -> {"votes": {user_id: bool}, "message_id": int}
+skip_votes: dict[int, dict] = {}
+
 # Restore quiz_manager state
 quiz_manager.used_questions = set(_state.get("used_questions", []))
 quiz_manager.user_answers = {int(k): v for k, v in _state.get("user_answers", {}).items()}
@@ -412,6 +415,110 @@ async def delete_message(context: ContextTypes.DEFAULT_TYPE):
         pass
 
 
+async def handle_skip_vote(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle skip vote button press"""
+    global last_question
+    query = update.callback_query
+    user_id = query.from_user.id
+    username = query.from_user.username or query.from_user.first_name or f"User{user_id}"
+    chat_id = query.message.chat_id
+    
+    # Parse callback data: skip_yes_<qid> or skip_no_<qid>
+    parts = query.data.split("_")
+    vote_yes = parts[1] == "yes"
+    question_id = int(parts[2])
+    
+    # Check if vote is still valid
+    if chat_id not in skip_votes:
+        await query.answer("투표가 종료되었습니다.", show_alert=True)
+        return
+    
+    vote_data = skip_votes[chat_id]
+    if vote_data.get("question_id") != question_id:
+        await query.answer("이 투표는 종료되었습니다.", show_alert=True)
+        return
+    
+    # Record vote
+    vote_data["votes"][user_id] = vote_yes
+    
+    # Count votes
+    yes_count = sum(1 for v in vote_data["votes"].values() if v)
+    no_count = sum(1 for v in vote_data["votes"].values() if not v)
+    total_voters = len(vote_data["votes"])
+    
+    # Check for majority (more than half of voters so far)
+    # Use leaderboard users as the voting pool
+    leaderboard_users = score_manager.get_leaderboard_user_ids()
+    required_majority = len(leaderboard_users) // 2 + 1
+    
+    if yes_count >= required_majority:
+        # Majority reached - proceed to next question
+        await query.answer("⏭️ 과반수 찬성! 다음 문제로 넘어갑니다.")
+        
+        # Delete vote message
+        try:
+            await query.message.delete()
+        except Exception:
+            pass
+        
+        # Clear vote data
+        del skip_votes[chat_id]
+        
+        # Show explanation and move to next
+        current_q = quiz_manager.current_question
+        if current_q:
+            await send_explanation(chat_id, current_q, context)
+            last_question = current_q
+            quiz_manager.user_answers.clear()
+            
+            # Delete old quiz message
+            if chat_id in active_quiz_messages:
+                try:
+                    await context.bot.delete_message(
+                        chat_id=chat_id,
+                        message_id=active_quiz_messages[chat_id]["message_id"]
+                    )
+                except Exception:
+                    pass
+                del active_quiz_messages[chat_id]
+            
+            # Get and send next question
+            new_question = quiz_manager.get_random_question()
+            save_state(
+                active_chats, dm_enabled_users,
+                new_question.id,
+                quiz_manager.used_questions,
+                quiz_manager.user_answers,
+                last_question.id if last_question else None
+            )
+            await send_quiz(chat_id, context, new_question)
+        return
+    
+    # Update vote message
+    vote_emoji = "⏭️" if vote_yes else "⏸️"
+    await query.answer(f"{vote_emoji} 투표 완료!")
+    
+    # Get not answered users for display
+    answered_users = {int(uid) for uid in quiz_manager.user_answers.keys()}
+    not_answered = leaderboard_users - answered_users
+    not_answered_names = score_manager.get_usernames(not_answered)
+    names_str = ", ".join([f"@{name}" for name in not_answered_names]) if not_answered_names else "알 수 없음"
+    
+    keyboard = [
+        [
+            InlineKeyboardButton(f"⏭️ 넘어가기 ({yes_count})", callback_data=f"skip_yes_{question_id}"),
+            InlineKeyboardButton(f"⏸️ 기다리기 ({no_count})", callback_data=f"skip_no_{question_id}"),
+        ]
+    ]
+    
+    await query.edit_message_text(
+        f"아직 안 푼 사람: {names_str}\n\n"
+        f"🗳️ 넘어갈까요? (과반수 {required_majority}명 찬성 시 진행)\n"
+        f"찬성: {yes_count} / 반대: {no_count}",
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+
 async def scheduled_quiz(context: ContextTypes.DEFAULT_TYPE):
     """Send new quiz to all active chats"""
     global last_question
@@ -541,11 +648,32 @@ async def next_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         not_answered_names = score_manager.get_usernames(not_answered)
         answered_count = len(answered_users)
         total_count = len(leaderboard_users)
-        # @ 멘션
         names_str = ", ".join([f"@{name}" for name in not_answered_names]) if not_answered_names else "알 수 없음"
-        await update.message.reply_text(
-            f"아직 안 푼 사람: {names_str} ({answered_count}/{total_count}) 🎯"
+        
+        # Clear previous vote if exists
+        if chat_id in skip_votes:
+            try:
+                await context.bot.delete_message(chat_id, skip_votes[chat_id]["message_id"])
+            except Exception:
+                pass
+        
+        # Create vote
+        skip_votes[chat_id] = {"votes": {}, "question_id": current_q.id}
+        
+        keyboard = [
+            [
+                InlineKeyboardButton("⏭️ 넘어가기", callback_data=f"skip_yes_{current_q.id}"),
+                InlineKeyboardButton("⏸️ 기다리기", callback_data=f"skip_no_{current_q.id}"),
+            ]
+        ]
+        
+        msg = await update.message.reply_text(
+            f"아직 안 푼 사람: {names_str} ({answered_count}/{total_count})\n\n"
+            f"🗳️ 넘어갈까요? (과반수 찬성 시 진행)\n"
+            f"찬성: 0 / 반대: 0",
+            reply_markup=InlineKeyboardMarkup(keyboard)
         )
+        skip_votes[chat_id]["message_id"] = msg.message_id
         return
     
     # Show explanation for current question
@@ -655,6 +783,7 @@ def main():
     application.add_handler(CommandHandler("leaderboard", leaderboard_command))
     application.add_handler(CallbackQueryHandler(handle_answer, pattern=r"^ans_\d+_\d+$"))
     application.add_handler(CallbackQueryHandler(handle_cancel_button, pattern=r"^cancel_\d+$"))
+    application.add_handler(CallbackQueryHandler(handle_skip_vote, pattern=r"^skip_(yes|no)_\d+$"))
     application.add_error_handler(error_handler)
     
     # Schedule quizzes (06:00, 18:00 KST = 21:00, 09:00 UTC)
