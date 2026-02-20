@@ -440,6 +440,7 @@ async def handle_skip_vote(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     # Record vote
     vote_data["votes"][user_id] = vote_yes
+    logger.info(f"Vote recorded: user={user_id} ({username}), vote={'yes' if vote_yes else 'no'}, all_votes={vote_data['votes']}")
     
     # Count votes
     yes_count = sum(1 for v in vote_data["votes"].values() if v)
@@ -451,7 +452,8 @@ async def handle_skip_vote(update: Update, context: ContextTypes.DEFAULT_TYPE):
     leaderboard_users = score_manager.get_leaderboard_user_ids()
     required_majority = len(leaderboard_users) // 2 + 1
     
-    logger.info(f"Skip vote: yes={yes_count}, no={no_count}, leaderboard={len(leaderboard_users)}, required={required_majority}")
+    logger.info(f"Skip vote check: yes={yes_count}, no={no_count}, leaderboard_count={len(leaderboard_users)}, leaderboard_ids={leaderboard_users}, required={required_majority}")
+    logger.info(f"Condition check: {yes_count} >= {required_majority} = {yes_count >= required_majority}")
     
     if yes_count >= required_majority:
         # Majority reached - proceed to next question
