@@ -447,12 +447,18 @@ async def handle_skip_vote(update: Update, context: ContextTypes.DEFAULT_TYPE):
     no_count = sum(1 for v in vote_data["votes"].values() if not v)
     total_voters = len(vote_data["votes"])
     
-    # Check for majority (more than half of voters so far)
-    # Use leaderboard users as the voting pool
-    leaderboard_users = score_manager.get_leaderboard_user_ids()
-    required_majority = len(leaderboard_users) // 2 + 1
+    # Check for majority using actual chat member count
+    try:
+        member_count = await context.bot.get_chat_member_count(chat_id)
+        # Subtract 1 for the bot itself
+        actual_members = member_count - 1
+    except Exception as e:
+        logger.warning(f"Failed to get chat member count: {e}, falling back to leaderboard")
+        actual_members = len(score_manager.get_leaderboard_user_ids())
     
-    logger.info(f"Skip vote check: yes={yes_count}, no={no_count}, leaderboard_count={len(leaderboard_users)}, leaderboard_ids={leaderboard_users}, required={required_majority}")
+    required_majority = actual_members // 2 + 1
+    
+    logger.info(f"Skip vote check: yes={yes_count}, no={no_count}, members={actual_members}, required={required_majority}")
     logger.info(f"Condition check: {yes_count} >= {required_majority} = {yes_count >= required_majority}")
     
     if yes_count >= required_majority:
@@ -654,6 +660,14 @@ async def next_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         total_count = len(leaderboard_users)
         names_str = ", ".join([f"@{name}" for name in not_answered_names]) if not_answered_names else "알 수 없음"
         
+        # Get actual member count for majority calculation
+        try:
+            member_count = await context.bot.get_chat_member_count(chat_id)
+            actual_members = member_count - 1  # Subtract bot
+        except Exception:
+            actual_members = total_count
+        required_majority = actual_members // 2 + 1
+        
         # Clear previous vote if exists
         if chat_id in skip_votes:
             try:
@@ -673,7 +687,7 @@ async def next_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         msg = await update.message.reply_text(
             f"아직 안 푼 사람: {names_str} ({answered_count}/{total_count})\n\n"
-            f"🗳️ 넘어갈까요? (과반수 찬성 시 진행)\n"
+            f"🗳️ 넘어갈까요? (과반수 {required_majority}명 찬성 시 진행)\n"
             f"찬성: 0 / 반대: 0",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
