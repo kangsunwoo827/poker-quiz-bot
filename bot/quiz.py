@@ -127,6 +127,8 @@ class QuizManager:
         correct_option = question.options[question.answer]
         
         text = f"📖 **Quiz #{question.id} 해설**\n\n"
+        text += f"```\n{question.situation}\n```\n"
+        text += f"Hero's hand: **{question.hand}**\n\n"
         text += f"**정답:** {correct_option}\n\n"
         text += question.explanation
         

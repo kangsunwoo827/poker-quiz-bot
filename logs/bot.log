@@ -6100,3 +6100,27 @@ ModuleNotFoundError: No module named 'telegram'
 2026-02-20 08:26:57,532 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
 2026-02-20 08:27:07,759 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
 2026-02-20 08:27:17,985 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:27:21,675 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:27:21,676 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2026-02-20 08:27:21,676 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2026-02-20 08:27:21,686 - telegram.ext.Application - INFO - Application.stop() complete
+2026-02-20 08:27:21,916 - __main__ - INFO - Loaded state: 1 chats, 0 DM users, 5 used questions
+2026-02-20 08:27:21,986 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-20 08:27:21,986 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-20 08:27:21,987 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-20 08:27:21,987 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-20 08:27:21,987 - __main__ - INFO - Starting SunPokerQuizBot...
+2026-02-20 08:27:21,987 - __main__ - INFO - Quiz times: 06:00 KST (21:00 UTC), 18:00 KST (09:00 UTC)
+2026-02-20 08:27:21,987 - __main__ - INFO - Explanation times: 05:50 KST (20:50 UTC), 17:50 KST (08:50 UTC)
+2026-02-20 08:27:22,668 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getMe "HTTP/1.1 200 OK"
+2026-02-20 08:27:23,062 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/setMyCommands "HTTP/1.1 200 OK"
+2026-02-20 08:27:23,063 - __main__ - INFO - Bot commands registered
+2026-02-20 08:27:23,287 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-20 08:27:23,288 - apscheduler.scheduler - INFO - Added job "quiz_21_0" to job store "default"
+2026-02-20 08:27:23,289 - apscheduler.scheduler - INFO - Added job "quiz_9_0" to job store "default"
+2026-02-20 08:27:23,289 - apscheduler.scheduler - INFO - Added job "explain_20_50" to job store "default"
+2026-02-20 08:27:23,289 - apscheduler.scheduler - INFO - Added job "explain_8_50" to job store "default"
+2026-02-20 08:27:23,289 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-20 08:27:23,289 - telegram.ext.Application - INFO - Application started
+2026-02-20 08:27:33,969 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
+2026-02-20 08:27:44,196 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7997880872:AAEXPmbL_cLursscD32lmCVhbSkJXHK91-s/getUpdates "HTTP/1.1 200 OK"
