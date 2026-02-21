@@ -509,6 +509,7 @@ async def handle_skip_vote(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer(f"{vote_emoji} 투표 완료!")
     
     # Get not answered users for display
+    leaderboard_users = score_manager.get_leaderboard_user_ids()
     answered_users = {int(uid) for uid in quiz_manager.user_answers.keys()}
     not_answered = leaderboard_users - answered_users
     not_answered_names = score_manager.get_usernames(not_answered)
