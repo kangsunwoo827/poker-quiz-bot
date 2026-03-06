@@ -1,6 +1,5 @@
 # Config with secrets
 .config
-config.py
 .env
 
 # Python
@@ -18,6 +17,16 @@ venv/
 
 # Data (generated)
 data/scores.db
+data/bankroll.db
+data/bot_state.json
+charts/
+
+# Logs
+logs/
+*.log
+
+# Rust solver build artifacts
+solver/target/
 
 # OS
 .DS_Store

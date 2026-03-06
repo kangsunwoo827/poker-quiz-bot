@@ -1,154 +1,183 @@
 import json
 import random
 from pathlib import Path
-from typing import Optional
 from dataclasses import dataclass, field
+from typing import Optional
+
+from config import (
+    SCENARIOS_FILE, EV_TABLES_DIR, ALL_HANDS_169,
+    MARGINAL_EV_THRESHOLD, OBVIOUS_FOLD_EV_GAP, RECENT_HISTORY_SIZE
+)
+
 
 @dataclass
-class Question:
-    id: int
+class Scenario:
+    id: str
     type: str
-    situation: str
-    hand: str
-    options: list[str]
-    answer: int
-    explanation: str
-    terms: dict
-    range_key: str = ""  # Key to lookup range table
+    name: str
+    description: str
+    hero_position: str
+    villain_position: Optional[str]
+    stack_bb: int
+    actions: list[str]
+
+
+@dataclass
+class QuizQuestion:
+    scenario: Scenario
+    hand: str           # e.g. "ATs", "72o", "QQ"
+    hand_display: str   # e.g. "A\u2660 T\u2660"
+    ev_vs_best: dict    # action -> ev relative to best (best=0, rest negative)
+    ev_normalized: dict # action -> normalized ev (average=0)
+    strategy: dict      # action -> GTO frequency
+    best_action: str
+    correct_actions: list[str]  # actions with strategy > 0
+
+
+SUIT_SYMBOLS = ["\u2660", "\u2665", "\u2666", "\u2663"]  # spade, heart, diamond, club
+
+
+def hand_to_display(hand: str) -> str:
+    """Convert hand notation to display with suit symbols."""
+    if len(hand) == 2:
+        # Pocket pair like "AA"
+        return f"{hand[0]}\u2660 {hand[1]}\u2665"
+    elif hand.endswith("s"):
+        return f"{hand[0]}\u2660 {hand[1]}\u2660"
+    else:
+        return f"{hand[0]}\u2660 {hand[1]}\u2665"
+
 
 class QuizManager:
     def __init__(self):
-        self.questions: list[Question] = []
-        self.used_questions: set[int] = set()
-        self.current_question: Optional[Question] = None
-        self.user_answers: dict[int, int] = {}  # user_id -> answer_index
-        self.preflop_ranges: dict = {}
-        self._load_questions()
-        self._load_ranges()
-    
-    def _load_questions(self):
-        data_path = Path(__file__).parent.parent / "data" / "questions.json"
-        with open(data_path, encoding="utf-8") as f:
+        self.scenarios: dict[str, Scenario] = {}
+        self.ev_tables: dict[str, dict] = {}
+        self._load_scenarios()
+        self._load_ev_tables()
+
+    def _load_scenarios(self):
+        with open(SCENARIOS_FILE, encoding="utf-8") as f:
             data = json.load(f)
-        
-        self.questions = [
-            Question(
-                id=q["id"],
-                type=q["type"],
-                situation=q["situation"],
-                hand=q["hand"],
-                options=q["options"],
-                answer=q["answer"],
-                explanation=q["explanation"],
-                terms=q.get("terms", {}),
-                range_key=q.get("range_key", "")
+        for s in data:
+            self.scenarios[s["id"]] = Scenario(
+                id=s["id"],
+                type=s["type"],
+                name=s["name"],
+                description=s["description"],
+                hero_position=s["hero_position"],
+                villain_position=s.get("villain_position"),
+                stack_bb=s["stack_bb"],
+                actions=s["actions"],
             )
-            for q in data
-        ]
-    
-    def _load_ranges(self):
-        """Load preflop range charts"""
-        range_path = Path(__file__).parent.parent / "data" / "preflop_ranges.json"
-        if range_path.exists():
-            with open(range_path, encoding="utf-8") as f:
+
+    def _load_ev_tables(self):
+        if not EV_TABLES_DIR.exists():
+            return
+        for path in EV_TABLES_DIR.glob("*.json"):
+            with open(path, encoding="utf-8") as f:
                 data = json.load(f)
-            self.preflop_ranges = data.get("6max_100bb", {})
-    
-    def get_range_table(self, question: Question) -> Optional[str]:
-        """Get range table for a question based on situation analysis"""
-        if question.type != "preflop":
-            return None
-        
-        situation = question.situation.lower()
-        
-        # Auto-detect range key from situation
-        range_key = question.range_key
-        if not range_key:
-            if "hero is bb" in situation:
-                if "co raises" in situation or "co open" in situation:
-                    range_key = "BB_defend_vs_CO"
-                elif "btn raises" in situation:
-                    range_key = "BB_defend_vs_BTN"
-            elif "hero is co" in situation:
-                if "3-bet" in situation or "3bet" in situation:
-                    range_key = "CO_vs_BTN_3bet"
-                elif "folds to hero" in situation:
-                    range_key = "CO_open"
-            elif "hero is btn" in situation and "folds to hero" in situation:
-                range_key = "BTN_open"
-            elif "hero is sb" in situation and "folds to hero" in situation:
-                range_key = "SB_open"
-            elif "hero is utg" in situation:
-                range_key = "UTG_open"
-        
-        if range_key and range_key in self.preflop_ranges:
-            range_data = self.preflop_ranges[range_key]
-            table_lines = range_data.get("table", [])
-            legend = range_data.get("legend", "R = Raise/Open")
-            desc = range_data.get("description", "")
-            
-            table_str = "\n".join(table_lines)
-            return f"📊 {desc}\n\n{table_str}\n\n{legend}"
-        
-        return None
-    
-    def get_random_question(self) -> Question:
-        available = [q for q in self.questions if q.id not in self.used_questions]
-        
+            scenario_id = data.get("scenario_id", path.stem)
+            self.ev_tables[scenario_id] = data
+
+    def get_available_scenarios(self) -> list[str]:
+        """Return scenario IDs that have EV tables loaded."""
+        return [sid for sid in self.scenarios if sid in self.ev_tables]
+
+    def generate_question(
+        self,
+        recent_history: list[tuple] = None,
+        scenario_id: str = None,
+    ) -> Optional[QuizQuestion]:
+        available = self.get_available_scenarios()
         if not available:
-            # Reset if all used
-            self.used_questions.clear()
-            available = self.questions
-        
-        question = random.choice(available)
-        self.used_questions.add(question.id)
-        self.current_question = question
-        self.user_answers.clear()
-        return question
-    
-    def record_answer(self, user_id: int, answer_index: int) -> bool:
-        """Record user's answer. Returns True if correct."""
-        if self.current_question is None:
-            return False
-        
-        self.user_answers[user_id] = answer_index
-        return answer_index == self.current_question.answer
-    
-    def format_question(self, question: Question) -> str:
-        """Format question for Telegram message."""
-        text = f"🃏 **Poker Quiz #{question.id}**\n\n"
-        text += f"```\n{question.situation}\n```\n\n"
-        text += f"Hero's hand: **{question.hand}**\n\n"
-        text += "Your action?"
-        return text
-    
-    def format_explanation(self, question: Question) -> str:
-        """Format explanation for Telegram message."""
-        correct_option = question.options[question.answer]
-        
-        text = f"📖 **Quiz #{question.id} 해설**\n\n"
-        text += f"```\n{question.situation}\n```\n"
-        text += f"Hero's hand: **{question.hand}**\n\n"
-        text += f"**정답:** {correct_option}\n\n"
-        text += question.explanation
-        
-        if question.terms:
-            text += "\n\n**📚 용어 설명**\n"
-            for term, definition in question.terms.items():
-                text += f"• **{term}**: {definition}\n"
-        
-        # Stats
-        total = len(self.user_answers)
-        if total > 0:
-            correct = sum(1 for a in self.user_answers.values() if a == question.answer)
-            pct = int(correct / total * 100)
-            text += f"\n📊 정답률: {pct}% ({correct}/{total})"
-        
-        return text
-    
-    def get_stats(self) -> dict:
-        return {
-            "total_questions": len(self.questions),
-            "used_questions": len(self.used_questions),
-            "current_participants": len(self.user_answers)
-        }
+            return None
+
+        if scenario_id and scenario_id in available:
+            chosen_scenario_id = scenario_id
+        else:
+            chosen_scenario_id = random.choice(available)
+
+        scenario = self.scenarios[chosen_scenario_id]
+        ev_table = self.ev_tables[chosen_scenario_id]
+        hands = ev_table.get("hands", {})
+
+        if not hands:
+            return None
+
+        # Build weighted hand list
+        recent_set = set()
+        if recent_history:
+            recent_set = {
+                (sid, h) for sid, h in recent_history[:RECENT_HISTORY_SIZE]
+            }
+
+        weighted_hands = []
+        for hand_name, hand_data in hands.items():
+            # Skip recently seen
+            if (chosen_scenario_id, hand_name) in recent_set:
+                continue
+
+            ev_best = hand_data.get("ev_vs_best", {})
+            if not ev_best:
+                continue
+
+            # Calculate EV gap (difference between best and second-best)
+            evs = sorted(ev_best.values(), reverse=True)
+            if len(evs) < 2:
+                continue
+            ev_gap = abs(evs[0] - evs[1])
+
+            # Weight: marginal decisions get highest weight
+            if ev_gap < MARGINAL_EV_THRESHOLD:
+                weight = 3.0
+            elif ev_gap > OBVIOUS_FOLD_EV_GAP:
+                weight = 0.5
+            else:
+                weight = 1.5
+
+            # Boost non-fold optimal hands
+            best_action = max(ev_best, key=ev_best.get)
+            if best_action.lower() != "fold" and best_action.lower() != "check":
+                weight *= 1.3
+
+            weighted_hands.append((hand_name, hand_data, weight))
+
+        if not weighted_hands:
+            # Fallback: pick any hand
+            hand_name = random.choice(list(hands.keys()))
+            hand_data = hands[hand_name]
+        else:
+            names, datas, weights = zip(*weighted_hands)
+            idx = random.choices(range(len(names)), weights=weights, k=1)[0]
+            hand_name = names[idx]
+            hand_data = datas[idx]
+
+        ev_vs_best = hand_data["ev_vs_best"]
+        ev_normalized = hand_data["ev_normalized"]
+        strategy = hand_data.get("strategy", {})
+
+        best_action = max(ev_vs_best, key=ev_vs_best.get)
+        correct_actions = [a for a, freq in strategy.items() if freq > 0] if strategy else [best_action]
+
+        return QuizQuestion(
+            scenario=scenario,
+            hand=hand_name,
+            hand_display=hand_to_display(hand_name),
+            ev_vs_best=ev_vs_best,
+            ev_normalized=ev_normalized,
+            strategy=strategy,
+            best_action=best_action,
+            correct_actions=correct_actions,
+        )
+
+    def get_hand_data(self, scenario_id: str, hand: str) -> Optional[dict]:
+        """Get full hand data for a scenario."""
+        if scenario_id not in self.ev_tables:
+            return None
+        return self.ev_tables[scenario_id].get("hands", {}).get(hand)
+
+    def get_scenario_hands(self, scenario_id: str) -> dict:
+        """Get all hands for a scenario (for range chart)."""
+        if scenario_id not in self.ev_tables:
+            return {}
+        return self.ev_tables[scenario_id].get("hands", {})

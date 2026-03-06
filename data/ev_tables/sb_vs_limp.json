@@ -1,0 +1,3386 @@
+{
+  "scenario_id": "sb_vs_limp",
+  "source": "postflop-solver DCFR × 5 flops",
+  "hands": {
+    "Q8o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "T2o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "64s": {
+      "strategy": {
+        "Raise 4bb": 1.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.1475,
+        "Fold": -1.3719,
+        "Limp behind": -0.2113
+      },
+      "ev_normalized": {
+        "Fold": -0.9392,
+        "Limp behind": 0.2214,
+        "Raise 5bb": 0.2852,
+        "Raise 4bb": 0.4327
+      }
+    },
+    "J6s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125
+      }
+    },
+    "A7s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.9636,
+        "Limp behind": -0.1776,
+        "Raise 5bb": -0.2466,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.347,
+        "Fold": -0.6167,
+        "Limp behind": 0.1693,
+        "Raise 5bb": 0.1003
+      }
+    },
+    "Q6o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "Q5o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125
+      }
+    },
+    "Q7o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "Q3s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625
+      }
+    },
+    "QTs": {
+      "strategy": {
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.4109,
+        "Raise 5bb": -0.321,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.0346
+      },
+      "ev_normalized": {
+        "Fold": -0.2193,
+        "Limp behind": 0.157,
+        "Raise 5bb": -0.1294,
+        "Raise 4bb": 0.1916
+      }
+    },
+    "JTs": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Limp behind": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.2278,
+        "Limp behind": 0.0,
+        "Raise 4bb": -0.0229,
+        "Raise 5bb": -0.3713
+      },
+      "ev_normalized": {
+        "Fold": -0.0723,
+        "Limp behind": 0.1555,
+        "Raise 4bb": 0.1326,
+        "Raise 5bb": -0.2158
+      }
+    },
+    "72o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625
+      }
+    },
+    "77": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 1.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.152,
+        "Raise 5bb": 0.0,
+        "Limp behind": -0.8955,
+        "Fold": -3.6805
+      },
+      "ev_normalized": {
+        "Raise 4bb": 1.03,
+        "Fold": -2.4985,
+        "Raise 5bb": 1.182,
+        "Limp behind": 0.2865
+      }
+    },
+    "92o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "Q6s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "ATs": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -0.2918,
+        "Fold": -0.6262,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.0774
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.2489,
+        "Fold": -0.3773,
+        "Limp behind": 0.1715,
+        "Raise 5bb": -0.043
+      }
+    },
+    "K4o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "KTo": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Limp behind": 1.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.2788,
+        "Raise 4bb": -0.0022,
+        "Limp behind": 0.0,
+        "Raise 5bb": -0.3513
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.1559,
+        "Fold": -0.1207,
+        "Limp behind": 0.1581,
+        "Raise 5bb": -0.1932
+      }
+    },
+    "K4s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.0352,
+        "Fold": -0.3747,
+        "Raise 5bb": -0.3353
+      },
+      "ev_normalized": {
+        "Fold": -0.1884,
+        "Raise 4bb": 0.1863,
+        "Limp behind": 0.1511,
+        "Raise 5bb": -0.149
+      }
+    },
+    "Q4s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "Q4o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "T4s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "T3s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "J2s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125
+      }
+    },
+    "T8s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Limp behind": 1.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": 0.0,
+        "Raise 4bb": -0.0175,
+        "Fold": -0.2248,
+        "Raise 5bb": -0.3657
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.1345,
+        "Fold": -0.0728,
+        "Limp behind": 0.152,
+        "Raise 5bb": -0.2137
+      }
+    },
+    "93s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "J4o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625
+      }
+    },
+    "T5s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "QJo": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": 0.0,
+        "Raise 4bb": -0.046,
+        "Fold": -0.1187,
+        "Raise 5bb": -0.4202
+      },
+      "ev_normalized": {
+        "Fold": 0.0275,
+        "Raise 5bb": -0.274,
+        "Limp behind": 0.1462,
+        "Raise 4bb": 0.1002
+      }
+    },
+    "53s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "64o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "74s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625
+      }
+    },
+    "72s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625
+      }
+    },
+    "T6s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "Q9s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.3349,
+        "Fold": -0.3219,
+        "Limp behind": -0.0119
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.1677,
+        "Fold": -0.1547,
+        "Limp behind": 0.1553,
+        "Raise 4bb": 0.1672
+      }
+    },
+    "82s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "K8o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "K6s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.0863,
+        "Raise 4bb": 0.0,
+        "Fold": -0.6989,
+        "Raise 5bb": -0.2763
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.0109,
+        "Raise 4bb": 0.2654,
+        "Fold": -0.4335,
+        "Limp behind": 0.1791
+      }
+    },
+    "76s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.3818,
+        "Limp behind": -0.0226,
+        "Raise 5bb": -0.3151,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.1799,
+        "Fold": -0.2019,
+        "Raise 5bb": -0.1352,
+        "Limp behind": 0.1573
+      }
+    },
+    "K2s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Fold": 0.625
+      }
+    },
+    "Q2s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125
+      }
+    },
+    "92s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Fold": 0.625,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "97s": {
+      "strategy": {
+        "Raise 4bb": 1.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -0.3388,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.0012,
+        "Fold": -0.2749
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.1537,
+        "Fold": -0.1212,
+        "Limp behind": 0.1525,
+        "Raise 5bb": -0.1851
+      }
+    },
+    "82o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Fold": 0.625
+      }
+    },
+    "AJs": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.1,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.2762,
+        "Fold": -0.7261
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.0006,
+        "Fold": -0.4505,
+        "Raise 4bb": 0.2756,
+        "Limp behind": 0.1756
+      }
+    },
+    "A8o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.1623,
+        "Raise 5bb": -0.2424,
+        "Raise 4bb": 0.0,
+        "Fold": -0.9357
+      },
+      "ev_normalized": {
+        "Limp behind": 0.1728,
+        "Raise 5bb": 0.0927,
+        "Raise 4bb": 0.3351,
+        "Fold": -0.6006
+      }
+    },
+    "32s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "55": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.2052,
+        "Raise 5bb": -0.2257,
+        "Fold": -1.0352,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.3665,
+        "Raise 5bb": 0.1408,
+        "Fold": -0.6687,
+        "Limp behind": 0.1613
+      }
+    },
+    "J8s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Limp behind": 1.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": 0.0,
+        "Raise 4bb": -0.0086,
+        "Raise 5bb": -0.3539,
+        "Fold": -0.2364
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.1411,
+        "Limp behind": 0.1497,
+        "Raise 5bb": -0.2042,
+        "Fold": -0.0867
+      }
+    },
+    "A4o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "J9o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.0325,
+        "Raise 5bb": -0.5398,
+        "Fold": 0.0,
+        "Raise 4bb": -0.1371
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.3624,
+        "Fold": 0.1773,
+        "Raise 4bb": 0.0402,
+        "Limp behind": 0.1448
+      }
+    },
+    "74o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "44": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.1801,
+        "Limp behind": -0.0315,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.3634
+      },
+      "ev_normalized": {
+        "Fold": -0.0364,
+        "Raise 5bb": -0.2197,
+        "Raise 4bb": 0.1438,
+        "Limp behind": 0.1123
+      }
+    },
+    "Q2o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "85o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "42o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125
+      }
+    },
+    "84o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "76o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "65s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.4223,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.3074,
+        "Limp behind": -0.0029
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.1243,
+        "Limp behind": 0.1803,
+        "Fold": -0.2392,
+        "Raise 4bb": 0.1832
+      }
+    },
+    "A5s": {
+      "strategy": {
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -0.3214,
+        "Limp behind": -0.0519,
+        "Raise 4bb": 0.0,
+        "Fold": -0.4625
+      },
+      "ev_normalized": {
+        "Fold": -0.2536,
+        "Raise 4bb": 0.209,
+        "Limp behind": 0.1571,
+        "Raise 5bb": -0.1125
+      }
+    },
+    "AKs": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.2772,
+        "Fold": -1.8318,
+        "Raise 5bb": -0.1077
+      },
+      "ev_normalized": {
+        "Raise 5bb": 0.4465,
+        "Raise 4bb": 0.5542,
+        "Fold": -1.2776,
+        "Limp behind": 0.277
+      }
+    },
+    "98s": {
+      "strategy": {
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.0001,
+        "Fold": -0.2843,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.3379
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.1556,
+        "Fold": -0.1287,
+        "Limp behind": 0.1555,
+        "Raise 5bb": -0.1823
+      }
+    },
+    "A2o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125
+      }
+    },
+    "Q9o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 1.0,
+        "Fold": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.0692,
+        "Limp behind": 0.0,
+        "Fold": -0.0302,
+        "Raise 5bb": -0.4622
+      },
+      "ev_normalized": {
+        "Fold": 0.1102,
+        "Raise 5bb": -0.3218,
+        "Limp behind": 0.1404,
+        "Raise 4bb": 0.0712
+      }
+    },
+    "63o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Fold": 0.625
+      }
+    },
+    "QQ": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -3.5002,
+        "Raise 5bb": 0.0,
+        "Limp behind": -0.8362,
+        "Raise 4bb": -0.16
+      },
+      "ev_normalized": {
+        "Limp behind": 0.2879,
+        "Raise 5bb": 1.1241,
+        "Raise 4bb": 0.9641,
+        "Fold": -2.3761
+      }
+    },
+    "T7o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125
+      }
+    },
+    "J9s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": 0.0,
+        "Fold": -0.2043,
+        "Raise 4bb": -0.0429,
+        "Raise 5bb": -0.3945
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.1175,
+        "Fold": -0.0439,
+        "Raise 5bb": -0.2341,
+        "Limp behind": 0.1604
+      }
+    },
+    "98o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "KJo": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.0091,
+        "Raise 5bb": -0.339,
+        "Raise 4bb": 0.0,
+        "Fold": -0.3408
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.1668,
+        "Raise 4bb": 0.1722,
+        "Limp behind": 0.1631,
+        "Fold": -0.1686
+      }
+    },
+    "K8s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.2466,
+        "Raise 5bb": -0.1949,
+        "Fold": -1.2752
+      },
+      "ev_normalized": {
+        "Fold": -0.846,
+        "Raise 4bb": 0.4292,
+        "Raise 5bb": 0.2343,
+        "Limp behind": 0.1826
+      }
+    },
+    "KQs": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.2505,
+        "Fold": -1.437,
+        "Raise 5bb": -0.1692,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.4642,
+        "Raise 5bb": 0.295,
+        "Limp behind": 0.2137,
+        "Fold": -0.9728
+      }
+    },
+    "86s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.0128,
+        "Raise 5bb": -0.3207,
+        "Raise 4bb": 0.0,
+        "Fold": -0.3547
+      },
+      "ev_normalized": {
+        "Limp behind": 0.1592,
+        "Fold": -0.1827,
+        "Raise 5bb": -0.1487,
+        "Raise 4bb": 0.172
+      }
+    },
+    "ATo": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.0012,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.3405,
+        "Fold": -0.295
+      },
+      "ev_normalized": {
+        "Limp behind": 0.158,
+        "Raise 5bb": -0.1813,
+        "Fold": -0.1358,
+        "Raise 4bb": 0.1592
+      }
+    },
+    "A3s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.0414,
+        "Fold": -0.5,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.3132
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.0995,
+        "Limp behind": 0.1723,
+        "Raise 4bb": 0.2137,
+        "Fold": -0.2864
+      }
+    },
+    "T8o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "87s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -0.2148,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.1479,
+        "Fold": -1.0752
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.3595,
+        "Raise 5bb": 0.1447,
+        "Limp behind": 0.2116,
+        "Fold": -0.7157
+      }
+    },
+    "22": {
+      "strategy": {
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.0141,
+        "Fold": -0.4129,
+        "Raise 5bb": -0.3064,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.1231,
+        "Raise 4bb": 0.1834,
+        "Fold": -0.2295,
+        "Limp behind": 0.1693
+      }
+    },
+    "A3o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125
+      }
+    },
+    "A6o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -0.337,
+        "Fold": -0.2975,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.0006
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.1782,
+        "Raise 4bb": 0.1588,
+        "Limp behind": 0.1582,
+        "Fold": -0.1387
+      }
+    },
+    "J5o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "85s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -0.324,
+        "Fold": -0.3741,
+        "Raise 4bb": -0.0024,
+        "Limp behind": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.1727,
+        "Fold": -0.199,
+        "Limp behind": 0.1751,
+        "Raise 5bb": -0.1489
+      }
+    },
+    "T2s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "52s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "T3o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "J8o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "A4s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.3082,
+        "Raise 5bb": -0.3456,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.0096
+      },
+      "ev_normalized": {
+        "Fold": -0.1423,
+        "Raise 4bb": 0.1659,
+        "Raise 5bb": -0.1798,
+        "Limp behind": 0.1563
+      }
+    },
+    "88": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.0227,
+        "Raise 5bb": 0.0,
+        "Limp behind": -0.5934,
+        "Fold": -2.7576
+      },
+      "ev_normalized": {
+        "Fold": -1.9142,
+        "Limp behind": 0.25,
+        "Raise 5bb": 0.8434,
+        "Raise 4bb": 0.8207
+      }
+    },
+    "AQo": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.1959,
+        "Raise 5bb": -0.2014,
+        "Fold": -1.2378,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": 0.2074,
+        "Fold": -0.829,
+        "Limp behind": 0.2129,
+        "Raise 4bb": 0.4088
+      }
+    },
+    "Q7s": {
+      "strategy": {
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.6818,
+        "Raise 5bb": -0.2806,
+        "Limp behind": -0.1021,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.0145,
+        "Limp behind": 0.164,
+        "Raise 4bb": 0.2661,
+        "Fold": -0.4157
+      }
+    },
+    "62s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "Q3o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "KK": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.4739,
+        "Limp behind": -1.5873,
+        "Fold": -5.9316,
+        "Raise 5bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": 1.9982,
+        "Raise 4bb": 1.5243,
+        "Limp behind": 0.4109,
+        "Fold": -3.9334
+      }
+    },
+    "J6o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "K6o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "32o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125
+      }
+    },
+    "T5o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "43o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "A2s": {
+      "strategy": {
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.156,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.1876,
+        "Raise 5bb": -0.2316
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.3938,
+        "Fold": -0.7622,
+        "Raise 5bb": 0.1622,
+        "Limp behind": 0.2062
+      }
+    },
+    "86o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "62o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "KQo": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.0944,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.171,
+        "Raise 5bb": -0.2254
+      },
+      "ev_normalized": {
+        "Raise 5bb": 0.1473,
+        "Raise 4bb": 0.3727,
+        "Fold": -0.7217,
+        "Limp behind": 0.2017
+      }
+    },
+    "T7s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 1.0,
+        "Fold": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.1977,
+        "Raise 4bb": -0.0181,
+        "Raise 5bb": -0.3706,
+        "Limp behind": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.224,
+        "Limp behind": 0.1466,
+        "Fold": -0.0511,
+        "Raise 4bb": 0.1285
+      }
+    },
+    "A5o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp behind": 1.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.1915,
+        "Raise 5bb": -0.3735,
+        "Limp behind": 0.0,
+        "Raise 4bb": -0.0124
+      },
+      "ev_normalized": {
+        "Fold": -0.0472,
+        "Limp behind": 0.1443,
+        "Raise 4bb": 0.1319,
+        "Raise 5bb": -0.2292
+      }
+    },
+    "K9o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp behind": 1.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.0076,
+        "Raise 5bb": -0.3539,
+        "Fold": -0.2936,
+        "Limp behind": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -0.1298,
+        "Limp behind": 0.1638,
+        "Raise 4bb": 0.1562,
+        "Raise 5bb": -0.1901
+      }
+    },
+    "J2o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "87o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "J7s": {
+      "strategy": {
+        "Limp behind": 1.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": 0.0,
+        "Raise 4bb": -0.0118,
+        "Fold": -0.1917,
+        "Raise 5bb": -0.3659
+      },
+      "ev_normalized": {
+        "Fold": -0.0494,
+        "Limp behind": 0.1424,
+        "Raise 4bb": 0.1306,
+        "Raise 5bb": -0.2236
+      }
+    },
+    "94o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "J3s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "66": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -0.2696,
+        "Limp behind": -0.1228,
+        "Fold": -0.7656,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Limp behind": 0.1667,
+        "Fold": -0.4761,
+        "Raise 5bb": 0.0199,
+        "Raise 4bb": 0.2895
+      }
+    },
+    "K2o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125
+      }
+    },
+    "J5s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "Q5s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125
+      }
+    },
+    "54o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "63s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "96s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -0.0852,
+        "Limp behind": -0.3122,
+        "Fold": -1.7836,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -1.2384,
+        "Raise 4bb": 0.5453,
+        "Raise 5bb": 0.4601,
+        "Limp behind": 0.2331
+      }
+    },
+    "75s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -0.3167,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.0104,
+        "Fold": -0.4147
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.1312,
+        "Fold": -0.2293,
+        "Raise 4bb": 0.1855,
+        "Limp behind": 0.1751
+      }
+    },
+    "TT": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.0776,
+        "Limp behind": -0.2872,
+        "Fold": -1.8501
+      },
+      "ev_normalized": {
+        "Raise 5bb": 0.4761,
+        "Fold": -1.2964,
+        "Raise 4bb": 0.5537,
+        "Limp behind": 0.2665
+      }
+    },
+    "83s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "93o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "K7o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "54s": {
+      "strategy": {
+        "Limp behind": 1.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": 0.0,
+        "Fold": -0.1674,
+        "Raise 4bb": -0.059,
+        "Raise 5bb": -0.4232
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.1034,
+        "Raise 5bb": -0.2608,
+        "Limp behind": 0.1624,
+        "Fold": -0.005
+      }
+    },
+    "99": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0,
+        "Fold": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.7397,
+        "Raise 5bb": -0.1226,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.2672
+      },
+      "ev_normalized": {
+        "Limp behind": 0.2652,
+        "Raise 4bb": 0.5324,
+        "Fold": -1.2073,
+        "Raise 5bb": 0.4098
+      }
+    },
+    "A9s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.6197,
+        "Limp behind": -0.0767,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.2942
+      },
+      "ev_normalized": {
+        "Limp behind": 0.171,
+        "Raise 5bb": -0.0466,
+        "Raise 4bb": 0.2477,
+        "Fold": -0.3721
+      }
+    },
+    "95s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625
+      }
+    },
+    "84s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Fold": 0.625
+      }
+    },
+    "75o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "A8s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.2262,
+        "Raise 5bb": -0.1998,
+        "Raise 4bb": 0.0,
+        "Fold": -1.2339
+      },
+      "ev_normalized": {
+        "Limp behind": 0.1888,
+        "Raise 5bb": 0.2152,
+        "Raise 4bb": 0.415,
+        "Fold": -0.8189
+      }
+    },
+    "96o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "83o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "T6o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "K5s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": 0.0,
+        "Fold": -0.559,
+        "Limp behind": -0.0772,
+        "Raise 5bb": -0.306
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.0704,
+        "Raise 4bb": 0.2356,
+        "Fold": -0.3235,
+        "Limp behind": 0.1584
+      }
+    },
+    "T9s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.4843,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.0449,
+        "Raise 5bb": -0.3008
+      },
+      "ev_normalized": {
+        "Fold": -0.2768,
+        "Raise 4bb": 0.2075,
+        "Limp behind": 0.1626,
+        "Raise 5bb": -0.0933
+      }
+    },
+    "A7o": {
+      "strategy": {
+        "Raise 4bb": 1.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.158,
+        "Raise 5bb": -0.2588,
+        "Fold": -0.8712,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -0.5492,
+        "Limp behind": 0.164,
+        "Raise 5bb": 0.0632,
+        "Raise 4bb": 0.322
+      }
+    },
+    "JJ": {
+      "strategy": {
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -2.1558,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.3583,
+        "Raise 5bb": -0.0212
+      },
+      "ev_normalized": {
+        "Raise 5bb": 0.6126,
+        "Limp behind": 0.2755,
+        "Raise 4bb": 0.6338,
+        "Fold": -1.522
+      }
+    },
+    "42s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125
+      }
+    },
+    "73o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "94s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625
+      }
+    },
+    "T4o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "K3o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125
+      }
+    },
+    "K7s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -0.2035,
+        "Fold": -1.1948,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.2069
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.4013,
+        "Raise 5bb": 0.1978,
+        "Fold": -0.7935,
+        "Limp behind": 0.1944
+      }
+    },
+    "J4s": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625
+      }
+    },
+    "65o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625
+      }
+    },
+    "33": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.6619,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.1197,
+        "Raise 5bb": -0.279
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.0139,
+        "Raise 4bb": 0.2652,
+        "Fold": -0.3968,
+        "Limp behind": 0.1455
+      }
+    },
+    "AQs": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.2611,
+        "Raise 5bb": -0.1591,
+        "Fold": -1.5196,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -1.0347,
+        "Raise 4bb": 0.485,
+        "Limp behind": 0.2239,
+        "Raise 5bb": 0.3258
+      }
+    },
+    "52o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Limp behind": 0.125,
+        "Fold": 0.625
+      }
+    },
+    "AJo": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.3241,
+        "Limp behind": -0.0252,
+        "Fold": -0.4022
+      },
+      "ev_normalized": {
+        "Fold": -0.2143,
+        "Raise 4bb": 0.1879,
+        "Limp behind": 0.1627,
+        "Raise 5bb": -0.1362
+      }
+    },
+    "95o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625
+      }
+    },
+    "KJs": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 4bb": 0.0,
+        "Fold": -0.6347,
+        "Limp behind": -0.0752,
+        "Raise 5bb": -0.2928
+      },
+      "ev_normalized": {
+        "Limp behind": 0.1755,
+        "Fold": -0.384,
+        "Raise 4bb": 0.2507,
+        "Raise 5bb": -0.0421
+      }
+    },
+    "73s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Limp behind": -0.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 5bb": -0.625,
+        "Fold": 0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "K3s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 4bb": -0.75,
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Raise 5bb": -0.625
+      }
+    },
+    "53o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Fold": 0.625,
+        "Raise 4bb": -0.125
+      }
+    },
+    "AKo": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.6249,
+        "Raise 5bb": -0.1381,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.2201
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.4958,
+        "Limp behind": 0.2757,
+        "Fold": -1.1291,
+        "Raise 5bb": 0.3577
+      }
+    },
+    "A6s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.587,
+        "Raise 4bb": 0.0,
+        "Limp behind": -0.0684,
+        "Raise 5bb": -0.2951
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.0575,
+        "Fold": -0.3494,
+        "Raise 4bb": 0.2376,
+        "Limp behind": 0.1692
+      }
+    },
+    "QJs": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 4bb": 1.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.4353,
+        "Limp behind": -0.037,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.3163
+      },
+      "ev_normalized": {
+        "Fold": -0.2382,
+        "Limp behind": 0.1601,
+        "Raise 5bb": -0.1192,
+        "Raise 4bb": 0.1972
+      }
+    },
+    "AA": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Fold": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -6.2245,
+        "Limp behind": -1.7175,
+        "Raise 4bb": -0.4808,
+        "Raise 5bb": 0.0
+      },
+      "ev_normalized": {
+        "Limp behind": 0.3882,
+        "Fold": -4.1188,
+        "Raise 4bb": 1.6249,
+        "Raise 5bb": 2.1057
+      }
+    },
+    "J7o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75,
+        "Fold": 0.0,
+        "Limp behind": -0.5
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "T9o": {
+      "strategy": {
+        "Raise 4bb": 0.0,
+        "Limp behind": 1.0,
+        "Fold": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.2191,
+        "Raise 4bb": -0.0092,
+        "Limp behind": 0.0,
+        "Raise 5bb": -0.3565
+      },
+      "ev_normalized": {
+        "Fold": -0.0729,
+        "Limp behind": 0.1462,
+        "Raise 5bb": -0.2103,
+        "Raise 4bb": 0.137
+      }
+    },
+    "J3o": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.625,
+        "Raise 4bb": -0.125,
+        "Fold": 0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "Q8s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.1161,
+        "Fold": -0.8048,
+        "Raise 5bb": -0.2605,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 4bb": 0.2954,
+        "Fold": -0.5095,
+        "Raise 5bb": 0.0348,
+        "Limp behind": 0.1793
+      }
+    },
+    "KTs": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.071,
+        "Raise 5bb": -0.3023,
+        "Fold": -0.5862,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Limp behind": 0.1689,
+        "Raise 4bb": 0.2399,
+        "Fold": -0.3463,
+        "Raise 5bb": -0.0624
+      }
+    },
+    "K9s": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.6033,
+        "Raise 4bb": 0.0,
+        "Raise 5bb": -0.297,
+        "Limp behind": -0.069
+      },
+      "ev_normalized": {
+        "Fold": -0.361,
+        "Raise 4bb": 0.2423,
+        "Raise 5bb": -0.0547,
+        "Limp behind": 0.1733
+      }
+    },
+    "QTo": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": 0.0,
+        "Raise 5bb": -0.4312,
+        "Raise 4bb": -0.052,
+        "Fold": -0.0923
+      },
+      "ev_normalized": {
+        "Fold": 0.0516,
+        "Raise 4bb": 0.0919,
+        "Limp behind": 0.1439,
+        "Raise 5bb": -0.2873
+      }
+    },
+    "97o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp behind": -0.5,
+        "Raise 5bb": -1.25,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 4bb": -0.125,
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125
+      }
+    },
+    "43s": {
+      "strategy": {
+        "Limp behind": 0.0,
+        "Fold": 1.0,
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp behind": -0.1894,
+        "Raise 4bb": -0.3306,
+        "Raise 5bb": -0.7629
+      },
+      "ev_normalized": {
+        "Limp behind": 0.1313,
+        "Raise 5bb": -0.4422,
+        "Raise 4bb": -0.0099,
+        "Fold": 0.3207
+      }
+    },
+    "K5o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 4bb": 0.0,
+        "Limp behind": 0.0,
+        "Raise 5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 5bb": -1.25,
+        "Limp behind": -0.5,
+        "Fold": 0.0,
+        "Raise 4bb": -0.75
+      },
+      "ev_normalized": {
+        "Fold": 0.625,
+        "Raise 5bb": -0.625,
+        "Limp behind": 0.125,
+        "Raise 4bb": -0.125
+      }
+    },
+    "A9o": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Limp behind": 0.0,
+        "Fold": 0.0,
+        "Raise 4bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp behind": -0.0047,
+        "Fold": -0.2978,
+        "Raise 5bb": -0.3406,
+        "Raise 4bb": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -0.137,
+        "Raise 5bb": -0.1798,
+        "Limp behind": 0.1561,
+        "Raise 4bb": 0.1608
+      }
+    },
+    "JTo": {
+      "strategy": {
+        "Raise 5bb": 0.0,
+        "Raise 4bb": 0.0,
+        "Fold": 1.0,
+        "Limp behind": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp behind": -0.0243,
+        "Raise 5bb": -0.5187,
+        "Raise 4bb": -0.1158
+      },
+      "ev_normalized": {
+        "Raise 5bb": -0.354,
+        "Raise 4bb": 0.0489,
+        "Fold": 0.1647,
+        "Limp behind": 0.1404
+      }
+    }
+  }
+}

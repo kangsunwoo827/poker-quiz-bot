@@ -1,832 +1,322 @@
 #!/usr/bin/env python3
-import asyncio
+"""GTO Preflop Quiz Telegram Bot."""
 import logging
-from datetime import datetime, timedelta
-from typing import Optional
+from io import BytesIO
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
 from telegram.ext import (
     Application, CommandHandler, CallbackQueryHandler, ContextTypes
 )
 from telegram.constants import ParseMode
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from apscheduler.triggers.cron import CronTrigger
 
-from config import (
-    TELEGRAM_BOT_TOKEN, QUIZ_TIMES_UTC, EXPLANATION_TIMES_UTC
-)
+from config import TELEGRAM_BOT_TOKEN
 from quiz import QuizManager
-from score import ScoreManager
-from persistence import load_state, save_state, format_time_until_explanation
+from bankroll import BankrollManager
+from chart import generate_range_chart
+from persistence import load_state, save_state
 
-# Logging
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO
 )
 logger = logging.getLogger(__name__)
 
-# Global managers
 quiz_manager = QuizManager()
-score_manager = ScoreManager()
+bankroll_manager = BankrollManager()
 
-# Load persisted state
 _state = load_state()
-
-# Store chat_id for scheduled quizzes
 active_chats: set[int] = set(_state.get("active_chats", []))
 
-# Store users who started bot (can receive DM)
-dm_enabled_users: set[int] = set(_state.get("dm_enabled_users", []))
-
-# Current active quiz per chat
-active_quiz_messages: dict[int, dict] = {}  # chat_id -> {"message_id": x, "question": q}
-
-# Skip votes per chat: chat_id -> {"votes": {user_id: bool}, "message_id": int}
-skip_votes: dict[int, dict] = {}
-
-# Restore quiz_manager state
-quiz_manager.used_questions = set(_state.get("used_questions", []))
-quiz_manager.user_answers = {int(k): v for k, v in _state.get("user_answers", {}).items()}
-
-# Restore current question if exists
-_current_q_id = _state.get("current_question_id")
-if _current_q_id:
-    for q in quiz_manager.questions:
-        if q.id == _current_q_id:
-            quiz_manager.current_question = q
-            break
-
-# Store last question for /explain command
-last_question = None
-_last_q_id = _state.get("last_question_id")
-if _last_q_id:
-    for q in quiz_manager.questions:
-        if q.id == _last_q_id:
-            last_question = q
-            break
-
-logger.info(f"Loaded state: {len(active_chats)} chats, {len(dm_enabled_users)} DM users, {len(quiz_manager.used_questions)} used questions")
+# Per-user pending quiz: user_id -> QuizQuestion
+pending_quizzes: dict[int, object] = {}
 
 
 def escape_html(text: str) -> str:
-    """Escape HTML special characters"""
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /start command"""
     user_id = update.effective_user.id
     chat_id = update.effective_chat.id
-    
-    if update.effective_chat.type == "private":
-        dm_enabled_users.add(user_id)
-        save_state(active_chats, dm_enabled_users)
-        await update.message.reply_text(
-            "🃏 <b>SunPokerQuizBot</b>에 오신 것을 환영합니다!\n\n"
-            "이제 퀴즈 결과를 DM으로 받을 수 있습니다.\n"
-            "그룹에서 퀴즈에 참여하세요!",
-            parse_mode=ParseMode.HTML
-        )
-    else:
-        active_chats.add(chat_id)
-        save_state(active_chats, dm_enabled_users)
-        
-        time_str = format_time_until_explanation()
-        await update.message.reply_text(
-            "🃏 <b>SunPokerQuizBot</b> 활성화!\n\n"
-            "<b>퀴즈 시간:</b>\n"
-            "• 오전 6시 (KST)\n"
-            "• 오후 6시 (KST)\n\n"
-            "<b>명령어:</b>\n"
-            "/quiz - 현재 퀴즈 보기\n"
-            "/next - 해설 + 다음 문제\n"
-            "/explain - 이전 문제 해설\n"
-            "/score - 내 점수\n"
-            "/leaderboard - 순위표\n\n"
-            f"⏰ 다음 해설까지: <b>{time_str}</b>",
-            parse_mode=ParseMode.HTML
-        )
+    username = update.effective_user.username or update.effective_user.first_name or str(user_id)
+
+    active_chats.add(chat_id)
+    save_state(active_chats)
+    bankroll_manager.get_or_create_user(user_id, username)
+
+    available = quiz_manager.get_available_scenarios()
+    scenario_count = len(available)
+
+    await update.message.reply_text(
+        "<b>GTO Preflop Quiz Trainer</b>\n\n"
+        f"Scenarios loaded: {scenario_count}\n"
+        "Starting bankroll: 100.0bb\n\n"
+        "<b>Commands:</b>\n"
+        "/quiz (/q) - Get a quiz\n"
+        "/stats - Your bankroll & accuracy\n"
+        "/leaderboard - Rankings\n"
+        "/help - How to play",
+        parse_mode=ParseMode.HTML
+    )
 
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /help command - show poker terms"""
     await update.message.reply_text(
-        "🃏 <b>Poker Quiz Bot - 용어 설명</b>\n\n"
-        
-        "<b>📍 포지션</b>\n"
-        "• <b>UTG</b> (Under The Gun): 빅블라인드 다음, 첫 액션\n"
-        "• <b>MP</b> (Middle Position): 중간 위치\n"
-        "• <b>CO</b> (Cutoff): 버튼 오른쪽\n"
-        "• <b>BTN</b> (Button): 딜러 위치, 가장 유리\n"
-        "• <b>SB</b> (Small Blind): 스몰 블라인드\n"
-        "• <b>BB</b> (Big Blind): 빅 블라인드\n"
-        "• <b>IP</b>: In Position (유리한 위치)\n"
-        "• <b>OOP</b>: Out of Position (불리한 위치)\n\n"
-        
-        "<b>🎯 액션</b>\n"
-        "• <b>Open/Raise</b>: 첫 번째 레이즈\n"
-        "• <b>3-bet</b>: 오픈에 대한 리레이즈\n"
-        "• <b>4-bet</b>: 3-bet에 대한 리레이즈\n"
-        "• <b>Cbet</b>: 프리플랍 레이저의 플랍 베팅\n"
-        "• <b>Donk bet</b>: 콜러가 먼저 베팅\n"
-        "• <b>Check-raise</b>: 체크 후 레이즈\n\n"
-        
-        "<b>🃏 핸드 & 보드</b>\n"
-        "• <b>Suited (s)</b>: 같은 무늬 (예: AKs)\n"
-        "• <b>Offsuit (o)</b>: 다른 무늬 (예: AKo)\n"
-        "• <b>Overpair</b>: 보드보다 높은 포켓페어\n"
-        "• <b>Set</b>: 포켓페어 + 보드 = 트리플\n"
-        "• <b>Dry board</b>: 드로우 없는 보드\n"
-        "• <b>Wet board</b>: 드로우 많은 보드\n\n"
-        
-        "<b>🎰 Draws & Outs</b>\n"
-        "• <b>Outs</b>: 핸드 완성에 필요한 남은 카드 수\n"
-        "• <b>NFD</b>: Nut Flush Draw (A높이 FD, 9 outs)\n"
-        "• <b>FD</b>: Flush Draw (플러시드로우, 9 outs)\n"
-        "• <b>OESD</b>: Open-Ended Straight Draw (8 outs)\n"
-        "• <b>Gutshot</b>: 속 스트레이트 (4 outs)\n"
-        "• <b>Combo draw</b>: FD + OESD 등 (12+ outs)\n"
-        "• <b>Outs → 확률</b>: 9→35%, 8→31%, 4→16%\n\n"
-        
-        "<b>📊 전략 용어</b>\n"
-        "• <b>GTO</b>: Game Theory Optimal (최적 전략)\n"
-        "• <b>Equity</b>: 승률\n"
-        "• <b>EV</b>: Expected Value (기대값)\n"
-        "• <b>SPR</b>: Stack to Pot Ratio\n"
-        "• <b>Range</b>: 가능한 핸드 범위\n"
-        "• <b>Blocker</b>: 상대 핸드 확률 낮추는 카드\n"
-        "• <b>Fold equity</b>: 폴드시켜 얻는 가치\n\n"
-        
-        "<b>📈 Range Table 읽는 법</b>\n"
-        "• <b>R</b> = Raise (오픈)\n"
-        "• <b>3</b> = 3-bet\n"
-        "• <b>4</b> = 4-bet\n"
-        "• <b>C</b> = Call\n"
-        "• <b>.</b> = Fold",
+        "<b>GTO Preflop Quiz - How to Play</b>\n\n"
+        "<b>Quiz:</b>\n"
+        "Each question shows a preflop scenario with your hand.\n"
+        "Pick the GTO-optimal action from the buttons.\n\n"
+        "<b>Scoring:</b>\n"
+        "- <b>Correct</b>: GTO frequency &gt; 0 for your action\n"
+        "- <b>Bankroll</b>: Changes by normalized EV\n"
+        "  (random play = 0, GTO play = positive)\n"
+        "- Start at 100bb, grow by playing GTO!\n\n"
+        "<b>EV Table (after answer):</b>\n"
+        "- <b>vs Best</b>: EV loss vs optimal (0 = best)\n"
+        "- <b>Bankroll</b>: Actual bankroll change\n\n"
+        "<b>Positions:</b>\n"
+        "UTG / MP / CO / BTN / SB / BB\n\n"
+        "<b>Actions:</b>\n"
+        "Fold / Call / Raise / 3bet / 4bet / All-in / Limp / Squeeze",
         parse_mode=ParseMode.HTML
     )
-
-
-async def cancel_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /cancel command - cancel/end current quiz"""
-    chat_id = update.effective_chat.id
-    
-    question = None
-    
-    # Check active_quiz_messages first
-    if chat_id in active_quiz_messages:
-        question = active_quiz_messages[chat_id]["question"]
-        del active_quiz_messages[chat_id]
-    # Fall back to quiz_manager.current_question
-    elif quiz_manager.current_question:
-        question = quiz_manager.current_question
-    
-    if question:
-        # Clear quiz state
-        quiz_manager.current_question = None
-        quiz_manager.user_answers.clear()
-        
-        # Save cleared state
-        save_state(
-            active_chats, dm_enabled_users,
-            None,  # no current question
-            quiz_manager.used_questions,
-            {}  # clear user answers
-        )
-        
-        await update.message.reply_text(
-            f"🚫 Quiz #{question.id} 종료됨\n\n"
-            f"/quiz 로 새 문제를 받거나, 다음 정규 시간(6시/18시)에 자동 출제됩니다.",
-            parse_mode=ParseMode.HTML
-        )
-    else:
-        await update.message.reply_text("현재 활성화된 퀴즈가 없습니다.")
-
-
-async def send_quiz(chat_id: int, context: ContextTypes.DEFAULT_TYPE, question=None) -> Optional[int]:
-    """Send a quiz to the chat."""
-    try:
-        if question is None:
-            question = quiz_manager.get_random_question()
-        
-        # Create keyboard - options + cancel button
-        keyboard = [
-            [InlineKeyboardButton(opt, callback_data=f"ans_{question.id}_{i}")]
-            for i, opt in enumerate(question.options)
-        ]
-        keyboard.append([InlineKeyboardButton("❌ 취소", callback_data=f"cancel_{question.id}")])
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        # Format question text (HTML)
-        time_str = format_time_until_explanation()
-        
-        text = f"🃏 <b>Poker Quiz #{question.id}</b>\n\n"
-        text += f"<pre>{escape_html(question.situation)}\n\nHero's hand: {question.hand}</pre>\n\n"
-        text += f"⏰ 해설까지: {time_str}\n\n"
-        text += "Your action?"
-        
-        # Send question
-        message = await context.bot.send_message(
-            chat_id=chat_id,
-            text=text,
-            reply_markup=reply_markup,
-            parse_mode=ParseMode.HTML
-        )
-        
-        # Store active quiz
-        active_quiz_messages[chat_id] = {
-            "message_id": message.message_id,
-            "question": question
-        }
-        
-        logger.info(f"Quiz #{question.id} sent to chat {chat_id}")
-        return message.message_id
-        
-    except Exception as e:
-        logger.error(f"Failed to send quiz to {chat_id}: {e}")
-        return None
 
 
 async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /quiz command - shows current active quiz or creates one if none exists"""
-    global last_question
+    user_id = update.effective_user.id
+    username = update.effective_user.username or update.effective_user.first_name or str(user_id)
     chat_id = update.effective_chat.id
+
     active_chats.add(chat_id)
-    save_state(active_chats, dm_enabled_users)
-    
-    # Check if there's an active quiz for this chat
-    if chat_id in active_quiz_messages:
-        # Show existing quiz
-        question = active_quiz_messages[chat_id]["question"]
-        await send_quiz(chat_id, context, question)
-    else:
-        # No active quiz - check if there's a global current question
-        if quiz_manager.current_question is not None:
-            # Use the current global question
-            await send_quiz(chat_id, context, quiz_manager.current_question)
-        else:
-            # Save current as last before creating new
-            if quiz_manager.current_question:
-                last_question = quiz_manager.current_question
-            
-            # Create new quiz (first time or after explanation cleared it)
-            question = quiz_manager.get_random_question()
-            await send_quiz(chat_id, context, question)
-            
-            # Save state
-            save_state(
-                active_chats, dm_enabled_users,
-                question.id,
-                quiz_manager.used_questions,
-                quiz_manager.user_answers,
-                last_question.id if last_question else None
-            )
+    save_state(active_chats)
+    bankroll_manager.get_or_create_user(user_id, username)
+
+    # Get recent history for dedup
+    recent = bankroll_manager.get_recent_history(user_id, 50)
+
+    question = quiz_manager.generate_question(recent_history=recent)
+    if not question:
+        await update.message.reply_text(
+            "No EV data loaded. Add data to data/ev_tables/ first."
+        )
+        return
+
+    pending_quizzes[user_id] = question
+
+    # Build keyboard
+    keyboard = []
+    for i, action in enumerate(question.scenario.actions):
+        keyboard.append([InlineKeyboardButton(
+            action,
+            callback_data=f"a:{question.scenario.id}:{question.hand}:{i}"
+        )])
+
+    text = (
+        f"<b>Preflop Quiz</b>\n\n"
+        f"<code>{escape_html(question.scenario.description)}</code>\n\n"
+        f"Your hand: <b>{escape_html(question.hand_display)}</b>"
+    )
+
+    await update.message.reply_text(
+        text,
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode=ParseMode.HTML
+    )
 
 
 async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle answer button press"""
-    query = update.callback_query
-    
-    user_id = query.from_user.id
-    username = query.from_user.username or query.from_user.first_name or f"User{user_id}"
-    chat_id = query.message.chat_id
-    
-    # Parse callback data
-    try:
-        parts = query.data.split("_")
-        question_id = int(parts[1])
-        answer_index = int(parts[2])
-    except (IndexError, ValueError):
-        await query.answer("오류가 발생했습니다.", show_alert=True)
-        return
-    
-    # Check if this is the current question
-    if chat_id not in active_quiz_messages:
-        await query.answer("이 퀴즈는 이미 종료되었습니다.", show_alert=True)
-        return
-    
-    current_q = active_quiz_messages[chat_id]["question"]
-    if current_q.id != question_id:
-        await query.answer("이 퀴즈는 이미 종료되었습니다.", show_alert=True)
-        return
-    
-    # Check if already answered
-    if user_id in quiz_manager.user_answers:
-        await query.answer("이미 답변하셨습니다!", show_alert=True)
-        return
-    
-    # Record answer
-    is_correct = quiz_manager.record_answer(user_id, answer_index)
-    
-    # Record to score DB
-    score_manager.record_answer(
-        user_id, username,
-        question_id,
-        answer_index, is_correct
-    )
-    
-    # Save user answers to persist
-    save_state(
-        active_chats, dm_enabled_users,
-        current_q.id,
-        quiz_manager.used_questions,
-        quiz_manager.user_answers
-    )
-    
-    # Auto-next removed - use /next command instead
-    
-    # Prepare feedback
-    correct_answer = current_q.options[current_q.answer]
-    selected_answer = current_q.options[answer_index]
-    
-    if is_correct:
-        feedback = "✅ 정답!"
-        popup = "✅ 정답입니다!"
-    else:
-        feedback = "❌ 오답"
-        popup = "❌ 오답입니다. 해설에서 정답을 확인하세요."
-    
-    await query.answer(popup)
-    
-    # Try DM, fallback to group reply
-    dm_sent = False
-    if user_id in dm_enabled_users:
-        try:
-            await context.bot.send_message(
-                chat_id=user_id,
-                text=f"{feedback}\n\n다음 퀴즈 10분 전에 상세 해설이 공개됩니다.",
-                parse_mode=ParseMode.HTML
-            )
-            dm_sent = True
-        except Exception as e:
-            logger.warning(f"DM failed for {user_id}: {e}")
-            dm_enabled_users.discard(user_id)
-    
-    if not dm_sent:
-        try:
-            reply_msg = await query.message.reply_text(
-                f"@{username}: {feedback}",
-                parse_mode=ParseMode.HTML
-            )
-            # Delete after 10 seconds
-            context.job_queue.run_once(
-                delete_message,
-                timedelta(seconds=10),
-                data={"chat_id": chat_id, "message_id": reply_msg.message_id}
-            )
-        except Exception as e:
-            logger.error(f"Reply failed: {e}")
-    
-    logger.info(f"User {username} answered Q#{question_id}: {'correct' if is_correct else 'wrong'}")
-
-
-async def handle_cancel_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle cancel button press - delete the quiz message"""
-    query = update.callback_query
-    chat_id = query.message.chat_id
-    message_id = query.message.message_id
-    
-    # Delete the message
-    try:
-        await query.message.delete()
-        await query.answer("퀴즈 메시지가 삭제되었습니다.")
-        
-        # Remove from active_quiz_messages if this was the active one
-        if chat_id in active_quiz_messages:
-            if active_quiz_messages[chat_id].get("message_id") == message_id:
-                del active_quiz_messages[chat_id]
-        
-        logger.info(f"Quiz message deleted in chat {chat_id}")
-    except Exception as e:
-        logger.error(f"Failed to delete quiz message: {e}")
-        await query.answer("메시지 삭제 실패", show_alert=True)
-
-
-async def delete_message(context: ContextTypes.DEFAULT_TYPE):
-    """Delete a message"""
-    try:
-        data = context.job.data
-        await context.bot.delete_message(
-            chat_id=data["chat_id"],
-            message_id=data["message_id"]
-        )
-    except Exception:
-        pass
-
-
-async def handle_skip_vote(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle skip vote button press"""
-    global last_question
     query = update.callback_query
     user_id = query.from_user.id
-    username = query.from_user.username or query.from_user.first_name or f"User{user_id}"
-    chat_id = query.message.chat_id
-    
-    # Parse callback data: skip_yes_<qid> or skip_no_<qid>
-    parts = query.data.split("_")
-    vote_yes = parts[1] == "yes"
-    question_id = int(parts[2])
-    
-    # Check if vote is still valid
-    if chat_id not in skip_votes:
-        await query.answer("투표가 종료되었습니다.", show_alert=True)
+    username = query.from_user.username or query.from_user.first_name or str(user_id)
+
+    # Parse callback: a:scenario_id:hand:action_index
+    parts = query.data.split(":")
+    if len(parts) != 4:
+        await query.answer("Invalid data.", show_alert=True)
         return
-    
-    vote_data = skip_votes[chat_id]
-    if vote_data.get("question_id") != question_id:
-        await query.answer("이 투표는 종료되었습니다.", show_alert=True)
-        return
-    
-    # Record vote
-    vote_data["votes"][user_id] = vote_yes
-    logger.info(f"Vote recorded: user={user_id} ({username}), vote={'yes' if vote_yes else 'no'}, all_votes={vote_data['votes']}")
-    
-    # Count votes
-    yes_count = sum(1 for v in vote_data["votes"].values() if v)
-    no_count = sum(1 for v in vote_data["votes"].values() if not v)
-    total_voters = len(vote_data["votes"])
-    
-    # Check for majority using actual chat member count
+
+    _, scenario_id, hand, action_idx_str = parts
     try:
-        member_count = await context.bot.get_chat_member_count(chat_id)
-        # Subtract 1 for the bot itself
-        actual_members = member_count - 1
-    except Exception as e:
-        logger.warning(f"Failed to get chat member count: {e}, falling back to leaderboard")
-        actual_members = len(score_manager.get_leaderboard_user_ids())
-    
-    required_majority = actual_members // 2 + 1
-    
-    logger.info(f"Skip vote check: yes={yes_count}, no={no_count}, members={actual_members}, required={required_majority}")
-    logger.info(f"Condition check: {yes_count} >= {required_majority} = {yes_count >= required_majority}")
-    
-    if yes_count >= required_majority:
-        # Majority reached - proceed to next question
-        await query.answer("⏭️ 과반수 찬성! 다음 문제로 넘어갑니다.")
-        
-        # Delete vote message
-        try:
-            await query.message.delete()
-        except Exception:
-            pass
-        
-        # Clear vote data
-        del skip_votes[chat_id]
-        
-        # Show explanation and move to next
-        current_q = quiz_manager.current_question
-        if current_q:
-            await send_explanation(chat_id, current_q, context)
-            last_question = current_q
-            quiz_manager.user_answers.clear()
-            
-            # Delete old quiz message
-            if chat_id in active_quiz_messages:
-                try:
-                    await context.bot.delete_message(
-                        chat_id=chat_id,
-                        message_id=active_quiz_messages[chat_id]["message_id"]
-                    )
-                except Exception:
-                    pass
-                del active_quiz_messages[chat_id]
-            
-            # Get and send next question
-            new_question = quiz_manager.get_random_question()
-            save_state(
-                active_chats, dm_enabled_users,
-                new_question.id,
-                quiz_manager.used_questions,
-                quiz_manager.user_answers,
-                last_question.id if last_question else None
-            )
-            await send_quiz(chat_id, context, new_question)
+        action_idx = int(action_idx_str)
+    except ValueError:
+        await query.answer("Invalid data.", show_alert=True)
         return
-    
-    # Update vote message
-    vote_emoji = "⏭️" if vote_yes else "⏸️"
-    await query.answer(f"{vote_emoji} 투표 완료!")
-    
-    # Get not answered users for display
-    leaderboard_users = score_manager.get_leaderboard_user_ids()
-    answered_users = {int(uid) for uid in quiz_manager.user_answers.keys()}
-    not_answered = leaderboard_users - answered_users
-    not_answered_names = score_manager.get_usernames(not_answered)
-    names_str = ", ".join([f"@{name}" for name in not_answered_names]) if not_answered_names else "알 수 없음"
-    
-    keyboard = [
-        [
-            InlineKeyboardButton(f"⏭️ 넘어가기 ({yes_count})", callback_data=f"skip_yes_{question_id}"),
-            InlineKeyboardButton(f"⏸️ 기다리기 ({no_count})", callback_data=f"skip_no_{question_id}"),
-        ]
+
+    # Get the pending question
+    question = pending_quizzes.get(user_id)
+    if not question or question.scenario.id != scenario_id or question.hand != hand:
+        await query.answer("This quiz has expired. Use /quiz for a new one.", show_alert=True)
+        return
+
+    scenario = question.scenario
+    if action_idx < 0 or action_idx >= len(scenario.actions):
+        await query.answer("Invalid action.", show_alert=True)
+        return
+
+    chosen_action = scenario.actions[action_idx]
+
+    # Determine correctness and EV
+    ev_vs_best = question.ev_vs_best
+    ev_normalized = question.ev_normalized
+    best_action = question.best_action
+    chosen_ev_vs_best = ev_vs_best.get(chosen_action, 0)
+    chosen_ev_normalized = ev_normalized.get(chosen_action, 0)
+    was_correct = chosen_action in question.correct_actions
+
+    # Record to bankroll
+    result = bankroll_manager.record_answer(
+        user_id=user_id,
+        username=username,
+        scenario_id=scenario_id,
+        hand=hand,
+        chosen_action=chosen_action,
+        chosen_ev_normalized=chosen_ev_normalized,
+        best_action=best_action,
+        ev_vs_best=chosen_ev_vs_best,
+        was_correct=was_correct,
+    )
+
+    # Remove from pending
+    pending_quizzes.pop(user_id, None)
+
+    # Build result message
+    mark = "OK" if was_correct else "X"
+    lines = [
+        f"<b>{escape_html(hand)} | {escape_html(scenario.name)}</b>\n",
+        f"Your action: {escape_html(chosen_action)} {'<b>OK</b>' if was_correct else '<b>X</b>'}\n",
     ]
-    
+
+    # EV table
+    lines.append("<pre>")
+    lines.append(f"{'Action':<14} {'vs Best':>8} {'Bankroll':>9}")
+    lines.append(f"{'':->14} {'':->8} {'':->9}")
+
+    for action in scenario.actions:
+        ev_b = ev_vs_best.get(action, 0)
+        ev_n = ev_normalized.get(action, 0)
+        marker = " <- You" if action == chosen_action else ""
+        ev_b_str = f"{ev_b:+.2f}" if ev_b != 0 else " 0.00"
+        ev_n_str = f"{ev_n:+.2f}"
+        lines.append(f"{action:<14} {ev_b_str:>8} {ev_n_str:>9}{marker}")
+
+    lines.append("</pre>")
+
+    # Stats line
+    bankroll = result["bankroll"]
+    ev_change = chosen_ev_normalized
+    correct_count = result["correct_count"]
+    total = result["total_questions"]
+    streak = result["streak"]
+
+    sign = "+" if ev_change >= 0 else ""
+    lines.append(
+        f"\n<b>{bankroll:.2f}bb</b> ({sign}{ev_change:.2f})"
+    )
+    lines.append(
+        f"{correct_count}/{total} correct | Streak: {streak}"
+    )
+
+    await query.answer("OK!" if was_correct else "X")
+
+    # Edit original message to remove buttons and show result
     await query.edit_message_text(
-        f"아직 안 푼 사람: {names_str}\n\n"
-        f"🗳️ 넘어갈까요? (과반수 {required_majority}명 찬성 시 진행)\n"
-        f"찬성: {yes_count} / 반대: {no_count}",
-        reply_markup=InlineKeyboardMarkup(keyboard)
-    )
-
-
-async def scheduled_quiz(context: ContextTypes.DEFAULT_TYPE):
-    """Send new quiz to all active chats"""
-    global last_question
-    logger.info("Scheduled quiz triggered")
-    
-    # Save current question as last question before getting new one
-    if quiz_manager.current_question:
-        last_question = quiz_manager.current_question
-    
-    # Get new question (shared across all chats)
-    question = quiz_manager.get_random_question()
-    
-    # Save state with current question, last question, and used questions
-    save_state(
-        active_chats, dm_enabled_users, 
-        question.id, 
-        quiz_manager.used_questions,
-        quiz_manager.user_answers,
-        last_question.id if last_question else None
-    )
-    
-    for chat_id in active_chats.copy():
-        try:
-            await send_quiz(chat_id, context, question)
-        except Exception as e:
-            logger.error(f"Failed scheduled quiz to {chat_id}: {e}")
-            active_chats.discard(chat_id)
-            save_state(active_chats, dm_enabled_users)
-
-
-async def scheduled_explanation(context: ContextTypes.DEFAULT_TYPE):
-    """Send explanation to all active chats"""
-    logger.info("Scheduled explanation triggered")
-    
-    for chat_id in active_chats.copy():
-        if chat_id not in active_quiz_messages:
-            continue
-        
-        question = active_quiz_messages[chat_id]["question"]
-        
-        try:
-            await send_explanation(chat_id, question, context)
-            # Clear active quiz after explanation
-            del active_quiz_messages[chat_id]
-        except Exception as e:
-            logger.error(f"Failed explanation to {chat_id}: {e}")
-
-
-async def send_explanation(chat_id: int, question, context: ContextTypes.DEFAULT_TYPE):
-    """Send explanation for a question"""
-    import re
-    
-    correct_option = question.options[question.answer]
-    
-    # Format explanation with HTML - escape first, then apply formatting
-    explanation_html = escape_html(question.explanation)
-    explanation_html = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', explanation_html)
-    
-    text = f"📖 <b>Quiz #{question.id} 해설</b>\n\n"
-    text += f"<b>정답:</b> {escape_html(correct_option)}\n\n"
-    text += explanation_html
-    
-    # Add range table for preflop questions
-    range_table = quiz_manager.get_range_table(question)
-    if range_table:
-        text += f"\n\n<pre>{escape_html(range_table)}</pre>"
-    
-    if question.terms:
-        text += "\n\n<b>📚 용어 설명</b>\n"
-        for term, definition in question.terms.items():
-            text += f"• <b>{escape_html(term)}</b>: {escape_html(definition)}\n"
-    
-    # Stats
-    total = len(quiz_manager.user_answers)
-    if total > 0:
-        correct_count = sum(1 for a in quiz_manager.user_answers.values() if a == question.answer)
-        pct = int(correct_count / total * 100)
-        text += f"\n📊 정답률: {pct}% ({correct_count}/{total})"
-    
-    await context.bot.send_message(
-        chat_id=chat_id,
-        text=text,
+        "\n".join(lines),
         parse_mode=ParseMode.HTML
     )
-    logger.info(f"Explanation for Q#{question.id} sent to {chat_id}")
 
-
-async def explain_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /explain command - show explanation for last question"""
-    global last_question
-    chat_id = update.effective_chat.id
-    
-    # Show last question's explanation (previous quiz)
-    if last_question:
-        await send_explanation(chat_id, last_question, context)
-    elif quiz_manager.current_question:
-        # If no last question, show current one
-        await update.message.reply_text(
-            "이전 문제가 없습니다. 현재 문제 해설을 보시겠습니까?\n"
-            "현재 문제: /quiz 로 확인"
-        )
-    else:
-        await update.message.reply_text(
-            "표시할 해설이 없습니다.\n/quiz 로 새 문제를 받으세요."
-        )
-
-
-async def next_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /next command - show explanation and move to next question"""
-    global last_question
-    chat_id = update.effective_chat.id
-    user_id = update.effective_user.id
-    
-    current_q = quiz_manager.current_question
-    
-    if not current_q:
-        await update.message.reply_text("현재 문제가 없습니다. /quiz 로 시작하세요.")
-        return
-    
-    # Check if all leaderboard users answered
-    leaderboard_users = score_manager.get_leaderboard_user_ids()
-    # Convert to int for comparison (user_answers keys might be strings)
-    answered_users = {int(uid) for uid in quiz_manager.user_answers.keys()}
-    not_answered = leaderboard_users - answered_users
-    
-    if not_answered:
-        not_answered_names = score_manager.get_usernames(not_answered)
-        answered_count = len(answered_users)
-        total_count = len(leaderboard_users)
-        names_str = ", ".join([f"@{name}" for name in not_answered_names]) if not_answered_names else "알 수 없음"
-        
-        # Get actual member count for majority calculation
-        try:
-            member_count = await context.bot.get_chat_member_count(chat_id)
-            actual_members = member_count - 1  # Subtract bot
-        except Exception:
-            actual_members = total_count
-        required_majority = actual_members // 2 + 1
-        
-        # Clear previous vote if exists
-        if chat_id in skip_votes:
-            try:
-                await context.bot.delete_message(chat_id, skip_votes[chat_id]["message_id"])
-            except Exception:
-                pass
-        
-        # Create vote
-        skip_votes[chat_id] = {"votes": {}, "question_id": current_q.id}
-        
-        keyboard = [
-            [
-                InlineKeyboardButton("⏭️ 넘어가기", callback_data=f"skip_yes_{current_q.id}"),
-                InlineKeyboardButton("⏸️ 기다리기", callback_data=f"skip_no_{current_q.id}"),
-            ]
-        ]
-        
-        msg = await update.message.reply_text(
-            f"아직 안 푼 사람: {names_str} ({answered_count}/{total_count})\n\n"
-            f"🗳️ 넘어갈까요? (과반수 {required_majority}명 찬성 시 진행)\n"
-            f"찬성: 0 / 반대: 0",
-            reply_markup=InlineKeyboardMarkup(keyboard)
-        )
-        skip_votes[chat_id]["message_id"] = msg.message_id
-        return
-    
-    # Show explanation for current question
-    await send_explanation(chat_id, current_q, context)
-    
-    # Move current to last
-    last_question = current_q
-    
-    # Clear answers and get next question
-    quiz_manager.user_answers.clear()
-    
-    # Delete old quiz message if exists
-    if chat_id in active_quiz_messages:
-        try:
-            await context.bot.delete_message(
-                chat_id=chat_id,
-                message_id=active_quiz_messages[chat_id]["message_id"]
+    # Send range chart
+    try:
+        scenario_hands = quiz_manager.get_scenario_hands(scenario_id)
+        if scenario_hands:
+            chart_bytes = generate_range_chart(
+                scenario_hands=scenario_hands,
+                actions=scenario.actions,
+                highlight_hand=hand,
+                title=scenario.name,
             )
-        except Exception:
-            pass
-        del active_quiz_messages[chat_id]
-    
-    # Get and send next question
-    new_question = quiz_manager.get_random_question()
-    save_state(
-        active_chats, dm_enabled_users,
-        new_question.id,
-        quiz_manager.used_questions,
-        quiz_manager.user_answers,
-        last_question.id if last_question else None
-    )
-    await send_quiz(chat_id, context, new_question)
+            await context.bot.send_photo(
+                chat_id=query.message.chat_id,
+                photo=BytesIO(chart_bytes),
+            )
+    except Exception as e:
+        logger.warning(f"Failed to send range chart: {e}")
 
 
-async def score_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /score command"""
+async def stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    stats = score_manager.get_user_stats(user_id)
-    
-    if stats:
-        streak_emoji = "🔥" if stats['streak'] > 0 else ""
-        await update.message.reply_text(
-            f"📊 <b>{escape_html(stats['username'])}님의 성적</b>\n\n"
-            f"정답: {stats['correct']}/{stats['total']} ({stats['accuracy']:.1f}%)\n"
-            f"현재 스트릭: {stats['streak']} {streak_emoji}\n"
-            f"최고 스트릭: {stats['best_streak']} ⭐",
-            parse_mode=ParseMode.HTML
-        )
-    else:
-        await update.message.reply_text("아직 참여 기록이 없습니다.")
+    stats = bankroll_manager.get_user_stats(user_id)
+
+    if not stats:
+        await update.message.reply_text("No stats yet. Use /quiz to start!")
+        return
+
+    streak_str = f" (best: {stats['best_streak']})" if stats['best_streak'] > 0 else ""
+    await update.message.reply_text(
+        f"<b>{escape_html(stats['username'])}</b>\n\n"
+        f"Bankroll: <b>{stats['bankroll']:.2f}bb</b>"
+        f" (best: {stats['best_bankroll']:.2f}bb)\n"
+        f"Correct: {stats['correct_count']}/{stats['total_questions']}"
+        f" ({stats['accuracy']:.1f}%)\n"
+        f"Streak: {stats['streak']}{streak_str}",
+        parse_mode=ParseMode.HTML
+    )
 
 
 async def leaderboard_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle /leaderboard command"""
-    leaders = score_manager.get_leaderboard(10)
-    
+    leaders = bankroll_manager.get_leaderboard(10)
+
     if not leaders:
-        await update.message.reply_text("아직 참여자가 없습니다!")
+        await update.message.reply_text("No players yet!")
         return
-    
-    text = "🏆 <b>리더보드</b>\n\n"
-    medals = ["🥇", "🥈", "🥉"]
-    
-    for i, leader in enumerate(leaders):
-        medal = medals[i] if i < 3 else f"{i+1}."
-        text += f"{medal} <b>{escape_html(leader['username'])}</b> - {leader['correct']}점 ({leader['accuracy']:.0f}%)\n"
-    
-    await update.message.reply_text(text, parse_mode=ParseMode.HTML)
+
+    medals = ["1.", "2.", "3."]
+    lines = ["<b>Leaderboard</b>\n"]
+    for i, p in enumerate(leaders):
+        prefix = medals[i] if i < 3 else f"{i+1}."
+        lines.append(
+            f"{prefix} <b>{escape_html(p['username'])}</b> "
+            f"- {p['bankroll']:.1f}bb "
+            f"({p['accuracy']:.0f}%)"
+        )
+
+    await update.message.reply_text("\n".join(lines), parse_mode=ParseMode.HTML)
 
 
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
-    """Handle errors"""
-    logger.error(f"Exception: {context.error}")
+    logger.error(f"Exception: {context.error}", exc_info=context.error)
 
 
 async def post_init(application):
-    """Set bot commands after initialization"""
     commands = [
-        BotCommand("quiz", "현재 퀴즈 보기"),
-        BotCommand("explain", "이전 문제 해설"),
-        BotCommand("next", "해설 + 다음 문제"),
-        BotCommand("score", "내 점수 확인"),
-        BotCommand("leaderboard", "순위표"),
-        BotCommand("help", "포커 용어 설명"),
+        BotCommand("quiz", "Get a preflop quiz"),
+        BotCommand("q", "Get a preflop quiz"),
+        BotCommand("stats", "Your bankroll & accuracy"),
+        BotCommand("leaderboard", "Rankings"),
+        BotCommand("help", "How to play"),
     ]
     await application.bot.set_my_commands(commands)
     logger.info("Bot commands registered")
 
 
 def main():
-    """Start the bot"""
     if not TELEGRAM_BOT_TOKEN:
         logger.error("TELEGRAM_BOT_TOKEN not set!")
         return
-    
-    # Build application with post_init
+
     application = Application.builder().token(TELEGRAM_BOT_TOKEN).post_init(post_init).build()
-    
-    # Add handlers
+
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(CommandHandler("quiz", quiz_command))
-    # /cancel removed - use cancel button on quiz instead
-    application.add_handler(CommandHandler("score", score_command))
-    application.add_handler(CommandHandler("explain", explain_command))
-    application.add_handler(CommandHandler("next", next_command))
+    application.add_handler(CommandHandler("q", quiz_command))
+    application.add_handler(CommandHandler("stats", stats_command))
     application.add_handler(CommandHandler("leaderboard", leaderboard_command))
-    application.add_handler(CallbackQueryHandler(handle_answer, pattern=r"^ans_\d+_\d+$"))
-    application.add_handler(CallbackQueryHandler(handle_cancel_button, pattern=r"^cancel_\d+$"))
-    application.add_handler(CallbackQueryHandler(handle_skip_vote, pattern=r"^skip_(yes|no)_\d+$"))
+    application.add_handler(CallbackQueryHandler(handle_answer, pattern=r"^a:"))
     application.add_error_handler(error_handler)
-    
-    # Schedule quizzes (06:00, 18:00 KST = 21:00, 09:00 UTC)
-    job_queue = application.job_queue
-    
-    for qt in QUIZ_TIMES_UTC:
-        job_queue.run_daily(
-            scheduled_quiz,
-            time=datetime.strptime(f"{qt['hour']:02d}:{qt['minute']:02d}", "%H:%M").time(),
-            name=f"quiz_{qt['hour']}_{qt['minute']}"
-        )
-    
-    # Schedule explanations (05:50, 17:50 KST = 20:50, 08:50 UTC)
-    for et in EXPLANATION_TIMES_UTC:
-        job_queue.run_daily(
-            scheduled_explanation,
-            time=datetime.strptime(f"{et['hour']:02d}:{et['minute']:02d}", "%H:%M").time(),
-            name=f"explain_{et['hour']}_{et['minute']}"
-        )
-    
-    logger.info("Starting SunPokerQuizBot...")
-    logger.info("Quiz times: 06:00 KST (21:00 UTC), 18:00 KST (09:00 UTC)")
-    logger.info("Explanation times: 05:50 KST (20:50 UTC), 17:50 KST (08:50 UTC)")
-    
+
+    logger.info("Starting GTO Preflop Quiz Bot...")
+    logger.info(f"Scenarios loaded: {len(quiz_manager.get_available_scenarios())}")
+
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 

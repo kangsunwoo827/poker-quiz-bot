@@ -1,0 +1,202 @@
+[
+  {
+    "id": "rfi_utg",
+    "type": "rfi",
+    "name": "UTG RFI",
+    "description": "6-max Cash, 100bb. Folds to Hero in UTG",
+    "hero_position": "UTG",
+    "villain_position": null,
+    "stack_bb": 100,
+    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"]
+  },
+  {
+    "id": "rfi_mp",
+    "type": "rfi",
+    "name": "MP RFI",
+    "description": "6-max Cash, 100bb. Folds to Hero in MP",
+    "hero_position": "MP",
+    "villain_position": null,
+    "stack_bb": 100,
+    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"]
+  },
+  {
+    "id": "rfi_co",
+    "type": "rfi",
+    "name": "CO RFI",
+    "description": "6-max Cash, 100bb. Folds to Hero in CO",
+    "hero_position": "CO",
+    "villain_position": null,
+    "stack_bb": 100,
+    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"]
+  },
+  {
+    "id": "rfi_btn",
+    "type": "rfi",
+    "name": "BTN RFI",
+    "description": "6-max Cash, 100bb. Folds to Hero on BTN",
+    "hero_position": "BTN",
+    "villain_position": null,
+    "stack_bb": 100,
+    "actions": ["Fold", "Limp", "Raise 2bb", "Raise 2.5bb"]
+  },
+  {
+    "id": "rfi_sb",
+    "type": "rfi",
+    "name": "SB RFI",
+    "description": "6-max Cash, 100bb. Folds to Hero in SB",
+    "hero_position": "SB",
+    "villain_position": null,
+    "stack_bb": 100,
+    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"]
+  },
+  {
+    "id": "bb_vs_utg",
+    "type": "vs_open",
+    "name": "BB vs UTG Open",
+    "description": "6-max Cash, 100bb. UTG opens 2.5bb, folds to Hero in BB",
+    "hero_position": "BB",
+    "villain_position": "UTG",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+  },
+  {
+    "id": "bb_vs_mp",
+    "type": "vs_open",
+    "name": "BB vs MP Open",
+    "description": "6-max Cash, 100bb. MP opens 2.5bb, folds to Hero in BB",
+    "hero_position": "BB",
+    "villain_position": "MP",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+  },
+  {
+    "id": "bb_vs_co",
+    "type": "vs_open",
+    "name": "BB vs CO Open",
+    "description": "6-max Cash, 100bb. CO opens 2.5bb, folds to Hero in BB",
+    "hero_position": "BB",
+    "villain_position": "CO",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+  },
+  {
+    "id": "bb_vs_btn",
+    "type": "vs_open",
+    "name": "BB vs BTN Open",
+    "description": "6-max Cash, 100bb. BTN opens 2.5bb, folds to Hero in BB",
+    "hero_position": "BB",
+    "villain_position": "BTN",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "3bet 9bb", "3bet 12bb"]
+  },
+  {
+    "id": "sb_vs_co",
+    "type": "vs_open",
+    "name": "SB vs CO Open",
+    "description": "6-max Cash, 100bb. CO opens 2.5bb, folds to Hero in SB",
+    "hero_position": "SB",
+    "villain_position": "CO",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "3bet 9bb", "3bet 12bb"]
+  },
+  {
+    "id": "sb_vs_btn",
+    "type": "vs_open",
+    "name": "SB vs BTN Open",
+    "description": "6-max Cash, 100bb. BTN opens 2.5bb, folds to Hero in SB",
+    "hero_position": "SB",
+    "villain_position": "BTN",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+  },
+  {
+    "id": "btn_vs_co",
+    "type": "vs_open",
+    "name": "BTN vs CO Open",
+    "description": "6-max Cash, 100bb. CO opens 2.5bb, folds to Hero on BTN",
+    "hero_position": "BTN",
+    "villain_position": "CO",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+  },
+  {
+    "id": "co_vs_utg",
+    "type": "vs_open",
+    "name": "CO vs UTG Open",
+    "description": "6-max Cash, 100bb. UTG opens 2.5bb, folds to Hero in CO",
+    "hero_position": "CO",
+    "villain_position": "UTG",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+  },
+  {
+    "id": "utg_vs_3bet",
+    "type": "vs_3bet",
+    "name": "UTG vs 3bet",
+    "description": "6-max Cash, 100bb. Hero opens 2.5bb in UTG, BB 3bets to 10bb",
+    "hero_position": "UTG",
+    "villain_position": "BB",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "4bet 22bb", "All-in"]
+  },
+  {
+    "id": "co_vs_btn_3bet",
+    "type": "vs_3bet",
+    "name": "CO vs BTN 3bet",
+    "description": "6-max Cash, 100bb. Hero opens 2.5bb in CO, BTN 3bets to 8bb",
+    "hero_position": "CO",
+    "villain_position": "BTN",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "4bet 20bb", "All-in"]
+  },
+  {
+    "id": "btn_vs_bb_3bet",
+    "type": "vs_3bet",
+    "name": "BTN vs BB 3bet",
+    "description": "6-max Cash, 100bb. Hero opens 2.5bb on BTN, BB 3bets to 10bb",
+    "hero_position": "BTN",
+    "villain_position": "BB",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "4bet 20bb", "All-in"]
+  },
+  {
+    "id": "btn_vs_sb_3bet",
+    "type": "vs_3bet",
+    "name": "BTN vs SB 3bet",
+    "description": "6-max Cash, 100bb. Hero opens 2.5bb on BTN, SB 3bets to 10bb",
+    "hero_position": "BTN",
+    "villain_position": "SB",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "4bet 20bb", "All-in"]
+  },
+  {
+    "id": "bb_squeeze",
+    "type": "squeeze",
+    "name": "BB Squeeze",
+    "description": "6-max Cash, 100bb. CO opens 2.5bb, BTN calls, SB folds, Hero in BB",
+    "hero_position": "BB",
+    "villain_position": "CO",
+    "stack_bb": 100,
+    "actions": ["Fold", "Call", "Squeeze 10bb", "Squeeze 12bb"]
+  },
+  {
+    "id": "sb_vs_limp",
+    "type": "vs_limp",
+    "name": "SB vs Limp",
+    "description": "6-max Cash, 100bb. CO limps, BTN folds, Hero in SB",
+    "hero_position": "SB",
+    "villain_position": "CO",
+    "stack_bb": 100,
+    "actions": ["Fold", "Limp behind", "Raise 4bb", "Raise 5bb"]
+  },
+  {
+    "id": "bb_vs_limp",
+    "type": "vs_limp",
+    "name": "BB vs Limp",
+    "description": "6-max Cash, 100bb. CO limps, folds to Hero in BB",
+    "hero_position": "BB",
+    "villain_position": "CO",
+    "stack_bb": 100,
+    "actions": ["Check", "Raise 4bb", "Raise 5bb", "Raise 6bb"]
+  }
+]

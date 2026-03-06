@@ -1,0 +1,3386 @@
+{
+  "scenario_id": "bb_squeeze",
+  "source": "postflop-solver DCFR × 5 flops",
+  "hands": {
+    "A8o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 12bb": -2.0847,
+        "Squeeze 10bb": -1.5721,
+        "Fold": -1.1765
+      },
+      "ev_normalized": {
+        "Call": 1.2083,
+        "Fold": 0.0318,
+        "Squeeze 12bb": -0.8764,
+        "Squeeze 10bb": -0.3638
+      }
+    },
+    "ATs": {
+      "strategy": {
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -1.6802,
+        "Squeeze 10bb": -1.38,
+        "Fold": -1.0263,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.3584,
+        "Call": 1.0216,
+        "Squeeze 12bb": -0.6586,
+        "Fold": -0.0047
+      }
+    },
+    "JTo": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -2.4109,
+        "Call": -0.3362,
+        "Fold": 0.0,
+        "Squeeze 10bb": -1.621
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.529,
+        "Squeeze 12bb": -1.3189,
+        "Fold": 1.092,
+        "Call": 0.7558
+      }
+    },
+    "87o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 10bb": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.8397,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": -0.2669,
+        "Fold": -2.4929
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 0.8999,
+        "Fold": -1.593,
+        "Call": 0.0602,
+        "Squeeze 12bb": 0.633
+      }
+    },
+    "A4s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 10bb": -0.9419,
+        "Squeeze 12bb": -1.3122,
+        "Fold": -0.3634
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.6578,
+        "Fold": 0.291,
+        "Call": 0.6544,
+        "Squeeze 10bb": -0.2875
+      }
+    },
+    "Q6s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.6729,
+        "Squeeze 10bb": -0.3897,
+        "Call": 0.0,
+        "Squeeze 12bb": -0.8113
+      },
+      "ev_normalized": {
+        "Fold": -0.2044,
+        "Call": 0.4685,
+        "Squeeze 10bb": 0.0788,
+        "Squeeze 12bb": -0.3428
+      }
+    },
+    "76s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.1704,
+        "Fold": -0.5328,
+        "Call": 0.0,
+        "Squeeze 12bb": -0.7158
+      },
+      "ev_normalized": {
+        "Call": 0.3548,
+        "Squeeze 10bb": 0.1844,
+        "Fold": -0.1781,
+        "Squeeze 12bb": -0.3611
+      }
+    },
+    "76o": {
+      "strategy": {
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 10bb": -0.3938,
+        "Fold": -0.0872,
+        "Squeeze 12bb": -0.9903
+      },
+      "ev_normalized": {
+        "Call": 0.3678,
+        "Fold": 0.2806,
+        "Squeeze 12bb": -0.6225,
+        "Squeeze 10bb": -0.026
+      }
+    },
+    "Q5o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Call": 0.625
+      }
+    },
+    "AQo": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": -0.8414,
+        "Fold": -4.7628,
+        "Call": -2.3902
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 1.1572,
+        "Fold": -2.7642,
+        "Squeeze 12bb": 1.9986,
+        "Call": -0.3916
+      }
+    },
+    "K5s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.1633,
+        "Call": 0.0,
+        "Fold": -0.9569,
+        "Squeeze 12bb": -0.5443
+      },
+      "ev_normalized": {
+        "Fold": -0.5408,
+        "Squeeze 10bb": 0.2528,
+        "Squeeze 12bb": -0.1282,
+        "Call": 0.4161
+      }
+    },
+    "QTo": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.1351,
+        "Squeeze 10bb": -1.2535,
+        "Fold": 0.0,
+        "Squeeze 12bb": -1.575
+      },
+      "ev_normalized": {
+        "Fold": 0.7409,
+        "Call": 0.6058,
+        "Squeeze 12bb": -0.8341,
+        "Squeeze 10bb": -0.5126
+      }
+    },
+    "55": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.9209,
+        "Call": 0.0,
+        "Squeeze 12bb": -0.9206,
+        "Fold": -1.6959
+      },
+      "ev_normalized": {
+        "Call": 0.8844,
+        "Squeeze 10bb": -0.0366,
+        "Squeeze 12bb": -0.0363,
+        "Fold": -0.8116
+      }
+    },
+    "Q9o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -0.318,
+        "Squeeze 12bb": -1.5316,
+        "Squeeze 10bb": -1.0615
+      },
+      "ev_normalized": {
+        "Call": 0.4098,
+        "Squeeze 10bb": -0.3337,
+        "Fold": 0.7278,
+        "Squeeze 12bb": -0.8038
+      }
+    },
+    "K9s": {
+      "strategy": {
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.9058,
+        "Call": 0.0,
+        "Squeeze 10bb": -0.3415,
+        "Squeeze 12bb": -0.7165
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.2256,
+        "Fold": -0.4149,
+        "Squeeze 10bb": 0.1494,
+        "Call": 0.491
+      }
+    },
+    "42o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "T4s": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "J3s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "94o": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "53s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -2.0229,
+        "Squeeze 10bb": -1.1864,
+        "Fold": 0.0,
+        "Call": -0.5428
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.0849,
+        "Fold": 0.938,
+        "Squeeze 10bb": -0.2484,
+        "Call": 0.3952
+      }
+    },
+    "87s": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.9503,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": -0.2187,
+        "Fold": -2.9648
+      },
+      "ev_normalized": {
+        "Call": 0.0831,
+        "Squeeze 10bb": 1.0335,
+        "Fold": -1.9314,
+        "Squeeze 12bb": 0.8148
+      }
+    },
+    "65o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "96s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": 0.0,
+        "Call": -0.2861,
+        "Fold": -3.6753,
+        "Squeeze 12bb": -0.4958
+      },
+      "ev_normalized": {
+        "Fold": -2.561,
+        "Squeeze 12bb": 0.6185,
+        "Squeeze 10bb": 1.1143,
+        "Call": 0.8282
+      }
+    },
+    "KQs": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": -0.4829,
+        "Call": -1.5332,
+        "Fold": -4.1923
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 1.0692,
+        "Squeeze 12bb": 1.5521,
+        "Call": 0.0189,
+        "Fold": -2.6402
+      }
+    },
+    "96o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125
+      }
+    },
+    "Q7o": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.2585,
+        "Squeeze 10bb": 0.0,
+        "Call": -0.6795,
+        "Fold": -1.6584
+      },
+      "ev_normalized": {
+        "Fold": -1.0093,
+        "Squeeze 10bb": 0.6491,
+        "Call": -0.0304,
+        "Squeeze 12bb": 0.3906
+      }
+    },
+    "42s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "Q2s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Call": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -3.2991,
+        "Squeeze 10bb": -0.3365,
+        "Squeeze 12bb": 0.0,
+        "Call": -0.4794
+      },
+      "ev_normalized": {
+        "Call": 0.5494,
+        "Squeeze 12bb": 1.0288,
+        "Fold": -2.2704,
+        "Squeeze 10bb": 0.6923
+      }
+    },
+    "86s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -1.0517,
+        "Call": 0.0,
+        "Squeeze 10bb": -0.4574,
+        "Fold": -0.4726
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.5563,
+        "Squeeze 10bb": 0.038,
+        "Fold": 0.0228,
+        "Call": 0.4954
+      }
+    },
+    "95o": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625
+      }
+    },
+    "Q4o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Call": 0.625
+      }
+    },
+    "A3o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -1.18,
+        "Fold": 0.0,
+        "Squeeze 10bb": -0.9587,
+        "Call": -0.1218
+      },
+      "ev_normalized": {
+        "Call": 0.4433,
+        "Squeeze 10bb": -0.3936,
+        "Squeeze 12bb": -0.6149,
+        "Fold": 0.5651
+      }
+    },
+    "J4o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625
+      }
+    },
+    "A2s": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.1988,
+        "Squeeze 12bb": 0.0,
+        "Fold": -2.5548,
+        "Squeeze 10bb": -0.1717
+      },
+      "ev_normalized": {
+        "Fold": -1.8235,
+        "Squeeze 12bb": 0.7313,
+        "Call": 0.5325,
+        "Squeeze 10bb": 0.5596
+      }
+    },
+    "63s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -1.8846,
+        "Call": -0.4362,
+        "Fold": 0.0,
+        "Squeeze 10bb": -0.9755
+      },
+      "ev_normalized": {
+        "Fold": 0.8241,
+        "Call": 0.3879,
+        "Squeeze 12bb": -1.0605,
+        "Squeeze 10bb": -0.1514
+      }
+    },
+    "T5s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "AKo": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -4.5331,
+        "Squeeze 10bb": -1.1708,
+        "Squeeze 12bb": 0.0,
+        "Fold": -7.7367
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 3.3602,
+        "Fold": -4.3766,
+        "Call": -1.173,
+        "Squeeze 10bb": 2.1894
+      }
+    },
+    "66": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Fold": -1.2288,
+        "Squeeze 10bb": -0.7629,
+        "Squeeze 12bb": -0.7999
+      },
+      "ev_normalized": {
+        "Fold": -0.5309,
+        "Call": 0.6979,
+        "Squeeze 10bb": -0.065,
+        "Squeeze 12bb": -0.102
+      }
+    },
+    "52s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "62s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "K9o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Fold": -0.2536,
+        "Squeeze 10bb": -0.6592,
+        "Squeeze 12bb": -1.0403
+      },
+      "ev_normalized": {
+        "Call": 0.4883,
+        "Fold": 0.2347,
+        "Squeeze 10bb": -0.1709,
+        "Squeeze 12bb": -0.552
+      }
+    },
+    "92o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "94s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125
+      }
+    },
+    "54s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.2091,
+        "Fold": -0.0407,
+        "Squeeze 12bb": -0.9115,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 0.0812,
+        "Fold": 0.2496,
+        "Squeeze 12bb": -0.6212,
+        "Call": 0.2903
+      }
+    },
+    "A5o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 12bb": -1.7474,
+        "Fold": -0.0757,
+        "Squeeze 10bb": -1.0721
+      },
+      "ev_normalized": {
+        "Call": 0.7238,
+        "Squeeze 10bb": -0.3483,
+        "Squeeze 12bb": -1.0236,
+        "Fold": 0.6481
+      }
+    },
+    "AKs": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": -1.1964,
+        "Call": -4.5023,
+        "Fold": -8.1309
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 2.261,
+        "Fold": -4.6735,
+        "Call": -1.0449,
+        "Squeeze 12bb": 3.4574
+      }
+    },
+    "74s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.106,
+        "Call": 0.0,
+        "Squeeze 10bb": -0.1298,
+        "Squeeze 12bb": -0.7218
+      },
+      "ev_normalized": {
+        "Fold": 0.1334,
+        "Squeeze 10bb": 0.1096,
+        "Call": 0.2394,
+        "Squeeze 12bb": -0.4824
+      }
+    },
+    "T9o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.9452,
+        "Fold": -0.396,
+        "Call": 0.0,
+        "Squeeze 12bb": -1.8179
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.1554,
+        "Squeeze 12bb": -1.0281,
+        "Call": 0.7898,
+        "Fold": 0.3938
+      }
+    },
+    "43o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "T7o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Call": 0.625,
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "K8o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 12bb": -1.0307,
+        "Fold": -1.2986,
+        "Squeeze 10bb": -0.7161
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 0.0453,
+        "Squeeze 12bb": -0.2694,
+        "Fold": -0.5373,
+        "Call": 0.7614
+      }
+    },
+    "QQ": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -11.8146,
+        "Squeeze 10bb": -1.0776,
+        "Squeeze 12bb": 0.0,
+        "Call": -5.1353
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 4.5069,
+        "Fold": -7.3077,
+        "Squeeze 10bb": 3.4293,
+        "Call": -0.6284
+      }
+    },
+    "93o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "82o": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125
+      }
+    },
+    "J5s": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -2.0572,
+        "Call": -0.5262,
+        "Squeeze 10bb": -1.3079,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.3351,
+        "Fold": 0.9728,
+        "Squeeze 12bb": -1.0844,
+        "Call": 0.4466
+      }
+    },
+    "A7s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.3536,
+        "Squeeze 12bb": -1.4251,
+        "Squeeze 10bb": -1.0313,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.9525,
+        "Squeeze 10bb": -0.0788,
+        "Squeeze 12bb": -0.4726,
+        "Fold": -0.4011
+      }
+    },
+    "54o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125
+      }
+    },
+    "72o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125
+      }
+    },
+    "99": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 12bb": -0.6944,
+        "Fold": -2.8891,
+        "Squeeze 10bb": -1.2177
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.0174,
+        "Fold": -1.6888,
+        "Call": 1.2003,
+        "Squeeze 12bb": 0.5059
+      }
+    },
+    "75o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "Q8o": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 10bb": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": 0.0,
+        "Fold": -1.0023,
+        "Call": -0.3521,
+        "Squeeze 12bb": -0.4001
+      },
+      "ev_normalized": {
+        "Fold": -0.5637,
+        "Call": 0.0865,
+        "Squeeze 10bb": 0.4386,
+        "Squeeze 12bb": 0.0385
+      }
+    },
+    "64o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "A6s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Fold": -0.9252,
+        "Squeeze 10bb": -0.9535,
+        "Squeeze 12bb": -1.2939
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.5008,
+        "Squeeze 10bb": -0.1604,
+        "Call": 0.7932,
+        "Fold": -0.1321
+      }
+    },
+    "K6s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.1532,
+        "Squeeze 12bb": -0.5542,
+        "Fold": -1.1735,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 0.317,
+        "Squeeze 12bb": -0.084,
+        "Call": 0.4702,
+        "Fold": -0.7033
+      }
+    },
+    "62o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125
+      }
+    },
+    "22": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.7967,
+        "Squeeze 12bb": -0.0394,
+        "Call": -1.0544,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 0.7226,
+        "Fold": -1.0741,
+        "Call": -0.3318,
+        "Squeeze 12bb": 0.6832
+      }
+    },
+    "32o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "T2s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "86o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Call": 0.625
+      }
+    },
+    "Q6o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "A6o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -1.049,
+        "Fold": -0.2864,
+        "Call": 0.0,
+        "Squeeze 12bb": -1.5667
+      },
+      "ev_normalized": {
+        "Fold": 0.4391,
+        "Squeeze 12bb": -0.8412,
+        "Squeeze 10bb": -0.3235,
+        "Call": 0.7255
+      }
+    },
+    "74o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "TT": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.0741,
+        "Squeeze 10bb": -0.7411,
+        "Fold": -3.4148,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -2.3573,
+        "Call": 1.0575,
+        "Squeeze 10bb": 0.3164,
+        "Squeeze 12bb": 0.9834
+      }
+    },
+    "53o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625
+      }
+    },
+    "KJs": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.9741,
+        "Squeeze 10bb": -0.8163,
+        "Fold": -1.063,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.7133,
+        "Fold": -0.3497,
+        "Squeeze 12bb": -0.2608,
+        "Squeeze 10bb": -0.103
+      }
+    },
+    "44": {
+      "strategy": {
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 10bb": -0.4325,
+        "Squeeze 12bb": -0.4772,
+        "Fold": -0.1387
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.1704,
+        "Call": 0.2621,
+        "Squeeze 12bb": -0.2151,
+        "Fold": 0.1234
+      }
+    },
+    "T9s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Fold": -0.9485,
+        "Squeeze 12bb": -1.5083,
+        "Squeeze 10bb": -0.7034
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.7183,
+        "Squeeze 10bb": 0.0866,
+        "Fold": -0.1585,
+        "Call": 0.79
+      }
+    },
+    "A4o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -1.8117,
+        "Fold": 0.0,
+        "Call": -0.2358,
+        "Squeeze 10bb": -1.3283
+      },
+      "ev_normalized": {
+        "Fold": 0.844,
+        "Squeeze 10bb": -0.4843,
+        "Call": 0.6082,
+        "Squeeze 12bb": -0.9678
+      }
+    },
+    "A9s": {
+      "strategy": {
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -1.2898,
+        "Squeeze 12bb": -1.5471,
+        "Call": 0.0,
+        "Fold": -0.9284
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.3485,
+        "Call": 0.9413,
+        "Fold": 0.0129,
+        "Squeeze 12bb": -0.6058
+      }
+    },
+    "32s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.1913,
+        "Fold": -1.7745,
+        "Call": 0.0,
+        "Squeeze 10bb": -0.1768
+      },
+      "ev_normalized": {
+        "Fold": -1.2389,
+        "Squeeze 10bb": 0.3588,
+        "Squeeze 12bb": 0.3443,
+        "Call": 0.5357
+      }
+    },
+    "QTs": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 10bb": -0.7777,
+        "Squeeze 12bb": -1.0078,
+        "Fold": -0.6041
+      },
+      "ev_normalized": {
+        "Call": 0.5974,
+        "Squeeze 12bb": -0.4104,
+        "Squeeze 10bb": -0.1803,
+        "Fold": -0.0067
+      }
+    },
+    "T3s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "AQs": {
+      "strategy": {
+        "Squeeze 12bb": 1.0,
+        "Fold": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.9192,
+        "Call": -2.5353,
+        "Fold": -5.5022,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 2.2392,
+        "Call": -0.2961,
+        "Squeeze 10bb": 1.32,
+        "Fold": -3.263
+      }
+    },
+    "98o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 12bb": -1.6608,
+        "Squeeze 10bb": -0.9762,
+        "Call": -0.1644
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.9605,
+        "Squeeze 10bb": -0.2758,
+        "Call": 0.536,
+        "Fold": 0.7004
+      }
+    },
+    "J7s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 10bb": -0.5497,
+        "Fold": -0.1687,
+        "Squeeze 12bb": -1.1698
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.6978,
+        "Call": 0.4721,
+        "Squeeze 10bb": -0.0777,
+        "Fold": 0.3034
+      }
+    },
+    "82s": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Fold": 2.125
+      }
+    },
+    "K2s": {
+      "strategy": {
+        "Squeeze 12bb": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -4.2136,
+        "Squeeze 10bb": -0.4165,
+        "Call": -1.3543,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 1.4961,
+        "Squeeze 10bb": 1.0796,
+        "Fold": -2.7175,
+        "Call": 0.1418
+      }
+    },
+    "84o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "75s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.8784,
+        "Fold": -0.6427,
+        "Squeeze 10bb": -0.2912,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.4253,
+        "Fold": -0.1896,
+        "Squeeze 10bb": 0.1619,
+        "Call": 0.4531
+      }
+    },
+    "J6s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -1.0799,
+        "Fold": 0.0,
+        "Squeeze 12bb": -1.9174,
+        "Call": -0.3733
+      },
+      "ev_normalized": {
+        "Call": 0.4694,
+        "Squeeze 12bb": -1.0747,
+        "Squeeze 10bb": -0.2373,
+        "Fold": 0.8427
+      }
+    },
+    "J8s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.1519,
+        "Squeeze 12bb": -1.5284,
+        "Squeeze 10bb": -0.861,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.8931,
+        "Call": 0.6353,
+        "Squeeze 10bb": -0.2257,
+        "Fold": 0.4834
+      }
+    },
+    "85s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.3772,
+        "Squeeze 12bb": -1.001,
+        "Fold": -0.584,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.5105,
+        "Fold": -0.0935,
+        "Squeeze 10bb": 0.1133,
+        "Call": 0.4905
+      }
+    },
+    "Q2o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625
+      }
+    },
+    "J5o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "97s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 12bb": -0.8525,
+        "Fold": -0.3612,
+        "Squeeze 10bb": -0.2945
+      },
+      "ev_normalized": {
+        "Call": 0.3771,
+        "Squeeze 10bb": 0.0826,
+        "Squeeze 12bb": -0.4755,
+        "Fold": 0.0158
+      }
+    },
+    "Q9s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 12bb": -0.8949,
+        "Squeeze 10bb": -0.477,
+        "Fold": -0.3683
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.0419,
+        "Fold": 0.0668,
+        "Call": 0.4351,
+        "Squeeze 12bb": -0.4599
+      }
+    },
+    "A2o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.6739,
+        "Squeeze 10bb": -0.1893,
+        "Call": -0.0087,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 0.468,
+        "Fold": -1.2059,
+        "Squeeze 10bb": 0.2787,
+        "Call": 0.4593
+      }
+    },
+    "K3s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.1884,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": -0.1209,
+        "Call": -0.405
+      },
+      "ev_normalized": {
+        "Fold": -0.7598,
+        "Squeeze 12bb": 0.4286,
+        "Squeeze 10bb": 0.3077,
+        "Call": 0.0236
+      }
+    },
+    "73s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "A7o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -1.41,
+        "Fold": -1.1601,
+        "Call": 0.0,
+        "Squeeze 10bb": -0.987
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.0977,
+        "Call": 0.8893,
+        "Squeeze 12bb": -0.5207,
+        "Fold": -0.2708
+      }
+    },
+    "J3o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "KQo": {
+      "strategy": {
+        "Squeeze 12bb": 1.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -2.927,
+        "Squeeze 10bb": -0.4405,
+        "Call": -1.0063,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 0.653,
+        "Squeeze 12bb": 1.0935,
+        "Fold": -1.8336,
+        "Call": 0.0872
+      }
+    },
+    "65s": {
+      "strategy": {
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.7217,
+        "Squeeze 10bb": -0.1265,
+        "Squeeze 12bb": -0.5707,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 0.2282,
+        "Fold": -0.367,
+        "Squeeze 12bb": -0.216,
+        "Call": 0.3547
+      }
+    },
+    "T4o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Call": 0.625
+      }
+    },
+    "K7o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": -0.2451,
+        "Call": -0.7313,
+        "Fold": -1.9742
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 0.4925,
+        "Squeeze 10bb": 0.7376,
+        "Call": 0.0063,
+        "Fold": -1.2366
+      }
+    },
+    "KTs": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.9319,
+        "Call": 0.0,
+        "Squeeze 12bb": -1.0744,
+        "Squeeze 10bb": -0.9017
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.3474,
+        "Squeeze 10bb": -0.1747,
+        "Fold": -0.2049,
+        "Call": 0.727
+      }
+    },
+    "AA": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -11.149,
+        "Fold": -23.1834,
+        "Squeeze 10bb": -1.8874,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 9.055,
+        "Fold": -14.1285,
+        "Call": -2.094,
+        "Squeeze 10bb": 7.1676
+      }
+    },
+    "AJo": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.9887,
+        "Squeeze 12bb": -1.246,
+        "Call": 0.0,
+        "Fold": -0.596
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.5383,
+        "Call": 0.7077,
+        "Fold": 0.1117,
+        "Squeeze 10bb": -0.281
+      }
+    },
+    "J2s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "K3o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Call": 0.625
+      }
+    },
+    "AJs": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.2754,
+        "Squeeze 10bb": -0.9151,
+        "Call": 0.0,
+        "Squeeze 12bb": -1.1155
+      },
+      "ev_normalized": {
+        "Fold": -0.4489,
+        "Squeeze 10bb": -0.0886,
+        "Call": 0.8265,
+        "Squeeze 12bb": -0.289
+      }
+    },
+    "J4s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5,
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875
+      }
+    },
+    "83s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125
+      }
+    },
+    "A5s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.9089,
+        "Fold": -0.6996,
+        "Call": 0.0,
+        "Squeeze 12bb": -1.3797
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.1619,
+        "Fold": 0.0474,
+        "Call": 0.7471,
+        "Squeeze 12bb": -0.6326
+      }
+    },
+    "88": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": 0.0,
+        "Fold": -6.7255,
+        "Squeeze 10bb": -0.921,
+        "Call": -1.6123
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 2.3147,
+        "Call": 0.7024,
+        "Squeeze 10bb": 1.3937,
+        "Fold": -4.4108
+      }
+    },
+    "J7o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125
+      }
+    },
+    "T6o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Fold": 2.125
+      }
+    },
+    "ATo": {
+      "strategy": {
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 12bb": -1.7272,
+        "Fold": -0.3316,
+        "Squeeze 10bb": -1.3795
+      },
+      "ev_normalized": {
+        "Fold": 0.528,
+        "Squeeze 10bb": -0.5199,
+        "Squeeze 12bb": -0.8676,
+        "Call": 0.8596
+      }
+    },
+    "95s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.0983,
+        "Squeeze 10bb": -0.5693,
+        "Squeeze 12bb": -1.2551,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.3824,
+        "Fold": 0.4807,
+        "Squeeze 12bb": -0.7744,
+        "Squeeze 10bb": -0.0886
+      }
+    },
+    "Q5s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.3605,
+        "Squeeze 12bb": -0.8176,
+        "Fold": -0.4782,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 0.0536,
+        "Fold": -0.0641,
+        "Call": 0.4141,
+        "Squeeze 12bb": -0.4035
+      }
+    },
+    "K4o": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625
+      }
+    },
+    "A9o": {
+      "strategy": {
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 10bb": -1.3856,
+        "Fold": -0.2851,
+        "Squeeze 12bb": -1.8077
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.516,
+        "Fold": 0.5845,
+        "Squeeze 12bb": -0.9381,
+        "Call": 0.8696
+      }
+    },
+    "Q3s": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.8428,
+        "Fold": 0.0,
+        "Call": -0.0351,
+        "Squeeze 12bb": -0.9906
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.5235,
+        "Fold": 0.4671,
+        "Squeeze 10bb": -0.3757,
+        "Call": 0.432
+      }
+    },
+    "Q3o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625
+      }
+    },
+    "72s": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "33": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": 0.0,
+        "Call": -1.6604,
+        "Squeeze 10bb": -0.4383,
+        "Fold": -2.8203
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 1.2298,
+        "Fold": -1.5905,
+        "Call": -0.4307,
+        "Squeeze 10bb": 0.7915
+      }
+    },
+    "T3o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Call": 0.625
+      }
+    },
+    "J9s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.7878,
+        "Fold": -0.2588,
+        "Call": 0.0,
+        "Squeeze 12bb": -1.7065
+      },
+      "ev_normalized": {
+        "Call": 0.6883,
+        "Fold": 0.4295,
+        "Squeeze 10bb": -0.0995,
+        "Squeeze 12bb": -1.0182
+      }
+    },
+    "KTo": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.2833,
+        "Squeeze 12bb": -1.3192,
+        "Squeeze 10bb": -1.1648,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.6918,
+        "Fold": 0.4085,
+        "Squeeze 12bb": -0.6274,
+        "Squeeze 10bb": -0.473
+      }
+    },
+    "85o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "52o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Fold": 2.125
+      }
+    },
+    "KK": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -2.1622,
+        "Fold": -22.6622,
+        "Squeeze 12bb": 0.0,
+        "Call": -11.3509
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 6.8816,
+        "Call": -2.3071,
+        "Fold": -13.6184,
+        "Squeeze 12bb": 9.0438
+      }
+    },
+    "JTs": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 10bb": -1.0581,
+        "Squeeze 12bb": -1.765,
+        "Fold": -0.331
+      },
+      "ev_normalized": {
+        "Call": 0.7885,
+        "Squeeze 10bb": -0.2696,
+        "Squeeze 12bb": -0.9765,
+        "Fold": 0.4575
+      }
+    },
+    "Q4s": {
+      "strategy": {
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.0845,
+        "Call": 0.0,
+        "Squeeze 10bb": -0.464,
+        "Squeeze 12bb": -0.8138
+      },
+      "ev_normalized": {
+        "Fold": 0.2561,
+        "Call": 0.3406,
+        "Squeeze 10bb": -0.1234,
+        "Squeeze 12bb": -0.4732
+      }
+    },
+    "QJo": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 12bb": -1.4281,
+        "Squeeze 10bb": -1.1409,
+        "Call": -0.0394
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.4888,
+        "Fold": 0.6521,
+        "Call": 0.6127,
+        "Squeeze 12bb": -0.776
+      }
+    },
+    "A8s": {
+      "strategy": {
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.8179,
+        "Squeeze 12bb": -1.626,
+        "Call": 0.0,
+        "Squeeze 10bb": -1.316
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -0.436,
+        "Call": 1.19,
+        "Fold": -0.6279,
+        "Squeeze 10bb": -0.126
+      }
+    },
+    "73o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625
+      }
+    },
+    "92s": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625
+      }
+    },
+    "97o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -0.0965,
+        "Squeeze 10bb": -0.5965,
+        "Fold": 0.0,
+        "Squeeze 12bb": -1.2171
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.119,
+        "Fold": 0.4775,
+        "Squeeze 12bb": -0.7396,
+        "Call": 0.381
+      }
+    },
+    "J9o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 12bb": -2.3083,
+        "Call": -0.3242,
+        "Squeeze 10bb": -1.2832
+      },
+      "ev_normalized": {
+        "Fold": 0.9789,
+        "Squeeze 12bb": -1.3294,
+        "Call": 0.6547,
+        "Squeeze 10bb": -0.3043
+      }
+    },
+    "K8s": {
+      "strategy": {
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.6254,
+        "Call": 0.0,
+        "Squeeze 10bb": -0.3675,
+        "Fold": -1.8501
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 0.0854,
+        "Call": 0.7108,
+        "Squeeze 10bb": 0.3433,
+        "Fold": -1.1394
+      }
+    },
+    "J8o": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -1.4309,
+        "Squeeze 12bb": -2.1992,
+        "Call": -0.3864,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.0041,
+        "Call": 0.6177,
+        "Squeeze 10bb": -0.4268,
+        "Squeeze 12bb": -1.1951
+      }
+    },
+    "K6o": {
+      "strategy": {
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.9061,
+        "Squeeze 10bb": -0.4114,
+        "Call": 0.0,
+        "Fold": -0.5173
+      },
+      "ev_normalized": {
+        "Call": 0.4587,
+        "Squeeze 10bb": 0.0473,
+        "Fold": -0.0586,
+        "Squeeze 12bb": -0.4474
+      }
+    },
+    "84s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 12bb": -1.0902,
+        "Call": -0.0182,
+        "Squeeze 10bb": -0.4472
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.0583,
+        "Squeeze 12bb": -0.7013,
+        "Fold": 0.3889,
+        "Call": 0.3707
+      }
+    },
+    "Q8s": {
+      "strategy": {
+        "Squeeze 10bb": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.6197,
+        "Squeeze 12bb": -0.3414,
+        "Call": -0.4575,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 0.2632,
+        "Squeeze 10bb": 0.6046,
+        "Call": 0.1471,
+        "Fold": -1.0151
+      }
+    },
+    "K2o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0,
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625
+      }
+    },
+    "KJo": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 10bb": -1.0911,
+        "Fold": -0.4479,
+        "Squeeze 12bb": -1.1979
+      },
+      "ev_normalized": {
+        "Fold": 0.2363,
+        "Squeeze 10bb": -0.4069,
+        "Squeeze 12bb": -0.5137,
+        "Call": 0.6842
+      }
+    },
+    "43s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 12bb": -2.1421,
+        "Call": -0.8488,
+        "Squeeze 10bb": -1.5055
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.018,
+        "Call": 0.2753,
+        "Squeeze 10bb": -0.3814,
+        "Fold": 1.1241
+      }
+    },
+    "63o": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Squeeze 12bb": -1.875,
+        "Call": 0.625
+      }
+    },
+    "93s": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Squeeze 12bb": -1.875,
+        "Fold": 2.125,
+        "Call": 0.625
+      }
+    },
+    "T6s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -0.0212,
+        "Squeeze 10bb": -0.6969,
+        "Squeeze 12bb": -1.5801
+      },
+      "ev_normalized": {
+        "Fold": 0.5746,
+        "Call": 0.5534,
+        "Squeeze 12bb": -1.0056,
+        "Squeeze 10bb": -0.1223
+      }
+    },
+    "T8s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 10bb": -0.7458,
+        "Fold": -0.2,
+        "Squeeze 12bb": -1.4113
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.1565,
+        "Call": 0.5893,
+        "Fold": 0.3893,
+        "Squeeze 12bb": -0.822
+      }
+    },
+    "K4s": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.4546,
+        "Call": 0.0,
+        "Squeeze 10bb": -0.1763,
+        "Fold": -0.5754
+      },
+      "ev_normalized": {
+        "Fold": -0.2738,
+        "Squeeze 12bb": -0.153,
+        "Squeeze 10bb": 0.1253,
+        "Call": 0.3016
+      }
+    },
+    "T2o": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "QJs": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Fold": -0.6833,
+        "Squeeze 10bb": -0.7625,
+        "Squeeze 12bb": -0.9384
+      },
+      "ev_normalized": {
+        "Fold": -0.0873,
+        "Call": 0.5961,
+        "Squeeze 10bb": -0.1664,
+        "Squeeze 12bb": -0.3424
+      }
+    },
+    "Q7s": {
+      "strategy": {
+        "Squeeze 10bb": 1.0,
+        "Fold": 0.0,
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.3619,
+        "Fold": -1.342,
+        "Call": -0.2957,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 0.138,
+        "Fold": -0.8421,
+        "Squeeze 10bb": 0.4999,
+        "Call": 0.2042
+      }
+    },
+    "77": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": -1.2961,
+        "Call": -3.6043,
+        "Fold": -10.3317
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 2.5119,
+        "Fold": -6.5237,
+        "Squeeze 12bb": 3.808,
+        "Call": 0.2037
+      }
+    },
+    "K7s": {
+      "strategy": {
+        "Squeeze 10bb": 1.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.1551,
+        "Call": -1.1433,
+        "Fold": -3.0888,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 1.0968,
+        "Squeeze 12bb": 0.9417,
+        "Call": -0.0465,
+        "Fold": -1.992
+      }
+    },
+    "JJ": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -0.748,
+        "Call": -1.5503,
+        "Squeeze 12bb": 0.0,
+        "Fold": -5.6726
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": 1.2447,
+        "Call": 0.4424,
+        "Squeeze 12bb": 1.9927,
+        "Fold": -3.6799
+      }
+    },
+    "98s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Squeeze 10bb": -0.5966,
+        "Squeeze 12bb": -1.1798,
+        "Fold": -0.3442
+      },
+      "ev_normalized": {
+        "Call": 0.5302,
+        "Fold": 0.186,
+        "Squeeze 10bb": -0.0665,
+        "Squeeze 12bb": -0.6496
+      }
+    },
+    "64s": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.5455,
+        "Fold": -2.8988,
+        "Squeeze 10bb": 0.0,
+        "Call": -0.415
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 0.4193,
+        "Squeeze 10bb": 0.9648,
+        "Fold": -1.934,
+        "Call": 0.5498
+      }
+    },
+    "K5o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -0.8928,
+        "Squeeze 10bb": -0.4148,
+        "Call": 0.0,
+        "Fold": -0.3363
+      },
+      "ev_normalized": {
+        "Call": 0.411,
+        "Fold": 0.0747,
+        "Squeeze 12bb": -0.4818,
+        "Squeeze 10bb": -0.0038
+      }
+    },
+    "T5o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Call": 0.625,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "J6o": {
+      "strategy": {
+        "Call": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Fold": 0.0,
+        "Squeeze 10bb": -3.0,
+        "Squeeze 12bb": -4.0
+      },
+      "ev_normalized": {
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "A3s": {
+      "strategy": {
+        "Squeeze 12bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Fold": -0.7797,
+        "Squeeze 10bb": -0.2448,
+        "Squeeze 12bb": -0.2554
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": 0.0646,
+        "Squeeze 10bb": 0.0752,
+        "Fold": -0.4597,
+        "Call": 0.32
+      }
+    },
+    "J2o": {
+      "strategy": {
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -4.0,
+        "Call": -1.5,
+        "Squeeze 10bb": -3.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Squeeze 12bb": -1.875,
+        "Squeeze 10bb": -0.875,
+        "Fold": 2.125,
+        "Call": 0.625
+      }
+    },
+    "T8o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -2.0665,
+        "Fold": 0.0,
+        "Call": -0.3186,
+        "Squeeze 10bb": -1.2922
+      },
+      "ev_normalized": {
+        "Fold": 0.9193,
+        "Squeeze 12bb": -1.1472,
+        "Call": 0.6007,
+        "Squeeze 10bb": -0.3729
+      }
+    },
+    "83o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Call": 0.0,
+        "Squeeze 10bb": 0.0,
+        "Squeeze 12bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 10bb": -3.0,
+        "Call": -1.5,
+        "Squeeze 12bb": -4.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 2.125,
+        "Squeeze 10bb": -0.875,
+        "Call": 0.625,
+        "Squeeze 12bb": -1.875
+      }
+    },
+    "T7s": {
+      "strategy": {
+        "Call": 1.0,
+        "Fold": 0.0,
+        "Squeeze 12bb": 0.0,
+        "Squeeze 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Squeeze 12bb": -1.0345,
+        "Call": 0.0,
+        "Fold": -0.2145,
+        "Squeeze 10bb": -0.4118
+      },
+      "ev_normalized": {
+        "Fold": 0.2007,
+        "Squeeze 12bb": -0.6193,
+        "Call": 0.4152,
+        "Squeeze 10bb": 0.0034
+      }
+    }
+  }
+}

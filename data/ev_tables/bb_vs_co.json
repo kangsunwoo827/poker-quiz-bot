@@ -1,0 +1,3386 @@
+{
+  "scenario_id": "bb_vs_co",
+  "source": "postflop-solver DCFR × 5 flops",
+  "hands": {
+    "32o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375
+      }
+    },
+    "52o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "Fold": 1.625,
+        "3bet 8bb": -0.375
+      }
+    },
+    "K2o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375
+      }
+    },
+    "75s": {
+      "strategy": {
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Fold": -0.8644,
+        "3bet 10bb": -0.5129,
+        "Call": -0.2217
+      },
+      "ev_normalized": {
+        "Fold": -0.4646,
+        "Call": 0.178,
+        "3bet 8bb": 0.3998,
+        "3bet 10bb": -0.1132
+      }
+    },
+    "Q9o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.318,
+        "3bet 10bb": -1.0615,
+        "Fold": 0.0,
+        "3bet 8bb": -0.5025
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.032,
+        "Call": 0.1525,
+        "Fold": 0.4705,
+        "3bet 10bb": -0.591
+      }
+    },
+    "A7s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.7124,
+        "3bet 10bb": -1.0313,
+        "Call": 0.0,
+        "Fold": -1.3536
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.0619,
+        "3bet 10bb": -0.257,
+        "Fold": -0.5793,
+        "Call": 0.7743
+      }
+    },
+    "Q8o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.2888,
+        "Call": -0.6385,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": -0.2864
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.5534,
+        "Fold": -0.7354,
+        "3bet 10bb": 0.267,
+        "Call": -0.0851
+      }
+    },
+    "72s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "Fold": 1.625,
+        "3bet 8bb": -0.375
+      }
+    },
+    "T5o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "Call": 0.125
+      }
+    },
+    "82s": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Call": 0.125,
+        "Fold": 1.625
+      }
+    },
+    "53s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 10bb": -1.1864,
+        "3bet 8bb": -0.4492,
+        "Call": -0.5428
+      },
+      "ev_normalized": {
+        "Call": 0.0018,
+        "3bet 10bb": -0.6418,
+        "3bet 8bb": 0.0954,
+        "Fold": 0.5446
+      }
+    },
+    "72o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "Fold": 1.625,
+        "3bet 8bb": -0.375
+      }
+    },
+    "75o": {
+      "strategy": {
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "3bet 10bb": -1.375,
+        "Fold": 1.625,
+        "Call": 0.125
+      }
+    },
+    "T6s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 8bb": -0.0287,
+        "Call": -0.0212,
+        "3bet 10bb": -0.6969
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.158,
+        "3bet 10bb": -0.5102,
+        "Fold": 0.1867,
+        "Call": 0.1655
+      }
+    },
+    "87o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.9709,
+        "Fold": -2.6241,
+        "3bet 10bb": -0.1312,
+        "3bet 8bb": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -1.6925,
+        "Call": -0.0393,
+        "3bet 10bb": 0.8004,
+        "3bet 8bb": 0.9316
+      }
+    },
+    "84o": {
+      "strategy": {
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "Call": 0.125
+      }
+    },
+    "Q4s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 1.0,
+        "Fold": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": -0.4688,
+        "Fold": -0.0893,
+        "Call": -0.0048
+      },
+      "ev_normalized": {
+        "Fold": 0.0514,
+        "3bet 10bb": -0.3281,
+        "3bet 8bb": 0.1407,
+        "Call": 0.1359
+      }
+    },
+    "KTs": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.9319,
+        "3bet 8bb": -0.4863,
+        "Call": 0.0,
+        "3bet 10bb": -0.9017
+      },
+      "ev_normalized": {
+        "Call": 0.58,
+        "3bet 10bb": -0.3217,
+        "3bet 8bb": 0.0937,
+        "Fold": -0.3519
+      }
+    },
+    "J6s": {
+      "strategy": {
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.3733,
+        "3bet 8bb": -0.3802,
+        "Fold": 0.0,
+        "3bet 10bb": -1.0799
+      },
+      "ev_normalized": {
+        "Fold": 0.4584,
+        "3bet 10bb": -0.6216,
+        "Call": 0.0851,
+        "3bet 8bb": 0.0782
+      }
+    },
+    "53o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "Call": -1.5,
+        "Fold": 0.0,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "Fold": 1.625,
+        "3bet 8bb": -0.375
+      }
+    },
+    "Q3o": {
+      "strategy": {
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "Fold": 1.625
+      }
+    },
+    "54s": {
+      "strategy": {
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.3801,
+        "3bet 10bb": -0.5892,
+        "Fold": -0.4208,
+        "3bet 8bb": 0.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.2417,
+        "Call": -0.0326,
+        "3bet 8bb": 0.3475,
+        "Fold": -0.0733
+      }
+    },
+    "T8s": {
+      "strategy": {
+        "Call": 1.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.1306,
+        "Call": 0.0,
+        "Fold": -0.2,
+        "3bet 10bb": -0.7458
+      },
+      "ev_normalized": {
+        "Fold": 0.0691,
+        "3bet 10bb": -0.4767,
+        "Call": 0.2691,
+        "3bet 8bb": 0.1385
+      }
+    },
+    "J4s": {
+      "strategy": {
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "Call": 0.125
+      }
+    },
+    "J9s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.1423,
+        "Fold": -0.2588,
+        "3bet 10bb": -0.7878,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.2972,
+        "Fold": 0.0384,
+        "3bet 10bb": -0.4906,
+        "3bet 8bb": 0.1549
+      }
+    },
+    "65s": {
+      "strategy": {
+        "3bet 8bb": 1.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Fold": -1.0751,
+        "Call": -0.3534,
+        "3bet 10bb": -0.4799
+      },
+      "ev_normalized": {
+        "Fold": -0.598,
+        "3bet 8bb": 0.4771,
+        "Call": 0.1237,
+        "3bet 10bb": -0.0028
+      }
+    },
+    "T2s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375
+      }
+    },
+    "TT": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Call": 1.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "3bet 10bb": -0.7411,
+        "Fold": -3.4148,
+        "3bet 8bb": -0.7488
+      },
+      "ev_normalized": {
+        "Fold": -2.1886,
+        "Call": 1.2262,
+        "3bet 10bb": 0.4851,
+        "3bet 8bb": 0.4774
+      }
+    },
+    "A6s": {
+      "strategy": {
+        "Fold": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.9252,
+        "Call": 0.0,
+        "3bet 10bb": -0.9535,
+        "3bet 8bb": -0.495
+      },
+      "ev_normalized": {
+        "Call": 0.5934,
+        "3bet 10bb": -0.3601,
+        "3bet 8bb": 0.0984,
+        "Fold": -0.3318
+      }
+    },
+    "JTs": {
+      "strategy": {
+        "Fold": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "3bet 8bb": -0.3907,
+        "3bet 10bb": -1.0581,
+        "Fold": -0.331
+      },
+      "ev_normalized": {
+        "Call": 0.445,
+        "3bet 8bb": 0.0543,
+        "3bet 10bb": -0.6132,
+        "Fold": 0.114
+      }
+    },
+    "76o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.2144,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": -0.5209,
+        "Call": -0.1271
+      },
+      "ev_normalized": {
+        "Call": 0.0885,
+        "Fold": 0.0012,
+        "3bet 10bb": -0.3053,
+        "3bet 8bb": 0.2156
+      }
+    },
+    "AJs": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -0.9151,
+        "3bet 8bb": -0.6404,
+        "Fold": -1.2754,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -0.5677,
+        "3bet 10bb": -0.2074,
+        "3bet 8bb": 0.0673,
+        "Call": 0.7077
+      }
+    },
+    "A8o": {
+      "strategy": {
+        "Call": 1.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -1.1201,
+        "Call": 0.0,
+        "Fold": -1.1765,
+        "3bet 10bb": -1.5721
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.1529,
+        "Call": 0.9672,
+        "Fold": -0.2093,
+        "3bet 10bb": -0.6049
+      }
+    },
+    "J8s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.2462,
+        "Call": 0.0,
+        "3bet 10bb": -0.861,
+        "Fold": -0.1519
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.5462,
+        "3bet 8bb": 0.0686,
+        "Call": 0.3148,
+        "Fold": 0.1629
+      }
+    },
+    "J3o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "3bet 8bb": -0.375
+      }
+    },
+    "66": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "3bet 10bb": -0.7629,
+        "Fold": -1.2288,
+        "3bet 8bb": -0.5091
+      },
+      "ev_normalized": {
+        "Fold": -0.6036,
+        "3bet 8bb": 0.1161,
+        "Call": 0.6252,
+        "3bet 10bb": -0.1377
+      }
+    },
+    "J4o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "Call": 0.125
+      }
+    },
+    "Q2s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Fold": -3.0111,
+        "Call": -0.1913,
+        "3bet 10bb": -0.0484
+      },
+      "ev_normalized": {
+        "Fold": -2.1984,
+        "Call": 0.6214,
+        "3bet 10bb": 0.7643,
+        "3bet 8bb": 0.8127
+      }
+    },
+    "K3s": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Call": -0.5048,
+        "Fold": -1.2882,
+        "3bet 10bb": -0.2207
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.5034,
+        "3bet 10bb": 0.2827,
+        "Call": -0.0014,
+        "Fold": -0.7848
+      }
+    },
+    "T9s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.1237,
+        "Fold": -0.9485,
+        "Call": 0.0,
+        "3bet 10bb": -0.7034
+      },
+      "ev_normalized": {
+        "Fold": -0.5046,
+        "3bet 8bb": 0.3202,
+        "Call": 0.4439,
+        "3bet 10bb": -0.2595
+      }
+    },
+    "KJs": {
+      "strategy": {
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.063,
+        "3bet 8bb": -0.4856,
+        "3bet 10bb": -0.8163,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.1056,
+        "3bet 10bb": -0.2251,
+        "Call": 0.5912,
+        "Fold": -0.4718
+      }
+    },
+    "K5o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": -0.4422,
+        "Fold": -0.3637,
+        "Call": -0.0274
+      },
+      "ev_normalized": {
+        "Call": 0.1809,
+        "3bet 8bb": 0.2083,
+        "3bet 10bb": -0.2339,
+        "Fold": -0.1554
+      }
+    },
+    "83s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "Call": 0.125
+      }
+    },
+    "K6o": {
+      "strategy": {
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.007,
+        "Fold": -0.5173,
+        "Call": 0.0,
+        "3bet 10bb": -0.4114
+      },
+      "ev_normalized": {
+        "Call": 0.2339,
+        "Fold": -0.2834,
+        "3bet 8bb": 0.2269,
+        "3bet 10bb": -0.1775
+      }
+    },
+    "85s": {
+      "strategy": {
+        "3bet 8bb": 1.0,
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": -0.5469,
+        "Fold": -0.7538,
+        "Call": -0.1698
+      },
+      "ev_normalized": {
+        "Call": 0.1978,
+        "3bet 10bb": -0.1793,
+        "Fold": -0.3862,
+        "3bet 8bb": 0.3676
+      }
+    },
+    "QJo": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -1.1409,
+        "Call": -0.0394,
+        "3bet 8bb": -0.5355,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.1065,
+        "3bet 10bb": -0.712,
+        "Call": 0.3896,
+        "Fold": 0.429
+      }
+    },
+    "T4s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "Fold": 1.625,
+        "3bet 8bb": -0.375
+      }
+    },
+    "A4s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -0.9419,
+        "3bet 8bb": -0.4546,
+        "Call": 0.0,
+        "Fold": -0.3634
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.5019,
+        "Call": 0.44,
+        "Fold": 0.0766,
+        "3bet 8bb": -0.0146
+      }
+    },
+    "QTo": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -1.2535,
+        "Call": -0.1351,
+        "3bet 8bb": -0.6016,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.756,
+        "3bet 8bb": -0.104,
+        "Fold": 0.4976,
+        "Call": 0.3625
+      }
+    },
+    "A2o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Fold": -1.6983,
+        "Call": -0.033,
+        "3bet 10bb": -0.2136
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.4862,
+        "Call": 0.4532,
+        "3bet 10bb": 0.2726,
+        "Fold": -1.2121
+      }
+    },
+    "KQo": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -0.5658,
+        "3bet 8bb": -0.2728,
+        "3bet 10bb": 0.0,
+        "Fold": -2.4865
+      },
+      "ev_normalized": {
+        "3bet 10bb": 0.8313,
+        "3bet 8bb": 0.5585,
+        "Fold": -1.6552,
+        "Call": 0.2655
+      }
+    },
+    "A2s": {
+      "strategy": {
+        "Fold": 0.0,
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -2.4918,
+        "3bet 8bb": 0.0,
+        "Call": -0.1358,
+        "3bet 10bb": -0.1087
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.6841,
+        "Call": 0.5483,
+        "Fold": -1.8077,
+        "3bet 10bb": 0.5754
+      }
+    },
+    "77": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": 0.0,
+        "Call": -2.3083,
+        "3bet 8bb": -0.976,
+        "Fold": -9.0357
+      },
+      "ev_normalized": {
+        "3bet 8bb": 2.104,
+        "Fold": -5.9557,
+        "Call": 0.7717,
+        "3bet 10bb": 3.08
+      }
+    },
+    "A3o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -0.1218,
+        "3bet 8bb": -0.3923,
+        "Fold": 0.0,
+        "3bet 10bb": -0.9587
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.5905,
+        "Fold": 0.3682,
+        "Call": 0.2464,
+        "3bet 8bb": -0.0241
+      }
+    },
+    "Q5o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375
+      }
+    },
+    "42s": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Call": 0.125
+      }
+    },
+    "T7o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "3bet 8bb": -0.375
+      }
+    },
+    "98o": {
+      "strategy": {
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.3478,
+        "Call": -0.1644,
+        "Fold": 0.0,
+        "3bet 10bb": -0.9762
+      },
+      "ev_normalized": {
+        "Call": 0.2077,
+        "Fold": 0.3721,
+        "3bet 10bb": -0.6041,
+        "3bet 8bb": 0.0243
+      }
+    },
+    "96s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Call": -0.5989,
+        "3bet 10bb": -0.3128,
+        "Fold": -3.9881
+      },
+      "ev_normalized": {
+        "3bet 10bb": 0.9122,
+        "Fold": -2.7632,
+        "3bet 8bb": 1.225,
+        "Call": 0.6261
+      }
+    },
+    "62o": {
+      "strategy": {
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "Fold": 1.625,
+        "3bet 8bb": -0.375,
+        "Call": 0.125
+      }
+    },
+    "A3s": {
+      "strategy": {
+        "3bet 8bb": 1.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.0874,
+        "3bet 10bb": -0.3322,
+        "3bet 8bb": 0.0,
+        "Fold": -0.867
+      },
+      "ev_normalized": {
+        "Fold": -0.5454,
+        "3bet 8bb": 0.3217,
+        "Call": 0.2343,
+        "3bet 10bb": -0.0106
+      }
+    },
+    "K8s": {
+      "strategy": {
+        "Fold": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.8501,
+        "3bet 8bb": -0.1844,
+        "3bet 10bb": -0.3675,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.6005,
+        "3bet 8bb": 0.4161,
+        "Fold": -1.2496,
+        "3bet 10bb": 0.233
+      }
+    },
+    "43s": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.7945,
+        "Fold": 0.0,
+        "Call": -0.8488,
+        "3bet 10bb": -1.5055
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.7183,
+        "Fold": 0.7872,
+        "3bet 8bb": -0.0073,
+        "Call": -0.0616
+      }
+    },
+    "K5s": {
+      "strategy": {
+        "Fold": 0.0,
+        "3bet 8bb": 1.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.1205,
+        "3bet 10bb": -0.3269,
+        "Call": -0.1636,
+        "3bet 8bb": 0.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.4028,
+        "3bet 10bb": 0.0758,
+        "Call": 0.2392,
+        "Fold": -0.7178
+      }
+    },
+    "K2s": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": -0.1251,
+        "Fold": -3.7971,
+        "Call": -0.9378
+      },
+      "ev_normalized": {
+        "3bet 8bb": 1.0899,
+        "3bet 10bb": 1.215,
+        "Fold": -2.5821,
+        "Call": 0.2772
+      }
+    },
+    "94s": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Call": 0.125,
+        "Fold": 1.625
+      }
+    },
+    "Q2o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "Fold": 1.625,
+        "3bet 8bb": -0.375,
+        "3bet 10bb": -1.375
+      }
+    },
+    "KTo": {
+      "strategy": {
+        "Fold": 0.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.2833,
+        "3bet 8bb": -0.6228,
+        "3bet 10bb": -1.1648,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 0.2344,
+        "Call": 0.5177,
+        "3bet 10bb": -0.6471,
+        "3bet 8bb": -0.1051
+      }
+    },
+    "A9s": {
+      "strategy": {
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -1.2898,
+        "Call": 0.0,
+        "3bet 8bb": -0.8289,
+        "Fold": -0.9284
+      },
+      "ev_normalized": {
+        "Call": 0.7618,
+        "3bet 8bb": -0.0671,
+        "Fold": -0.1666,
+        "3bet 10bb": -0.528
+      }
+    },
+    "98s": {
+      "strategy": {
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Fold": -0.3442,
+        "3bet 8bb": -0.0722,
+        "3bet 10bb": -0.5966
+      },
+      "ev_normalized": {
+        "Call": 0.2532,
+        "Fold": -0.091,
+        "3bet 10bb": -0.3434,
+        "3bet 8bb": 0.1811
+      }
+    },
+    "64s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Fold": -3.2565,
+        "3bet 10bb": -0.3577,
+        "Call": -0.7727
+      },
+      "ev_normalized": {
+        "Call": 0.324,
+        "3bet 10bb": 0.739,
+        "3bet 8bb": 1.0967,
+        "Fold": -2.1598
+      }
+    },
+    "AKs": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -6.9346,
+        "Call": -3.306,
+        "3bet 8bb": -0.965,
+        "3bet 10bb": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -4.1332,
+        "3bet 8bb": 1.8364,
+        "3bet 10bb": 2.8014,
+        "Call": -0.5046
+      }
+    },
+    "T9o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.2647,
+        "3bet 10bb": -0.9452,
+        "Call": 0.0,
+        "Fold": -0.396
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.5437,
+        "3bet 8bb": 0.1368,
+        "Fold": 0.0055,
+        "Call": 0.4015
+      }
+    },
+    "T8o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -1.2922,
+        "Fold": 0.0,
+        "Call": -0.3186,
+        "3bet 8bb": -0.5814
+      },
+      "ev_normalized": {
+        "Fold": 0.5481,
+        "3bet 8bb": -0.0333,
+        "Call": 0.2295,
+        "3bet 10bb": -0.7442
+      }
+    },
+    "95o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "Fold": 1.625
+      }
+    },
+    "J3s": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375
+      }
+    },
+    "42o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "3bet 8bb": -0.375,
+        "Call": 0.125,
+        "3bet 10bb": -1.375
+      }
+    },
+    "QJs": {
+      "strategy": {
+        "Fold": 0.0,
+        "3bet 10bb": 0.0,
+        "Call": 1.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -0.7625,
+        "Call": 0.0,
+        "Fold": -0.6833,
+        "3bet 8bb": -0.29
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.3285,
+        "Call": 0.434,
+        "Fold": -0.2494,
+        "3bet 8bb": 0.144
+      }
+    },
+    "76s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 1.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.2601,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": -0.4305,
+        "Fold": -0.7929
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.0596,
+        "3bet 8bb": 0.3709,
+        "Call": 0.1108,
+        "Fold": -0.422
+      }
+    },
+    "62s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "Call": 0.125,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375
+      }
+    },
+    "K7s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 1.0,
+        "Fold": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": 0.0,
+        "Fold": -3.0888,
+        "3bet 8bb": -0.046,
+        "Call": -1.1433
+      },
+      "ev_normalized": {
+        "Call": -0.0738,
+        "3bet 8bb": 1.0235,
+        "Fold": -2.0193,
+        "3bet 10bb": 1.0695
+      }
+    },
+    "Q5s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 8bb": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -0.4628,
+        "Call": -0.1023,
+        "3bet 8bb": 0.0,
+        "Fold": -0.5804
+      },
+      "ev_normalized": {
+        "Fold": -0.294,
+        "3bet 10bb": -0.1764,
+        "Call": 0.1841,
+        "3bet 8bb": 0.2864
+      }
+    },
+    "K7o": {
+      "strategy": {
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.831,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": -0.0997,
+        "Fold": -2.0739
+      },
+      "ev_normalized": {
+        "Fold": -1.3228,
+        "3bet 10bb": 0.6515,
+        "Call": -0.0798,
+        "3bet 8bb": 0.7512
+      }
+    },
+    "96o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "Call": 0.125,
+        "3bet 10bb": -1.375
+      }
+    },
+    "T3s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Call": 0.125
+      }
+    },
+    "ATs": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Call": 1.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.0263,
+        "3bet 8bb": -0.9212,
+        "3bet 10bb": -1.38,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -0.1944,
+        "Call": 0.8319,
+        "3bet 8bb": -0.0893,
+        "3bet 10bb": -0.5481
+      }
+    },
+    "J2s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375
+      }
+    },
+    "K3o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "Call": 0.125
+      }
+    },
+    "J7o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "Call": 0.125,
+        "3bet 10bb": -1.375
+      }
+    },
+    "97o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.043,
+        "3bet 10bb": -0.5965,
+        "Call": -0.0965,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.141,
+        "Call": 0.0875,
+        "3bet 10bb": -0.4125,
+        "Fold": 0.184
+      }
+    },
+    "43o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "Call": 0.125
+      }
+    },
+    "Q6o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375
+      }
+    },
+    "A5o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.0757,
+        "Call": 0.0,
+        "3bet 10bb": -1.0721,
+        "3bet 8bb": -0.4868
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.6635,
+        "Call": 0.4087,
+        "3bet 8bb": -0.0781,
+        "Fold": 0.333
+      }
+    },
+    "J9o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -0.3242,
+        "3bet 10bb": -1.2832,
+        "3bet 8bb": -0.5429
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.0053,
+        "Fold": 0.5376,
+        "Call": 0.2134,
+        "3bet 10bb": -0.7456
+      }
+    },
+    "32s": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.9556,
+        "3bet 10bb": -0.3578,
+        "Call": -0.1811,
+        "3bet 8bb": 0.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": 0.2658,
+        "Call": 0.4425,
+        "Fold": -1.332,
+        "3bet 8bb": 0.6236
+      }
+    },
+    "63o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "Call": 0.125
+      }
+    },
+    "93o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "Fold": 1.625
+      }
+    },
+    "A5s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Fold": -0.6996,
+        "3bet 10bb": -0.9089,
+        "3bet 8bb": -0.4293
+      },
+      "ev_normalized": {
+        "Fold": -0.1902,
+        "3bet 10bb": -0.3995,
+        "3bet 8bb": 0.0801,
+        "Call": 0.5095
+      }
+    },
+    "93s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "Fold": 1.625,
+        "3bet 8bb": -0.375
+      }
+    },
+    "95s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.1555,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": -0.6265,
+        "Fold": -0.0572
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.2098,
+        "3bet 10bb": -0.4167,
+        "Fold": 0.1526,
+        "Call": 0.0543
+      }
+    },
+    "74o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "3bet 8bb": -0.375,
+        "Call": 0.125,
+        "3bet 10bb": -1.375
+      }
+    },
+    "JJ": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -0.8023,
+        "Fold": -4.9247,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": -0.3095
+      },
+      "ev_normalized": {
+        "Call": 0.7068,
+        "Fold": -3.4156,
+        "3bet 8bb": 1.1996,
+        "3bet 10bb": 1.5091
+      }
+    },
+    "AA": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 1.0,
+        "Fold": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": -2.6447,
+        "Call": -9.2616,
+        "Fold": -21.296
+      },
+      "ev_normalized": {
+        "3bet 8bb": 5.6559,
+        "3bet 10bb": 8.3006,
+        "Fold": -12.9954,
+        "Call": -0.961
+      }
+    },
+    "84s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 1.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.1003,
+        "Call": -0.1185,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": -0.5475
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.3559,
+        "3bet 8bb": 0.1916,
+        "Fold": 0.0913,
+        "Call": 0.0731
+      }
+    },
+    "33": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": 0.0,
+        "Call": -1.2221,
+        "Fold": -2.382,
+        "3bet 8bb": -0.0062
+      },
+      "ev_normalized": {
+        "Fold": -1.4794,
+        "3bet 8bb": 0.8964,
+        "Call": -0.3195,
+        "3bet 10bb": 0.9026
+      }
+    },
+    "A9o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.2851,
+        "Call": 0.0,
+        "3bet 8bb": -0.8277,
+        "3bet 10bb": -1.3856
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.2031,
+        "Call": 0.6246,
+        "Fold": 0.3395,
+        "3bet 10bb": -0.761
+      }
+    },
+    "85o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "Call": 0.125,
+        "3bet 8bb": -0.375,
+        "3bet 10bb": -1.375
+      }
+    },
+    "T7s": {
+      "strategy": {
+        "Fold": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Call": -0.1401,
+        "3bet 10bb": -0.5519,
+        "Fold": -0.3546
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.2617,
+        "3bet 10bb": -0.2902,
+        "Call": 0.1216,
+        "Fold": -0.093
+      }
+    },
+    "64o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "Call": 0.125
+      }
+    },
+    "99": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -1.2177,
+        "Fold": -2.8891,
+        "Call": 0.0,
+        "3bet 8bb": -1.1595
+      },
+      "ev_normalized": {
+        "Fold": -1.5725,
+        "3bet 8bb": 0.1571,
+        "Call": 1.3166,
+        "3bet 10bb": 0.0989
+      }
+    },
+    "QQ": {
+      "strategy": {
+        "3bet 10bb": 1.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -1.0166,
+        "3bet 10bb": 0.0,
+        "Call": -4.0577,
+        "Fold": -10.7369
+      },
+      "ev_normalized": {
+        "Call": -0.1049,
+        "Fold": -6.7841,
+        "3bet 8bb": 2.9362,
+        "3bet 10bb": 3.9528
+      }
+    },
+    "94o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625
+      }
+    },
+    "ATo": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -1.3795,
+        "Call": 0.0,
+        "Fold": -0.3316,
+        "3bet 8bb": -0.8335
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.1974,
+        "Fold": 0.3046,
+        "3bet 10bb": -0.7434,
+        "Call": 0.6362
+      }
+    },
+    "Q7s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 8bb": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Fold": -1.6027,
+        "3bet 10bb": -0.2608,
+        "Call": -0.5565
+      },
+      "ev_normalized": {
+        "Fold": -0.9977,
+        "3bet 10bb": 0.3442,
+        "3bet 8bb": 0.605,
+        "Call": 0.0485
+      }
+    },
+    "92s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "3bet 8bb": -0.375
+      }
+    },
+    "K8o": {
+      "strategy": {
+        "Fold": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.2986,
+        "3bet 10bb": -0.7161,
+        "Call": 0.0,
+        "3bet 8bb": -0.4242
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.1855,
+        "Call": 0.6097,
+        "Fold": -0.6889,
+        "3bet 10bb": -0.1064
+      }
+    },
+    "87s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "3bet 8bb": 1.0
+      },
+      "ev_vs_best": {
+        "Call": -1.0187,
+        "3bet 10bb": -0.0684,
+        "3bet 8bb": 0.0,
+        "Fold": -3.0332
+      },
+      "ev_normalized": {
+        "Fold": -2.0031,
+        "3bet 8bb": 1.0301,
+        "Call": 0.0114,
+        "3bet 10bb": 0.9617
+      }
+    },
+    "Q9s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.0337,
+        "Call": 0.0,
+        "Fold": -0.3683,
+        "3bet 10bb": -0.477
+      },
+      "ev_normalized": {
+        "Call": 0.2198,
+        "3bet 8bb": 0.1861,
+        "3bet 10bb": -0.2573,
+        "Fold": -0.1486
+      }
+    },
+    "Q6s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 1.0,
+        "Fold": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -0.4394,
+        "Fold": -0.7226,
+        "Call": -0.0497,
+        "3bet 8bb": 0.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.1365,
+        "Call": 0.2532,
+        "3bet 8bb": 0.3029,
+        "Fold": -0.4197
+      }
+    },
+    "44": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Fold": -0.1387,
+        "3bet 8bb": -0.0997,
+        "3bet 10bb": -0.4325
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.068,
+        "3bet 10bb": -0.2648,
+        "Fold": 0.029,
+        "Call": 0.1677
+      }
+    },
+    "A7o": {
+      "strategy": {
+        "Call": 1.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "3bet 8bb": -0.6564,
+        "Fold": -1.1601,
+        "3bet 10bb": -0.987
+      },
+      "ev_normalized": {
+        "Call": 0.7009,
+        "3bet 10bb": -0.2861,
+        "3bet 8bb": 0.0445,
+        "Fold": -0.4592
+      }
+    },
+    "86o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "3bet 8bb": -0.375,
+        "Call": 0.125,
+        "3bet 10bb": -1.375
+      }
+    },
+    "J6o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "Fold": 1.625
+      }
+    },
+    "A8s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 1.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "Fold": -1.8179,
+        "3bet 8bb": -0.9754,
+        "3bet 10bb": -1.316
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.2887,
+        "Fold": -0.7906,
+        "Call": 1.0273,
+        "3bet 8bb": 0.0519
+      }
+    },
+    "J5o": {
+      "strategy": {
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375
+      }
+    },
+    "55": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.6127,
+        "3bet 10bb": -0.9209,
+        "Call": 0.0,
+        "Fold": -1.6959
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.1135,
+        "Call": 0.8074,
+        "Fold": -0.8885,
+        "3bet 8bb": 0.1947
+      }
+    },
+    "73s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375
+      }
+    },
+    "J7s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Fold": -0.1703,
+        "Call": -0.0017,
+        "3bet 10bb": -0.5513
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.3705,
+        "Fold": 0.0105,
+        "Call": 0.1791,
+        "3bet 8bb": 0.1808
+      }
+    },
+    "JTo": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.3362,
+        "3bet 8bb": -0.8433,
+        "Fold": 0.0,
+        "3bet 10bb": -1.621
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.1432,
+        "3bet 10bb": -0.9209,
+        "Fold": 0.7001,
+        "Call": 0.3639
+      }
+    },
+    "T5s": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "Fold": 1.625
+      }
+    },
+    "92o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "3bet 10bb": -1.375,
+        "Fold": 1.625,
+        "Call": 0.125
+      }
+    },
+    "73o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625
+      }
+    },
+    "88": {
+      "strategy": {
+        "3bet 10bb": 1.0,
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.6912,
+        "3bet 10bb": 0.0,
+        "Fold": -5.8045,
+        "3bet 8bb": -0.4259
+      },
+      "ev_normalized": {
+        "3bet 10bb": 1.7304,
+        "Call": 1.0392,
+        "Fold": -4.0741,
+        "3bet 8bb": 1.3045
+      }
+    },
+    "QTs": {
+      "strategy": {
+        "Call": 1.0,
+        "Fold": 0.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.2612,
+        "3bet 10bb": -0.7777,
+        "Fold": -0.6041,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.4107,
+        "Fold": -0.1934,
+        "3bet 8bb": 0.1495,
+        "3bet 10bb": -0.367
+      }
+    },
+    "T3o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "3bet 8bb": -0.375,
+        "Call": 0.125,
+        "3bet 10bb": -1.375
+      }
+    },
+    "K4s": {
+      "strategy": {
+        "3bet 8bb": 1.0,
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.145,
+        "3bet 8bb": 0.0,
+        "Fold": -0.7203,
+        "3bet 10bb": -0.3213
+      },
+      "ev_normalized": {
+        "Call": 0.1517,
+        "3bet 8bb": 0.2967,
+        "3bet 10bb": -0.0246,
+        "Fold": -0.4237
+      }
+    },
+    "KJo": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.6346,
+        "Call": 0.0,
+        "3bet 10bb": -1.0911,
+        "Fold": -0.4479
+      },
+      "ev_normalized": {
+        "Fold": 0.0955,
+        "Call": 0.5434,
+        "3bet 8bb": -0.0912,
+        "3bet 10bb": -0.5477
+      }
+    },
+    "82o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "Call": 0.125,
+        "3bet 8bb": -0.375,
+        "3bet 10bb": -1.375
+      }
+    },
+    "Q7o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Call": -0.8374,
+        "3bet 10bb": -0.1579,
+        "Fold": -1.8163
+      },
+      "ev_normalized": {
+        "3bet 10bb": 0.545,
+        "Call": -0.1345,
+        "Fold": -1.1134,
+        "3bet 8bb": 0.7029
+      }
+    },
+    "74s": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Fold": -0.4551,
+        "Call": -0.3491,
+        "3bet 10bb": -0.4789
+      },
+      "ev_normalized": {
+        "Call": -0.0283,
+        "3bet 8bb": 0.3208,
+        "Fold": -0.1343,
+        "3bet 10bb": -0.1581
+      }
+    },
+    "54o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "3bet 8bb": -0.375
+      }
+    },
+    "J5s": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -1.3079,
+        "3bet 8bb": -0.5711,
+        "Call": -0.5262,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.0302,
+        "3bet 10bb": -0.7066,
+        "Call": 0.0751,
+        "Fold": 0.6013
+      }
+    },
+    "J2o": {
+      "strategy": {
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 8bb": -2.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 8bb": -0.375,
+        "3bet 10bb": -1.375,
+        "Fold": 1.625
+      }
+    },
+    "K4o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375
+      }
+    },
+    "Q3s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 8bb": -0.2577,
+        "3bet 10bb": -0.8428,
+        "Call": -0.0351
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.0262,
+        "Fold": 0.2839,
+        "Call": 0.2488,
+        "3bet 10bb": -0.5589
+      }
+    },
+    "22": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -0.214,
+        "3bet 8bb": 0.0,
+        "Fold": -2.0107,
+        "Call": -1.2685
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.8733,
+        "3bet 10bb": 0.6593,
+        "Fold": -1.1374,
+        "Call": -0.3952
+      }
+    },
+    "A4o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.2358,
+        "Fold": 0.0,
+        "3bet 10bb": -1.3283,
+        "3bet 8bb": -0.7458
+      },
+      "ev_normalized": {
+        "Fold": 0.5775,
+        "3bet 10bb": -0.7508,
+        "Call": 0.3417,
+        "3bet 8bb": -0.1683
+      }
+    },
+    "K9o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.2363,
+        "3bet 10bb": -0.6592,
+        "Fold": -0.2536,
+        "Call": 0.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.051,
+        "3bet 10bb": -0.3719,
+        "Call": 0.2873,
+        "Fold": 0.0337
+      }
+    },
+    "83o": {
+      "strategy": {
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "3bet 10bb": -3.0,
+        "Fold": 0.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.375,
+        "Call": 0.125,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375
+      }
+    },
+    "52s": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "Fold": 1.625,
+        "3bet 8bb": -0.375,
+        "Call": 0.125
+      }
+    },
+    "65o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "Call": 0.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625,
+        "3bet 10bb": -1.375
+      }
+    },
+    "A6o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Call": 1.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "3bet 8bb": -0.4994,
+        "3bet 10bb": -1.049,
+        "Fold": -0.2864
+      },
+      "ev_normalized": {
+        "3bet 8bb": -0.0407,
+        "3bet 10bb": -0.5903,
+        "Call": 0.4587,
+        "Fold": 0.1723
+      }
+    },
+    "63s": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -0.4362,
+        "3bet 10bb": -0.9755,
+        "Fold": 0.0,
+        "3bet 8bb": -0.2929
+      },
+      "ev_normalized": {
+        "Call": -0.0101,
+        "3bet 10bb": -0.5494,
+        "Fold": 0.4262,
+        "3bet 8bb": 0.1332
+      }
+    },
+    "Q4o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "Call": -1.5
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "Fold": 1.625,
+        "3bet 8bb": -0.375
+      }
+    },
+    "AQo": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 1.0,
+        "3bet 8bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5488,
+        "Fold": -3.9215,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": -0.4402
+      },
+      "ev_normalized": {
+        "Call": -0.0712,
+        "3bet 8bb": 1.0374,
+        "Fold": -2.4439,
+        "3bet 10bb": 1.4776
+      }
+    },
+    "Q8s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Call": 0.0,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Call": -0.686,
+        "Fold": -1.8483,
+        "3bet 10bb": -0.2285
+      },
+      "ev_normalized": {
+        "3bet 10bb": 0.4622,
+        "3bet 8bb": 0.6907,
+        "Call": 0.0047,
+        "Fold": -1.1576
+      }
+    },
+    "AKo": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.9363,
+        "Fold": -6.5659,
+        "Call": -3.3622,
+        "3bet 10bb": 0.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": 1.7798,
+        "Fold": -3.8498,
+        "Call": -0.6461,
+        "3bet 10bb": 2.7161
+      }
+    },
+    "K9s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "Call": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -0.3415,
+        "3bet 8bb": -0.0432,
+        "Call": 0.0,
+        "Fold": -0.9058
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.2794,
+        "Call": 0.3226,
+        "3bet 10bb": -0.0189,
+        "Fold": -0.5832
+      }
+    },
+    "97s": {
+      "strategy": {
+        "3bet 8bb": 1.0,
+        "3bet 10bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": 0.0,
+        "Fold": -0.527,
+        "3bet 10bb": -0.4604,
+        "Call": -0.1659
+      },
+      "ev_normalized": {
+        "Fold": -0.2387,
+        "3bet 8bb": 0.2883,
+        "Call": 0.1224,
+        "3bet 10bb": -0.1721
+      }
+    },
+    "KQs": {
+      "strategy": {
+        "Fold": 0.0,
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 1.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -3.7094,
+        "3bet 10bb": 0.0,
+        "Call": -1.0503,
+        "3bet 8bb": -0.4506
+      },
+      "ev_normalized": {
+        "Call": 0.2523,
+        "3bet 10bb": 1.3026,
+        "Fold": -2.4068,
+        "3bet 8bb": 0.852
+      }
+    },
+    "K6s": {
+      "strategy": {
+        "3bet 8bb": 1.0,
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.3026,
+        "3bet 10bb": -0.2823,
+        "Call": -0.1292,
+        "3bet 8bb": 0.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": 0.4285,
+        "3bet 10bb": 0.1462,
+        "Call": 0.2993,
+        "Fold": -0.8741
+      }
+    },
+    "T6o": {
+      "strategy": {
+        "Call": 0.0,
+        "3bet 8bb": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 10bb": -3.0,
+        "Call": -1.5,
+        "3bet 8bb": -2.0,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625
+      }
+    },
+    "KK": {
+      "strategy": {
+        "3bet 10bb": 1.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -9.1888,
+        "Fold": -20.5,
+        "3bet 10bb": 0.0,
+        "3bet 8bb": -2.4515
+      },
+      "ev_normalized": {
+        "Fold": -12.4649,
+        "Call": -1.1537,
+        "3bet 10bb": 8.0351,
+        "3bet 8bb": 5.5836
+      }
+    },
+    "J8o": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "3bet 8bb": -0.7208,
+        "Call": -0.3864,
+        "3bet 10bb": -1.4309
+      },
+      "ev_normalized": {
+        "Call": 0.2481,
+        "3bet 10bb": -0.7964,
+        "Fold": 0.6345,
+        "3bet 8bb": -0.0863
+      }
+    },
+    "86s": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Call": 0.0,
+        "Fold": 0.0,
+        "3bet 8bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.5134,
+        "Call": -0.0408,
+        "3bet 10bb": -0.4983,
+        "3bet 8bb": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -0.2503,
+        "Call": 0.2223,
+        "3bet 8bb": 0.2631,
+        "3bet 10bb": -0.2352
+      }
+    },
+    "T4o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "Fold": 1.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0
+      },
+      "ev_vs_best": {
+        "Call": -1.5,
+        "Fold": 0.0,
+        "3bet 10bb": -3.0,
+        "3bet 8bb": -2.0
+      },
+      "ev_normalized": {
+        "3bet 10bb": -1.375,
+        "Call": 0.125,
+        "3bet 8bb": -0.375,
+        "Fold": 1.625
+      }
+    },
+    "AQs": {
+      "strategy": {
+        "3bet 8bb": 0.0,
+        "3bet 10bb": 1.0,
+        "Call": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -0.5054,
+        "Fold": -4.583,
+        "Call": -1.6161,
+        "3bet 10bb": 0.0
+      },
+      "ev_normalized": {
+        "3bet 8bb": 1.1707,
+        "3bet 10bb": 1.6761,
+        "Fold": -2.9069,
+        "Call": 0.06
+      }
+    },
+    "T2o": {
+      "strategy": {
+        "3bet 10bb": 0.0,
+        "3bet 8bb": 0.0,
+        "Call": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "3bet 8bb": -2.0,
+        "Fold": 0.0,
+        "Call": -1.5,
+        "3bet 10bb": -3.0
+      },
+      "ev_normalized": {
+        "Fold": 1.625,
+        "Call": 0.125,
+        "3bet 10bb": -1.375,
+        "3bet 8bb": -0.375
+      }
+    },
+    "AJo": {
+      "strategy": {
+        "Call": 1.0,
+        "3bet 8bb": 0.0,
+        "Fold": 0.0,
+        "3bet 10bb": 0.0
+      },
+      "ev_vs_best": {
+        "Call": 0.0,
+        "3bet 8bb": -0.5955,
+        "Fold": -0.596,
+        "3bet 10bb": -0.9887
+      },
+      "ev_normalized": {
+        "3bet 10bb": -0.4437,
+        "3bet 8bb": -0.0504,
+        "Call": 0.5451,
+        "Fold": -0.0509
+      }
+    }
+  }
+}

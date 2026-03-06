@@ -1,0 +1,3386 @@
+{
+  "scenario_id": "rfi_sb",
+  "source": "postflop-solver DCFR × 5 flops",
+  "hands": {
+    "K8o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "JTs": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.3489,
+        "Fold": -0.8489,
+        "Raise 3bb": -0.082
+      },
+      "ev_normalized": {
+        "Fold": -0.029,
+        "Raise 2.5bb": 0.82,
+        "Limp": -1.529,
+        "Raise 3bb": 0.738
+      }
+    },
+    "J8s": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0803,
+        "Fold": -0.8744,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.3744
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.752,
+        "Fold": -0.0421,
+        "Raise 2.5bb": 0.8323,
+        "Limp": -1.5421
+      }
+    },
+    "K6o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "K7o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "62s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "T2s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Fold": 1.8581
+      }
+    },
+    "K2o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "A8s": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -0.0491,
+        "Fold": -1.8163,
+        "Raise 3bb": 0.0,
+        "Limp": -3.3163
+      },
+      "ev_normalized": {
+        "Limp": -2.0209,
+        "Raise 3bb": 1.2954,
+        "Raise 2.5bb": 1.2463,
+        "Fold": -0.5209
+      }
+    },
+    "54o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "AQs": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 1.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": -0.0807,
+        "Fold": -2.0407,
+        "Limp": -3.5407
+      },
+      "ev_normalized": {
+        "Fold": -0.6252,
+        "Raise 2.5bb": 1.3348,
+        "Raise 3bb": 1.4155,
+        "Limp": -2.1252
+      }
+    },
+    "QJo": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.1052,
+        "Fold": -0.7356,
+        "Limp": -2.2356,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.6639,
+        "Limp": -1.4665,
+        "Raise 2.5bb": 0.7691,
+        "Fold": 0.0335
+      }
+    },
+    "T9s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Fold": -1.0826,
+        "Limp": -2.5826,
+        "Raise 3bb": -0.0462
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.9278,
+        "Raise 3bb": 0.8816,
+        "Limp": -1.6548,
+        "Fold": -0.1548
+      }
+    },
+    "Q4o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "J2s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581
+      }
+    },
+    "J9s": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0903,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.289,
+        "Fold": -0.789
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.7018,
+        "Limp": -1.4969,
+        "Raise 2.5bb": 0.7921,
+        "Fold": 0.0031
+      }
+    },
+    "42o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "K2s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "43o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "75o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "84o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "QTs": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.0333,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.0565,
+        "Limp": -2.5333
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.9058,
+        "Limp": -1.6275,
+        "Fold": -0.1275,
+        "Raise 3bb": 0.8493
+      }
+    },
+    "33": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Raise 3bb": 0.0,
+        "Fold": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Fold": -1.1821,
+        "Raise 3bb": -0.0274,
+        "Limp": -2.6821
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.9455,
+        "Fold": -0.2092,
+        "Limp": -1.7092,
+        "Raise 2.5bb": 0.9729
+      }
+    },
+    "JTo": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.1329,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.0526,
+        "Fold": -0.5526
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.5516,
+        "Fold": 0.1319,
+        "Raise 2.5bb": 0.6845,
+        "Limp": -1.3681
+      }
+    },
+    "Q8o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581
+      }
+    },
+    "82s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "Q2s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581
+      }
+    },
+    "Q8s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Fold": -1.3874,
+        "Raise 3bb": -0.0069,
+        "Limp": -2.8874
+      },
+      "ev_normalized": {
+        "Fold": -0.317,
+        "Raise 3bb": 1.0635,
+        "Raise 2.5bb": 1.0704,
+        "Limp": -1.817
+      }
+    },
+    "A3s": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Raise 3bb": 0.0,
+        "Fold": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0513,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.5867,
+        "Fold": -1.0867
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.9312,
+        "Fold": -0.1555,
+        "Raise 3bb": 0.8799,
+        "Limp": -1.6555
+      }
+    },
+    "43s": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.1637,
+        "Fold": -0.3223,
+        "Raise 2.5bb": 0.0,
+        "Limp": -1.8223
+      },
+      "ev_normalized": {
+        "Limp": -1.2452,
+        "Raise 3bb": 0.4134,
+        "Fold": 0.2548,
+        "Raise 2.5bb": 0.5771
+      }
+    },
+    "98s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.9208,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.4208,
+        "Raise 3bb": -0.0742
+      },
+      "ev_normalized": {
+        "Fold": -0.0669,
+        "Limp": -1.5669,
+        "Raise 2.5bb": 0.8539,
+        "Raise 3bb": 0.7797
+      }
+    },
+    "85o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "K4o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "K8s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": 0.0,
+        "Limp": -3.4064,
+        "Fold": -1.9064,
+        "Raise 2.5bb": -0.0716
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 1.2745,
+        "Raise 3bb": 1.3461,
+        "Limp": -2.0603,
+        "Fold": -0.5603
+      }
+    },
+    "94s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "82o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "Q6s": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "94o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "A9s": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0382,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.6803,
+        "Fold": -1.1803
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.9747,
+        "Fold": -0.2056,
+        "Raise 3bb": 0.9365,
+        "Limp": -1.7056
+      }
+    },
+    "T8o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581
+      }
+    },
+    "T7o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581
+      }
+    },
+    "Q5s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581
+      }
+    },
+    "T3o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "KQo": {
+      "strategy": {
+        "Raise 3bb": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.6863,
+        "Limp": -3.1863,
+        "Raise 2.5bb": -0.042,
+        "Raise 3bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 3bb": 1.2287,
+        "Fold": -0.4576,
+        "Limp": -1.9577,
+        "Raise 2.5bb": 1.1867
+      }
+    },
+    "QQ": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 1.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": -0.3649,
+        "Fold": -3.9655,
+        "Limp": -5.4655
+      },
+      "ev_normalized": {
+        "Raise 3bb": 2.449,
+        "Fold": -1.5165,
+        "Limp": -3.0165,
+        "Raise 2.5bb": 2.0841
+      }
+    },
+    "J3s": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "63s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "Q9o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.6008,
+        "Limp": -2.1008,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.1283
+      },
+      "ev_normalized": {
+        "Fold": 0.1067,
+        "Limp": -1.3933,
+        "Raise 2.5bb": 0.7075,
+        "Raise 3bb": 0.5792
+      }
+    },
+    "A6o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -2.3974,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.0796,
+        "Fold": -0.8974
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.8436,
+        "Fold": -0.0538,
+        "Limp": -1.5538,
+        "Raise 3bb": 0.764
+      }
+    },
+    "74o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "T9o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -2.318,
+        "Fold": -0.818,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.0928
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.8072,
+        "Fold": -0.0108,
+        "Limp": -1.5108,
+        "Raise 3bb": 0.7144
+      }
+    },
+    "A5s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Raise 3bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.0613,
+        "Limp": -2.5613,
+        "Raise 3bb": -0.0577,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.9201,
+        "Fold": -0.1412,
+        "Raise 3bb": 0.8624,
+        "Limp": -1.6412
+      }
+    },
+    "J5s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "88": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 1.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": 0.0,
+        "Limp": -4.9088,
+        "Raise 2.5bb": -0.2561,
+        "Fold": -3.4088
+      },
+      "ev_normalized": {
+        "Fold": -1.2654,
+        "Limp": -2.7654,
+        "Raise 3bb": 2.1434,
+        "Raise 2.5bb": 1.8873
+      }
+    },
+    "J6o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581
+      }
+    },
+    "55": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -3.0825,
+        "Fold": -1.5825,
+        "Raise 2.5bb": -0.0223,
+        "Raise 3bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 1.1495,
+        "Raise 3bb": 1.1718,
+        "Limp": -1.9107,
+        "Fold": -0.4107
+      }
+    },
+    "T4s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "A7s": {
+      "strategy": {
+        "Raise 3bb": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -0.0177,
+        "Raise 3bb": 0.0,
+        "Fold": -1.5817,
+        "Limp": -3.0817
+      },
+      "ev_normalized": {
+        "Limp": -1.9114,
+        "Raise 2.5bb": 1.1526,
+        "Raise 3bb": 1.1703,
+        "Fold": -0.4114
+      }
+    },
+    "72o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581
+      }
+    },
+    "Q3s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581
+      }
+    },
+    "AQo": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 1.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -0.0408,
+        "Fold": -1.7436,
+        "Raise 3bb": 0.0,
+        "Limp": -3.2436
+      },
+      "ev_normalized": {
+        "Limp": -1.9866,
+        "Raise 2.5bb": 1.2162,
+        "Fold": -0.4866,
+        "Raise 3bb": 1.257
+      }
+    },
+    "AJo": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0638,
+        "Fold": -0.986,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.486
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.8202,
+        "Fold": -0.102,
+        "Raise 2.5bb": 0.884,
+        "Limp": -1.6021
+      }
+    },
+    "J5o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Fold": 1.8581
+      }
+    },
+    "44": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.2642,
+        "Fold": -0.7642,
+        "Raise 3bb": -0.1047
+      },
+      "ev_normalized": {
+        "Fold": 0.0191,
+        "Raise 3bb": 0.6786,
+        "Raise 2.5bb": 0.7833,
+        "Limp": -1.4809
+      }
+    },
+    "K4s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -2.4884,
+        "Raise 3bb": -0.0589,
+        "Fold": -0.9884,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -0.1045,
+        "Limp": -1.6045,
+        "Raise 2.5bb": 0.8839,
+        "Raise 3bb": 0.825
+      }
+    },
+    "A3o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "76o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "JJ": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -2.7751,
+        "Limp": -4.2751,
+        "Raise 2.5bb": -0.208,
+        "Raise 3bb": 0.0
+      },
+      "ev_normalized": {
+        "Limp": -2.4606,
+        "Raise 2.5bb": 1.6066,
+        "Fold": -0.9606,
+        "Raise 3bb": 1.8146
+      }
+    },
+    "J2o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "KJs": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -2.729,
+        "Raise 3bb": -0.0203,
+        "Raise 2.5bb": 0.0,
+        "Fold": -1.229
+      },
+      "ev_normalized": {
+        "Limp": -1.7344,
+        "Raise 2.5bb": 0.9946,
+        "Fold": -0.2344,
+        "Raise 3bb": 0.9743
+      }
+    },
+    "53s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "J8o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "T2o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581
+      }
+    },
+    "76s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.0647,
+        "Fold": -0.9506,
+        "Limp": -2.4506
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.8665,
+        "Limp": -1.5841,
+        "Raise 3bb": 0.8018,
+        "Fold": -0.0841
+      }
+    },
+    "66": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0234,
+        "Raise 2.5bb": 0.0,
+        "Fold": -1.2802,
+        "Limp": -2.7802
+      },
+      "ev_normalized": {
+        "Limp": -1.7592,
+        "Raise 2.5bb": 1.021,
+        "Fold": -0.2593,
+        "Raise 3bb": 0.9976
+      }
+    },
+    "53o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "J4s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581
+      }
+    },
+    "87o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "64s": {
+      "strategy": {
+        "Raise 3bb": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.9417,
+        "Raise 2.5bb": -0.0884,
+        "Limp": -3.4417,
+        "Raise 3bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 3bb": 1.368,
+        "Fold": -0.5738,
+        "Raise 2.5bb": 1.2796,
+        "Limp": -2.0738
+      }
+    },
+    "T7s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0854,
+        "Fold": -0.8311,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.3311
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.7265,
+        "Raise 2.5bb": 0.8119,
+        "Fold": -0.0192,
+        "Limp": -1.5192
+      }
+    },
+    "65s": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -2.4856,
+        "Fold": -0.9856,
+        "Raise 3bb": -0.0574,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.8821,
+        "Limp": -1.6035,
+        "Raise 3bb": 0.8247,
+        "Fold": -0.1035
+      }
+    },
+    "54s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Fold": -0.701,
+        "Raise 3bb": -0.1062,
+        "Limp": -2.201
+      },
+      "ev_normalized": {
+        "Limp": -1.449,
+        "Raise 2.5bb": 0.7521,
+        "Fold": 0.0511,
+        "Raise 3bb": 0.6459
+      }
+    },
+    "32o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "AKs": {
+      "strategy": {
+        "Raise 3bb": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": -0.1357,
+        "Fold": -2.334,
+        "Limp": -3.834
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 1.4402,
+        "Fold": -0.7581,
+        "Limp": -2.2581,
+        "Raise 3bb": 1.5759
+      }
+    },
+    "Q4s": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "73o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581
+      }
+    },
+    "83s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581
+      }
+    },
+    "K6s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -2.7763,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.0088,
+        "Fold": -1.2763
+      },
+      "ev_normalized": {
+        "Limp": -1.761,
+        "Raise 2.5bb": 1.0154,
+        "Raise 3bb": 1.0066,
+        "Fold": -0.261
+      }
+    },
+    "QTo": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.1093,
+        "Raise 2.5bb": 0.0,
+        "Fold": -0.7076,
+        "Limp": -2.2076
+      },
+      "ev_normalized": {
+        "Fold": 0.0485,
+        "Limp": -1.4515,
+        "Raise 2.5bb": 0.7561,
+        "Raise 3bb": 0.6468
+      }
+    },
+    "95s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581
+      }
+    },
+    "32s": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581
+      }
+    },
+    "K3s": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "93s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581
+      }
+    },
+    "86o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581
+      }
+    },
+    "K5o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "96s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -0.1448,
+        "Limp": -3.9239,
+        "Fold": -2.4239,
+        "Raise 3bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 3bb": 1.6231,
+        "Fold": -0.8008,
+        "Raise 2.5bb": 1.4783,
+        "Limp": -2.3008
+      }
+    },
+    "K7s": {
+      "strategy": {
+        "Raise 3bb": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.8161,
+        "Limp": -3.3161,
+        "Raise 2.5bb": -0.0635,
+        "Raise 3bb": 0.0
+      },
+      "ev_normalized": {
+        "Limp": -2.0172,
+        "Fold": -0.5172,
+        "Raise 3bb": 1.2989,
+        "Raise 2.5bb": 1.2354
+      }
+    },
+    "A2o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581
+      }
+    },
+    "87s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": 0.0,
+        "Limp": -3.1521,
+        "Fold": -1.6521,
+        "Raise 2.5bb": -0.0325
+      },
+      "ev_normalized": {
+        "Raise 3bb": 1.2092,
+        "Fold": -0.4429,
+        "Raise 2.5bb": 1.1767,
+        "Limp": -1.9429
+      }
+    },
+    "A7o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 1.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": 0.0,
+        "Limp": -2.9839,
+        "Raise 2.5bb": -0.0068,
+        "Fold": -1.4839
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 1.1119,
+        "Raise 3bb": 1.1187,
+        "Fold": -0.3652,
+        "Limp": -1.8653
+      }
+    },
+    "97o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "77": {
+      "strategy": {
+        "Raise 3bb": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": -0.3681,
+        "Limp": -5.7061,
+        "Fold": -4.2061
+      },
+      "ev_normalized": {
+        "Limp": -3.136,
+        "Raise 2.5bb": 2.202,
+        "Raise 3bb": 2.5701,
+        "Fold": -1.636
+      }
+    },
+    "AKo": {
+      "strategy": {
+        "Raise 3bb": 1.0,
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -0.1061,
+        "Limp": -3.6126,
+        "Raise 3bb": 0.0,
+        "Fold": -2.1126
+      },
+      "ev_normalized": {
+        "Fold": -0.6548,
+        "Limp": -2.1548,
+        "Raise 3bb": 1.4578,
+        "Raise 2.5bb": 1.3517
+      }
+    },
+    "T5o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581
+      }
+    },
+    "74s": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "T6s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "95o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "73s": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581
+      }
+    },
+    "85s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.9815,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.4815,
+        "Raise 3bb": -0.0628
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.8187,
+        "Fold": -0.1,
+        "Raise 2.5bb": 0.8815,
+        "Limp": -1.6001
+      }
+    },
+    "Q2o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "A6s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.04,
+        "Fold": -1.1595,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.6595
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.9648,
+        "Limp": -1.6948,
+        "Raise 3bb": 0.9248,
+        "Fold": -0.1947
+      }
+    },
+    "KJo": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.4815,
+        "Fold": -0.9815,
+        "Raise 3bb": -0.0595
+      },
+      "ev_normalized": {
+        "Fold": -0.1009,
+        "Raise 3bb": 0.8211,
+        "Limp": -1.6009,
+        "Raise 2.5bb": 0.8806
+      }
+    },
+    "Q5o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "J9o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.1394,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.0054,
+        "Fold": -0.5054
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.5232,
+        "Fold": 0.1572,
+        "Raise 2.5bb": 0.6626,
+        "Limp": -1.3428
+      }
+    },
+    "K9s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.192,
+        "Limp": -2.692,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.0272
+      },
+      "ev_normalized": {
+        "Limp": -1.7142,
+        "Raise 3bb": 0.9506,
+        "Fold": -0.2142,
+        "Raise 2.5bb": 0.9778
+      }
+    },
+    "J7o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581
+      }
+    },
+    "75s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.9881,
+        "Raise 3bb": -0.0622,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.4881
+      },
+      "ev_normalized": {
+        "Limp": -1.6035,
+        "Raise 3bb": 0.8224,
+        "Fold": -0.1035,
+        "Raise 2.5bb": 0.8846
+      }
+    },
+    "T6o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "TT": {
+      "strategy": {
+        "Raise 3bb": 1.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -0.1603,
+        "Fold": -2.4798,
+        "Limp": -3.9798,
+        "Raise 3bb": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -0.8248,
+        "Raise 3bb": 1.655,
+        "Limp": -2.3248,
+        "Raise 2.5bb": 1.4947
+      }
+    },
+    "A2s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.6357,
+        "Limp": -3.1357,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": -0.0222
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 1.1762,
+        "Fold": -0.4373,
+        "Limp": -1.9373,
+        "Raise 3bb": 1.1984
+      }
+    },
+    "Q7s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -2.8062,
+        "Fold": -1.3062,
+        "Raise 3bb": -0.0171,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 1.0324,
+        "Fold": -0.2738,
+        "Limp": -1.7738,
+        "Raise 3bb": 1.0153
+      }
+    },
+    "ATo": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0766,
+        "Limp": -2.4009,
+        "Raise 2.5bb": 0.0,
+        "Fold": -0.9009
+      },
+      "ev_normalized": {
+        "Limp": -1.5563,
+        "Raise 2.5bb": 0.8446,
+        "Raise 3bb": 0.768,
+        "Fold": -0.0563
+      }
+    },
+    "ATs": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.7005,
+        "Raise 3bb": -0.0326,
+        "Fold": -1.2005
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.9834,
+        "Limp": -1.7171,
+        "Fold": -0.2171,
+        "Raise 3bb": 0.9508
+      }
+    },
+    "62o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581
+      }
+    },
+    "Q7o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "T5s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581
+      }
+    },
+    "52o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "AJs": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Fold": -1.2753,
+        "Limp": -2.7753,
+        "Raise 3bb": -0.0204
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 1.0178,
+        "Fold": -0.2575,
+        "Limp": -1.7576,
+        "Raise 3bb": 0.9974
+      }
+    },
+    "Q6o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581
+      }
+    },
+    "KK": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -7.4382,
+        "Raise 3bb": 0.0,
+        "Fold": -5.9382,
+        "Raise 2.5bb": -0.6291
+      },
+      "ev_normalized": {
+        "Fold": -2.4368,
+        "Raise 2.5bb": 2.8723,
+        "Limp": -3.9368,
+        "Raise 3bb": 3.5014
+      }
+    },
+    "J6s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "22": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Fold": -0.9991,
+        "Limp": -2.4991,
+        "Raise 3bb": -0.0442
+      },
+      "ev_normalized": {
+        "Fold": -0.1135,
+        "Raise 2.5bb": 0.8856,
+        "Limp": -1.6135,
+        "Raise 3bb": 0.8414
+      }
+    },
+    "97s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0769,
+        "Fold": -0.8938,
+        "Limp": -2.3938,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.8411,
+        "Limp": -1.5527,
+        "Raise 3bb": 0.7642,
+        "Fold": -0.0527
+      }
+    },
+    "KQs": {
+      "strategy": {
+        "Raise 3bb": 1.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -0.091,
+        "Limp": -3.5298,
+        "Raise 3bb": 0.0,
+        "Fold": -2.0298
+      },
+      "ev_normalized": {
+        "Limp": -2.1171,
+        "Raise 3bb": 1.4127,
+        "Raise 2.5bb": 1.3217,
+        "Fold": -0.6171
+      }
+    },
+    "KTs": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -1.189,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.0263,
+        "Limp": -2.689
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.9498,
+        "Limp": -1.7129,
+        "Raise 2.5bb": 0.9761,
+        "Fold": -0.2129
+      }
+    },
+    "52s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "72s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Fold": 1.8581
+      }
+    },
+    "42s": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Fold": 1.8581
+      }
+    },
+    "84s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581
+      }
+    },
+    "A9o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0814,
+        "Fold": -0.8858,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.3858
+      },
+      "ev_normalized": {
+        "Fold": -0.0475,
+        "Raise 3bb": 0.7569,
+        "Raise 2.5bb": 0.8383,
+        "Limp": -1.5476
+      }
+    },
+    "QJs": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -2.5507,
+        "Raise 2.5bb": 0.0,
+        "Fold": -1.0507,
+        "Raise 3bb": -0.0533
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": 0.9137,
+        "Limp": -1.637,
+        "Raise 3bb": 0.8604,
+        "Fold": -0.137
+      }
+    },
+    "T8s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -2.3599,
+        "Fold": -0.8599,
+        "Raise 3bb": -0.0828,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.7429,
+        "Limp": -1.5343,
+        "Fold": -0.0342,
+        "Raise 2.5bb": 0.8257
+      }
+    },
+    "96o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581
+      }
+    },
+    "83o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "A8o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -0.0095,
+        "Fold": -1.506,
+        "Limp": -3.006,
+        "Raise 3bb": 0.0
+      },
+      "ev_normalized": {
+        "Fold": -0.3756,
+        "Limp": -1.8756,
+        "Raise 3bb": 1.1304,
+        "Raise 2.5bb": 1.1209
+      }
+    },
+    "T3s": {
+      "strategy": {
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "J4o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581
+      }
+    },
+    "A5o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Fold": -0.8074,
+        "Limp": -2.3074,
+        "Raise 3bb": -0.0963
+      },
+      "ev_normalized": {
+        "Fold": -0.0046,
+        "Raise 2.5bb": 0.8028,
+        "Limp": -1.5046,
+        "Raise 3bb": 0.7065
+      }
+    },
+    "A4s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": -0.921,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.0796,
+        "Limp": -2.421
+      },
+      "ev_normalized": {
+        "Fold": -0.0656,
+        "Raise 3bb": 0.7758,
+        "Raise 2.5bb": 0.8554,
+        "Limp": -1.5656
+      }
+    },
+    "KTo": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.0666,
+        "Limp": -2.4253,
+        "Fold": -0.9253
+      },
+      "ev_normalized": {
+        "Limp": -1.571,
+        "Raise 3bb": 0.7877,
+        "Fold": -0.071,
+        "Raise 2.5bb": 0.8543
+      }
+    },
+    "AA": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 1.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -0.6446,
+        "Raise 3bb": 0.0,
+        "Fold": -6.1518,
+        "Limp": -7.6518
+      },
+      "ev_normalized": {
+        "Fold": -2.5397,
+        "Raise 2.5bb": 2.9675,
+        "Limp": -4.0398,
+        "Raise 3bb": 3.6121
+      }
+    },
+    "K9o": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": -0.0717,
+        "Limp": -2.4082,
+        "Fold": -0.9082
+      },
+      "ev_normalized": {
+        "Fold": -0.0612,
+        "Raise 3bb": 0.7753,
+        "Raise 2.5bb": 0.847,
+        "Limp": -1.5612
+      }
+    },
+    "A4o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "99": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 1.0,
+        "Limp": 0.0,
+        "Fold": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": -2.3635,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": -0.1252,
+        "Limp": -3.8635
+      },
+      "ev_normalized": {
+        "Limp": -2.2755,
+        "Raise 3bb": 1.5881,
+        "Fold": -0.7755,
+        "Raise 2.5bb": 1.4629
+      }
+    },
+    "K5s": {
+      "strategy": {
+        "Raise 2.5bb": 1.0,
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": 0.0,
+        "Fold": -1.1664,
+        "Limp": -2.6664,
+        "Raise 3bb": -0.0295
+      },
+      "ev_normalized": {
+        "Limp": -1.7008,
+        "Raise 2.5bb": 0.9656,
+        "Raise 3bb": 0.9361,
+        "Fold": -0.2008
+      }
+    },
+    "K3o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "Q3o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581
+      }
+    },
+    "98o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "65o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581
+      }
+    },
+    "64o": {
+      "strategy": {
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "92s": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375,
+        "Limp": -1.5,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Fold": 1.8581,
+        "Limp": 0.3581,
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369
+      }
+    },
+    "T4o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Raise 2.5bb": -2.595,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Raise 3bb": -1.4794,
+        "Limp": 0.3581
+      }
+    },
+    "92o": {
+      "strategy": {
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Raise 2.5bb": -0.7369,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    },
+    "63o": {
+      "strategy": {
+        "Raise 3bb": 0.0,
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Limp": 0.3581
+      }
+    },
+    "Q9s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0726,
+        "Fold": -0.9338,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.4338
+      },
+      "ev_normalized": {
+        "Limp": -1.5738,
+        "Raise 2.5bb": 0.8601,
+        "Raise 3bb": 0.7875,
+        "Fold": -0.0737
+      }
+    },
+    "93o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Limp": 0.0,
+        "Fold": 1.0,
+        "Raise 3bb": 0.0
+      },
+      "ev_vs_best": {
+        "Raise 2.5bb": -2.595,
+        "Limp": -1.5,
+        "Raise 3bb": -3.3375,
+        "Fold": 0.0
+      },
+      "ev_normalized": {
+        "Limp": 0.3581,
+        "Fold": 1.8581,
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794
+      }
+    },
+    "86s": {
+      "strategy": {
+        "Fold": 0.0,
+        "Raise 3bb": 0.0,
+        "Limp": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Limp": -2.4705,
+        "Raise 3bb": -0.0628,
+        "Raise 2.5bb": 0.0,
+        "Fold": -0.9705
+      },
+      "ev_normalized": {
+        "Limp": -1.5946,
+        "Raise 3bb": 0.8132,
+        "Fold": -0.0946,
+        "Raise 2.5bb": 0.876
+      }
+    },
+    "J7s": {
+      "strategy": {
+        "Limp": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 0.0,
+        "Raise 2.5bb": 1.0
+      },
+      "ev_vs_best": {
+        "Raise 3bb": -0.0856,
+        "Fold": -0.8343,
+        "Raise 2.5bb": 0.0,
+        "Limp": -2.3343
+      },
+      "ev_normalized": {
+        "Raise 3bb": 0.728,
+        "Raise 2.5bb": 0.8136,
+        "Limp": -1.5207,
+        "Fold": -0.0208
+      }
+    },
+    "J3o": {
+      "strategy": {
+        "Raise 2.5bb": 0.0,
+        "Raise 3bb": 0.0,
+        "Fold": 1.0,
+        "Limp": 0.0
+      },
+      "ev_vs_best": {
+        "Limp": -1.5,
+        "Fold": 0.0,
+        "Raise 2.5bb": -2.595,
+        "Raise 3bb": -3.3375
+      },
+      "ev_normalized": {
+        "Raise 2.5bb": -0.7369,
+        "Raise 3bb": -1.4794,
+        "Fold": 1.8581,
+        "Limp": 0.3581
+      }
+    }
+  }
+}
