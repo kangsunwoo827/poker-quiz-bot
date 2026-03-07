@@ -112,9 +112,10 @@ async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )])
 
     text = (
-        f"<b>Preflop Quiz</b>\n\n"
-        f"<code>{escape_html(question.scenario.description)}</code>\n\n"
-        f"Your hand: <b>{escape_html(question.hand_display)}</b>"
+        f"🃏 <b>Preflop Quiz</b>\n\n"
+        f"📍 <code>{escape_html(question.scenario.description)}</code>\n\n"
+        f"Your hand:  <b>{escape_html(question.hand_display)}</b>\n\n"
+        f"What's the GTO play?"
     )
 
     await update.message.reply_text(
@@ -180,43 +181,84 @@ async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     pending_quizzes.pop(user_id, None)
 
     # Build result message
-    mark = "OK" if was_correct else "X"
-    lines = [
-        f"<b>{escape_html(hand)} | {escape_html(scenario.name)}</b>\n",
-        f"Your action: {escape_html(chosen_action)} {'<b>OK</b>' if was_correct else '<b>X</b>'}\n",
-    ]
-
-    # EV table
-    lines.append("<pre>")
-    lines.append(f"{'Action':<14} {'vs Best':>8} {'Bankroll':>9}")
-    lines.append(f"{'':->14} {'':->8} {'':->9}")
-
-    for action in scenario.actions:
-        ev_b = ev_vs_best.get(action, 0)
-        ev_n = ev_normalized.get(action, 0)
-        marker = " <- You" if action == chosen_action else ""
-        ev_b_str = f"{ev_b:+.2f}" if ev_b != 0 else " 0.00"
-        ev_n_str = f"{ev_n:+.2f}"
-        lines.append(f"{action:<14} {ev_b_str:>8} {ev_n_str:>9}{marker}")
-
-    lines.append("</pre>")
-
-    # Stats line
+    icon = "✅" if was_correct else "❌"
     bankroll = result["bankroll"]
     ev_change = chosen_ev_normalized
     correct_count = result["correct_count"]
     total = result["total_questions"]
     streak = result["streak"]
 
-    sign = "+" if ev_change >= 0 else ""
-    lines.append(
-        f"\n<b>{bankroll:.2f}bb</b> ({sign}{ev_change:.2f})"
-    )
-    lines.append(
-        f"{correct_count}/{total} correct | Streak: {streak}"
+    lines = [
+        f"{icon} <b>{escape_html(hand)} | {escape_html(scenario.name)}</b>\n",
+    ]
+
+    # Show what user chose and what was correct
+    if was_correct:
+        lines.append(f"Your action: <b>{escape_html(chosen_action)}</b> ✅\n")
+    else:
+        lines.append(
+            f"Your action: <b>{escape_html(chosen_action)}</b> ❌\n"
+            f"Best action: <b>{escape_html(best_action)}</b>\n"
+        )
+
+    # EV table with clear bb values
+    lines.append("<pre>")
+    lines.append(f"{'Action':<14}{'EV(bb)':>8}{'vs Best':>9}")
+    lines.append("─" * 31)
+
+    # Sort actions by EV (best first)
+    sorted_actions = sorted(
+        scenario.actions,
+        key=lambda a: ev_normalized.get(a, 0),
+        reverse=True,
     )
 
-    await query.answer("OK!" if was_correct else "X")
+    for action in sorted_actions:
+        ev_b = ev_vs_best.get(action, 0)
+        ev_n = ev_normalized.get(action, 0)
+
+        ev_n_str = f"{ev_n:+.2f}"
+        ev_b_str = f"{ev_b:+.2f}" if ev_b != 0 else "  0.00"
+
+        # Mark the chosen action and best action
+        if action == chosen_action and action == best_action:
+            marker = " ★"
+        elif action == chosen_action:
+            marker = " ←"
+        elif action == best_action:
+            marker = " ★"
+        else:
+            marker = ""
+
+        lines.append(f"{action:<14}{ev_n_str:>8}{ev_b_str:>9}{marker}")
+
+    lines.append("</pre>")
+
+    # Explanation
+    ev_gap = abs(chosen_ev_vs_best)
+    if was_correct and ev_gap < 0.01:
+        comment = "Perfect! You chose the optimal action."
+    elif was_correct:
+        comment = f"Correct, but {best_action} is slightly better ({ev_gap:.2f}bb)."
+    elif ev_gap < 1.0:
+        comment = f"Close! {best_action} is better by only {ev_gap:.1f}bb."
+    elif ev_gap < 3.0:
+        comment = f"Not optimal. {best_action} saves {ev_gap:.1f}bb here."
+    else:
+        comment = f"Costly mistake! {best_action} is {ev_gap:.1f}bb better."
+
+    lines.append(f"\n💡 {comment}")
+
+    # Bankroll
+    sign = "+" if ev_change >= 0 else ""
+    lines.append(
+        f"\n💰 <b>{bankroll:.2f}bb</b> ({sign}{ev_change:.2f})"
+    )
+    lines.append(
+        f"📊 {correct_count}/{total} correct | Streak: {streak}"
+    )
+
+    await query.answer("✅ Correct!" if was_correct else "❌ Wrong")
 
     # Edit original message to remove buttons and show result
     await query.edit_message_text(
@@ -237,9 +279,58 @@ async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await context.bot.send_photo(
                 chat_id=query.message.chat_id,
                 photo=BytesIO(chart_bytes),
+                caption=f"📊 {scenario.name} — {hand} highlighted",
             )
     except Exception as e:
         logger.warning(f"Failed to send range chart: {e}")
+
+    # Auto-send next quiz button
+    keyboard = [[InlineKeyboardButton("➡️ Next Quiz", callback_data="next_quiz")]]
+    await context.bot.send_message(
+        chat_id=query.message.chat_id,
+        text="Ready for the next one?",
+        reply_markup=InlineKeyboardMarkup(keyboard),
+    )
+
+
+async def handle_next_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle the 'Next Quiz' inline button."""
+    query = update.callback_query
+    await query.answer()
+
+    user_id = query.from_user.id
+    username = query.from_user.username or query.from_user.first_name or str(user_id)
+    chat_id = query.message.chat_id
+
+    bankroll_manager.get_or_create_user(user_id, username)
+    recent = bankroll_manager.get_recent_history(user_id, 50)
+
+    question = quiz_manager.generate_question(recent_history=recent)
+    if not question:
+        await query.edit_message_text("No EV data loaded.")
+        return
+
+    pending_quizzes[user_id] = question
+
+    keyboard = []
+    for i, action in enumerate(question.scenario.actions):
+        keyboard.append([InlineKeyboardButton(
+            action,
+            callback_data=f"a:{question.scenario.id}:{question.hand}:{i}"
+        )])
+
+    text = (
+        f"🃏 <b>Preflop Quiz</b>\n\n"
+        f"📍 <code>{escape_html(question.scenario.description)}</code>\n\n"
+        f"Your hand:  <b>{escape_html(question.hand_display)}</b>\n\n"
+        f"What's the GTO play?"
+    )
+
+    await query.edit_message_text(
+        text,
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode=ParseMode.HTML,
+    )
 
 
 async def stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -312,6 +403,7 @@ def main():
     application.add_handler(CommandHandler("stats", stats_command))
     application.add_handler(CommandHandler("leaderboard", leaderboard_command))
     application.add_handler(CallbackQueryHandler(handle_answer, pattern=r"^a:"))
+    application.add_handler(CallbackQueryHandler(handle_next_quiz, pattern=r"^next_quiz$"))
     application.add_error_handler(error_handler)
 
     logger.info("Starting GTO Preflop Quiz Bot...")
