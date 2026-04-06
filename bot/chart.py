@@ -213,3 +213,127 @@ def generate_range_chart(
     buf = BytesIO()
     img.save(buf, format="PNG")
     return buf.getvalue()
+
+
+def combine_with_crop(chart_bytes: bytes, crop_path: str) -> bytes:
+    """Combine range chart with original PDF crop side-by-side."""
+    import os
+    if not os.path.exists(crop_path):
+        return chart_bytes
+
+    chart = Image.open(BytesIO(chart_bytes))
+    crop  = Image.open(crop_path)
+
+    scale  = chart.height / crop.height
+    new_w  = int(crop.width * scale)
+    crop   = crop.resize((new_w, chart.height), Image.LANCZOS)
+
+    sep = 4
+    combined = Image.new("RGB", (chart.width + sep + crop.width, chart.height), (10, 10, 10))
+    combined.paste(chart, (0, 0))
+    combined.paste(crop,  (chart.width + sep, 0))
+
+    buf = BytesIO()
+    combined.save(buf, format="PNG")
+    return buf.getvalue()
+
+
+# Colors for open range chart (binary in/out)
+OPEN_IN_COLOR  = ( 67, 160,  71)   # green
+OPEN_OUT_COLOR = ( 55,  55,  55)   # dark gray (on black bg looks clearly distinct)
+OPEN_BG_COLOR  = (  0,   0,   0)   # pure black background
+OPEN_HIGHLIGHT = (255, 220,   0)   # yellow border for quiz hand
+
+
+OPEN_CALL_COLOR = (255, 165,   0)   # orange (limp/call)
+
+
+def generate_open_range_chart(
+    in_range_hands: frozenset,
+    call_hands: frozenset = None,
+    highlight_hand: Optional[str] = None,
+    title: str = "",
+) -> bytes:
+    """Generate a 13x13 open range chart.
+      green = raise/open, orange = call/limp, gray = fold.
+
+    Args:
+        in_range_hands: set of raise hands
+        call_hands: set of call/limp hands (SB)
+        highlight_hand: hand to mark with a yellow border
+        title: chart title
+    """
+    grid_size = 13
+    total_w = PADDING * 2 + HEADER_SIZE + grid_size * CELL_SIZE
+    title_height = 28 if title else 0
+    total_h = PADDING * 2 + HEADER_SIZE + grid_size * CELL_SIZE + title_height
+
+    img = Image.new("RGB", (total_w, total_h), OPEN_BG_COLOR)
+    draw = ImageDraw.Draw(img)
+
+    font = _try_load_font(FONT_SIZE)
+    header_font = _try_load_font(HEADER_FONT_SIZE)
+    title_font = _try_load_font(FONT_SIZE + 2)
+
+    y_offset = PADDING
+    if title:
+        draw.text((PADDING, y_offset), title, fill=TEXT_COLOR, font=title_font)
+        y_offset += title_height
+
+    # Column headers
+    for col in range(grid_size):
+        x = PADDING + HEADER_SIZE + col * CELL_SIZE + CELL_SIZE // 2
+        draw.text((x - 4, y_offset), RANKS[col], fill=TEXT_COLOR, font=header_font)
+
+    # Cells
+    for row in range(grid_size):
+        rx = PADDING
+        ry = y_offset + HEADER_SIZE + row * CELL_SIZE + CELL_SIZE // 2 - 6
+        draw.text((rx + 2, ry), RANKS[row], fill=TEXT_COLOR, font=header_font)
+
+        for col in range(grid_size):
+            hand = _hand_at_grid(row, col)
+            x = PADDING + HEADER_SIZE + col * CELL_SIZE
+            y = y_offset + HEADER_SIZE + row * CELL_SIZE
+
+            if hand in in_range_hands:
+                color = OPEN_IN_COLOR
+            elif call_hands and hand in call_hands:
+                color = OPEN_CALL_COLOR
+            else:
+                color = OPEN_OUT_COLOR
+            draw.rectangle(
+                [x + 1, y + 1, x + CELL_SIZE - 1, y + CELL_SIZE - 1],
+                fill=color,
+            )
+
+            label = hand
+            brightness = color[0] * 0.299 + color[1] * 0.587 + color[2] * 0.114
+            tc = TEXT_COLOR_DARK if brightness > 128 else TEXT_COLOR
+            bbox = draw.textbbox((0, 0), label, font=font)
+            tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+            draw.text((x + (CELL_SIZE - tw) // 2, y + (CELL_SIZE - th) // 2),
+                      label, fill=tc, font=font)
+
+            if highlight_hand and hand == highlight_hand:
+                draw.rectangle(
+                    [x + 1, y + 1, x + CELL_SIZE - 1, y + CELL_SIZE - 1],
+                    outline=OPEN_HIGHLIGHT,
+                    width=3,
+                )
+
+    # Grid lines
+    for i in range(grid_size + 1):
+        x = PADDING + HEADER_SIZE + i * CELL_SIZE
+        y0 = y_offset + HEADER_SIZE
+        y1 = y_offset + HEADER_SIZE + grid_size * CELL_SIZE
+        draw.line([(x, y0), (x, y1)], fill=GRID_COLOR, width=1)
+
+        y = y_offset + HEADER_SIZE + i * CELL_SIZE
+        x0 = PADDING + HEADER_SIZE
+        x1 = PADDING + HEADER_SIZE + grid_size * CELL_SIZE
+        draw.line([(x0, y), (x1, y)], fill=GRID_COLOR, width=1)
+
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    return buf.getvalue()

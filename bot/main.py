@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""GTO Preflop Quiz Telegram Bot."""
+"""Open Range Quiz Telegram Bot."""
+import json
 import logging
+from collections import deque
 from io import BytesIO
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
@@ -10,10 +12,33 @@ from telegram.ext import (
 from telegram.constants import ParseMode
 
 from config import TELEGRAM_BOT_TOKEN
-from quiz import QuizManager
+from quiz import QuizManager, OpenRangeQuizManager, OPEN_RANGE_POSITIONS
+
+FORMAT_URLS = {
+    "6max_100bb_highRake": "https://rangeconverter.com/articles/preflop-charts-6-max-100bb-small-stakes-no-limit-texas-holdem",
+    "6max_100bb":          "https://rangeconverter.com/articles/poker-charts-6-max-100bb-no-limit-texas-holdem",
+    "6max_40bb":           "https://rangeconverter.com/articles/poker-charts-6-max-40bb-no-limit-texas-holdem",
+    "6max_200bb":          "https://rangeconverter.com/articles/poker-charts-6-max-200bb-no-limit-texas-holdem",
+    "9max_100bb":          "https://rangeconverter.com/articles/poker-charts-9-max-100bb-no-limit-texas-holdem",
+    "mtt_100bb":           "https://rangeconverter.com/articles/poker-charts-8max-mtt-100bb-no-limit-texas-holdem-tournaments",
+    "mtt_60bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-60bb-no-limit-texas-holdem-tournaments",
+    "mtt_50bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-50bb-no-limit-texas-holdem-tournaments",
+    "mtt_40bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-40bb-no-limit-texas-holdem-tournaments",
+    "mtt_30bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-30bb-no-limit-texas-holdem-tournaments",
+    "mtt_20bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-20bb-no-limit-texas-holdem-tournaments",
+    "mtt_10bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-10bb-no-limit-texas-holdem-tournaments",
+}
+
+# Players left to act after hero opens (varies by format)
+PLAYERS_LEFT = {
+    "UTG": 5, "UTG+1": 4, "MP": 4, "LJ": 3, "HJ": 3, "CO": 3, "BTN": 2, "SB": 1,
+}
 from bankroll import BankrollManager
-from chart import generate_range_chart
+from chart import generate_open_range_chart, combine_with_crop
+from config import DATA_DIR
 from persistence import load_state, save_state
+
+CROPS_DIR = DATA_DIR / "crops"
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -22,17 +47,75 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 quiz_manager = QuizManager()
+open_range_quiz = OpenRangeQuizManager(quiz_manager.ev_tables)
+_available_formats = open_range_quiz.get_available_formats()
+logger.info(f"Loaded formats: {_available_formats}")
 bankroll_manager = BankrollManager()
 
 _state = load_state()
 active_chats: set[int] = set(_state.get("active_chats", []))
 
-# Per-user pending quiz: user_id -> QuizQuestion
+# Per-user pending quiz
 pending_quizzes: dict[int, object] = {}
+
+# Per-user recent hands: deque of (position, hand) tuples
+user_recent: dict[int, deque] = {}
+
+# Per-user session accuracy
+user_stats: dict[int, dict] = {}
+
+RECENT_LIMIT = 50
 
 
 def escape_html(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def _get_recent_set(user_id: int, position: str) -> set:
+    """Return hands recently seen by this user for the given position."""
+    recent = user_recent.get(user_id, deque())
+    return {hand for pos, hand in recent if pos == position}
+
+
+def _record_recent(user_id: int, position: str, hand: str):
+    if user_id not in user_recent:
+        user_recent[user_id] = deque(maxlen=RECENT_LIMIT)
+    user_recent[user_id].append((position, hand))
+
+
+def _init_stats(user_id: int):
+    if user_id not in user_stats:
+        user_stats[user_id] = {"correct": 0, "total": 0}
+
+
+def _build_quiz_message(question) -> tuple[str, InlineKeyboardMarkup]:
+    pos  = question.position
+    hand = escape_html(question.hand_display)
+    fmt  = escape_html(question.format_name)
+    left = PLAYERS_LEFT.get(pos, "?")
+    fkey = question.format_key
+
+    text = (
+        f"<b>{pos} Open Range</b>  <code>({left} left)</code>\n\n"
+        f"<code>{fmt} · Folds to Hero in {pos}</code>\n\n"
+        f"Your hand:  <b>{hand}</b>\n\n"
+    )
+    # SB has 3 options (raise/call/fold), others have 2
+    has_call = bool(question.call_hands)
+    if has_call:
+        text += "Raise, Call, or Fold?"
+        keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton("Raise", callback_data=f"rfi:{fkey}:{pos}:{question.hand}:O"),
+            InlineKeyboardButton("Call",  callback_data=f"rfi:{fkey}:{pos}:{question.hand}:C"),
+            InlineKeyboardButton("Fold",  callback_data=f"rfi:{fkey}:{pos}:{question.hand}:F"),
+        ]])
+    else:
+        text += "Open or Fold?"
+        keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton("Open", callback_data=f"rfi:{fkey}:{pos}:{question.hand}:O"),
+            InlineKeyboardButton("Fold", callback_data=f"rfi:{fkey}:{pos}:{question.hand}:F"),
+        ]])
+    return text, keyboard
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -44,41 +127,28 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     save_state(active_chats)
     bankroll_manager.get_or_create_user(user_id, username)
 
-    available = quiz_manager.get_available_scenarios()
-    scenario_count = len(available)
-
     await update.message.reply_text(
-        "<b>GTO Preflop Quiz Trainer</b>\n\n"
-        f"Scenarios loaded: {scenario_count}\n"
-        "Starting bankroll: 100.0bb\n\n"
+        "<b>Open Range Quiz Trainer</b>\n\n"
+        "Memorise GTO preflop open ranges (6-max, 100bb).\n"
+        "Boundary hands are asked most often.\n\n"
         "<b>Commands:</b>\n"
-        "/quiz (/q) - Get a quiz\n"
-        "/stats - Your bankroll & accuracy\n"
-        "/leaderboard - Rankings\n"
-        "/help - How to play",
-        parse_mode=ParseMode.HTML
+        "/quiz (/q) — Get a quiz\n"
+        "/stats — Your session accuracy\n"
+        "/help — How to play",
+        parse_mode=ParseMode.HTML,
     )
 
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "<b>GTO Preflop Quiz - How to Play</b>\n\n"
-        "<b>Quiz:</b>\n"
-        "Each question shows a preflop scenario with your hand.\n"
-        "Pick the GTO-optimal action from the buttons.\n\n"
-        "<b>Scoring:</b>\n"
-        "- <b>Correct</b>: GTO frequency &gt; 0 for your action\n"
-        "- <b>Bankroll</b>: Changes by normalized EV\n"
-        "  (random play = 0, GTO play = positive)\n"
-        "- Start at 100bb, grow by playing GTO!\n\n"
-        "<b>EV Table (after answer):</b>\n"
-        "- <b>vs Best</b>: EV loss vs optimal (0 = best)\n"
-        "- <b>Bankroll</b>: Actual bankroll change\n\n"
-        "<b>Positions:</b>\n"
-        "UTG / MP / CO / BTN / SB / BB\n\n"
-        "<b>Actions:</b>\n"
-        "Fold / Call / Raise / 3bet / 4bet / All-in / Limp / Squeeze",
-        parse_mode=ParseMode.HTML
+        "<b>Open Range Quiz — How to Play</b>\n\n"
+        "Each question shows your position and hand.\n"
+        "Decide: <b>Open</b> (raise 2.5bb) or <b>Fold</b>.\n\n"
+        "<b>Positions:</b> UTG · MP · CO · BTN · SB\n\n"
+        "<b>Boundary hands</b> (range edge) appear 3× more often.\n"
+        "After each answer you see the full range chart with your hand highlighted.\n\n"
+        "Ranges based on rangeconverter.com (6-max GTO charts).",
+        parse_mode=ParseMode.HTML,
     )
 
 
@@ -90,287 +160,291 @@ async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     active_chats.add(chat_id)
     save_state(active_chats)
     bankroll_manager.get_or_create_user(user_id, username)
+    _init_stats(user_id)
 
-    # Get recent history for dedup
-    recent = bankroll_manager.get_recent_history(user_id, 50)
+    # Parse optional args: /quiz utg  or  /quiz 100bb utg
+    pos_arg = None
+    fmt_arg = None
+    if context.args:
+        for arg in context.args:
+            a = arg.upper()
+            if a in OPEN_RANGE_POSITIONS:
+                pos_arg = a
+            elif a in {f.upper() for f in open_range_quiz.FORMATS}:
+                # find format by case-insensitive match
+                fmt_arg = next((f for f in open_range_quiz.FORMATS if f.upper() == a), None)
 
-    question = quiz_manager.generate_question(recent_history=recent)
-    if not question:
-        await update.message.reply_text(
-            "No EV data loaded. Add data to data/ev_tables/ first."
-        )
-        return
-
+    question = open_range_quiz.generate_question(
+        format_key=fmt_arg,
+        position=pos_arg,
+        recent=_get_recent_set(user_id, pos_arg or ""),
+    )
     pending_quizzes[user_id] = question
 
-    # Build keyboard
-    keyboard = []
-    for i, action in enumerate(question.scenario.actions):
-        keyboard.append([InlineKeyboardButton(
-            action,
-            callback_data=f"a:{question.scenario.id}:{question.hand}:{i}"
-        )])
-
-    text = (
-        f"🃏 <b>Preflop Quiz</b>\n\n"
-        f"📍 <code>{escape_html(question.scenario.description)}</code>\n\n"
-        f"Your hand:  <b>{escape_html(question.hand_display)}</b>\n\n"
-        f"What's the GTO play?"
-    )
-
-    await update.message.reply_text(
-        text,
-        reply_markup=InlineKeyboardMarkup(keyboard),
-        parse_mode=ParseMode.HTML
-    )
+    text, keyboard = _build_quiz_message(question)
+    await update.message.reply_text(text, reply_markup=keyboard, parse_mode=ParseMode.HTML)
 
 
-async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     user_id = query.from_user.id
     username = query.from_user.username or query.from_user.first_name or str(user_id)
 
-    # Parse callback: a:scenario_id:hand:action_index
+    # Parse: rfi:{fmt}:{pos}:{hand}:{O|C|F}
     parts = query.data.split(":")
-    if len(parts) != 4:
+    if len(parts) != 5:
         await query.answer("Invalid data.", show_alert=True)
         return
 
-    _, scenario_id, hand, action_idx_str = parts
-    try:
-        action_idx = int(action_idx_str)
-    except ValueError:
-        await query.answer("Invalid data.", show_alert=True)
-        return
+    _, fmt, pos, hand, action_code = parts
+    chosen = {"O": "Open", "C": "Call", "F": "Fold"}.get(action_code, "Fold")
 
-    # Get the pending question
     question = pending_quizzes.get(user_id)
-    if not question or question.scenario.id != scenario_id or question.hand != hand:
-        await query.answer("This quiz has expired. Use /quiz for a new one.", show_alert=True)
+    if not question or question.position != pos or question.hand != hand:
+        await query.answer("Quiz expired — use /quiz for a new one.", show_alert=True)
         return
 
-    scenario = question.scenario
-    if action_idx < 0 or action_idx >= len(scenario.actions):
-        await query.answer("Invalid action.", show_alert=True)
-        return
+    correct = question.correct_action
+    was_correct = chosen == correct
 
-    chosen_action = scenario.actions[action_idx]
+    bankroll_manager.get_or_create_user(user_id, username)
+    _init_stats(user_id)
+    user_stats[user_id]["total"] += 1
+    if was_correct:
+        user_stats[user_id]["correct"] += 1
 
-    # Determine correctness and EV
-    ev_vs_best = question.ev_vs_best
-    ev_normalized = question.ev_normalized
-    best_action = question.best_action
-    chosen_ev_vs_best = ev_vs_best.get(chosen_action, 0)
-    chosen_ev_normalized = ev_normalized.get(chosen_action, 0)
-    was_correct = chosen_action in question.correct_actions
-
-    # Record to bankroll
-    result = bankroll_manager.record_answer(
-        user_id=user_id,
-        username=username,
-        scenario_id=scenario_id,
-        hand=hand,
-        chosen_action=chosen_action,
-        chosen_ev_normalized=chosen_ev_normalized,
-        best_action=best_action,
-        ev_vs_best=chosen_ev_vs_best,
-        was_correct=was_correct,
-    )
-
-    # Remove from pending
+    _record_recent(user_id, pos, hand)
     pending_quizzes.pop(user_id, None)
 
-    # Build result message
+    stats = user_stats[user_id]
+    accuracy = stats["correct"] / stats["total"] * 100 if stats["total"] else 0
+
     icon = "✅" if was_correct else "❌"
-    bankroll = result["bankroll"]
-    ev_change = chosen_ev_normalized
-    correct_count = result["correct_count"]
-    total = result["total_questions"]
-    streak = result["streak"]
+    h_disp = escape_html(question.hand_display)
+    fmt_name = escape_html(question.format_name)
 
-    lines = [
-        f"{icon} <b>{escape_html(hand)} | {escape_html(scenario.name)}</b>\n",
-    ]
-
-    # Show what user chose and what was correct
     if was_correct:
-        lines.append(f"Your action: <b>{escape_html(chosen_action)}</b> ✅\n")
-    else:
-        lines.append(
-            f"Your action: <b>{escape_html(chosen_action)}</b> ❌\n"
-            f"Best action: <b>{escape_html(best_action)}</b>\n"
-        )
-
-    # EV table with clear bb values
-    lines.append("<pre>")
-    lines.append(f"{'Action':<14}{'EV(bb)':>8}{'vs Best':>9}")
-    lines.append("─" * 31)
-
-    # Sort actions by EV (best first)
-    sorted_actions = sorted(
-        scenario.actions,
-        key=lambda a: ev_normalized.get(a, 0),
-        reverse=True,
-    )
-
-    for action in sorted_actions:
-        ev_b = ev_vs_best.get(action, 0)
-        ev_n = ev_normalized.get(action, 0)
-
-        ev_n_str = f"{ev_n:+.2f}"
-        ev_b_str = f"{ev_b:+.2f}" if ev_b != 0 else "  0.00"
-
-        # Mark the chosen action and best action
-        if action == chosen_action and action == best_action:
-            marker = " ★"
-        elif action == chosen_action:
-            marker = " ←"
-        elif action == best_action:
-            marker = " ★"
+        if correct == "Fold":
+            verdict = f"Correct! <b>{h_disp}</b> is NOT in the {pos} open range."
+        elif correct == "Call":
+            verdict = f"Correct! <b>{h_disp}</b> is a limp/call in {pos}."
         else:
-            marker = ""
-
-        lines.append(f"{action:<14}{ev_n_str:>8}{ev_b_str:>9}{marker}")
-
-    lines.append("</pre>")
-
-    # Explanation
-    ev_gap = abs(chosen_ev_vs_best)
-    if was_correct and ev_gap < 0.01:
-        comment = "Perfect! You chose the optimal action."
-    elif was_correct:
-        comment = f"Correct, but {best_action} is slightly better ({ev_gap:.2f}bb)."
-    elif ev_gap < 1.0:
-        comment = f"Close! {best_action} is better by only {ev_gap:.1f}bb."
-    elif ev_gap < 3.0:
-        comment = f"Not optimal. {best_action} saves {ev_gap:.1f}bb here."
+            verdict = f"Correct! <b>{h_disp}</b> is in the {pos} open range."
     else:
-        comment = f"Costly mistake! {best_action} is {ev_gap:.1f}bb better."
+        if correct == "Open":
+            verdict = f"Wrong. <b>{h_disp}</b> IS in the {pos} open range."
+        elif correct == "Call":
+            verdict = f"Wrong. <b>{h_disp}</b> should be called/limped in {pos}."
+        else:
+            verdict = f"Wrong. <b>{h_disp}</b> is NOT in the {pos} open range."
 
-    lines.append(f"\n💡 {comment}")
-
-    # Bankroll
-    sign = "+" if ev_change >= 0 else ""
-    lines.append(
-        f"\n💰 <b>{bankroll:.2f}bb</b> ({sign}{ev_change:.2f})"
-    )
-    lines.append(
-        f"📊 {correct_count}/{total} correct | Streak: {streak}"
+    url = FORMAT_URLS.get(fmt, "")
+    url_line = f'\n<a href="{url}">rangeconverter.com ↗</a>' if url else ""
+    result_text = (
+        f"{icon} <b>{escape_html(pos)} — {h_disp}</b>\n\n"
+        f"{verdict}\n"
+        f"<code>{fmt_name}</code>{url_line}\n\n"
+        f"Session: {stats['correct']}/{stats['total']} ({accuracy:.0f}%)"
     )
 
     await query.answer("✅ Correct!" if was_correct else "❌ Wrong")
+    await query.edit_message_text(result_text, parse_mode=ParseMode.HTML)
 
-    # Edit original message to remove buttons and show result
-    await query.edit_message_text(
-        "\n".join(lines),
-        parse_mode=ParseMode.HTML
-    )
-
-    # Send range chart
+    # Send range chart (extracted grid) + original PDF crop side-by-side
     try:
-        scenario_hands = quiz_manager.get_scenario_hands(scenario_id)
-        if scenario_hands:
-            chart_bytes = generate_range_chart(
-                scenario_hands=scenario_hands,
-                actions=scenario.actions,
-                highlight_hand=hand,
-                title=scenario.name,
-            )
-            await context.bot.send_photo(
-                chat_id=query.message.chat_id,
-                photo=BytesIO(chart_bytes),
-                caption=f"📊 {scenario.name} — {hand} highlighted",
-            )
+        chart_bytes = generate_open_range_chart(
+            in_range_hands=question.raise_hands,
+            call_hands=question.call_hands,
+            highlight_hand=hand,
+            title=f"{pos} Open Range ({question.format_name})",
+        )
+        crop_path = str(CROPS_DIR / f"{fmt}_rfi_{pos}.png")
+        combined  = combine_with_crop(chart_bytes, crop_path)
+        await context.bot.send_photo(
+            chat_id=query.message.chat_id,
+            photo=BytesIO(combined),
+            caption=f"{pos} — {hand}  |  left: extracted · right: PDF",
+        )
     except Exception as e:
         logger.warning(f"Failed to send range chart: {e}")
 
-    # Auto-send next quiz button
-    keyboard = [[InlineKeyboardButton("➡️ Next Quiz", callback_data="next_quiz")]]
+    # Next + Fix buttons
+    keyboard = [[
+        InlineKeyboardButton("➡️ Next", callback_data=f"next:{fmt}:{pos}"),
+        InlineKeyboardButton("Fix", callback_data=f"fix:{fmt}:{pos}:{hand}"),
+    ]]
     await context.bot.send_message(
         chat_id=query.message.chat_id,
-        text="Ready for the next one?",
+        text="Ready?",
         reply_markup=InlineKeyboardMarkup(keyboard),
     )
 
 
 async def handle_next_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle the 'Next Quiz' inline button."""
     query = update.callback_query
     await query.answer()
 
     user_id = query.from_user.id
     username = query.from_user.username or query.from_user.first_name or str(user_id)
-    chat_id = query.message.chat_id
 
     bankroll_manager.get_or_create_user(user_id, username)
-    recent = bankroll_manager.get_recent_history(user_id, 50)
+    _init_stats(user_id)
 
-    question = quiz_manager.generate_question(recent_history=recent)
-    if not question:
-        await query.edit_message_text("No EV data loaded.")
-        return
+    # Parse: next:{fmt}:{pos}
+    parts = query.data.split(":")
+    fmt_arg = parts[1] if len(parts) >= 2 else None
+    pos_arg = parts[2] if len(parts) >= 3 and parts[2] in OPEN_RANGE_POSITIONS else None
 
+    question = open_range_quiz.generate_question(
+        format_key=fmt_arg,
+        position=pos_arg,
+        recent=_get_recent_set(user_id, pos_arg or ""),
+    )
     pending_quizzes[user_id] = question
 
-    keyboard = []
-    for i, action in enumerate(question.scenario.actions):
-        keyboard.append([InlineKeyboardButton(
-            action,
-            callback_data=f"a:{question.scenario.id}:{question.hand}:{i}"
-        )])
+    text, keyboard = _build_quiz_message(question)
+    await query.edit_message_text(text, reply_markup=keyboard, parse_mode=ParseMode.HTML)
 
-    text = (
-        f"🃏 <b>Preflop Quiz</b>\n\n"
-        f"📍 <code>{escape_html(question.scenario.description)}</code>\n\n"
-        f"Your hand:  <b>{escape_html(question.hand_display)}</b>\n\n"
-        f"What's the GTO play?"
+
+async def handle_fix_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Show fix options: what should this hand actually be?"""
+    query = update.callback_query
+    await query.answer()
+
+    # fix:{fmt}:{pos}:{hand}
+    parts = query.data.split(":")
+    if len(parts) != 4:
+        return
+    _, fmt, pos, hand = parts
+
+    keyboard = InlineKeyboardMarkup([[
+        InlineKeyboardButton("Raise", callback_data=f"fixdo:{fmt}:{pos}:{hand}:R"),
+        InlineKeyboardButton("Call",  callback_data=f"fixdo:{fmt}:{pos}:{hand}:C"),
+        InlineKeyboardButton("Fold",  callback_data=f"fixdo:{fmt}:{pos}:{hand}:F"),
+    ]])
+    await query.edit_message_text(
+        f"<b>Fix {pos} — {escape_html(hand)}</b>\n\nCorrect action?",
+        reply_markup=keyboard,
+        parse_mode=ParseMode.HTML,
     )
 
+
+async def handle_fix_apply(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Apply the fix: update corrections.json + in-memory ranges."""
+    query = update.callback_query
+
+    # fixdo:{fmt}:{pos}:{hand}:{R|C|F}
+    parts = query.data.split(":")
+    if len(parts) != 5:
+        await query.answer("Invalid.", show_alert=True)
+        return
+    _, fmt, pos, hand, action_code = parts
+    new_action = {"R": "raise", "C": "call", "F": "fold"}[action_code]
+
+    # Determine current action from in-memory ranges
+    range_data = open_range_quiz.ranges.get(fmt, {}).get(pos, {})
+    if hand in range_data.get("raise", frozenset()):
+        old_action = "raise"
+    elif hand in range_data.get("call", frozenset()):
+        old_action = "call"
+    else:
+        old_action = "fold"
+
+    if old_action == new_action:
+        await query.answer(f"Already {new_action}.", show_alert=True)
+        return
+
+    # Update corrections.json
+    corr_path = DATA_DIR / "corrections.json"
+    if corr_path.exists():
+        with open(corr_path, encoding="utf-8") as f:
+            corrections = json.load(f)
+    else:
+        corrections = {}
+
+    if fmt not in corrections:
+        corrections[fmt] = {}
+    if pos not in corrections[fmt]:
+        corrections[fmt][pos] = {}
+    c = corrections[fmt][pos]
+
+    # Build correction entry
+    if old_action == "raise":
+        c.setdefault("raise_remove", [])
+        if hand not in c["raise_remove"]:
+            c["raise_remove"].append(hand)
+        # Remove from raise_add if present
+        if "raise_add" in c and hand in c["raise_add"]:
+            c["raise_add"].remove(hand)
+    elif new_action == "raise":
+        c.setdefault("raise_add", [])
+        if hand not in c["raise_add"]:
+            c["raise_add"].append(hand)
+        # Remove from raise_remove if present
+        if "raise_remove" in c and hand in c["raise_remove"]:
+            c["raise_remove"].remove(hand)
+
+    if old_action == "call":
+        c.setdefault("call_remove", [])
+        if hand not in c["call_remove"]:
+            c["call_remove"].append(hand)
+    elif new_action == "call":
+        c.setdefault("call_add", [])
+        if hand not in c["call_add"]:
+            c["call_add"].append(hand)
+
+    # Clean up empty lists
+    for key in list(c.keys()):
+        if isinstance(c[key], list) and not c[key]:
+            del c[key]
+    if not corrections[fmt][pos]:
+        del corrections[fmt][pos]
+    if not corrections[fmt]:
+        del corrections[fmt]
+
+    with open(corr_path, "w", encoding="utf-8") as f:
+        json.dump(corrections, f, indent=2)
+
+    # Update in-memory ranges
+    raise_h = set(range_data.get("raise", frozenset()))
+    call_h  = set(range_data.get("call", frozenset()))
+
+    if old_action == "raise":
+        raise_h.discard(hand)
+    if old_action == "call":
+        call_h.discard(hand)
+    if new_action == "raise":
+        raise_h.add(hand)
+    if new_action == "call":
+        call_h.add(hand)
+
+    open_range_quiz.ranges[fmt][pos] = {
+        "raise": frozenset(raise_h),
+        "call": frozenset(call_h),
+    }
+
+    await query.answer(f"Fixed: {hand} → {new_action}")
     await query.edit_message_text(
-        text,
-        reply_markup=InlineKeyboardMarkup(keyboard),
+        f"Fixed <b>{pos} {escape_html(hand)}</b>: {old_action} → {new_action}",
         parse_mode=ParseMode.HTML,
     )
 
 
 async def stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    stats = bankroll_manager.get_user_stats(user_id)
+    _init_stats(user_id)
+    stats = user_stats[user_id]
 
-    if not stats:
-        await update.message.reply_text("No stats yet. Use /quiz to start!")
+    if stats["total"] == 0:
+        await update.message.reply_text("No answers yet — use /quiz to start!")
         return
 
-    streak_str = f" (best: {stats['best_streak']})" if stats['best_streak'] > 0 else ""
+    accuracy = stats["correct"] / stats["total"] * 100
     await update.message.reply_text(
-        f"<b>{escape_html(stats['username'])}</b>\n\n"
-        f"Bankroll: <b>{stats['bankroll']:.2f}bb</b>"
-        f" (best: {stats['best_bankroll']:.2f}bb)\n"
-        f"Correct: {stats['correct_count']}/{stats['total_questions']}"
-        f" ({stats['accuracy']:.1f}%)\n"
-        f"Streak: {stats['streak']}{streak_str}",
-        parse_mode=ParseMode.HTML
+        f"<b>Session Stats</b>\n\n"
+        f"Correct: {stats['correct']}/{stats['total']} ({accuracy:.1f}%)",
+        parse_mode=ParseMode.HTML,
     )
-
-
-async def leaderboard_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    leaders = bankroll_manager.get_leaderboard(10)
-
-    if not leaders:
-        await update.message.reply_text("No players yet!")
-        return
-
-    medals = ["1.", "2.", "3."]
-    lines = ["<b>Leaderboard</b>\n"]
-    for i, p in enumerate(leaders):
-        prefix = medals[i] if i < 3 else f"{i+1}."
-        lines.append(
-            f"{prefix} <b>{escape_html(p['username'])}</b> "
-            f"- {p['bankroll']:.1f}bb "
-            f"({p['accuracy']:.0f}%)"
-        )
-
-    await update.message.reply_text("\n".join(lines), parse_mode=ParseMode.HTML)
 
 
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
@@ -379,10 +453,9 @@ async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
 
 async def post_init(application):
     commands = [
-        BotCommand("quiz", "Get a preflop quiz"),
-        BotCommand("q", "Get a preflop quiz"),
-        BotCommand("stats", "Your bankroll & accuracy"),
-        BotCommand("leaderboard", "Rankings"),
+        BotCommand("quiz", "Open range quiz (add position: /quiz utg)"),
+        BotCommand("q", "Open range quiz"),
+        BotCommand("stats", "Session accuracy"),
         BotCommand("help", "How to play"),
     ]
     await application.bot.set_my_commands(commands)
@@ -394,21 +467,25 @@ def main():
         logger.error("TELEGRAM_BOT_TOKEN not set!")
         return
 
-    application = Application.builder().token(TELEGRAM_BOT_TOKEN).post_init(post_init).build()
+    application = (
+        Application.builder()
+        .token(TELEGRAM_BOT_TOKEN)
+        .post_init(post_init)
+        .build()
+    )
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(CommandHandler("quiz", quiz_command))
     application.add_handler(CommandHandler("q", quiz_command))
     application.add_handler(CommandHandler("stats", stats_command))
-    application.add_handler(CommandHandler("leaderboard", leaderboard_command))
-    application.add_handler(CallbackQueryHandler(handle_answer, pattern=r"^a:"))
-    application.add_handler(CallbackQueryHandler(handle_next_quiz, pattern=r"^next_quiz$"))
+    application.add_handler(CallbackQueryHandler(handle_open_range_answer, pattern=r"^rfi:"))
+    application.add_handler(CallbackQueryHandler(handle_next_quiz, pattern=r"^next:"))
+    application.add_handler(CallbackQueryHandler(handle_fix_prompt, pattern=r"^fix:"))
+    application.add_handler(CallbackQueryHandler(handle_fix_apply, pattern=r"^fixdo:"))
     application.add_error_handler(error_handler)
 
-    logger.info("Starting GTO Preflop Quiz Bot...")
-    logger.info(f"Scenarios loaded: {len(quiz_manager.get_available_scenarios())}")
-
+    logger.info("Starting Open Range Quiz Bot...")
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 

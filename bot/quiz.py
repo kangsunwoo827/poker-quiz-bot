@@ -6,7 +6,8 @@ from typing import Optional
 
 from config import (
     SCENARIOS_FILE, EV_TABLES_DIR, ALL_HANDS_169,
-    MARGINAL_EV_THRESHOLD, OBVIOUS_FOLD_EV_GAP, RECENT_HISTORY_SIZE
+    MARGINAL_EV_THRESHOLD, OBVIOUS_FOLD_EV_GAP, RECENT_HISTORY_SIZE,
+    PDF_RANGES_FILE, DATA_DIR,
 )
 
 
@@ -181,3 +182,219 @@ class QuizManager:
         if scenario_id not in self.ev_tables:
             return {}
         return self.ev_tables[scenario_id].get("hands", {})
+
+
+# ─── Open Range Quiz ──────────────────────────────────────────────────────────
+
+_RANKS_STR = "AKQJT98765432"
+_RANK_VAL = {r: i for i, r in enumerate(_RANKS_STR)}
+
+OPEN_RANGE_POSITIONS = ["UTG", "UTG+1", "MP", "LJ", "HJ", "CO", "BTN", "SB"]
+RANGES_DIR = DATA_DIR / "ranges"
+
+# Hand strength rank: lower = stronger (0=AA, 168=32o)
+def _hand_strength(hand: str) -> int:
+    rv = _RANK_VAL
+    if len(hand) == 2:  # pair
+        return rv[hand[0]]                          # 0(AA) - 12(22)
+    hi, lo = rv[hand[0]], rv[hand[1]]
+    suited = hand.endswith("s")
+    # suited before offsuit; within type, hi card then lo card
+    base = 13 + hi * 12 + (lo - 1)
+    return base if suited else base + 91
+
+_HAND_RANK_ORDER = sorted(ALL_HANDS_169, key=_hand_strength)
+_HAND_RANK = {h: i for i, h in enumerate(_HAND_RANK_ORDER)}
+
+
+@dataclass
+class OpenRangeQuestion:
+    format_key: str        # e.g. "6max_100bb_highRake"
+    format_name: str       # e.g. "6-max 100bb High Rake"
+    position: str          # "UTG" / "MP" / "CO" / "BTN" / "SB"
+    hand: str              # e.g. "K9s"
+    hand_display: str      # e.g. "K♠ 9♠"
+    correct_action: str    # "Open", "Call", or "Fold"
+    in_range_hands: frozenset  # raise ∪ call (for chart display)
+    raise_hands: frozenset     # pure raise hands
+    call_hands: frozenset      # call/limp hands (SB)
+    is_boundary: bool      # whether near the range edge
+
+
+class OpenRangeQuizManager:
+    """Quiz manager for memorising open (RFI) ranges from rangeconverter.com.
+
+    Supports multiple formats (stack depths) and positions.
+    Boundary hands (near range edge) are asked most frequently.
+    """
+    FORMATS = {
+        "6max_100bb_highRake": "6-max 100bb High Rake",
+        "6max_100bb":          "6-max 100bb",
+        "6max_40bb":           "6-max 40bb",
+        "6max_200bb":          "6-max 200bb",
+        "9max_100bb":          "9-max 100bb",
+        "mtt_100bb":           "MTT 100bb",
+        "mtt_60bb":            "MTT 60bb",
+        "mtt_50bb":            "MTT 50bb",
+        "mtt_40bb":            "MTT 40bb",
+        "mtt_30bb":            "MTT 30bb",
+        "mtt_20bb":            "MTT 20bb",
+        "mtt_10bb":            "MTT 10bb",
+    }
+    BOUNDARY_WINDOW = 8   # hands within this rank-distance from boundary get 3x weight
+
+    def __init__(self, ev_tables: dict = None):
+        # fmt -> pos -> {"raise": frozenset, "call": frozenset}
+        self.ranges: dict[str, dict[str, dict]] = {}
+        # fmt -> pos -> hand -> weight
+        self.weights: dict[str, dict[str, dict]] = {}
+        self._load(ev_tables or {})
+
+    def _load(self, ev_tables: dict):
+        corrections_path = DATA_DIR / "corrections.json"
+        corrections: dict = {}
+        if corrections_path.exists():
+            with open(corrections_path, encoding="utf-8") as f:
+                raw = json.load(f)
+            corrections = {k: v for k, v in raw.items() if not k.startswith("_")}
+
+        for fmt in self.FORMATS:
+            fmt_dir = RANGES_DIR / fmt / "rfi"
+            if not fmt_dir.exists():
+                continue
+            self.ranges[fmt] = {}
+            self.weights[fmt] = {}
+            for pos in OPEN_RANGE_POSITIONS:
+                path = fmt_dir / f"{pos}.json"
+                if not path.exists():
+                    continue
+                with open(path, encoding="utf-8") as f:
+                    data = json.load(f)
+                raise_hands = frozenset(data.get("raise", []))
+                call_hands  = frozenset(data.get("call", []))
+
+                # Apply manual corrections
+                corr = corrections.get(fmt, {}).get(pos, {})
+                raise_hands = (raise_hands - frozenset(corr.get("raise_remove", [])))
+                raise_hands = raise_hands | frozenset(corr.get("raise_add", []))
+                call_hands  = (call_hands - frozenset(corr.get("call_remove", [])))
+                call_hands  = call_hands  | frozenset(corr.get("call_add", []))
+
+                self.ranges[fmt][pos] = {"raise": raise_hands, "call": call_hands}
+                self.weights[fmt][pos] = self._compute_weights(
+                    raise_hands | call_hands, ev_tables, pos, fmt
+                )
+
+    def _compute_weights(
+        self,
+        in_range: frozenset,
+        ev_tables: dict,
+        pos: str,
+        fmt: str,
+    ) -> dict:
+        """Compute per-hand quiz weights. Boundary hands get higher weight."""
+        _POS_TO_SCENARIO = {
+            "UTG": "rfi_utg", "MP": "rfi_mp", "CO": "rfi_co",
+            "BTN": "rfi_btn", "SB": "rfi_sb",
+        }
+        # Try EV-based boundary (only for 6max_100bb_highRake which has solver data)
+        if fmt == "6max_100bb_highRake":
+            scenario_id = _POS_TO_SCENARIO.get(pos, "")
+            ev_hands = ev_tables.get(scenario_id, {}).get("hands", {})
+            if ev_hands:
+                scores = {}
+                for h in ALL_HANDS_169:
+                    if h not in ev_hands: continue
+                    ev = ev_hands[h].get("ev_vs_best", {})
+                    fold_ev = ev.get("Fold", 0.0)
+                    non_fold = [v for k, v in ev.items() if k.lower() != "fold"]
+                    best_play = max(non_fold) if non_fold else fold_ev
+                    scores[h] = best_play - fold_ev
+                in_s  = [scores[h] for h in in_range if h in scores]
+                out_s = [scores[h] for h in ALL_HANDS_169 if h not in in_range and h in scores]
+                if in_s and out_s:
+                    bp = (min(in_s) + max(out_s)) / 2
+                    w = {}
+                    for h in ALL_HANDS_169:
+                        if h not in scores: continue
+                        dist = abs(scores[h] - bp)
+                        if dist <= 1.5:
+                            w[h] = 1.0 / (dist + 0.15)
+                    if w:
+                        return w
+        # Rank-based boundary fallback
+        if not in_range:
+            return {h: 1.0 for h in ALL_HANDS_169}
+        in_ranks = sorted(_HAND_RANK[h] for h in in_range if h in _HAND_RANK)
+        boundary_rank = in_ranks[-1] if in_ranks else 84  # weakest in-range hand rank
+        w = {}
+        for h in ALL_HANDS_169:
+            rank = _HAND_RANK.get(h, 84)
+            dist = abs(rank - boundary_rank)
+            if dist <= self.BOUNDARY_WINDOW:
+                w[h] = 3.0 / (dist + 1)
+            elif h in in_range:
+                w[h] = 0.3
+            else:
+                w[h] = 0.1
+        return w
+
+    def get_available_formats(self) -> list[str]:
+        return [f for f in self.FORMATS if f in self.ranges and self.ranges[f]]
+
+    def generate_question(
+        self,
+        format_key: str = None,
+        position: str = None,
+        recent: set = None,
+    ) -> Optional[OpenRangeQuestion]:
+        available = self.get_available_formats()
+        if not available:
+            return None
+
+        fmt = format_key if format_key in available else random.choice(available)
+        fmt_ranges = self.ranges[fmt]
+        available_pos = [p for p in OPEN_RANGE_POSITIONS if p in fmt_ranges]
+        if not available_pos:
+            return None
+
+        pos = position if position in available_pos else random.choice(available_pos)
+        range_data = fmt_ranges[pos]
+        weights    = self.weights[fmt][pos]
+        skip       = recent or set()
+
+        pool = [(h, w) for h, w in weights.items() if h not in skip]
+        if not pool:
+            pool = [(h, 1.0) for h in ALL_HANDS_169]
+
+        names, wts = zip(*pool)
+        idx  = random.choices(range(len(names)), weights=list(wts), k=1)[0]
+        hand = names[idx]
+
+        raise_h = range_data["raise"]
+        call_h  = range_data["call"]
+
+        if hand in raise_h:
+            action = "Open"
+        elif hand in call_h:
+            action = "Call"
+        else:
+            action = "Fold"
+
+        rank    = _HAND_RANK.get(hand, 84)
+        in_r    = [_HAND_RANK[h] for h in (raise_h | call_h) if h in _HAND_RANK]
+        bnd     = max(in_r) if in_r else 84
+        is_bnd  = abs(rank - bnd) <= self.BOUNDARY_WINDOW
+
+        return OpenRangeQuestion(
+            format_key=fmt,
+            format_name=self.FORMATS.get(fmt, fmt),
+            position=pos,
+            hand=hand,
+            hand_display=hand_to_display(hand),
+            correct_action=action,
+            in_range_hands=(raise_h | call_h),
+            raise_hands=raise_h,
+            call_hands=call_h,
+            is_boundary=is_bnd,
+        )
