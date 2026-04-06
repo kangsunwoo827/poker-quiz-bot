@@ -1,0 +1,10 @@
+{
+  "_comment": "Manual corrections to override PDF extraction errors. raise_remove: hands falsely detected as raise. raise_add: hands missed by extraction. call_add: hands missed as call.",
+  "6max_40bb": {
+    "CO": {
+      "raise_remove": ["87o"],
+      "raise_add": [],
+      "call_add": []
+    }
+  }
+}
