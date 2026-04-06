@@ -1,1 +1,1 @@
-{"raise": ["A7s", "AKo"], "pct_raise": 1.18, "allin": ["AA", "AKs", "AQs", "AJs", "ATs", "A9s", "A8s", "A6s", "A5s", "KK", "KQs", "KJs", "KTs", "AQo", "QQ", "QJs", "QTs", "QJo", "JJ", "JTs", "JTo", "TT", "T9o", "98o", "87o"], "pct_allin": 14.79, "mixed": ["KQo", "AJo", "76o", "66", "65o", "55", "54o"]}
+{"raise": ["AA"], "pct_raise": 0.59, "allin": ["AKs", "AQs", "AJs", "ATs", "AKo", "KQs", "KJs", "KTs", "QQ", "QJs", "QTs", "JJ", "JTs"], "pct_allin": 7.69, "mixed": ["A9s", "KK", "K9s", "AQo", "Q9s", "J9s", "T9s", "88", "77", "66", "55", "54s", "44"]}

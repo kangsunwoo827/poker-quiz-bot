@@ -157,12 +157,85 @@ def find_grid_row_centers(arr):
     return centers, stride
 
 
-# ── Fixed 6max parameters (pre-validated) ─────────────────────────────────────
-_RANKS = "AKQJT98765432"
-_6MAX_ROW_CENTERS = [368 + 40 + i * 83 for i in range(13)]
-_6MAX_COL_CENTERS = [85 + 34 + i * 76 for i in range(13)]
-_6MAX_CORNER_DY   = 28
-_6MAX_CORNER_DX   = 25
+# ── Auto-detect grid by finding borders and dividing evenly ──────────────────
+def detect_grid(arr):
+    """Auto-detect 13x13 grid cell centers.
+
+    Strategy: find grid top/bottom borders (full dark rows), and the
+    left boundary of data columns (first colored region). Then divide evenly.
+
+    Returns (row_centers[13], col_centers[13], corner_dy, corner_dx) or None.
+    """
+    H, W = arr.shape[:2]
+
+    def is_cell_color(y, x):
+        r, g, b = int(arr[y, x, 0]), int(arr[y, x, 1]), int(arr[y, x, 2])
+        return is_orange(r, g, b) or is_blue(r, g, b) or is_teal(r, g, b) or is_red(r, g, b)
+
+    # Scan every 5th pixel to find bounding box of colored (cell) regions
+    y_min = y_max = x_min = x_max = None
+    for y in range(0, H, 3):
+        for x in range(0, W, 5):
+            if is_cell_color(y, x):
+                if y_min is None or y < y_min: y_min = y
+                if y_max is None or y > y_max: y_max = y
+                if x_min is None or x < x_min: x_min = x
+                if x_max is None or x > x_max: x_max = x
+
+    if y_min is None:
+        return None
+
+    # The color bounding box includes column headers + row headers + data grid.
+    # Column headers: a thin row at the top of the colored area.
+    # Row headers: a narrow column at the left of the colored area.
+    # Data grid: the main 13x13 area.
+
+    # Total colored height includes column header row (~1/14 of total)
+    total_h = y_max - y_min
+    header_row_h = total_h / 14  # approximate column header height
+    data_top = int(y_min + header_row_h)
+    data_bottom = y_max
+
+    row_h = (data_bottom - data_top) / 13
+    row_centers = [int(data_top + (i + 0.5) * row_h) for i in range(13)]
+
+    # For columns: find the row header width by scanning the middle data row
+    # The row header is the first narrow colored region, then a gap, then data columns
+    test_y = row_centers[6]  # middle row
+    regions = []
+    in_colored = False
+    region_start = 0
+    for x in range(W):
+        if is_cell_color(test_y, x):
+            if not in_colored:
+                region_start = x
+                in_colored = True
+        else:
+            if in_colored:
+                regions.append((region_start, x - 1))
+                in_colored = False
+    if in_colored:
+        regions.append((region_start, W - 1))
+
+    # Determine data column area
+    if len(regions) >= 2 and regions[0][1] - regions[0][0] < 100:
+        # First region is narrow row header, data starts at second region
+        data_left = regions[1][0]
+        data_right = regions[-1][1]
+    elif regions:
+        # No clear header separation — use full width
+        data_left = regions[0][0]
+        data_right = regions[-1][1]
+    else:
+        return None
+
+    col_w = (data_right - data_left) / 13
+    col_centers = [int(data_left + (i + 0.5) * col_w) for i in range(13)]
+
+    corner_dy = max(10, int(row_h * 0.30))
+    corner_dx = max(10, int(col_w * 0.30))
+
+    return row_centers, col_centers, corner_dy, corner_dx
 
 
 def classify_cell_v2(arr, y_c, x_c, corner_dy=28, corner_dx=25):
@@ -284,18 +357,11 @@ def process_pdf(pdf_key, force=False):
 
         arr = np.array(Image.open(str(crop_path)))
 
-        if is_6max:
-            row_centers = _6MAX_ROW_CENTERS
-            col_centers = _6MAX_COL_CENTERS
-            c_dy, c_dx  = _6MAX_CORNER_DY, _6MAX_CORNER_DX
-        else:
-            row_centers, stride = find_grid_row_centers(arr)
-            if row_centers is None:
-                print(f"    {pos}: could not detect grid")
-                continue
-            col_centers = _6MAX_COL_CENTERS
-            c_dy = max(10, stride // 3)
-            c_dx = 25
+        grid = detect_grid(arr)
+        if grid is None:
+            print(f"    {pos}: could not detect grid")
+            continue
+        row_centers, col_centers, c_dy, c_dx = grid
 
         raise_h, allin_h, call_h, mixed_h = extract_from_crop(arr, row_centers, col_centers, c_dy, c_dx)
 
