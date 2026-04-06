@@ -172,68 +172,51 @@ def detect_grid(arr):
         r, g, b = int(arr[y, x, 0]), int(arr[y, x, 1]), int(arr[y, x, 2])
         return is_orange(r, g, b) or is_blue(r, g, b) or is_teal(r, g, b) or is_red(r, g, b)
 
-    # Scan every 5th pixel to find bounding box of colored (cell) regions
-    y_min = y_max = x_min = x_max = None
-    for y in range(0, H, 3):
-        for x in range(0, W, 5):
-            if is_cell_color(y, x):
-                if y_min is None or y < y_min: y_min = y
-                if y_max is None or y > y_max: y_max = y
-                if x_min is None or x < x_min: x_min = x
-                if x_max is None or x > x_max: x_max = x
-
-    if y_min is None:
+    # 1. Find data_top: first row with >50% colored pixels (skip title/header text)
+    data_top = None
+    for y in range(H):
+        colored = sum(1 for x in range(0, W, 5) if is_cell_color(y, x))
+        if colored / (W // 5) > 0.5:
+            data_top = y
+            break
+    if data_top is None:
         return None
 
-    # The color bounding box includes column headers + row headers + data grid.
-    # Column headers: a thin row at the top of the colored area.
-    # Row headers: a narrow column at the left of the colored area.
-    # Data grid: the main 13x13 area.
+    # data_top is the column header row. Skip it (1 row stride ≈ H/14 from first colored to last)
+    # Find data_bottom: last row with colored pixels
+    data_bottom = data_top
+    for y in range(H - 1, data_top, -1):
+        colored = sum(1 for x in range(0, W, 5) if is_cell_color(y, x))
+        if colored / (W // 5) > 0.3:
+            data_bottom = y
+            break
 
-    # Total colored height includes column header row (~1/14 of total)
-    total_h = y_max - y_min
-    header_row_h = total_h / 14  # approximate column header height
-    data_top = int(y_min + header_row_h)
-    data_bottom = y_max
+    total_grid_h = data_bottom - data_top
+    col_header_h = total_grid_h / 14
+    first_data_y = int(data_top + col_header_h)
 
-    row_h = (data_bottom - data_top) / 13
-    row_centers = [int(data_top + (i + 0.5) * row_h) for i in range(13)]
+    # Row stride and centers
+    data_h = data_bottom - first_data_y
+    row_stride = data_h / 13
+    row_centers = [int(first_data_y + (i + 0.5) * row_stride) for i in range(13)]
 
-    # For columns: find the row header width by scanning the middle data row
-    # The row header is the first narrow colored region, then a gap, then data columns
-    test_y = row_centers[6]  # middle row
-    regions = []
-    in_colored = False
-    region_start = 0
-    for x in range(W):
-        if is_cell_color(test_y, x):
-            if not in_colored:
-                region_start = x
-                in_colored = True
-        else:
-            if in_colored:
-                regions.append((region_start, x - 1))
-                in_colored = False
-    if in_colored:
-        regions.append((region_start, W - 1))
-
-    # Determine data column area
-    if len(regions) >= 2 and regions[0][1] - regions[0][0] < 100:
-        # First region is narrow row header, data starts at second region
-        data_left = regions[1][0]
-        data_right = regions[-1][1]
-    elif regions:
-        # No clear header separation — use full width
-        data_left = regions[0][0]
-        data_right = regions[-1][1]
-    else:
+    # 2. Column centers: use fixed stride of 76px, anchor from right edge
+    COL_STRIDE = 76
+    # Find rightmost colored pixel across multiple rows for robustness
+    data_right = 0
+    for y_test in row_centers[::3]:  # sample every 3rd row
+        for x in range(W - 1, W // 2, -1):
+            if is_cell_color(y_test, x):
+                data_right = max(data_right, x)
+                break
+    if data_right == 0:
         return None
+    # Last column center = data_right - COL_STRIDE/2
+    col_12_center = data_right - COL_STRIDE // 2
+    col_centers = [col_12_center - (12 - i) * COL_STRIDE for i in range(13)]
 
-    col_w = (data_right - data_left) / 13
-    col_centers = [int(data_left + (i + 0.5) * col_w) for i in range(13)]
-
-    corner_dy = max(10, int(row_h * 0.30))
-    corner_dx = max(10, int(col_w * 0.30))
+    corner_dy = max(10, int(row_stride * 0.30))
+    corner_dx = max(10, int(COL_STRIDE * 0.30))
 
     return row_centers, col_centers, corner_dy, corner_dx
 
@@ -259,7 +242,7 @@ def classify_cell_v2(arr, y_c, x_c, corner_dy=28, corner_dx=25):
     if total == 0 or counts[best] == 0:
         return "fold"
     # Mixed: dominant color is 60% or less of total → split cell
-    if counts[best] <= total * 0.6:
+    if counts[best] <= total * 0.5:
         return "mixed"
     return best
 

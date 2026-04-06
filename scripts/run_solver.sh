@@ -3,7 +3,7 @@
 # Usage: ./scripts/run_solver.sh [n_flops]
 # Default: 10 flops per branch
 
-N_FLOPS=${1:-10}
+N_FLOPS=${1:-50}
 SOLVER="$(dirname "$0")/../solver/target/release/preflop_solver"
 
 if [ ! -f "$SOLVER" ]; then
