@@ -11,6 +11,7 @@ DATA_DIR = PROJECT_ROOT / "data"
 SCENARIOS_FILE = DATA_DIR / "scenarios.json"
 EV_TABLES_DIR = DATA_DIR / "ev_tables"
 DB_PATH = DATA_DIR / "bankroll.db"
+PDF_RANGES_FILE = DATA_DIR / "pdf_ranges.json"
 
 STARTING_BANKROLL = 100.0
 
