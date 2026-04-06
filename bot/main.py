@@ -95,26 +95,34 @@ def _build_quiz_message(question) -> tuple[str, InlineKeyboardMarkup]:
     left = PLAYERS_LEFT.get(pos, "?")
     fkey = question.format_key
 
+    has_allin = bool(question.allin_hands)
+    has_call  = bool(question.call_hands)
+    has_raise = bool(question.raise_hands)
+
     text = (
-        f"<b>{pos} Open Range</b>  <code>({left} left)</code>\n\n"
+        f"<b>{pos} {'Push/Fold' if has_allin and not has_raise else 'Open Range'}</b>"
+        f"  <code>({left} left)</code>\n\n"
         f"<code>{fmt} · Folds to Hero in {pos}</code>\n\n"
         f"Your hand:  <b>{hand}</b>\n\n"
     )
-    # SB has 3 options (raise/call/fold), others have 2
-    has_call = bool(question.call_hands)
+
+    # Build buttons based on available actions
+    buttons = []
+    if has_allin:
+        buttons.append(InlineKeyboardButton("Push", callback_data=f"rfi:{fkey}:{pos}:{question.hand}:P"))
+    if has_raise:
+        buttons.append(InlineKeyboardButton("Raise", callback_data=f"rfi:{fkey}:{pos}:{question.hand}:O"))
     if has_call:
-        text += "Raise, Call, or Fold?"
-        keyboard = InlineKeyboardMarkup([[
-            InlineKeyboardButton("Raise", callback_data=f"rfi:{fkey}:{pos}:{question.hand}:O"),
-            InlineKeyboardButton("Call",  callback_data=f"rfi:{fkey}:{pos}:{question.hand}:C"),
-            InlineKeyboardButton("Fold",  callback_data=f"rfi:{fkey}:{pos}:{question.hand}:F"),
-        ]])
+        buttons.append(InlineKeyboardButton("Call", callback_data=f"rfi:{fkey}:{pos}:{question.hand}:C"))
+    buttons.append(InlineKeyboardButton("Fold", callback_data=f"rfi:{fkey}:{pos}:{question.hand}:F"))
+
+    labels = [b.text for b in buttons]
+    if len(labels) == 2:
+        text += f"{labels[0]} or {labels[1]}?"
     else:
-        text += "Open or Fold?"
-        keyboard = InlineKeyboardMarkup([[
-            InlineKeyboardButton("Open", callback_data=f"rfi:{fkey}:{pos}:{question.hand}:O"),
-            InlineKeyboardButton("Fold", callback_data=f"rfi:{fkey}:{pos}:{question.hand}:F"),
-        ]])
+        text += ", ".join(labels[:-1]) + f", or {labels[-1]}?"
+
+    keyboard = InlineKeyboardMarkup([buttons])
     return text, keyboard
 
 
@@ -190,14 +198,14 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     user_id = query.from_user.id
     username = query.from_user.username or query.from_user.first_name or str(user_id)
 
-    # Parse: rfi:{fmt}:{pos}:{hand}:{O|C|F}
+    # Parse: rfi:{fmt}:{pos}:{hand}:{O|P|C|F}
     parts = query.data.split(":")
     if len(parts) != 5:
         await query.answer("Invalid data.", show_alert=True)
         return
 
     _, fmt, pos, hand, action_code = parts
-    chosen = {"O": "Open", "C": "Call", "F": "Fold"}.get(action_code, "Fold")
+    chosen = {"O": "Open", "P": "Push", "C": "Call", "F": "Fold"}.get(action_code, "Fold")
 
     question = pending_quizzes.get(user_id)
     if not question or question.position != pos or question.hand != hand:
@@ -226,22 +234,16 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     h_disp = escape_html(question.hand_display)
     fmt_name = escape_html(question.format_name)
 
+    action_labels = {
+        "Open": "raise", "Push": "push all-in",
+        "Call": "call/limp", "Fold": "fold",
+    }
     if is_mixed:
         verdict = f"<b>{h_disp}</b> is mixed in {pos} — both raise and fold are OK."
     elif was_correct:
-        if correct == "Fold":
-            verdict = f"Correct! <b>{h_disp}</b> is NOT in the {pos} open range."
-        elif correct == "Call":
-            verdict = f"Correct! <b>{h_disp}</b> is a limp/call in {pos}."
-        else:
-            verdict = f"Correct! <b>{h_disp}</b> is in the {pos} open range."
+        verdict = f"Correct! <b>{h_disp}</b> is a {action_labels[correct]} in {pos}."
     else:
-        if correct == "Open":
-            verdict = f"Wrong. <b>{h_disp}</b> IS in the {pos} open range."
-        elif correct == "Call":
-            verdict = f"Wrong. <b>{h_disp}</b> should be called/limped in {pos}."
-        else:
-            verdict = f"Wrong. <b>{h_disp}</b> is NOT in the {pos} open range."
+        verdict = f"Wrong. <b>{h_disp}</b> should {action_labels[correct]} in {pos}."
 
     url = FORMAT_URLS.get(fmt, "")
     url_line = f'\n<a href="{url}">rangeconverter.com ↗</a>' if url else ""
@@ -257,11 +259,14 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
 
     # Send range chart (extracted grid) + original PDF crop side-by-side
     try:
+        has_allin = bool(question.allin_hands)
+        chart_title = f"{pos} {'Push/Fold' if has_allin else 'Open Range'} ({question.format_name})"
         chart_bytes = generate_open_range_chart(
             in_range_hands=question.raise_hands,
+            allin_hands=question.allin_hands,
             call_hands=question.call_hands,
             highlight_hand=hand,
-            title=f"{pos} Open Range ({question.format_name})",
+            title=chart_title,
         )
         crop_path = str(CROPS_DIR / f"{fmt}_rfi_{pos}.png")
         combined  = combine_with_crop(chart_bytes, crop_path)

@@ -83,11 +83,15 @@ RANKS = "AKQJT98765432"
 
 
 # ── Color classifiers ─────────────────────────────────────────────────────────
+def is_red(r, g, b):
+    """Red = all-in/push (dark red, r dominant, low g and b)."""
+    return r > 160 and g < 100 and b < 100 and r > g + 80
+
 def is_orange(r, g, b):
-    """Strict orange (exclude yellow column headers: ratio r/g > 1.4)."""
-    warm_orange = r > 150 and g > 80 and b < 80 and r > g * 1.4
-    red_push    = r > 160 and g < 100 and b < 100 and r > g + 80
-    return warm_orange or red_push
+    """Strict orange = standard raise (exclude yellow headers and red)."""
+    if is_red(r, g, b):
+        return False
+    return r > 150 and g > 80 and b < 80 and r > g * 1.4
 
 def is_blue(r, g, b):
     return b > 120 and b > r + 50
@@ -113,7 +117,8 @@ def find_grid_row_centers(arr):
         for x in range(x_start, x_end, 20):
             p = arr[y, x]
             r, g, b_ = int(p[0]), int(p[1]), int(p[2])
-            if is_orange(r, g, b_): o += 1
+            if is_red(r, g, b_): o += 1
+            elif is_orange(r, g, b_): o += 1
             elif is_blue(r, g, b_): b += 1
             elif is_teal(r, g, b_): t += 1
             else: bg += 1
@@ -161,9 +166,9 @@ _6MAX_CORNER_DX   = 25
 
 
 def classify_cell_v2(arr, y_c, x_c, corner_dy=28, corner_dx=25):
-    """Corner-based classification."""
+    """Corner-based classification with 4-action support."""
     h, w = arr.shape[:2]
-    orange = teal = blue = 0
+    red = orange = teal = blue = 0
     for ddx in (-corner_dx, corner_dx):
         for ddy in (-corner_dy, corner_dy):
             cx, cy = x_c + ddx, y_c + ddy
@@ -171,14 +176,15 @@ def classify_cell_v2(arr, y_c, x_c, corner_dy=28, corner_dx=25):
             for row_p in region:
                 for p in row_p:
                     r, g, b = int(p[0]), int(p[1]), int(p[2])
-                    if is_orange(r, g, b): orange += 1
+                    if is_red(r, g, b):    red += 1
+                    elif is_orange(r, g, b): orange += 1
                     elif is_blue(r, g, b): blue += 1
                     elif is_teal(r, g, b): teal += 1
-    if orange >= teal and orange > blue:
-        return "raise"
-    elif teal > orange and teal > blue:
-        return "call"
-    return "fold"
+    counts = {"allin": red, "raise": orange, "call": teal, "fold": blue}
+    best = max(counts, key=counts.get)
+    if counts[best] == 0:
+        return "fold"
+    return best
 
 
 def hand_at(row, col):
@@ -189,8 +195,8 @@ def hand_at(row, col):
 
 
 def extract_from_crop(arr, row_centers, col_centers, corner_dy, corner_dx):
-    """Extract raise/call hands from a crop array using given row/col centers."""
-    raise_h, call_h = [], []
+    """Extract hands by action from a crop array using given row/col centers."""
+    raise_h, allin_h, call_h = [], [], []
     for row in range(13):
         y_c = row_centers[row]
         for col in range(13):
@@ -201,9 +207,11 @@ def extract_from_crop(arr, row_centers, col_centers, corner_dy, corner_dx):
             hand = hand_at(row, col)
             if action == "raise":
                 raise_h.append(hand)
+            elif action == "allin":
+                allin_h.append(hand)
             elif action == "call":
                 call_h.append(hand)
-    return raise_h, call_h
+    return raise_h, allin_h, call_h
 
 
 # ── Main processing ───────────────────────────────────────────────────────────
@@ -283,21 +291,23 @@ def process_pdf(pdf_key, force=False):
             c_dy = max(10, stride // 3)
             c_dx = 25
 
-        raise_h, call_h = extract_from_crop(arr, row_centers, col_centers, c_dy, c_dx)
+        raise_h, allin_h, call_h = extract_from_crop(arr, row_centers, col_centers, c_dy, c_dx)
 
-        pct_raise = len(raise_h) / 169 * 100
-        pct_call  = len(call_h)  / 169 * 100
-
-        result = {"raise": raise_h, "pct_raise": round(pct_raise, 2)}
+        result = {"raise": raise_h, "pct_raise": round(len(raise_h)/169*100, 2)}
+        if allin_h:
+            result["allin"]     = allin_h
+            result["pct_allin"] = round(len(allin_h)/169*100, 2)
         if call_h:
             result["call"]     = call_h
-            result["pct_call"] = round(pct_call, 2)
+            result["pct_call"] = round(len(call_h)/169*100, 2)
 
         with open(out_dir / f"{pos}.json", "w") as f:
             json.dump(result, f)
 
-        call_info = f" + {len(call_h)} call ({pct_call:.1f}%)" if call_h else ""
-        print(f"    {pos}: {len(raise_h)} raise ({pct_raise:.1f}%){call_info}")
+        parts = [f"{len(raise_h)} raise ({result['pct_raise']:.1f}%)"]
+        if allin_h: parts.append(f"{len(allin_h)} allin ({result['pct_allin']:.1f}%)")
+        if call_h:  parts.append(f"{len(call_h)} call ({result['pct_call']:.1f}%)")
+        print(f"    {pos}: {' + '.join(parts)}")
 
 
 def main():

@@ -215,8 +215,9 @@ class OpenRangeQuestion:
     hand: str              # e.g. "K9s"
     hand_display: str      # e.g. "K♠ 9♠"
     correct_action: str    # "Open", "Call", or "Fold"
-    in_range_hands: frozenset  # raise ∪ call (for chart display)
+    in_range_hands: frozenset  # raise ∪ allin ∪ call (for chart display)
     raise_hands: frozenset     # pure raise hands
+    allin_hands: frozenset     # all-in/push hands
     call_hands: frozenset      # call/limp hands (SB)
     mixed_hands: frozenset     # hands where both raise and fold are correct
     is_boundary: bool      # whether near the range edge
@@ -272,6 +273,7 @@ class OpenRangeQuizManager:
                 with open(path, encoding="utf-8") as f:
                     data = json.load(f)
                 raise_hands = frozenset(data.get("raise", []))
+                allin_hands = frozenset(data.get("allin", []))
                 call_hands  = frozenset(data.get("call", []))
 
                 # Apply manual corrections
@@ -282,9 +284,12 @@ class OpenRangeQuizManager:
                 call_hands  = call_hands  | frozenset(corr.get("call_add", []))
                 mixed_hands = frozenset(corr.get("mixed", []))
 
-                self.ranges[fmt][pos] = {"raise": raise_hands, "call": call_hands, "mixed": mixed_hands}
+                self.ranges[fmt][pos] = {
+                    "raise": raise_hands, "allin": allin_hands,
+                    "call": call_hands, "mixed": mixed_hands,
+                }
                 self.weights[fmt][pos] = self._compute_weights(
-                    raise_hands | call_hands, ev_tables, pos, fmt
+                    raise_hands | allin_hands | call_hands, ev_tables, pos, fmt
                 )
 
     def _compute_weights(
@@ -374,18 +379,22 @@ class OpenRangeQuizManager:
         hand = names[idx]
 
         raise_h = range_data["raise"]
+        allin_h = range_data.get("allin", frozenset())
         call_h  = range_data["call"]
         mixed_h = range_data.get("mixed", frozenset())
 
-        if hand in raise_h:
+        if hand in allin_h:
+            action = "Push"
+        elif hand in raise_h:
             action = "Open"
         elif hand in call_h:
             action = "Call"
         else:
             action = "Fold"
 
+        all_play = raise_h | allin_h | call_h
         rank    = _HAND_RANK.get(hand, 84)
-        in_r    = [_HAND_RANK[h] for h in (raise_h | call_h) if h in _HAND_RANK]
+        in_r    = [_HAND_RANK[h] for h in all_play if h in _HAND_RANK]
         bnd     = max(in_r) if in_r else 84
         is_bnd  = abs(rank - bnd) <= self.BOUNDARY_WINDOW
 
@@ -396,8 +405,9 @@ class OpenRangeQuizManager:
             hand=hand,
             hand_display=hand_to_display(hand),
             correct_action=action,
-            in_range_hands=(raise_h | call_h),
+            in_range_hands=all_play,
             raise_hands=raise_h,
+            allin_hands=allin_h,
             call_hands=call_h,
             mixed_hands=mixed_h,
             is_boundary=is_bnd,

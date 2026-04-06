@@ -261,11 +261,12 @@ def combine_with_crop(chart_bytes: bytes, crop_path: str) -> bytes:
     return buf.getvalue()
 
 
-# Colors for open range chart (binary in/out)
-OPEN_IN_COLOR  = ( 67, 160,  71)   # green
-OPEN_OUT_COLOR = ( 55,  55,  55)   # dark gray (on black bg looks clearly distinct)
-OPEN_BG_COLOR  = (  0,   0,   0)   # pure black background
-OPEN_HIGHLIGHT = (255, 220,   0)   # yellow border for quiz hand
+# Colors for open range chart
+OPEN_IN_COLOR    = ( 67, 160,  71)   # green = raise
+OPEN_ALLIN_COLOR = (200,  40,  40)   # red = all-in/push
+OPEN_OUT_COLOR   = ( 55,  55,  55)   # dark gray = fold
+OPEN_BG_COLOR    = (  0,   0,   0)   # pure black background
+OPEN_HIGHLIGHT   = (255, 220,   0)   # yellow border for quiz hand
 
 
 OPEN_CALL_COLOR = (255, 165,   0)   # orange (limp/call)
@@ -273,18 +274,13 @@ OPEN_CALL_COLOR = (255, 165,   0)   # orange (limp/call)
 
 def generate_open_range_chart(
     in_range_hands: frozenset,
+    allin_hands: frozenset = None,
     call_hands: frozenset = None,
     highlight_hand: Optional[str] = None,
     title: str = "",
 ) -> bytes:
     """Generate a 13x13 open range chart.
-      green = raise/open, orange = call/limp, gray = fold.
-
-    Args:
-        in_range_hands: set of raise hands
-        call_hands: set of call/limp hands (SB)
-        highlight_hand: hand to mark with a yellow border
-        title: chart title
+      green = raise, red = all-in, orange = call/limp, gray = fold.
     """
     grid_size = 13
     total_w = PADDING * 2 + HEADER_SIZE + grid_size * CELL_SIZE
@@ -319,7 +315,9 @@ def generate_open_range_chart(
             x = PADDING + HEADER_SIZE + col * CELL_SIZE
             y = y_offset + HEADER_SIZE + row * CELL_SIZE
 
-            if hand in in_range_hands:
+            if allin_hands and hand in allin_hands:
+                color = OPEN_ALLIN_COLOR
+            elif hand in in_range_hands:
                 color = OPEN_IN_COLOR
             elif call_hands and hand in call_hands:
                 color = OPEN_CALL_COLOR
