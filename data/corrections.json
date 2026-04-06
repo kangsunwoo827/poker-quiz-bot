@@ -1,5 +1,5 @@
 {
-  "_comment": "Manual corrections to override PDF extraction errors. raise_remove: hands falsely detected as raise. raise_add: hands missed by extraction. call_add: hands missed as call.",
+  "_comment": "Manual corrections. raise_remove/raise_add/call_add/call_remove: fix extraction errors. mixed: hands with 50/50 strategy where both raise and fold are correct.",
   "6max_40bb": {
     "CO": {
       "raise_remove": ["87o"],

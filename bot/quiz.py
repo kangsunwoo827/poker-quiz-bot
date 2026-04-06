@@ -218,6 +218,7 @@ class OpenRangeQuestion:
     in_range_hands: frozenset  # raise ∪ call (for chart display)
     raise_hands: frozenset     # pure raise hands
     call_hands: frozenset      # call/limp hands (SB)
+    mixed_hands: frozenset     # hands where both raise and fold are correct
     is_boundary: bool      # whether near the range edge
 
 
@@ -279,8 +280,9 @@ class OpenRangeQuizManager:
                 raise_hands = raise_hands | frozenset(corr.get("raise_add", []))
                 call_hands  = (call_hands - frozenset(corr.get("call_remove", [])))
                 call_hands  = call_hands  | frozenset(corr.get("call_add", []))
+                mixed_hands = frozenset(corr.get("mixed", []))
 
-                self.ranges[fmt][pos] = {"raise": raise_hands, "call": call_hands}
+                self.ranges[fmt][pos] = {"raise": raise_hands, "call": call_hands, "mixed": mixed_hands}
                 self.weights[fmt][pos] = self._compute_weights(
                     raise_hands | call_hands, ev_tables, pos, fmt
                 )
@@ -373,6 +375,7 @@ class OpenRangeQuizManager:
 
         raise_h = range_data["raise"]
         call_h  = range_data["call"]
+        mixed_h = range_data.get("mixed", frozenset())
 
         if hand in raise_h:
             action = "Open"
@@ -396,5 +399,6 @@ class OpenRangeQuizManager:
             in_range_hands=(raise_h | call_h),
             raise_hands=raise_h,
             call_hands=call_h,
+            mixed_hands=mixed_h,
             is_boundary=is_bnd,
         )

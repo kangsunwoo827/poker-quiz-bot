@@ -228,12 +228,16 @@ def combine_with_crop(chart_bytes: bytes, crop_path: str) -> bytes:
     chart = Image.open(BytesIO(chart_bytes))
     crop  = Image.open(crop_path)
 
-    # Crop to grid area only (skip PDF header/title)
-    # At 580px height (resized from 1490): grid starts at ~363/1490*580=141, ends at ~1455/1490*580=567
-    crop_h = crop.height
-    grid_top = int(363 / 1490 * crop_h)
-    grid_bot = int(1455 / 1490 * crop_h)
-    crop = crop.crop((0, grid_top, crop.width, grid_bot))
+    # Crop to grid data area only (skip header/title/row-header column)
+    # Original crop is 1025x1490. Grid data area:
+    #   y: 363..1455 (skip title+col headers at top)
+    #   x: 72..982   (skip row-header column on left, margin on right)
+    cw, ch = crop.width, crop.height
+    grid_top  = int(363  / 1490 * ch)
+    grid_bot  = int(1455 / 1490 * ch)
+    grid_left = int(72   / 1025 * cw)
+    grid_right = int(982 / 1025 * cw)
+    crop = crop.crop((grid_left, grid_top, grid_right, grid_bot))
 
     # Scale to match chart's grid area (below title+header)
     title_h = 28

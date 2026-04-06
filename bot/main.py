@@ -205,7 +205,8 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
         return
 
     correct = question.correct_action
-    was_correct = chosen == correct
+    is_mixed = hand in question.mixed_hands
+    was_correct = chosen == correct or is_mixed
 
     bankroll_manager.get_or_create_user(user_id, username)
     _init_stats(user_id)
@@ -220,10 +221,14 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     accuracy = stats["correct"] / stats["total"] * 100 if stats["total"] else 0
 
     icon = "✅" if was_correct else "❌"
+    if is_mixed:
+        icon = "🔀"
     h_disp = escape_html(question.hand_display)
     fmt_name = escape_html(question.format_name)
 
-    if was_correct:
+    if is_mixed:
+        verdict = f"<b>{h_disp}</b> is mixed in {pos} — both raise and fold are OK."
+    elif was_correct:
         if correct == "Fold":
             verdict = f"Correct! <b>{h_disp}</b> is NOT in the {pos} open range."
         elif correct == "Call":
@@ -321,6 +326,7 @@ async def handle_fix_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE):
         InlineKeyboardButton("Raise", callback_data=f"fixdo:{fmt}:{pos}:{hand}:R"),
         InlineKeyboardButton("Call",  callback_data=f"fixdo:{fmt}:{pos}:{hand}:C"),
         InlineKeyboardButton("Fold",  callback_data=f"fixdo:{fmt}:{pos}:{hand}:F"),
+        InlineKeyboardButton("Mixed", callback_data=f"fixdo:{fmt}:{pos}:{hand}:M"),
     ]])
     await query.edit_message_text(
         f"<b>Fix {pos} — {escape_html(hand)}</b>\n\nCorrect action?",
@@ -339,7 +345,10 @@ async def handle_fix_apply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.answer("Invalid.", show_alert=True)
         return
     _, fmt, pos, hand, action_code = parts
-    new_action = {"R": "raise", "C": "call", "F": "fold"}[action_code]
+    new_action = {"R": "raise", "C": "call", "F": "fold", "M": "mixed"}.get(action_code)
+    if not new_action:
+        await query.answer("Invalid.", show_alert=True)
+        return
 
     # Determine current action from in-memory ranges
     range_data = open_range_quiz.ranges.get(fmt, {}).get(pos, {})
@@ -350,7 +359,7 @@ async def handle_fix_apply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         old_action = "fold"
 
-    if old_action == new_action:
+    if old_action == new_action and new_action != "mixed":
         await query.answer(f"Already {new_action}.", show_alert=True)
         return
 
@@ -368,30 +377,36 @@ async def handle_fix_apply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         corrections[fmt][pos] = {}
     c = corrections[fmt][pos]
 
-    # Build correction entry
-    if old_action == "raise":
-        c.setdefault("raise_remove", [])
-        if hand not in c["raise_remove"]:
-            c["raise_remove"].append(hand)
-        # Remove from raise_add if present
-        if "raise_add" in c and hand in c["raise_add"]:
-            c["raise_add"].remove(hand)
-    elif new_action == "raise":
-        c.setdefault("raise_add", [])
-        if hand not in c["raise_add"]:
-            c["raise_add"].append(hand)
-        # Remove from raise_remove if present
-        if "raise_remove" in c and hand in c["raise_remove"]:
-            c["raise_remove"].remove(hand)
+    if new_action == "mixed":
+        c.setdefault("mixed", [])
+        if hand not in c["mixed"]:
+            c["mixed"].append(hand)
+    else:
+        # Remove from mixed if present
+        if "mixed" in c and hand in c["mixed"]:
+            c["mixed"].remove(hand)
 
-    if old_action == "call":
-        c.setdefault("call_remove", [])
-        if hand not in c["call_remove"]:
-            c["call_remove"].append(hand)
-    elif new_action == "call":
-        c.setdefault("call_add", [])
-        if hand not in c["call_add"]:
-            c["call_add"].append(hand)
+        if old_action == "raise":
+            c.setdefault("raise_remove", [])
+            if hand not in c["raise_remove"]:
+                c["raise_remove"].append(hand)
+            if "raise_add" in c and hand in c["raise_add"]:
+                c["raise_add"].remove(hand)
+        elif new_action == "raise":
+            c.setdefault("raise_add", [])
+            if hand not in c["raise_add"]:
+                c["raise_add"].append(hand)
+            if "raise_remove" in c and hand in c["raise_remove"]:
+                c["raise_remove"].remove(hand)
+
+        if old_action == "call":
+            c.setdefault("call_remove", [])
+            if hand not in c["call_remove"]:
+                c["call_remove"].append(hand)
+        elif new_action == "call":
+            c.setdefault("call_add", [])
+            if hand not in c["call_add"]:
+                c["call_add"].append(hand)
 
     # Clean up empty lists
     for key in list(c.keys()):
@@ -408,19 +423,25 @@ async def handle_fix_apply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Update in-memory ranges
     raise_h = set(range_data.get("raise", frozenset()))
     call_h  = set(range_data.get("call", frozenset()))
+    mixed_h = set(range_data.get("mixed", frozenset()))
 
-    if old_action == "raise":
-        raise_h.discard(hand)
-    if old_action == "call":
-        call_h.discard(hand)
-    if new_action == "raise":
-        raise_h.add(hand)
-    if new_action == "call":
-        call_h.add(hand)
+    if new_action == "mixed":
+        mixed_h.add(hand)
+    else:
+        mixed_h.discard(hand)
+        if old_action == "raise":
+            raise_h.discard(hand)
+        if old_action == "call":
+            call_h.discard(hand)
+        if new_action == "raise":
+            raise_h.add(hand)
+        if new_action == "call":
+            call_h.add(hand)
 
     open_range_quiz.ranges[fmt][pos] = {
         "raise": frozenset(raise_h),
         "call": frozenset(call_h),
+        "mixed": frozenset(mixed_h),
     }
 
     await query.answer(f"Fixed: {hand} → {new_action}")
