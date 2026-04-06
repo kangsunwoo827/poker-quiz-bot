@@ -231,13 +231,11 @@ def combine_with_crop(chart_bytes: bytes, crop_path: str) -> bytes:
     # Crop to grid data area only (skip header/title/row-header column)
     # Original crop is 1025x1490. Grid data area:
     #   y: 363..1455 (skip title+col headers at top)
-    #   x: 72..982   (skip row-header column on left, margin on right)
+    #   x: keep full width (row header useful for reference)
     cw, ch = crop.width, crop.height
     grid_top  = int(363  / 1490 * ch)
     grid_bot  = int(1455 / 1490 * ch)
-    grid_left = int(72   / 1025 * cw)
-    grid_right = int(982 / 1025 * cw)
-    crop = crop.crop((grid_left, grid_top, grid_right, grid_bot))
+    crop = crop.crop((0, grid_top, cw, grid_bot))
 
     # Scale to match chart's grid area (below title+header)
     title_h = 28

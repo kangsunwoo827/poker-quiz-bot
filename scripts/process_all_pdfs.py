@@ -181,9 +181,13 @@ def classify_cell_v2(arr, y_c, x_c, corner_dy=28, corner_dx=25):
                     elif is_blue(r, g, b): blue += 1
                     elif is_teal(r, g, b): teal += 1
     counts = {"allin": red, "raise": orange, "call": teal, "fold": blue}
+    total = sum(counts.values())
     best = max(counts, key=counts.get)
-    if counts[best] == 0:
+    if total == 0 or counts[best] == 0:
         return "fold"
+    # Mixed: dominant color is 60% or less of total → split cell
+    if counts[best] <= total * 0.6:
+        return "mixed"
     return best
 
 
@@ -196,7 +200,7 @@ def hand_at(row, col):
 
 def extract_from_crop(arr, row_centers, col_centers, corner_dy, corner_dx):
     """Extract hands by action from a crop array using given row/col centers."""
-    raise_h, allin_h, call_h = [], [], []
+    raise_h, allin_h, call_h, mixed_h = [], [], [], []
     for row in range(13):
         y_c = row_centers[row]
         for col in range(13):
@@ -211,7 +215,9 @@ def extract_from_crop(arr, row_centers, col_centers, corner_dy, corner_dx):
                 allin_h.append(hand)
             elif action == "call":
                 call_h.append(hand)
-    return raise_h, allin_h, call_h
+            elif action == "mixed":
+                mixed_h.append(hand)
+    return raise_h, allin_h, call_h, mixed_h
 
 
 # ── Main processing ───────────────────────────────────────────────────────────
@@ -291,7 +297,7 @@ def process_pdf(pdf_key, force=False):
             c_dy = max(10, stride // 3)
             c_dx = 25
 
-        raise_h, allin_h, call_h = extract_from_crop(arr, row_centers, col_centers, c_dy, c_dx)
+        raise_h, allin_h, call_h, mixed_h = extract_from_crop(arr, row_centers, col_centers, c_dy, c_dx)
 
         result = {"raise": raise_h, "pct_raise": round(len(raise_h)/169*100, 2)}
         if allin_h:
@@ -300,6 +306,8 @@ def process_pdf(pdf_key, force=False):
         if call_h:
             result["call"]     = call_h
             result["pct_call"] = round(len(call_h)/169*100, 2)
+        if mixed_h:
+            result["mixed"] = mixed_h
 
         with open(out_dir / f"{pos}.json", "w") as f:
             json.dump(result, f)
@@ -307,6 +315,7 @@ def process_pdf(pdf_key, force=False):
         parts = [f"{len(raise_h)} raise ({result['pct_raise']:.1f}%)"]
         if allin_h: parts.append(f"{len(allin_h)} allin ({result['pct_allin']:.1f}%)")
         if call_h:  parts.append(f"{len(call_h)} call ({result['pct_call']:.1f}%)")
+        if mixed_h: parts.append(f"{len(mixed_h)} mixed")
         print(f"    {pos}: {' + '.join(parts)}")
 
 
