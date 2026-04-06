@@ -280,9 +280,12 @@ class OpenRangeQuizManager:
                 corr = corrections.get(fmt, {}).get(pos, {})
                 raise_hands = (raise_hands - frozenset(corr.get("raise_remove", [])))
                 raise_hands = raise_hands | frozenset(corr.get("raise_add", []))
+                allin_hands = (allin_hands - frozenset(corr.get("allin_remove", [])))
+                allin_hands = allin_hands | frozenset(corr.get("allin_add", []))
                 call_hands  = (call_hands - frozenset(corr.get("call_remove", [])))
                 call_hands  = call_hands  | frozenset(corr.get("call_add", []))
                 mixed_hands = frozenset(data.get("mixed", [])) | frozenset(corr.get("mixed", []))
+                mixed_hands = mixed_hands - frozenset(corr.get("mixed_remove", []))
 
                 self.ranges[fmt][pos] = {
                     "raise": raise_hands, "allin": allin_hands,

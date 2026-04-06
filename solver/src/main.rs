@@ -68,6 +68,48 @@ fn get_4bet_range(pos: &str) -> &'static str {
     }
 }
 
+/// Hero's range when calling a 3bet (subset of opening range, excluding 4bet and fold hands)
+/// Ranges calibrated from PokerTrainer.se GTO preflop charts
+fn get_hero_call_3bet_range(hero_pos: &str, villain_pos: &str) -> &'static str {
+    match (hero_pos, villain_pos) {
+        // UTG opens, faces 3bet
+        ("UTG", "BB")  => "JJ-99,AQs,AJs,KQs,AQo",
+        ("UTG", "SB")  => "JJ-99,AQs,AJs,88",
+        ("UTG", _)     => "JJ-99,AQs,AJs",
+        // MP opens, faces 3bet
+        ("MP", "BB")   => "JJ-88,AQs-ATs,KQs-KJs,QJs,AQo,AJo",
+        ("MP", _)      => "JJ-88,AQs-ATs,KQs-KJs,QJs,AQo",
+        // CO opens, faces 3bet
+        ("CO", "BTN")  => "JJ-88,AQs-ATs,KQs-KJs,QJs,AQo",
+        ("CO", "SB")   => "JJ-99,AQs-ATs,KQs,AQo",
+        ("CO", "BB")   => "JJ-88,AQs-ATs,KQs-KJs,QJs,JTs,AQo,KQo",
+        ("CO", _)      => "JJ-88,AQs-ATs,KQs-KJs,QJs,AQo",
+        // BTN opens, faces 3bet
+        ("BTN", "BB")  => "JJ-77,AQs-A9s,KQs-KJs,QJs-QTs,JTs,T9s,98s,AQo,AJo",
+        ("BTN", "SB")  => "JJ-88,AQs-ATs,KQs-KJs,QJs,98s,AQo",
+        ("BTN", _)     => "JJ-88,AQs-ATs,KQs-KJs,QJs,AQo",
+        // SB opens, faces 3bet
+        ("SB", "BB")   => "JJ-77,AQs-ATs,KQs-KJs,QJs-QTs,JTs,T9s,AQo,AJo,KQo",
+        ("SB", _)      => "JJ-88,AQs-ATs,KQs-KJs,QJs,AQo",
+        _ => "JJ-99,AQs,AJs,KQs,AQo",
+    }
+}
+
+/// Hero's 3bet range when facing an open (polarized: value + bluffs)
+fn get_hero_3bet_range(hero_pos: &str, villain_pos: &str) -> &'static str {
+    match (hero_pos, villain_pos) {
+        ("BB", "UTG") => "QQ+,AKs,AQs,A5s-A4s,AKo",
+        ("BB", "MP")  => "QQ+,AKs,AQs,A5s-A4s,KQs,AKo,AQo",
+        ("BB", "CO")  => "QQ+,AKs-AQs,A5s-A3s,KQs,AKo,AQo",
+        ("BB", "BTN") => "QQ+,AKs-AQs,A5s-A2s,KQs,K9s,87s,76s,65s,AKo,AQo",
+        ("SB", "CO")  => "QQ+,AKs,AQs,A5s-A4s,KQs,AKo",
+        ("SB", "BTN") => "QQ+,AKs-AQs,A5s-A4s,KQs,AKo,AQo",
+        ("BTN","CO")  => "TT+,AKs-AJs,A5s-A4s,KQs,AKo-AQo",
+        ("CO", "UTG") => "QQ+,AKs,AQs,AKo",
+        _ => "QQ+,AKs,AQs,A5s-A4s,AKo",
+    }
+}
+
 fn all_169_hands() -> Vec<String> {
     let mut hands = Vec::with_capacity(169);
     for (i, r1) in RANKS.iter().enumerate() {
@@ -275,10 +317,12 @@ fn compute_vs_open(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
 
     // When villain calls a 3bet, they use a tighter range
     let villain_call_3bet = get_call_3bet_range(villain_pos);
+    // Hero's 3bet range is a polarized subset (not the full opening range)
+    let hero_3bet_range_str = get_hero_3bet_range(hero_pos, villain_pos);
     let (oop_3b, ip_3b) = if hero_is_oop {
-        (hero_range, villain_call_3bet)
+        (hero_3bet_range_str, villain_call_3bet)
     } else {
-        (villain_call_3bet, hero_range)
+        (villain_call_3bet, hero_3bet_range_str)
     };
 
     let mut bet3_evs: HashMap<String, HashMap<usize, f32>> = HashMap::new();
@@ -301,6 +345,7 @@ fn compute_vs_open(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
     let dead_money = open_size + blinds - blind_posted; // what hero wins net when villain folds
 
     let range_parsed: Range = hero_range.parse().unwrap();
+    let range_3bet: Range = hero_3bet_range_str.parse().unwrap();
     let all = all_169_hands();
     let mut result = HashMap::new();
 
@@ -328,7 +373,7 @@ fn compute_vs_open(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
                 let oor_fallback = -(bet3_pot * 0.4 + add_cost * 0.6);
 
                 let called_net = bet3_evs.get(action)
-                    .and_then(|ev_map| hand_class_ev(&range_parsed, hand, ev_map))
+                    .and_then(|ev_map| hand_class_ev(&range_3bet, hand, ev_map))
                     .map(|pf_ev| pf_ev - add_cost)
                     .unwrap_or(oor_fallback);
 
@@ -434,7 +479,6 @@ fn compute_rfi(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashMap<S
 fn compute_vs_3bet(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashMap<String, f64>> {
     let hero_pos = &scenario.hero_position;
     let villain_pos = scenario.villain_position.as_deref().unwrap_or("BB");
-    let hero_range = get_opening_range(hero_pos);
 
     // Hero opened, villain 3bet. Typical 3bet size depends on villain position.
     let open_size = match hero_pos.as_str() {
@@ -442,12 +486,24 @@ fn compute_vs_3bet(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
     };
     let threeb_size = match villain_pos {
         "BB" | "SB" => 10.0f64,
+        "BTN" => 8.0f64,
         _ => 9.0f64,
     };
-    let blinds = 1.5f64;
+    // Dead money from folded blinds (not hero or villain)
+    let dead_blinds: f64 = match villain_pos {
+        "BB" => 0.5,   // only SB dead
+        "SB" => 1.0,   // only BB dead
+        _ => 1.5,      // both blinds dead (villain is BTN/CO/MP)
+    };
 
-    // Fold-to-4bet frequency (villain folds their 3bet bluffs)
-    let ft4b: f64 = 0.50;
+    // Villain's response to hero's 4bet: fold, call, or 5bet-shove
+    // Derived from PokerTrainer.se GTO charts (5bet / call-4bet / fold fractions of 3bet range)
+    let (ft4b_fold, ft4b_call, ft4b_5bet) = match villain_pos {
+        "BB"  => (0.50, 0.15, 0.35),  // BB 3bets polar, 5bets aggressively
+        "SB"  => (0.55, 0.12, 0.33),
+        "BTN" => (0.53, 0.21, 0.26),  // BTN has more flats in 3bet range
+        _ => (0.50, 0.15, 0.35),
+    };
 
     // Hero is IP (opened from EP/MP/CO/BTN), villain 3bet from blinds/BTN
     let hero_is_ip = !matches!(villain_pos, "BTN" | "CO");
@@ -469,12 +525,13 @@ fn compute_vs_3bet(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
 
     // Solve CALL branch (hero calls the 3bet)
     eprint!("  Call branch: ");
-    let call_pot = (open_size + threeb_size) * 1.0 + blinds; // simplified
+    let call_pot = threeb_size * 2.0 + dead_blinds; // both players match 3bet + dead blinds
     let call_stack = 100.0 - threeb_size;
+    let hero_call_range = get_hero_call_3bet_range(hero_pos, villain_pos);
     let (oop_call, ip_call) = if hero_is_ip {
-        (villain_3bet_range, hero_range)
+        (villain_3bet_range, hero_call_range)
     } else {
-        (hero_range, villain_3bet_range)
+        (hero_call_range, villain_3bet_range)
     };
     let call_evs = avg_postflop_ev(oop_call, ip_call, call_pot, call_stack, n_flops, hero_player);
     eprintln!();
@@ -497,7 +554,7 @@ fn compute_vs_3bet(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
     let mut fourbet_evs: HashMap<String, HashMap<usize, f32>> = HashMap::new();
     for (name, size) in &fourbet_actions {
         eprint!("  {} branch: ", name);
-        let pot = size * 2.0 + blinds;
+        let pot = size * 2.0 + dead_blinds;
         let stack = 100.0 - size;
         let (oop_4b, ip_4b) = if hero_is_ip {
             (villain_call_4bet, hero_4bet)
@@ -514,7 +571,7 @@ fn compute_vs_3bet(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
     let villain_call_allin = "QQ+,AKs,AKo";
     let ft_allin: f64 = 0.55; // Slightly higher fold rate vs all-in
     eprint!("  All-in equity branch: ");
-    let allin_pot = 200.0 + blinds; // Both players put in 100bb + dead blinds
+    let allin_pot = 200.0 + dead_blinds; // Both players put in 100bb + dead blinds
     let allin_stack = 0.5; // Tiny stack = effectively all-in (equity only)
     let (oop_ai, ip_ai) = if hero_is_ip {
         (villain_call_allin, hero_4bet)
@@ -524,7 +581,7 @@ fn compute_vs_3bet(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
     let allin_evs = avg_postflop_ev(oop_ai, ip_ai, allin_pot, allin_stack, n_flops, hero_player);
     eprintln!();
 
-    let range_call: Range = hero_range.parse().unwrap();
+    let range_call: Range = hero_call_range.parse().unwrap();
     let range_4bet: Range = hero_4bet.parse().unwrap();
     let blind_posted: f64 = match hero_pos.as_str() {
         "BB" => 1.0, "SB" => 0.5, _ => 0.0,
@@ -542,7 +599,7 @@ fn compute_vs_3bet(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
                 evs.insert(action.clone(), -open_cost);
             } else if lower == "call" {
                 let add_cost = threeb_size - blind_posted;
-                let call_pot = (open_size + threeb_size) + blinds;
+                let call_pot = threeb_size * 2.0 + dead_blinds;
                 let oor_fallback = -(call_pot * 0.4 + add_cost * 0.4);
                 let ev = hand_class_ev(&range_call, hand, &call_evs)
                     .map(|pf_ev| pf_ev - add_cost)
@@ -553,8 +610,8 @@ fn compute_vs_3bet(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
                     .and_then(|x| x.replace("bb","").parse().ok())
                     .unwrap_or(20.0);
                 let add_cost = size - blind_posted;
-                let dead = threeb_size + blinds;
-                let fourbet_pot = size * 2.0 + blinds;
+                let dead = threeb_size + dead_blinds;
+                let fourbet_pot = size * 2.0 + dead_blinds;
                 let oor_fallback = -(fourbet_pot * 0.3 + add_cost * 0.3);
 
                 // Use hero's 4bet range for EV lookup (not full opening range)
@@ -563,15 +620,17 @@ fn compute_vs_3bet(scenario: &Scenario, n_flops: usize) -> HashMap<String, HashM
                     .map(|pf_ev| pf_ev - add_cost)
                     .unwrap_or(oor_fallback);
 
-                let ev = ft4b * (dead - open_size + blind_posted) + (1.0 - ft4b) * called_net;
+                let fold_profit = dead - open_size + blind_posted;
+                let five_bet_loss = -(size - blind_posted); // hero folds to villain 5bet
+                let ev = ft4b_fold * fold_profit + ft4b_call * called_net + ft4b_5bet * five_bet_loss;
                 evs.insert(action.clone(), ev);
             } else if lower.contains("all") {
                 // All-in shove: hero goes all-in for 100bb
                 // When villain folds: hero wins dead money
                 // When villain calls: pure equity battle (solver with tiny stack)
                 let add_cost = 100.0 - blind_posted;
-                let dead = threeb_size + blinds - (open_size - blind_posted);
-                let allin_pot_total = 200.0 + blinds;
+                let dead = threeb_size + dead_blinds - (open_size - blind_posted);
+                let allin_pot_total = 200.0 + dead_blinds;
                 let oor_fallback = -(allin_pot_total * 0.35);
 
                 // Use hero's 4bet range for EV lookup

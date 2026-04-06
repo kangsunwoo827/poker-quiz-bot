@@ -1,10 +1,138 @@
 {
-  "_comment": "Manual corrections. raise_remove/raise_add/call_add/call_remove: fix extraction errors. mixed: hands with 50/50 strategy where both raise and fold are correct.",
+  "_comment": "AI-verified corrections. raise_remove/raise_add/call_add/call_remove/allin_add/allin_remove: fix extraction errors. mixed: hands with split strategy where both actions are correct. mixed_remove: remove incorrect mixed classifications.",
+
+  "6max_100bb_highRake": {
+    "UTG": {
+      "raise_add": ["99", "77", "66"]
+    },
+    "MP": {
+      "raise_add": ["99", "77", "66"]
+    },
+    "CO": {
+      "raise_add": ["77", "66"]
+    },
+    "SB": {
+      "raise_add": ["AKs"],
+      "call_add": ["A3s"],
+      "mixed": ["AA", "AQs", "AJs", "ATs", "A9s", "A8s", "A7s", "A6s", "A5s", "A4s", "A2s"]
+    }
+  },
+
   "6max_40bb": {
     "CO": {
       "raise_remove": ["87o"],
-      "raise_add": [],
-      "call_add": []
+      "raise_add": ["22"]
+    },
+    "SB": {
+      "raise_add": ["AA", "AKs", "AQs", "AJs", "A9s", "A8s"],
+      "mixed": ["ATs", "A7s", "A6s"]
+    }
+  },
+
+  "6max_200bb": {
+    "UTG": {
+      "raise_add": ["JJ", "TT"]
+    },
+    "SB": {
+      "raise_add": ["AA", "AKs", "AQs", "AJs", "A9s"],
+      "mixed": ["ATs", "A8s", "A7s", "A6s"]
+    }
+  },
+
+  "9max_100bb": {
+    "UTG": {
+      "raise_remove": ["72o", "62o", "52o", "42o", "32o"]
+    },
+    "UTG+1": {
+      "raise_remove": ["72o", "62o", "52o", "42o", "32o"]
+    },
+    "MP": {
+      "raise_remove": ["72o", "62o", "52o", "42o", "32o"]
+    },
+    "LJ": {
+      "raise_remove": ["72o", "62o", "52o", "42o", "32o"]
+    }
+  },
+
+  "mtt_100bb": {
+    "UTG": {
+      "raise_remove": ["82o", "72o", "62o", "52o", "42o", "32o"]
+    },
+    "UTG+1": {
+      "raise_remove": ["92o", "82o", "72o", "62o", "52o", "42o", "65o"]
+    },
+    "MP": {
+      "raise_remove": ["43o", "T2o", "92o", "82o", "72o", "62o", "52o", "42o"]
+    },
+    "HJ": {
+      "raise_remove": ["K2o", "Q2o", "72o", "62o", "52o", "42o", "32o"]
+    }
+  },
+
+  "mtt_50bb": {
+    "UTG+1": {
+      "mixed": ["33"]
+    },
+    "MP": {
+      "mixed": ["33"]
+    }
+  },
+
+  "mtt_40bb": {
+    "HJ": {
+      "raise_add": ["TT"]
+    },
+    "CO": {
+      "raise_add": ["22"]
+    },
+    "BTN": {
+      "raise_add": ["22"]
+    },
+    "SB": {
+      "raise_add": ["AA", "AKs", "AQs", "A9s"],
+      "call_add": ["A5s", "A4s", "A3s", "A2s"],
+      "mixed": ["AJs", "ATs", "A8s", "A7s", "A6s"]
+    }
+  },
+
+  "mtt_30bb": {
+    "HJ": {
+      "raise_add": ["TT"]
+    },
+    "BTN": {
+      "raise_add": ["AA", "AKs", "AQs", "AJs", "ATs", "A9s", "A8s", "A7s", "A6s", "A5s", "A4s", "A3s", "A2s"]
+    },
+    "SB": {
+      "raise_add": ["AA", "AKs", "AQs", "A9s"],
+      "call_add": ["A5s", "A4s", "A2s"],
+      "mixed": ["AJs", "ATs", "A8s", "A7s", "A6s", "A3s"]
+    }
+  },
+
+  "mtt_20bb": {
+    "CO": {
+      "raise_add": ["AA", "AKs", "AQs", "AJs", "ATs", "A9s", "A8s", "A7s", "A6s", "A5s"],
+      "raise_remove": ["93o", "83o", "73o", "63o", "92o", "82o", "72o", "62o"],
+      "allin_remove": ["53o", "43o", "33", "32s", "52o", "42o", "32o", "22"],
+      "mixed_remove": ["T3o", "T2o"]
+    },
+    "BTN": {
+      "raise_add": ["AA", "AKs", "AQs", "AJs", "ATs", "A9s", "A8s", "A7s", "A6s", "A5s", "A4s"],
+      "mixed": ["A3s", "A2s"]
+    },
+    "SB": {
+      "call_add": ["AQs", "A8s", "A7s"],
+      "allin_add": ["A5s", "A2s"],
+      "mixed": ["AA", "AKs", "AJs", "ATs", "A9s", "A6s", "A4s", "A3s"]
+    }
+  },
+
+  "mtt_10bb": {
+    "UTG": {
+      "mixed": ["AA"]
+    },
+    "HJ": {
+      "raise_add": ["AA"]
     }
   }
 }
