@@ -299,6 +299,7 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
             in_range_hands=question.raise_hands,
             allin_hands=question.allin_hands,
             call_hands=question.call_hands,
+            mixed_hands=question.mixed_pcts,
             highlight_hand=hand,
             title=chart_title,
         )

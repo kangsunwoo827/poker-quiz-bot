@@ -222,7 +222,9 @@ def detect_grid(arr):
 
 
 def classify_cell_v2(arr, y_c, x_c, corner_dy=28, corner_dx=25):
-    """Corner-based classification with 4-action support."""
+    """Corner-based classification with 4-action support.
+    Returns (action, raise_pct) where raise_pct is the non-fold ratio for mixed cells.
+    """
     h, w = arr.shape[:2]
     red = orange = teal = blue = 0
     for ddx in (-corner_dx, corner_dx):
@@ -240,11 +242,13 @@ def classify_cell_v2(arr, y_c, x_c, corner_dy=28, corner_dx=25):
     total = sum(counts.values())
     best = max(counts, key=counts.get)
     if total == 0 or counts[best] == 0:
-        return "fold"
-    # Mixed: dominant color is 60% or less of total → split cell
+        return "fold", 0.0
+    # Mixed: dominant color is 50% or less of total → split cell
     if counts[best] <= total * 0.5:
-        return "mixed"
-    return best
+        action_px = red + orange + teal  # non-fold pixels
+        raise_pct = round(action_px / total, 2) if total > 0 else 0.5
+        return "mixed", raise_pct
+    return best, 0.0
 
 
 def hand_at(row, col):
@@ -256,14 +260,15 @@ def hand_at(row, col):
 
 def extract_from_crop(arr, row_centers, col_centers, corner_dy, corner_dx):
     """Extract hands by action from a crop array using given row/col centers."""
-    raise_h, allin_h, call_h, mixed_h = [], [], [], []
+    raise_h, allin_h, call_h = [], [], []
+    mixed_h = {}  # hand -> raise_pct
     for row in range(13):
         y_c = row_centers[row]
         for col in range(13):
             x_c = col_centers[col]
             if x_c >= arr.shape[1] or y_c >= arr.shape[0]:
                 continue
-            action = classify_cell_v2(arr, y_c, x_c, corner_dy, corner_dx)
+            action, raise_pct = classify_cell_v2(arr, y_c, x_c, corner_dy, corner_dx)
             hand = hand_at(row, col)
             if action == "raise":
                 raise_h.append(hand)
@@ -272,7 +277,7 @@ def extract_from_crop(arr, row_centers, col_centers, corner_dy, corner_dx):
             elif action == "call":
                 call_h.append(hand)
             elif action == "mixed":
-                mixed_h.append(hand)
+                mixed_h[hand] = raise_pct
     return raise_h, allin_h, call_h, mixed_h
 
 
@@ -356,7 +361,7 @@ def process_pdf(pdf_key, force=False):
             result["call"]     = call_h
             result["pct_call"] = round(len(call_h)/169*100, 2)
         if mixed_h:
-            result["mixed"] = mixed_h
+            result["mixed"] = mixed_h  # dict: hand -> raise_pct
 
         with open(out_dir / f"{pos}.json", "w") as f:
             json.dump(result, f)

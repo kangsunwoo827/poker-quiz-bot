@@ -246,18 +246,22 @@ OPEN_BG_COLOR    = (  0,   0,   0)   # pure black background
 OPEN_HIGHLIGHT   = (255, 220,   0)   # yellow border for quiz hand
 
 
-OPEN_CALL_COLOR = (255, 165,   0)   # orange (limp/call)
+OPEN_CALL_COLOR  = (255, 165,   0)   # orange (limp/call)
+OPEN_MIXED_COLOR1 = ( 67, 160,  71)  # green half (raise side)
+OPEN_MIXED_COLOR2 = ( 55,  55,  55)  # gray half (fold side)
 
 
 def generate_open_range_chart(
     in_range_hands: frozenset,
     allin_hands: frozenset = None,
     call_hands: frozenset = None,
+    mixed_hands: frozenset = None,
     highlight_hand: Optional[str] = None,
     title: str = "",
 ) -> bytes:
     """Generate a 13x13 open range chart.
-      green = raise, red = all-in, orange = call/limp, gray = fold.
+      green = raise, red = all-in, orange = call/limp,
+      diagonal split = mixed, gray = fold.
     """
     grid_size = 13
     total_w = PADDING * 2 + HEADER_SIZE + grid_size * CELL_SIZE
@@ -292,18 +296,46 @@ def generate_open_range_chart(
             x = PADDING + HEADER_SIZE + col * CELL_SIZE
             y = y_offset + HEADER_SIZE + row * CELL_SIZE
 
-            if allin_hands and hand in allin_hands:
+            is_mixed = mixed_hands and hand in mixed_hands
+            if is_mixed:
+                # Draw diagonal split: raise color (top-left) / fold color (bottom-right)
+                pct = mixed_hands[hand] if isinstance(mixed_hands, dict) else 0.5
+                x1, y1 = x + 1, y + 1
+                x2, y2 = x + CELL_SIZE - 1, y + CELL_SIZE - 1
+                # Fill fold background first, then raise polygon
+                draw.rectangle([x1, y1, x2, y2], fill=OPEN_OUT_COLOR)
+                # Top-left triangle sized by raise percentage
+                split_x = x1 + int((x2 - x1) * min(pct * 1.4, 1.0))
+                split_y = y1 + int((y2 - y1) * min(pct * 1.4, 1.0))
+                draw.polygon(
+                    [(x1, y1), (split_x, y1), (x1, split_y)],
+                    fill=OPEN_IN_COLOR,
+                )
+                color = OPEN_IN_COLOR  # for text brightness calc
+            elif allin_hands and hand in allin_hands:
                 color = OPEN_ALLIN_COLOR
+                draw.rectangle(
+                    [x + 1, y + 1, x + CELL_SIZE - 1, y + CELL_SIZE - 1],
+                    fill=color,
+                )
             elif hand in in_range_hands:
                 color = OPEN_IN_COLOR
+                draw.rectangle(
+                    [x + 1, y + 1, x + CELL_SIZE - 1, y + CELL_SIZE - 1],
+                    fill=color,
+                )
             elif call_hands and hand in call_hands:
                 color = OPEN_CALL_COLOR
+                draw.rectangle(
+                    [x + 1, y + 1, x + CELL_SIZE - 1, y + CELL_SIZE - 1],
+                    fill=color,
+                )
             else:
                 color = OPEN_OUT_COLOR
-            draw.rectangle(
-                [x + 1, y + 1, x + CELL_SIZE - 1, y + CELL_SIZE - 1],
-                fill=color,
-            )
+                draw.rectangle(
+                    [x + 1, y + 1, x + CELL_SIZE - 1, y + CELL_SIZE - 1],
+                    fill=color,
+                )
 
             label = hand
             brightness = color[0] * 0.299 + color[1] * 0.587 + color[2] * 0.114

@@ -220,6 +220,7 @@ class OpenRangeQuestion:
     allin_hands: frozenset     # all-in/push hands
     call_hands: frozenset      # call/limp hands (SB)
     mixed_hands: frozenset     # hands where both raise and fold are correct
+    mixed_pcts: dict           # hand -> raise_pct (0.0-1.0) for mixed hands
     is_boundary: bool      # whether near the range edge
 
 
@@ -276,6 +277,13 @@ class OpenRangeQuizManager:
                 allin_hands = frozenset(data.get("allin", []))
                 call_hands  = frozenset(data.get("call", []))
 
+                # Mixed: support both dict {hand: pct} and list [hand] formats
+                raw_mixed = data.get("mixed", {})
+                if isinstance(raw_mixed, list):
+                    mixed_pcts = {h: 0.5 for h in raw_mixed}
+                else:
+                    mixed_pcts = dict(raw_mixed)
+
                 # Apply manual corrections
                 corr = corrections.get(fmt, {}).get(pos, {})
                 raise_hands = (raise_hands - frozenset(corr.get("raise_remove", [])))
@@ -284,12 +292,16 @@ class OpenRangeQuizManager:
                 allin_hands = allin_hands | frozenset(corr.get("allin_add", []))
                 call_hands  = (call_hands - frozenset(corr.get("call_remove", [])))
                 call_hands  = call_hands  | frozenset(corr.get("call_add", []))
-                mixed_hands = frozenset(data.get("mixed", [])) | frozenset(corr.get("mixed", []))
-                mixed_hands = mixed_hands - frozenset(corr.get("mixed_remove", []))
+                for h in corr.get("mixed", []):
+                    mixed_pcts.setdefault(h, 0.5)
+                for h in corr.get("mixed_remove", []):
+                    mixed_pcts.pop(h, None)
+                mixed_hands = frozenset(mixed_pcts.keys())
 
                 self.ranges[fmt][pos] = {
                     "raise": raise_hands, "allin": allin_hands,
                     "call": call_hands, "mixed": mixed_hands,
+                    "mixed_pcts": mixed_pcts,
                 }
                 self.weights[fmt][pos] = self._compute_weights(
                     raise_hands | allin_hands | call_hands, ev_tables, pos, fmt
@@ -413,5 +425,6 @@ class OpenRangeQuizManager:
             allin_hands=allin_h,
             call_hands=call_h,
             mixed_hands=mixed_h,
+            mixed_pcts=range_data.get("mixed_pcts", {}),
             is_boundary=is_bnd,
         )

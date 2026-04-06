@@ -3,7 +3,7 @@
 
   "6max_100bb_highRake": {
     "UTG": {
-      "raise_add": ["99", "77", "66"]
+      "raise_add": ["JJ", "TT", "99", "77", "66"]
     },
     "MP": {
       "raise_add": ["99", "77", "66"]
@@ -15,6 +15,15 @@
       "raise_add": ["AKs"],
       "call_add": ["A3s"],
       "mixed": ["AA", "AQs", "AJs", "ATs", "A9s", "A8s", "A7s", "A6s", "A5s", "A4s", "A2s"]
+    }
+  },
+
+  "6max_100bb": {
+    "UTG": {
+      "raise_add": ["JJ", "TT", "66"]
+    },
+    "CO": {
+      "raise_add": ["22", "A3s", "A2s"]
     }
   },
 
@@ -71,7 +80,7 @@
 
   "mtt_50bb": {
     "UTG+1": {
-      "mixed": ["33"]
+      "mixed": ["33", "44"]
     },
     "MP": {
       "mixed": ["33"]
@@ -110,6 +119,9 @@
   },
 
   "mtt_20bb": {
+    "MP": {
+      "mixed": ["55"]
+    },
     "CO": {
       "raise_add": ["AA", "AKs", "AQs", "AJs", "ATs", "A9s", "A8s", "A7s", "A6s", "A5s"],
       "raise_remove": ["93o", "83o", "73o", "63o", "92o", "82o", "72o", "62o"],
