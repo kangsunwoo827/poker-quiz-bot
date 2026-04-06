@@ -216,11 +216,7 @@ def generate_range_chart(
 
 
 def combine_with_crop(chart_bytes: bytes, crop_path: str) -> bytes:
-    """Combine range chart with original PDF crop side-by-side.
-
-    Crops the PDF image to just the grid area (y=363..1455) for alignment
-    with the generated chart grid.
-    """
+    """Combine range chart with original PDF crop side-by-side (no cropping)."""
     import os
     if not os.path.exists(crop_path):
         return chart_bytes
@@ -228,31 +224,14 @@ def combine_with_crop(chart_bytes: bytes, crop_path: str) -> bytes:
     chart = Image.open(BytesIO(chart_bytes))
     crop  = Image.open(crop_path)
 
-    # Crop to grid data area only (skip header/title/row-header column)
-    # Original crop is 1025x1490. Grid data area:
-    #   y: 363..1455 (skip title+col headers at top)
-    #   x: keep full width (row header useful for reference)
-    cw, ch = crop.width, crop.height
-    grid_top  = int(363  / 1490 * ch)
-    grid_bot  = int(1455 / 1490 * ch)
-    crop = crop.crop((0, grid_top, cw, grid_bot))
-
-    # Scale to match chart's grid area (below title+header)
-    title_h = 28
-    header_h = HEADER_SIZE
-    grid_h = 13 * CELL_SIZE
-    chart_grid_top = PADDING + title_h + header_h
-    chart_grid_h = grid_h
-
-    scale = chart_grid_h / crop.height
+    # Scale crop to match chart height — show full PDF as-is
+    scale = chart.height / crop.height
     new_w = int(crop.width * scale)
-    crop = crop.resize((new_w, chart_grid_h), Image.LANCZOS)
+    crop = crop.resize((new_w, chart.height), Image.LANCZOS)
 
-    # Place crop aligned with chart grid
-    combined_h = chart.height
-    combined = Image.new("RGB", (chart.width + 4 + new_w, combined_h), (10, 10, 10))
+    combined = Image.new("RGB", (chart.width + 4 + new_w, chart.height), (10, 10, 10))
     combined.paste(chart, (0, 0))
-    combined.paste(crop, (chart.width + 4, chart_grid_top))
+    combined.paste(crop, (chart.width + 4, 0))
 
     buf = BytesIO()
     combined.save(buf, format="PNG")
