@@ -99,10 +99,44 @@ def _build_quiz_message(question) -> tuple[str, InlineKeyboardMarkup]:
     has_call  = bool(question.call_hands)
     has_raise = bool(question.raise_hands)
 
+    # Extract stack depth from format name (e.g. "MTT 10bb" → "10bb")
+    bb = ""
+    for part in question.format_name.split():
+        if part.endswith("bb"):
+            bb = part
+            break
+
+    # Build situation description
+    if has_allin and not has_raise:
+        title = f"{pos} Push/Fold"
+        situation = (
+            f"<code>{fmt}</code>\n"
+            f"Folds to Hero in <b>{pos}</b> ({left} players left)\n"
+            f"Stack: <b>{bb}</b> — Push (all-in) or Fold?"
+        )
+        if has_call:
+            situation = (
+                f"<code>{fmt}</code>\n"
+                f"Folds to Hero in <b>{pos}</b> ({left} players left)\n"
+                f"Stack: <b>{bb}</b>"
+            )
+    elif has_allin:
+        title = f"{pos} RFI"
+        situation = (
+            f"<code>{fmt}</code>\n"
+            f"Folds to Hero in <b>{pos}</b> ({left} players left)\n"
+            f"Stack: <b>{bb}</b> — Raise, Push (all-in), or Fold?"
+        )
+    else:
+        title = f"{pos} Open Range"
+        situation = (
+            f"<code>{fmt}</code>\n"
+            f"Folds to Hero in <b>{pos}</b> ({left} players left)"
+        )
+
     text = (
-        f"<b>{pos} {'Push/Fold' if has_allin and not has_raise else 'Open Range'}</b>"
-        f"  <code>({left} left)</code>\n\n"
-        f"<code>{fmt} · Folds to Hero in {pos}</code>\n\n"
+        f"<b>{title}</b>\n\n"
+        f"{situation}\n\n"
         f"Your hand:  <b>{hand}</b>\n\n"
     )
 
