@@ -14,26 +14,16 @@
     }
   },
   "6max_100bb_highRake": {
-    "BTN": {
+    "CO": {
       "mixed": [
-        "43o"
+        "A7o"
       ]
     },
     "SB": {
-      "raise_add": [
-        "AA"
-      ],
       "raise_remove": [
-        "A3o",
-        "K3o",
-        "Q3o"
-      ],
-      "call_remove": [
-        "73o",
-        "83o",
-        "93o",
-        "J3o",
-        "T3o"
+        "J2o",
+        "K2o",
+        "Q2o"
       ]
     }
   },
@@ -58,32 +48,14 @@
     }
   },
   "6max_40bb": {
-    "CO": {
-      "mixed": [
-        "43o"
-      ]
-    },
     "SB": {
-      "raise_add": [
-        "AA"
-      ],
       "mixed": [
-        "54o"
+        "98o"
       ],
       "raise_remove": [
-        "33",
-        "63o"
-      ],
-      "call_remove": [
-        "83o",
-        "93o",
-        "J3o",
-        "T3o"
-      ]
-    },
-    "UTG": {
-      "mixed": [
-        "A8s"
+        "J2o",
+        "K2o",
+        "Q2o"
       ]
     }
   },
