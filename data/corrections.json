@@ -107,519 +107,158 @@
     "UTG": {}
   },
   "mtt_100bb": {
-    "BTN": {
-      "raise_add": [
-        "66"
-      ],
-      "mixed": [
-        "64s",
-        "65o",
-        "65s",
-        "74s",
-        "75s",
-        "84s",
-        "85s",
-        "J4s"
-      ],
-      "raise_remove": [
-        "74o",
-        "84o",
-        "94o",
-        "T4o"
-      ],
-      "call_remove": [
-        "92s",
-        "93s",
-        "T2s",
-        "T3s"
-      ]
-    },
-    "CO": {
-      "raise_add": [
-        "55"
-      ],
-      "mixed": [
-        "64s",
-        "65o",
-        "65s",
-        "74s",
-        "75s",
-        "K4s",
-        "K5s"
-      ],
-      "raise_remove": [
-        "74o",
-        "82s",
-        "83s",
-        "84o",
-        "92s",
-        "93s",
-        "94o",
-        "J2s",
-        "J3s",
-        "Q2s",
-        "Q3s",
-        "T2s",
-        "T3s"
-      ]
-    },
     "HJ": {
       "mixed": [
-        "87o",
-        "98o",
-        "KJs"
-      ],
-      "raise_remove": [
-        "62o",
-        "63o",
-        "72o",
-        "74o",
-        "82o",
-        "92o",
-        "J2o",
-        "T2o"
+        "A6s"
       ]
     },
     "MP": {
       "mixed": [
-        "54o",
-        "65o",
-        "76o",
-        "87o"
-      ],
-      "raise_remove": [
-        "62o",
-        "72o",
-        "82o",
-        "92o",
-        "94s",
-        "A2s",
-        "A3s",
-        "A4s",
-        "J2s",
-        "J3s",
-        "J4s",
-        "K2s",
-        "K3s",
-        "K4s",
-        "Q2s",
-        "Q3s",
-        "Q4s",
-        "T2o",
-        "T4s"
-      ]
-    },
-    "SB": {
-      "raise_add": [
-        "55"
-      ],
-      "mixed": [
-        "54s",
-        "65o",
-        "75o",
-        "A5o",
-        "J5o"
-      ],
-      "call_remove": [
-        "84o",
-        "94o",
-        "T4o"
+        "A6s",
+        "A7s"
       ]
     },
     "UTG+1": {
-      "mixed": [
-        "53o"
-      ],
       "raise_remove": [
-        "62o",
-        "72o",
-        "82o",
-        "92o",
-        "A2s",
-        "A3s",
-        "J2s",
-        "J3s",
-        "K2s",
-        "K3s",
-        "Q2s",
-        "Q3s"
+        "A5s"
       ]
     },
     "UTG": {
-      "mixed": [
-        "43o"
-      ],
       "raise_remove": [
-        "52o",
-        "62o",
-        "72o",
-        "82o",
-        "A2s",
-        "J2s",
-        "K2s",
-        "Q2s"
+        "A5s"
       ]
     }
   },
   "mtt_10bb": {
     "BTN": {
-      "raise_add": [
-        "44",
-        "66"
-      ],
       "mixed": [
-        "54o",
-        "Q4s"
-      ],
-      "raise_remove": [
-        "83o",
-        "93o",
-        "J3o",
-        "Q3o",
-        "T3o"
-      ],
-      "allin_remove": [
-        "63o",
-        "73o"
-      ]
-    },
-    "CO": {
-      "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "73o",
-        "83o",
-        "93o",
-        "J3o",
-        "T3o"
-      ],
-      "allin_remove": [
-        "33",
-        "63o"
-      ]
-    },
-    "HJ": {},
-    "MP": {
-      "mixed": [
-        "43o",
-        "54s",
-        "64s",
-        "65s",
-        "76o",
-        "87o"
-      ],
-      "allin_remove": [
-        "73s",
-        "83s",
-        "93s",
-        "J3s",
-        "T3s"
-      ]
-    },
-    "SB": {
-      "mixed": [
-        "43s",
-        "54o"
-      ],
-      "raise_remove": [
-        "63o",
-        "73o",
-        "83o",
-        "93o"
-      ],
-      "allin_remove": [
-        "33"
-      ],
-      "call_remove": [
-        "J3o",
-        "T3o"
-      ]
-    },
-    "UTG": {
-      "raise_add": [
-        "99"
-      ]
-    }
-  },
-  "mtt_20bb": {
-    "BTN": {
-      "raise_add": [
-        "AA"
-      ],
-      "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "82o",
-        "83o",
-        "92o",
-        "93o",
-        "J2o",
-        "J3o",
-        "T2o",
-        "T3o"
-      ],
-      "allin_remove": [
-        "33",
-        "62o",
-        "63o"
-      ]
-    },
-    "CO": {
-      "raise_add": [
-        "AA"
-      ],
-      "mixed": [
-        "54o",
-        "K3s"
-      ],
-      "raise_remove": [
-        "72o",
-        "73o",
-        "82o",
-        "83o",
-        "92o",
-        "93o",
-        "J2o",
-        "J3o",
-        "T2o",
-        "T3o"
-      ],
-      "allin_remove": [
-        "22",
-        "33",
-        "62o",
-        "63o"
-      ]
-    },
-    "SB": {
-      "raise_add": [
-        "44",
-        "AA"
-      ],
-      "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "62o",
-        "63o",
-        "72o",
-        "73o",
-        "82o",
-        "83o",
-        "92o",
-        "93o"
-      ],
-      "call_remove": [
-        "J2o",
-        "J3o",
-        "T2o",
-        "T3o"
-      ]
-    }
-  },
-  "mtt_30bb": {
-    "BTN": {
-      "raise_add": [
-        "44",
-        "AA"
-      ],
-      "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "63o",
-        "73o",
-        "83o",
-        "93o"
-      ]
-    },
-    "CO": {
-      "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "33",
-        "63o",
-        "73o",
-        "83o",
-        "93o"
-      ]
-    },
-    "SB": {
-      "raise_add": [
-        "44",
-        "AA"
-      ],
-      "mixed": [
-        "54o",
-        "64o",
-        "74o"
-      ],
-      "call_remove": [
-        "83o",
-        "93o",
-        "J3o",
-        "T3o"
-      ]
-    }
-  },
-  "mtt_40bb": {
-    "BTN": {
-      "raise_add": [
-        "44"
-      ],
-      "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "63o",
-        "73o",
-        "83o",
-        "93o"
-      ]
-    },
-    "CO": {
-      "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "33",
-        "63o",
-        "73o",
-        "83o",
-        "93o"
+        "JTo"
       ]
     },
     "HJ": {
       "mixed": [
-        "54o",
-        "65o",
-        "76o",
-        "87o"
+        "JTs"
       ]
     },
+    "MP": {},
     "SB": {
-      "raise_add": [
-        "44",
-        "AA"
-      ],
       "mixed": [
-        "54o",
-        "64o"
-      ],
-      "call_remove": [
-        "83o",
-        "93o",
-        "J3o",
-        "T3o"
+        "JTo"
       ]
     },
-    "UTG+1": {
+    "UTG+1": {},
+    "UTG": {}
+  },
+  "mtt_20bb": {
+    "MP": {
       "mixed": [
-        "76o",
-        "87o",
-        "98o",
-        "T9o"
+        "K7s"
       ]
     }
   },
-  "mtt_50bb": {
-    "BTN": {
+  "mtt_30bb": {
+    "BTN": {},
+    "CO": {
       "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "33",
-        "63o",
-        "73o",
-        "83o"
+        "A6s",
+        "J7s",
+        "K6s",
+        "Q7s"
       ]
     },
-    "CO": {
-      "raise_add": [
-        "44"
-      ],
+    "HJ": {
       "mixed": [
-        "54o"
+        "A6s",
+        "J7s",
+        "K6s",
+        "K7s",
+        "Q6s",
+        "Q7s",
+        "T6s",
+        "T7s"
       ],
       "raise_remove": [
-        "63o",
-        "73o",
-        "83o",
-        "93o"
+        "44",
+        "55"
+      ]
+    },
+    "MP": {
+      "mixed": [
+        "A6s",
+        "A7s",
+        "K6s",
+        "K7s"
+      ],
+      "raise_remove": [
+        "55"
       ]
     },
     "UTG+1": {
       "mixed": [
-        "87o",
-        "98o",
-        "T9o"
+        "A6s",
+        "A7s"
+      ],
+      "raise_remove": [
+        "55"
       ]
     },
     "UTG": {
       "mixed": [
-        "A8s"
+        "A6s",
+        "A7s"
+      ],
+      "raise_remove": [
+        "55"
+      ]
+    }
+  },
+  "mtt_40bb": {
+    "UTG+1": {
+      "mixed": [
+        "A6s"
+      ]
+    },
+    "UTG": {
+      "mixed": [
+        "A6s"
+      ]
+    }
+  },
+  "mtt_50bb": {
+    "UTG+1": {
+      "mixed": [
+        "A6s"
+      ]
+    },
+    "UTG": {
+      "mixed": [
+        "A6s"
       ]
     }
   },
   "mtt_60bb": {
     "BTN": {
-      "raise_add": [
-        "44"
-      ],
       "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "63o",
-        "73o",
-        "83o",
-        "93o"
+        "74s"
       ]
     },
-    "CO": {
-      "mixed": [
-        "43s",
-        "54o"
-      ],
-      "raise_remove": [
-        "33",
-        "63o",
-        "73o",
-        "83o"
-      ]
-    },
-    "SB": {
+    "MP": {
       "raise_add": [
-        "44",
-        "55"
+        "33"
       ],
       "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "63o"
-      ],
-      "call_remove": [
-        "83o",
-        "93o",
-        "J3o",
-        "T3o"
+        "K6s"
       ]
     },
     "UTG+1": {
-      "mixed": [
-        "76o",
-        "87o",
-        "98o",
-        "T9o"
+      "raise_add": [
+        "88"
       ]
     },
     "UTG": {
-      "mixed": [
-        "A8s"
+      "raise_add": [
+        "33",
+        "88"
       ]
     }
   }
