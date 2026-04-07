@@ -1,31 +1,15 @@
 {
   "_comment": "Auto-generated corrections from monotonicity validation.",
   "6max_100bb": {
-    "CO": {
+    "MP": {
       "mixed": [
-        "43o"
-      ]
-    },
-    "SB": {
-      "mixed": [
-        "54o"
-      ],
-      "raise_remove": [
-        "33",
-        "63o"
-      ],
-      "call_remove": [
-        "73o",
-        "83o",
-        "93o",
-        "J3o",
-        "T3o"
+        "A6s"
       ]
     },
     "UTG": {
       "mixed": [
-        "A7s",
-        "A8s"
+        "A6s",
+        "A7s"
       ]
     }
   },
@@ -106,99 +90,21 @@
   "9max_100bb": {
     "BTN": {
       "mixed": [
-        "64s",
-        "65s",
-        "76o",
-        "76s",
-        "87s",
-        "98s"
-      ],
-      "raise_remove": [
-        "55",
-        "85o"
-      ]
-    },
-    "CO": {
-      "mixed": [
-        "76o",
-        "87s",
-        "98s"
-      ],
-      "raise_remove": [
-        "55",
-        "85o"
-      ]
-    },
-    "HJ": {
-      "mixed": [
-        "76o",
-        "98s"
-      ],
-      "raise_remove": [
-        "55",
-        "85o"
-      ]
-    },
-    "LJ": {
-      "mixed": [
-        "43o",
-        "A8s"
-      ],
-      "raise_remove": [
-        "52o",
-        "62o",
-        "72o",
-        "82o"
+        "74s",
+        "75s"
       ]
     },
     "MP": {
       "mixed": [
-        "43o"
+        "K7s",
+        "K8s"
       ],
       "raise_remove": [
-        "52o",
-        "62o",
-        "72o",
-        "82o"
+        "A5s"
       ]
     },
-    "SB": {
-      "mixed": [
-        "64s",
-        "65s",
-        "76o",
-        "76s",
-        "87s",
-        "98s"
-      ],
-      "raise_remove": [
-        "55",
-        "85o"
-      ]
-    },
-    "UTG+1": {
-      "mixed": [
-        "43o"
-      ],
-      "raise_remove": [
-        "22",
-        "52o",
-        "62o",
-        "72o",
-        "82o"
-      ]
-    },
-    "UTG": {
-      "mixed": [
-        "43o"
-      ],
-      "raise_remove": [
-        "52o",
-        "62o",
-        "72o",
-        "82o"
-      ]
-    }
+    "UTG+1": {},
+    "UTG": {}
   },
   "mtt_100bb": {
     "BTN": {
