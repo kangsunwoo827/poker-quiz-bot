@@ -420,5 +420,31 @@ write_range("6max_40bb", "SB",
     mixed_h=["A4o","A3o","A2o","K6o","K5o","K4s","K3s","K2s","Q7o","Q6s","Q4s","Q3s","J8o","J6s","J5s","J2s","T7o","T4s","T3s","97o","96s","87o","85s","77","75s","66","33","22"])
 
 
+# ============================================================
+# 6max_200bb — AI-classified from crop images
+# ============================================================
+print("\n[6max_200bb]")
+
+write_range("6max_200bb", "UTG",
+    raise_h=["AA","KK","QQ","JJ","TT","99","88","77","66","55","44","AKs","AQs","AJs","ATs","A9s","A8s","A5s","KQs","KJs","KTs","K9s","K8s","QJs","QTs","Q9s","JTs","76s","AKo","AQo","AJo","ATo","KQo","KJo","KTo","QJo","QTo","JTo"],
+    mixed_h=["A7s","J9s","T9s","T8s","98s","87s","65s","33","22"])
+
+write_range("6max_200bb", "MP",
+    raise_h=["AA","KK","QQ","JJ","TT","99","88","77","66","55","44","33","22","AKs","AQs","AJs","ATs","A9s","A8s","A7s","A6s","A5s","A3s","A2s","KQs","KJs","KTs","K9s","K8s","K6s","K5s","QJs","QTs","Q9s","JTs","J9s","T9s","87s","76s","AKo","AQo","AJo","ATo","KQo","KJo","KTo","QJo","QTo","JTo"],
+    mixed_h=["K7s","T8s","98s","75s","65s","54s"])
+
+write_range("6max_200bb", "CO",
+    raise_h=["AA","KK","QQ","JJ","TT","99","88","77","66","55","44","33","22","AKs","AQs","AJs","ATs","A9s","A8s","A7s","A6s","A5s","A4s","A3s","A2s","KQs","KJs","KTs","K9s","K8s","K7s","K6s","K5s","K4s","K3s","QJs","QTs","Q9s","Q8s","Q7s","JTs","J9s","J8s","J7s","T9s","T8s","T7s","98s","97s","87s","86s","76s","75s","65s","64s","54s","43s","AKo","AQo","AJo","ATo","KQo","KJo","KTo","QJo","QTo","JTo","T9o"],
+    mixed_h=["A9o","K2s","Q6s"])
+
+write_range("6max_200bb", "BTN",
+    raise_h=["AA","KK","QQ","JJ","TT","99","88","77","66","55","44","33","22","AKs","AQs","AJs","ATs","A9s","A8s","A7s","A6s","A5s","A4s","A3s","A2s","KQs","KJs","KTs","K9s","K8s","K7s","K6s","K5s","K4s","K3s","QJs","QTs","Q9s","Q8s","Q7s","Q6s","Q5s","Q4s","Q3s","JTs","J9s","J8s","J7s","J6s","J5s","J4s","T9s","T8s","T7s","T6s","T5s","98s","97s","96s","95s","87s","86s","85s","76s","75s","74s","65s","64s","54s","53s","43s","AKo","AQo","AJo","ATo","A9o","A8o","A7o","A6o","A5o","A4o","A3o","A2o","KQo","KJo","KTo","QJo","QTo","JTo","T9o","T8o","87o"],
+    mixed_h=["K2s","Q2s","J3s","T4s","94s","84s","73s","63s","52s","42s","32s"])
+
+write_range("6max_200bb", "SB",
+    raise_h=["AA","KK","QQ","JJ","TT","99","88","77","66","55","44","33","22","AKs","AQs","AJs","ATs","A9s","A6s","A5s","A4s","A3s","A2s","KQs","KJs","KTs","K9s","K5s","K4s","K3s","K2s","QJs","Q4s","Q3s","Q2s","JTs","J4s","J3s","J2s","T9s","T4s","T3s","T2s","98s","93s","92s","87s","83s","82s","76s","73s","72s","65s","63s","62s","54s","53s","52s","43s","42s","32s","AKo","AQo","AJo","ATo","A9o","A8o","A7o","A6o","A5o","A4o","A3o","A2o","KQo","KJo","KTo","QJo","QTo","JTo","T9o","T8o","87o"],
+    call_h=["A8s","A7s","K8s","K7s","K6s","QTs","Q9s","Q8s","Q7s","Q6s","Q5s","J9s","J8s","J7s","J6s","J5s","T8s","T7s","T6s","T5s","97s","96s","95s"])
+
+
 if __name__ == "__main__":
     print("Done.")
