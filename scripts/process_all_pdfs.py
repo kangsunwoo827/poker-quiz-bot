@@ -161,8 +161,8 @@ def find_grid_row_centers(arr):
 def detect_grid(arr):
     """Auto-detect 13x13 grid cell centers.
 
-    Strategy: find grid top/bottom borders (full dark rows), and the
-    left boundary of data columns (first colored region). Then divide evenly.
+    Strategy: find colored bounding box (top/bottom/left/right), skip column
+    header row, then divide data area into 13 equal rows and 13 equal columns.
 
     Returns (row_centers[13], col_centers[13], corner_dy, corner_dx) or None.
     """
@@ -172,7 +172,7 @@ def detect_grid(arr):
         r, g, b = int(arr[y, x, 0]), int(arr[y, x, 1]), int(arr[y, x, 2])
         return is_orange(r, g, b) or is_blue(r, g, b) or is_teal(r, g, b) or is_red(r, g, b)
 
-    # 1. Find data_top: first row with >50% colored pixels (skip title/header text)
+    # 1. Find vertical bounds: data_top and data_bottom
     data_top = None
     for y in range(H):
         colored = sum(1 for x in range(0, W, 5) if is_cell_color(y, x))
@@ -182,8 +182,6 @@ def detect_grid(arr):
     if data_top is None:
         return None
 
-    # data_top is the column header row. Skip it (1 row stride ≈ H/14 from first colored to last)
-    # Find data_bottom: last row with colored pixels
     data_bottom = data_top
     for y in range(H - 1, data_top, -1):
         colored = sum(1 for x in range(0, W, 5) if is_cell_color(y, x))
@@ -191,6 +189,7 @@ def detect_grid(arr):
             data_bottom = y
             break
 
+    # Skip column header row (1/14 of total grid height)
     total_grid_h = data_bottom - data_top
     col_header_h = total_grid_h / 14
     first_data_y = int(data_top + col_header_h)
@@ -200,23 +199,65 @@ def detect_grid(arr):
     row_stride = data_h / 13
     row_centers = [int(first_data_y + (i + 0.5) * row_stride) for i in range(13)]
 
-    # 2. Column centers: use fixed stride of 76px, anchor from right edge
-    COL_STRIDE = 76
-    # Find rightmost colored pixel across multiple rows for robustness
+    # 2. Find horizontal bounds: data_left and data_right
+    # The grid has a row header column on the left (~80px) followed by 13 data columns.
+    # Detect data_left by finding the gap after the row header.
     data_right = 0
-    for y_test in row_centers[::3]:  # sample every 3rd row
+    for y_test in row_centers:
         for x in range(W - 1, W // 2, -1):
             if is_cell_color(y_test, x):
                 data_right = max(data_right, x)
                 break
     if data_right == 0:
         return None
-    # Last column center = data_right - COL_STRIDE/2
-    col_12_center = data_right - COL_STRIDE // 2
-    col_centers = [col_12_center - (12 - i) * COL_STRIDE for i in range(13)]
+
+    # Find data_left and stride from column header row transitions.
+    # The column header row has evenly-spaced colored cells: [row_hdr, col_A, col_K, ...]
+    # Detect rising edges (background→colored) to find cell boundaries.
+    header_y = data_top + 5
+    transitions = []
+    prev = is_cell_color(header_y, 0)
+    for x in range(1, W):
+        cur = is_cell_color(header_y, x)
+        if cur and not prev:
+            transitions.append(x)
+        prev = cur
+
+    # First transition = row header start. Second = first data column start.
+    # Compute stride from early transitions (most reliable).
+    # Valid stride range at 5x zoom: 60-80px for 1025px crops
+    min_stride, max_stride = int(W * 0.058), int(W * 0.078)
+    col_stride = None
+    data_left = None
+
+    if len(transitions) >= 4:
+        # Try transitions[1] as data_left (skipping row header)
+        strides = [transitions[i+1] - transitions[i] for i in range(1, min(6, len(transitions)-1))]
+        med = sorted(strides)[len(strides) // 2]
+        if min_stride <= med <= max_stride:
+            data_left = transitions[1]
+            col_stride = med
+
+    if col_stride is None and len(transitions) >= 3:
+        # Try transitions[0] as data_left (no row header, or header = first transition)
+        strides = [transitions[i+1] - transitions[i] for i in range(0, min(5, len(transitions)-1))]
+        med = sorted(strides)[len(strides) // 2]
+        if min_stride <= med <= max_stride:
+            data_left = transitions[0]
+            col_stride = med
+
+    if col_stride is None:
+        # Fallback: anchor from data_right with estimated stride
+        col_stride = int(W * 0.068)  # ~70px for 1025px crop
+        data_left = data_right - 13 * col_stride + col_stride // 2
+    if data_left is None or data_right <= data_left:
+        return None
+
+    # Column centers from data_left and stride (detected from header transitions)
+    col_centers = [int(data_left + (i + 0.5) * col_stride) for i in range(13)]
 
     corner_dy = max(10, int(row_stride * 0.30))
-    corner_dx = max(10, int(COL_STRIDE * 0.30))
+    corner_dx = max(10, int(col_stride * 0.30))
 
     return row_centers, col_centers, corner_dy, corner_dx
 
