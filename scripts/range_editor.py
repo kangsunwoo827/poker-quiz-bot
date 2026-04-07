@@ -48,9 +48,6 @@ td.raise { background: #e38214; }
 td.fold { background: #27819f; }
 td.call { background: #40906c; }
 td.allin { background: #a41616; }
-td.mixed-major { background: linear-gradient(135deg, #e38214 75%, #27819f 25%); }
-td.mixed-half { background: linear-gradient(135deg, #e38214 50%, #27819f 50%); }
-td.mixed-minor { background: linear-gradient(135deg, #e38214 25%, #27819f 75%); }
 td.header { background: #2c3e50; cursor:default; font-size:13px; }
 td.header:hover { transform:none; }
 #stats { margin-top:10px; font-size:12px; line-height:1.6; color:#aaa; }
@@ -60,6 +57,8 @@ td.header:hover { transform:none; }
 #tool label:hover { background:#1a3a5c; }
 #tool input[type=radio] { margin-right:6px; }
 .active-tool { background:#0f3460 !important; }
+#mix-config { margin-top:8px; padding-top:8px; border-top:1px solid #333; }
+#mix-config select { width:70px; padding:3px; border-radius:3px; border:1px solid #555; background:#0f3460; color:#eee; font-size:12px; }
 #changes { margin-top:8px; font-size:11px; color:#e74c3c; }
 </style></head><body>
 <div id="sidebar">
@@ -77,9 +76,17 @@ td.header:hover { transform:none; }
     <label><input type="radio" name="tool" value="fold"> 🔵 Fold</label>
     <label><input type="radio" name="tool" value="call"> 🟢 Call</label>
     <label><input type="radio" name="tool" value="allin"> 🔴 Allin</label>
-    <label><input type="radio" name="tool" value="mixed-major"> 🔶 Mixed 75%</label>
-    <label><input type="radio" name="tool" value="mixed-half"> 🔶 Mixed 50%</label>
-    <label><input type="radio" name="tool" value="mixed-minor"> 🔶 Mixed 25%</label>
+    <div id="mix-config">
+      <label style="font-size:12px;font-weight:bold">Mixed:</label>
+      <div style="display:flex;align-items:center;gap:4px;margin:4px 0">
+        <select id="mix-a1"><option value="raise">Raise</option><option value="call">Call</option><option value="allin">Allin</option></select>
+        <span>/</span>
+        <select id="mix-a2"><option value="fold">Fold</option><option value="call">Call</option></select>
+      </div>
+      <label><input type="radio" name="tool" value="mixed-75"> 75%</label>
+      <label><input type="radio" name="tool" value="mixed-50"> 50%</label>
+      <label><input type="radio" name="tool" value="mixed-25"> 25%</label>
+    </div>
   </div>
   <div id="stats"></div>
   <button class="save" onclick="saveRange()" style="margin-top:12px">Save JSON</button>
@@ -92,9 +99,32 @@ td.header:hover { transform:none; }
 <script>
 const RANKS = "AKQJT98765432";
 const CONFIGS = PLACEHOLDER_CONFIGS;
-let cellData = {};  // hand -> action
+const COLORS = {raise:'#e38214', fold:'#27819f', call:'#40906c', allin:'#a41616'};
+let cellData = {};  // hand -> action string ('raise','fold','call','allin','mixed-raise-fold-75',...)
 let originalData = {};
 let isDragging = false;
+
+function isMixed(a) { return a && a.startsWith('mixed-'); }
+function parseMixed(a) {
+  const p = a.split('-'); // mixed-raise-fold-75
+  return {a1:p[1], a2:p[2], pct:parseInt(p[3])};
+}
+function mixedBg(a) {
+  const {a1,a2,pct} = parseMixed(a);
+  return `linear-gradient(135deg, ${COLORS[a1]} ${pct}%, ${COLORS[a2]} ${pct}%)`;
+}
+function getCurrentTool() {
+  const v = document.querySelector('#tool input[type=radio]:checked').value;
+  if(!v.startsWith('mixed-')) return v;
+  const a1 = document.getElementById('mix-a1').value;
+  const a2 = document.getElementById('mix-a2').value;
+  const pct = v.split('-')[1]; // '75','50','25'
+  return `mixed-${a1}-${a2}-${pct}`;
+}
+function applyStyle(td, action) {
+  if(isMixed(action)) { td.className=''; td.style.background=mixedBg(action); }
+  else { td.className=action; td.style.background=''; }
+}
 
 // Build flat list of all (fmt, pos) pairs
 const ALL_SLOTS = [];
@@ -174,13 +204,15 @@ async function loadRange() {
     (data.call||[]).forEach(h => cellData[h]='call');
     const mixed = data.mixed||{};
     if(typeof mixed==='object' && !Array.isArray(mixed)) {
-      Object.entries(mixed).forEach(([h,pct]) => {
-        if(pct >= 0.625) cellData[h]='mixed-major';
-        else if(pct >= 0.375) cellData[h]='mixed-half';
-        else cellData[h]='mixed-minor';
+      Object.entries(mixed).forEach(([h,v]) => {
+        let a1='raise', a2='fold', pctVal=0.5;
+        if(typeof v==='number') { pctVal=v; }
+        else if(typeof v==='object') { pctVal=v.pct||0.5; if(v.actions){a1=v.actions[0];a2=v.actions[1];} }
+        const bucket = pctVal>=0.625?75:pctVal>=0.375?50:25;
+        cellData[h] = `mixed-${a1}-${a2}-${bucket}`;
       });
     } else {
-      (mixed||[]).forEach(h => cellData[h]='mixed-half');
+      (mixed||[]).forEach(h => { cellData[h]='mixed-raise-fold-50'; });
     }
     originalData = {...cellData};
   } catch(e) {
@@ -207,8 +239,8 @@ function renderGrid() {
       const hand = handAt(r,c);
       const td = document.createElement('td');
       td.textContent = hand;
-      td.className = cellData[hand]||'fold';
       td.dataset.hand = hand;
+      applyStyle(td, cellData[hand]||'fold');
       td.addEventListener('mousedown', (e) => { isDragging=true; paintCell(td); e.preventDefault(); });
       td.addEventListener('mouseenter', () => { if(isDragging) paintCell(td); });
       tr.appendChild(td);
@@ -220,33 +252,44 @@ function renderGrid() {
 }
 
 function paintCell(td) {
-  const tool = document.querySelector('#tool input[type=radio]:checked').value;
+  const tool = getCurrentTool();
   const hand = td.dataset.hand;
   cellData[hand] = tool;
-  td.className = tool;
+  applyStyle(td, tool);
   updateStats();
 }
 
 function updateStats() {
-  let counts = {raise:0, fold:0, call:0, allin:0, 'mixed-major':0, 'mixed-half':0, 'mixed-minor':0};
-  let combos = {raise:0, fold:0, call:0, allin:0, 'mixed-major':0, 'mixed-half':0, 'mixed-minor':0};
-  for(const [h,a] of Object.entries(cellData)) { counts[a]=(counts[a]||0)+1; combos[a]=(combos[a]||0)+comboWeight(h); }
   const total = 1326;
-  const mxCnt = (counts['mixed-major']||0)+(counts['mixed-half']||0)+(counts['mixed-minor']||0);
-  const mxCombo = (combos['mixed-major']||0)+(combos['mixed-half']||0)+(combos['mixed-minor']||0);
-  // Effective raise combos: raise + allin + mixed weighted
-  const effRaise = (combos.raise||0) + (combos.allin||0) + (combos['mixed-major']||0)*0.75 + (combos['mixed-half']||0)*0.5 + (combos['mixed-minor']||0)*0.25;
+  let pureCounts = {raise:0,fold:0,call:0,allin:0};
+  let pureCombos = {raise:0,fold:0,call:0,allin:0};
+  let mixCount = 0;
+  // Effective combos per action (weighted by mixed pcts)
+  let effCombos = {raise:0,fold:0,call:0,allin:0};
+  for(const [h,a] of Object.entries(cellData)) {
+    const w = comboWeight(h);
+    if(isMixed(a)) {
+      mixCount++;
+      const {a1,a2,pct} = parseMixed(a);
+      effCombos[a1] = (effCombos[a1]||0) + w*pct/100;
+      effCombos[a2] = (effCombos[a2]||0) + w*(100-pct)/100;
+    } else {
+      pureCounts[a]=(pureCounts[a]||0)+1;
+      pureCombos[a]=(pureCombos[a]||0)+w;
+      effCombos[a]=(effCombos[a]||0)+w;
+    }
+  }
+  const line = (emoji,name,key) => `${emoji} ${name}: ${pureCounts[key]||0} / ${(effCombos[key]||0).toFixed(0)} (${((effCombos[key]||0)/total*100).toFixed(1)}%)`;
   const statsDiv = document.getElementById('stats');
   statsDiv.innerHTML = `
-    <b>Hands / Combos:</b><br>
-    🟠 Raise: ${counts.raise||0} / ${combos.raise||0} (${((combos.raise||0)/total*100).toFixed(1)}%)<br>
-    🔵 Fold: ${counts.fold||0} / ${combos.fold||0} (${((combos.fold||0)/total*100).toFixed(1)}%)<br>
-    🟢 Call: ${counts.call||0} / ${combos.call||0} (${((combos.call||0)/total*100).toFixed(1)}%)<br>
-    🔴 Allin: ${counts.allin||0} / ${combos.allin||0} (${((combos.allin||0)/total*100).toFixed(1)}%)<br>
-    🔶 Mixed: ${mxCnt} / ${mxCombo} (75%:${counts['mixed-major']||0} 50%:${counts['mixed-half']||0} 25%:${counts['mixed-minor']||0})<br>
-    <b style="color:#f39c12">Eff. Raise: ${effRaise.toFixed(0)} combos (${(effRaise/total*100).toFixed(1)}%)</b>
+    <b>Hands / Eff.Combos:</b><br>
+    ${line('🟠','Raise','raise')}<br>
+    ${line('🔵','Fold','fold')}<br>
+    ${line('🟢','Call','call')}<br>
+    ${line('🔴','Allin','allin')}<br>
+    🔶 Mixed: ${mixCount} hands<br>
+    <b style="color:#f39c12">Action: ${((effCombos.raise+effCombos.allin+effCombos.call)/total*100).toFixed(1)}% / Fold: ${(effCombos.fold/total*100).toFixed(1)}%</b>
   `;
-  // Show changes
   let changed = 0;
   for(const h of Object.keys(cellData)) { if(cellData[h]!==originalData[h]) changed++; }
   document.getElementById('changes').textContent = changed ? `${changed} cells changed` : '';
@@ -259,9 +302,11 @@ async function saveRange() {
     if(a==='raise') result.raise.push(h);
     else if(a==='allin') result.allin.push(h);
     else if(a==='call') result.call.push(h);
-    else if(a==='mixed-major') result.mixed[h] = 0.75;
-    else if(a==='mixed-half') result.mixed[h] = 0.5;
-    else if(a==='mixed-minor') result.mixed[h] = 0.25;
+    else if(isMixed(a)) {
+      const {a1,a2,pct} = parseMixed(a);
+      if(a1==='raise'&&a2==='fold') result.mixed[h] = pct/100;
+      else result.mixed[h] = {pct:pct/100, actions:[a1,a2]};
+    }
   }
   result.pct_raise = +(result.raise.length/169*100).toFixed(2);
   if(result.allin.length) result.pct_allin = +(result.allin.length/169*100).toFixed(2);
