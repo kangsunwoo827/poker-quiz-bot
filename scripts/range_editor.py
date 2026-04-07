@@ -19,7 +19,7 @@ PDF_CONFIGS = {
     "9max_100bb": ["UTG", "UTG+1", "MP", "LJ", "HJ", "CO", "BTN", "SB"],
     "mtt_100bb": ["UTG", "UTG+1", "MP", "HJ", "CO", "BTN", "SB"],
     "mtt_60bb": ["UTG", "UTG+1", "MP", "HJ", "CO", "BTN", "SB"],
-    "mtt_50bb": ["UTG", "UTG+1", "MP", "HJ", "CO", "BTN", "SB"],
+    "mtt_50bb": ["UTG", "UTG+1", "MP", "HJ", "CO", "BTN"],
     "mtt_40bb": ["UTG", "UTG+1", "MP", "HJ", "CO", "BTN", "SB"],
     "mtt_30bb": ["UTG", "UTG+1", "MP", "HJ", "CO", "BTN", "SB"],
     "mtt_20bb": ["UTG", "UTG+1", "MP", "HJ", "CO", "BTN", "SB"],
