@@ -34,18 +34,18 @@ PLAYERS_AFTER = {
 }
 
 FORMAT_META = {
-    "6max_100bb_highRake": {"game": "6-max Cash", "stack": "100bb", "rake": "High Rake"},
-    "6max_100bb":          {"game": "6-max Cash", "stack": "100bb", "rake": "Normal"},
-    "6max_40bb":           {"game": "6-max Cash", "stack": "40bb",  "rake": "Normal"},
-    "6max_200bb":          {"game": "6-max Cash", "stack": "200bb", "rake": "Normal"},
-    "9max_100bb":          {"game": "9-max Cash", "stack": "100bb", "rake": "Normal"},
-    "mtt_100bb":           {"game": "MTT 8-max",  "stack": "100bb", "rake": "—"},
-    "mtt_60bb":            {"game": "MTT 8-max",  "stack": "60bb",  "rake": "—"},
-    "mtt_50bb":            {"game": "MTT 8-max",  "stack": "50bb",  "rake": "—"},
-    "mtt_40bb":            {"game": "MTT 8-max",  "stack": "40bb",  "rake": "—"},
-    "mtt_30bb":            {"game": "MTT 8-max",  "stack": "30bb",  "rake": "—"},
-    "mtt_20bb":            {"game": "MTT 8-max",  "stack": "20bb",  "rake": "—"},
-    "mtt_10bb":            {"game": "MTT 8-max",  "stack": "10bb",  "rake": "—"},
+    "6max_100bb_highRake": {"game": "6-max Cash", "stack": "100bb", "rake": "PS 100z (high rake)"},
+    "6max_100bb":          {"game": "6-max Cash", "stack": "100bb", "rake": "PS 500z"},
+    "6max_40bb":           {"game": "6-max Cash", "stack": "40bb",  "rake": "PS 500z"},
+    "6max_200bb":          {"game": "6-max Cash", "stack": "200bb", "rake": "PS 500z"},
+    "9max_100bb":          {"game": "9-max Cash", "stack": "100bb", "rake": "Live"},
+    "mtt_100bb":           {"game": "MTT 8-max",  "stack": "100bb", "rake": "0.125bb ante"},
+    "mtt_60bb":            {"game": "MTT 8-max",  "stack": "60bb",  "rake": "0.125bb ante"},
+    "mtt_50bb":            {"game": "MTT 8-max",  "stack": "50bb",  "rake": "0.125bb ante"},
+    "mtt_40bb":            {"game": "MTT 8-max",  "stack": "40bb",  "rake": "0.125bb ante"},
+    "mtt_30bb":            {"game": "MTT 8-max",  "stack": "30bb",  "rake": "0.125bb ante"},
+    "mtt_20bb":            {"game": "MTT 8-max",  "stack": "20bb",  "rake": "0.125bb ante"},
+    "mtt_10bb":            {"game": "MTT 8-max",  "stack": "10bb",  "rake": "0.125bb ante"},
 }
 from bankroll import BankrollManager
 from chart import generate_open_range_chart, combine_with_crop
