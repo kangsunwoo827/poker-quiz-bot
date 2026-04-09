@@ -86,6 +86,10 @@ VERIFIED_SLOTS = [
 ]
 VERIFIED_SET = set(VERIFIED_SLOTS)
 
+# Bankroll scoring: symmetric random 1-5bb, mixed half (0.5-2.5bb)
+BB_MIN, BB_MAX = 1.0, 5.0
+BB_MIXED_MIN, BB_MIXED_MAX = 0.5, 2.5
+
 _state = load_state()
 active_chats: set[int] = set(_state.get("active_chats", []))
 
@@ -274,7 +278,22 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     is_mixed = hand in question.mixed_hands
     was_correct = chosen == correct or is_mixed
 
-    bankroll_manager.get_or_create_user(user_id, username)
+    # Bankroll scoring (random 1-5bb, mixed 0.5-2.5bb)
+    if is_mixed:
+        bb_change = round(random.uniform(BB_MIXED_MIN, BB_MIXED_MAX), 1)
+    elif was_correct:
+        bb_change = round(random.uniform(BB_MIN, BB_MAX), 1)
+    else:
+        bb_change = -round(random.uniform(BB_MIN, BB_MAX), 1)
+
+    br = bankroll_manager.record_answer(
+        user_id=user_id, username=username,
+        scenario_id=f"{fmt}:{pos}", hand=hand,
+        chosen_action=chosen, chosen_ev_normalized=bb_change,
+        best_action=correct, ev_vs_best=0.0 if was_correct else bb_change,
+        was_correct=was_correct,
+    )
+
     _init_stats(user_id)
     user_stats[user_id]["total"] += 1
     if was_correct:
@@ -319,11 +338,18 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     pct_line = " · ".join(pct_parts)
     mixed_line = f"\n(Mixed: {pcts['mixed_count']} hands)" if pcts.get("mixed_count") else ""
 
+    bb_sign = "+" if bb_change >= 0 else ""
+    bankroll = br["bankroll"]
+    streak = br["streak"]
+    streak_txt = f"  🔥{streak}" if streak >= 3 else ""
+
     result_text = (
-        f"{icon} <b>{escape_html(pos)} — {h_disp}</b>{bnd_tag}\n\n"
+        f"{icon} <b>{escape_html(pos)} — {h_disp}</b>{bnd_tag}  "
+        f"<b>{bb_sign}{bb_change:.0f}bb</b>\n\n"
         f"{verdict}\n\n"
         f"<code>{fmt_line}</code>\n"
         f"{pct_line}{mixed_line}\n\n"
+        f"Bankroll: <b>{bankroll:.0f}bb</b>{streak_txt}\n"
         f"Session: {stats['correct']}/{stats['total']} ({accuracy:.0f}%)"
     )
 
@@ -538,17 +564,27 @@ async def handle_fix_apply(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    _init_stats(user_id)
-    stats = user_stats[user_id]
+    username = update.effective_user.username or update.effective_user.first_name or str(user_id)
 
-    if stats["total"] == 0:
+    db_stats = bankroll_manager.get_user_stats(user_id)
+    if not db_stats or db_stats["total_questions"] == 0:
         await update.message.reply_text("No answers yet — use /quiz to start!")
         return
 
-    accuracy = stats["correct"] / stats["total"] * 100
+    acc = db_stats["accuracy"]
+    br = db_stats["bankroll"]
+    total = db_stats["total_questions"]
+    correct = db_stats["correct_count"]
+    streak = db_stats["streak"]
+    best_streak = db_stats["best_streak"]
+    best_br = db_stats["best_bankroll"]
+
+    streak_txt = f"  🔥{streak}" if streak >= 3 else ""
     await update.message.reply_text(
-        f"<b>Session Stats</b>\n\n"
-        f"Correct: {stats['correct']}/{stats['total']} ({accuracy:.1f}%)",
+        f"<b>Stats</b>\n\n"
+        f"Bankroll: <b>{br:.0f}bb</b> (peak {best_br:.0f}bb){streak_txt}\n"
+        f"Correct: {correct}/{total} ({acc:.1f}%)\n"
+        f"Best streak: {best_streak}",
         parse_mode=ParseMode.HTML,
     )
 
