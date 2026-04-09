@@ -348,15 +348,10 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     rank_txt = f"#{rank}/{total_players}" if total_players > 1 else ""
 
     result_text = (
-        f"{icon} <b>{escape_html(pos)} — {h_disp}</b>{bnd_tag}  "
-        f"<b>{bb_sign}{bb_change:.1f}bb</b>\n\n"
+        f"{icon} <b>{escape_html(pos)} — {h_disp}</b>{bnd_tag}\n\n"
         f"{verdict}\n\n"
         f"<code>{fmt_line}</code>\n"
-        f"{pct_line}{mixed_line}\n\n"
-        f"Bankroll: {prev_br:.1f} → <b>{bankroll:.1f}bb</b>"
-        f" ({bb_sign}{bb_change:.1f}){streak_txt}"
-        f"  {rank_txt}\n"
-        f"Session: {stats['correct']}/{stats['total']} ({accuracy:.0f}%)"
+        f"{pct_line}{mixed_line}"
     )
 
     await query.answer("✅ Correct!" if was_correct else "❌ Wrong")
@@ -379,7 +374,11 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
         await context.bot.send_photo(
             chat_id=query.message.chat_id,
             photo=BytesIO(combined),
-            caption=f"{pos} Open Raise — {hand}  |  left: chart · right: PDF",
+            caption=(
+                f"{icon} {pos} — {hand}  {bb_sign}{bb_change:.1f}bb\n"
+                f"Bankroll: {prev_br:.1f} → {bankroll:.1f}bb  {rank_txt}{streak_txt}\n"
+                f"Session: {stats['correct']}/{stats['total']} ({accuracy:.0f}%)"
+            ),
         )
     except Exception as e:
         logger.warning(f"Failed to send range chart: {e}")
