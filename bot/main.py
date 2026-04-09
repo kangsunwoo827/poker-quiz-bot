@@ -279,6 +279,8 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     was_correct = chosen == correct or is_mixed
 
     # Bankroll scoring (random 1-5bb, mixed 0.5-2.5bb)
+    prev_br = bankroll_manager.get_or_create_user(user_id, username)["bankroll"]
+
     if is_mixed:
         bb_change = round(random.uniform(BB_MIXED_MIN, BB_MIXED_MAX), 1)
     elif was_correct:
@@ -342,14 +344,18 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     bankroll = br["bankroll"]
     streak = br["streak"]
     streak_txt = f"  🔥{streak}" if streak >= 3 else ""
+    rank, total_players = bankroll_manager.get_rank(user_id)
+    rank_txt = f"#{rank}/{total_players}" if total_players > 1 else ""
 
     result_text = (
         f"{icon} <b>{escape_html(pos)} — {h_disp}</b>{bnd_tag}  "
-        f"<b>{bb_sign}{bb_change:.0f}bb</b>\n\n"
+        f"<b>{bb_sign}{bb_change:.1f}bb</b>\n\n"
         f"{verdict}\n\n"
         f"<code>{fmt_line}</code>\n"
         f"{pct_line}{mixed_line}\n\n"
-        f"Bankroll: <b>{bankroll:.0f}bb</b>{streak_txt}\n"
+        f"Bankroll: {prev_br:.1f} → <b>{bankroll:.1f}bb</b>"
+        f" ({bb_sign}{bb_change:.1f}){streak_txt}"
+        f"  {rank_txt}\n"
         f"Session: {stats['correct']}/{stats['total']} ({accuracy:.0f}%)"
     )
 

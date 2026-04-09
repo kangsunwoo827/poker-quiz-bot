@@ -138,6 +138,17 @@ class BankrollManager:
             result.append(d)
         return result
 
+    def get_rank(self, user_id: int) -> tuple[int, int]:
+        """Return (rank, total_players) for user by bankroll."""
+        total = self.conn.execute("SELECT COUNT(*) FROM users").fetchone()[0]
+        row = self.conn.execute(
+            "SELECT COUNT(*) FROM users WHERE bankroll > "
+            "(SELECT bankroll FROM users WHERE user_id = ?)",
+            (user_id,)
+        ).fetchone()
+        rank = row[0] + 1 if row else 1
+        return rank, total
+
     def get_recent_history(self, user_id: int, limit: int = 50) -> list[tuple]:
         rows = self.conn.execute(
             "SELECT scenario_id, hand FROM answer_history "
