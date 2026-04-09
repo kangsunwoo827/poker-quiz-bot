@@ -2,6 +2,7 @@
 """Open Range Quiz Telegram Bot."""
 import json
 import logging
+import random
 from collections import deque
 from io import BytesIO
 
@@ -14,31 +15,43 @@ from telegram.constants import ParseMode
 from config import TELEGRAM_BOT_TOKEN
 from quiz import QuizManager, OpenRangeQuizManager, OPEN_RANGE_POSITIONS
 
-FORMAT_URLS = {
-    "6max_100bb_highRake": "https://rangeconverter.com/articles/preflop-charts-6-max-100bb-small-stakes-no-limit-texas-holdem",
-    "6max_100bb":          "https://rangeconverter.com/articles/poker-charts-6-max-100bb-no-limit-texas-holdem",
-    "6max_40bb":           "https://rangeconverter.com/articles/poker-charts-6-max-40bb-no-limit-texas-holdem",
-    "6max_200bb":          "https://rangeconverter.com/articles/poker-charts-6-max-200bb-no-limit-texas-holdem",
-    "9max_100bb":          "https://rangeconverter.com/articles/poker-charts-9-max-100bb-no-limit-texas-holdem",
-    "mtt_100bb":           "https://rangeconverter.com/articles/poker-charts-8max-mtt-100bb-no-limit-texas-holdem-tournaments",
-    "mtt_60bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-60bb-no-limit-texas-holdem-tournaments",
-    "mtt_50bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-50bb-no-limit-texas-holdem-tournaments",
-    "mtt_40bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-40bb-no-limit-texas-holdem-tournaments",
-    "mtt_30bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-30bb-no-limit-texas-holdem-tournaments",
-    "mtt_20bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-20bb-no-limit-texas-holdem-tournaments",
-    "mtt_10bb":            "https://rangeconverter.com/articles/poker-charts-8max-mtt-10bb-no-limit-texas-holdem-tournaments",
-}
 
 # Players left to act after hero opens (varies by format)
 PLAYERS_LEFT = {
     "UTG": 5, "UTG+1": 4, "MP": 4, "LJ": 3, "HJ": 3, "CO": 3, "BTN": 2, "SB": 1,
+}
+
+# Who is left to act (by name)
+PLAYERS_AFTER = {
+    "UTG": "MP, CO, BTN, SB, BB",
+    "UTG+1": "MP, CO, BTN, SB, BB",
+    "MP": "CO, BTN, SB, BB",
+    "LJ": "HJ, CO, BTN, SB, BB",
+    "HJ": "CO, BTN, SB, BB",
+    "CO": "BTN, SB, BB",
+    "BTN": "SB, BB",
+    "SB": "BB",
+}
+
+FORMAT_META = {
+    "6max_100bb_highRake": {"game": "6-max Cash", "stack": "100bb", "rake": "High Rake"},
+    "6max_100bb":          {"game": "6-max Cash", "stack": "100bb", "rake": "Normal"},
+    "6max_40bb":           {"game": "6-max Cash", "stack": "40bb",  "rake": "Normal"},
+    "6max_200bb":          {"game": "6-max Cash", "stack": "200bb", "rake": "Normal"},
+    "9max_100bb":          {"game": "9-max Cash", "stack": "100bb", "rake": "Normal"},
+    "mtt_100bb":           {"game": "MTT 8-max",  "stack": "100bb", "rake": "—"},
+    "mtt_60bb":            {"game": "MTT 8-max",  "stack": "60bb",  "rake": "—"},
+    "mtt_50bb":            {"game": "MTT 8-max",  "stack": "50bb",  "rake": "—"},
+    "mtt_40bb":            {"game": "MTT 8-max",  "stack": "40bb",  "rake": "—"},
+    "mtt_30bb":            {"game": "MTT 8-max",  "stack": "30bb",  "rake": "—"},
+    "mtt_20bb":            {"game": "MTT 8-max",  "stack": "20bb",  "rake": "—"},
+    "mtt_10bb":            {"game": "MTT 8-max",  "stack": "10bb",  "rake": "—"},
 }
 from bankroll import BankrollManager
 from chart import generate_open_range_chart, combine_with_crop
 from config import DATA_DIR
 from persistence import load_state, save_state
 
-CROPS_DIR = DATA_DIR / "crops"
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -51,6 +64,27 @@ open_range_quiz = OpenRangeQuizManager(quiz_manager.ev_tables)
 _available_formats = open_range_quiz.get_available_formats()
 logger.info(f"Loaded formats: {_available_formats}")
 bankroll_manager = BankrollManager()
+CROPS_DIR = DATA_DIR / "crops"
+
+# Verified format/position combos (range editor pages 1-26)
+VERIFIED_SLOTS = [
+    ("6max_100bb_highRake", "UTG"), ("6max_100bb_highRake", "MP"),
+    ("6max_100bb_highRake", "CO"), ("6max_100bb_highRake", "BTN"),
+    ("6max_100bb_highRake", "SB"),
+    ("6max_100bb", "UTG"), ("6max_100bb", "MP"),
+    ("6max_100bb", "CO"), ("6max_100bb", "BTN"),
+    ("6max_100bb", "SB"),
+    ("6max_40bb", "UTG"), ("6max_40bb", "MP"),
+    ("6max_40bb", "CO"), ("6max_40bb", "BTN"),
+    ("6max_40bb", "SB"),
+    ("6max_200bb", "UTG"), ("6max_200bb", "MP"),
+    ("6max_200bb", "CO"), ("6max_200bb", "BTN"),
+    ("6max_200bb", "SB"),
+    ("9max_100bb", "UTG"), ("9max_100bb", "UTG+1"),
+    ("9max_100bb", "MP"), ("9max_100bb", "LJ"),
+    ("9max_100bb", "HJ"), ("9max_100bb", "CO"),
+]
+VERIFIED_SET = set(VERIFIED_SLOTS)
 
 _state = load_state()
 active_chats: set[int] = set(_state.get("active_chats", []))
@@ -91,51 +125,34 @@ def _init_stats(user_id: int):
 def _build_quiz_message(question) -> tuple[str, InlineKeyboardMarkup]:
     pos  = question.position
     hand = escape_html(question.hand_display)
-    fmt  = escape_html(question.format_name)
-    left = PLAYERS_LEFT.get(pos, "?")
     fkey = question.format_key
+    left = PLAYERS_LEFT.get(pos, "?")
+    after = PLAYERS_AFTER.get(pos, "")
 
     has_allin = bool(question.allin_hands)
     has_call  = bool(question.call_hands)
     has_raise = bool(question.raise_hands)
 
-    # Extract stack depth from format name (e.g. "MTT 10bb" → "10bb")
-    bb = ""
-    for part in question.format_name.split():
-        if part.endswith("bb"):
-            bb = part
-            break
+    meta = FORMAT_META.get(fkey, {"game": fkey, "stack": "?", "rake": "?"})
+    bnd_tag = "  ◆ boundary" if question.is_boundary else ""
 
-    # Build situation description
+    # Title
     if has_allin and not has_raise:
-        title = f"{pos} Push/Fold"
-        situation = (
-            f"<code>{fmt}</code>\n"
-            f"Folds to Hero in <b>{pos}</b> ({left} players left)\n"
-            f"Stack: <b>{bb}</b> — Push (all-in) or Fold?"
-        )
-        if has_call:
-            situation = (
-                f"<code>{fmt}</code>\n"
-                f"Folds to Hero in <b>{pos}</b> ({left} players left)\n"
-                f"Stack: <b>{bb}</b>"
-            )
+        title = f"Push or Fold — {pos}"
     elif has_allin:
-        title = f"{pos} RFI"
-        situation = (
-            f"<code>{fmt}</code>\n"
-            f"Folds to Hero in <b>{pos}</b> ({left} players left)\n"
-            f"Stack: <b>{bb}</b> — Raise, Push (all-in), or Fold?"
-        )
+        title = f"Open Raise — {pos}"
     else:
-        title = f"{pos} Open Range"
-        situation = (
-            f"<code>{fmt}</code>\n"
-            f"Folds to Hero in <b>{pos}</b> ({left} players left)"
-        )
+        title = f"Open Raise — {pos}"
+
+    # Format line
+    fmt_line = f"{meta['game']} | Stack {meta['stack']} | {meta['rake']}"
+
+    # Situation
+    situation = f"Everyone folds to Hero on <b>{pos}</b>.\n{left} players left to act ({after})."
 
     text = (
-        f"<b>{title}</b>\n\n"
+        f"<b>{title}</b>{bnd_tag}\n\n"
+        f"<code>{fmt_line}</code>\n"
         f"{situation}\n\n"
         f"Your hand:  <b>{hand}</b>\n\n"
     )
@@ -213,8 +230,15 @@ async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if a in OPEN_RANGE_POSITIONS:
                 pos_arg = a
             elif a in {f.upper() for f in open_range_quiz.FORMATS}:
-                # find format by case-insensitive match
                 fmt_arg = next((f for f in open_range_quiz.FORMATS if f.upper() == a), None)
+
+    # Pick from verified slots only
+    if not fmt_arg and not pos_arg:
+        fmt_arg, pos_arg = random.choice(VERIFIED_SLOTS)
+    elif fmt_arg and not pos_arg:
+        candidates = [p for f, p in VERIFIED_SLOTS if f == fmt_arg]
+        pos_arg = random.choice(candidates) if candidates else None
+    # If specific (fmt, pos) given, allow even if not verified
 
     question = open_range_quiz.generate_question(
         format_key=fmt_arg,
@@ -266,35 +290,50 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     if is_mixed:
         icon = "🔀"
     h_disp = escape_html(question.hand_display)
-    fmt_name = escape_html(question.format_name)
+    bnd_tag = "  ◆ boundary" if question.is_boundary else ""
 
     action_labels = {
-        "Open": "raise", "Push": "push all-in",
+        "Open": "open-raise", "Push": "push all-in",
         "Call": "call/limp", "Fold": "fold",
     }
     if is_mixed:
-        verdict = f"<b>{h_disp}</b> is mixed in {pos} — both raise and fold are OK."
+        verdict = f"<b>{h_disp}</b> is mixed on {pos} — both raise and fold are OK."
     elif was_correct:
-        verdict = f"Correct! <b>{h_disp}</b> is a {action_labels[correct]} in {pos}."
+        verdict = f"Correct! <b>{h_disp}</b> is an {action_labels[correct]} on {pos}."
     else:
-        verdict = f"Wrong. <b>{h_disp}</b> should {action_labels[correct]} in {pos}."
+        verdict = f"Wrong. <b>{h_disp}</b> should {action_labels[correct]} on {pos}."
 
-    url = FORMAT_URLS.get(fmt, "")
-    url_line = f'\n<a href="{url}">rangeconverter.com ↗</a>' if url else ""
+    # Format meta + range breakdown
+    meta = FORMAT_META.get(fmt, {"game": fmt, "stack": "?", "rake": "?"})
+    fmt_line = f"{meta['game']} | Stack {meta['stack']} | {meta['rake']}"
+    pcts = getattr(question, "range_pcts", {})
+    pct_parts = []
+    if pcts.get("raise"):
+        pct_parts.append(f"Raise {pcts['raise']}%")
+    if pcts.get("allin"):
+        pct_parts.append(f"Push {pcts['allin']}%")
+    if pcts.get("call"):
+        pct_parts.append(f"Call {pcts['call']}%")
+    if pcts.get("fold"):
+        pct_parts.append(f"Fold {pcts['fold']}%")
+    pct_line = " · ".join(pct_parts)
+    mixed_line = f"\n(Mixed: {pcts['mixed_count']} hands)" if pcts.get("mixed_count") else ""
+
     result_text = (
-        f"{icon} <b>{escape_html(pos)} — {h_disp}</b>\n\n"
-        f"{verdict}\n"
-        f"<code>{fmt_name}</code>{url_line}\n\n"
+        f"{icon} <b>{escape_html(pos)} — {h_disp}</b>{bnd_tag}\n\n"
+        f"{verdict}\n\n"
+        f"<code>{fmt_line}</code>\n"
+        f"{pct_line}{mixed_line}\n\n"
         f"Session: {stats['correct']}/{stats['total']} ({accuracy:.0f}%)"
     )
 
     await query.answer("✅ Correct!" if was_correct else "❌ Wrong")
     await query.edit_message_text(result_text, parse_mode=ParseMode.HTML)
 
-    # Send range chart (extracted grid) + original PDF crop side-by-side
+    # Send range chart + PDF crop side-by-side
     try:
         has_allin = bool(question.allin_hands)
-        chart_title = f"{pos} {'Push/Fold' if has_allin else 'Open Range'} ({question.format_name})"
+        chart_title = f"{pos} {'Push/Fold' if has_allin else 'Open Raise'} ({meta['game']} {meta['stack']})"
         chart_bytes = generate_open_range_chart(
             in_range_hands=question.raise_hands,
             allin_hands=question.allin_hands,
@@ -304,11 +343,11 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
             title=chart_title,
         )
         crop_path = str(CROPS_DIR / f"{fmt}_rfi_{pos}.png")
-        combined  = combine_with_crop(chart_bytes, crop_path)
+        combined = combine_with_crop(chart_bytes, crop_path)
         await context.bot.send_photo(
             chat_id=query.message.chat_id,
             photo=BytesIO(combined),
-            caption=f"{pos} — {hand}  |  left: extracted · right: PDF",
+            caption=f"{pos} Open Raise — {hand}  |  left: chart · right: PDF",
         )
     except Exception as e:
         logger.warning(f"Failed to send range chart: {e}")
@@ -335,10 +374,16 @@ async def handle_next_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     bankroll_manager.get_or_create_user(user_id, username)
     _init_stats(user_id)
 
-    # Parse: next:{fmt}:{pos}
+    # Parse: next:{fmt}:{pos} — pick next from verified slots (same format, random position)
     parts = query.data.split(":")
     fmt_arg = parts[1] if len(parts) >= 2 else None
     pos_arg = parts[2] if len(parts) >= 3 and parts[2] in OPEN_RANGE_POSITIONS else None
+
+    if fmt_arg and (fmt_arg, pos_arg) in VERIFIED_SET:
+        candidates = [p for f, p in VERIFIED_SLOTS if f == fmt_arg]
+        pos_arg = random.choice(candidates) if candidates else pos_arg
+    elif not fmt_arg or (fmt_arg, pos_arg) not in VERIFIED_SET:
+        fmt_arg, pos_arg = random.choice(VERIFIED_SLOTS)
 
     question = open_range_quiz.generate_question(
         format_key=fmt_arg,

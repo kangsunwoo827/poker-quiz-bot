@@ -207,6 +207,31 @@ _HAND_RANK_ORDER = sorted(ALL_HANDS_169, key=_hand_strength)
 _HAND_RANK = {h: i for i, h in enumerate(_HAND_RANK_ORDER)}
 
 
+def _combo_count(hand: str) -> int:
+    """Number of combos: pair=6, suited=4, offsuit=12."""
+    if len(hand) == 2:
+        return 6
+    return 4 if hand.endswith("s") else 12
+
+
+def _compute_range_pcts(raise_h, allin_h, call_h, mixed_pcts) -> dict:
+    """Compute combo-accurate action percentages."""
+    total = 1326
+    r = sum(_combo_count(h) for h in raise_h)
+    a = sum(_combo_count(h) for h in allin_h)
+    c = sum(_combo_count(h) for h in call_h)
+    m = sum(_combo_count(h) * pct for h, pct in mixed_pcts.items())
+    action = r + a + c + m
+    return {
+        "raise": round(r / total * 100, 1),
+        "allin": round(a / total * 100, 1),
+        "call": round(c / total * 100, 1),
+        "mixed": round(m / total * 100, 1),
+        "fold": round((total - action) / total * 100, 1),
+        "mixed_count": len(mixed_pcts),
+    }
+
+
 @dataclass
 class OpenRangeQuestion:
     format_key: str        # e.g. "6max_100bb_highRake"
@@ -222,6 +247,7 @@ class OpenRangeQuestion:
     mixed_hands: frozenset     # hands where both raise and fold are correct
     mixed_pcts: dict           # hand -> raise_pct (0.0-1.0) for mixed hands
     is_boundary: bool      # whether near the range edge
+    range_pcts: dict = field(default_factory=dict)  # action percentages
 
 
 class OpenRangeQuizManager:
@@ -427,4 +453,8 @@ class OpenRangeQuizManager:
             mixed_hands=mixed_h,
             mixed_pcts=range_data.get("mixed_pcts", {}),
             is_boundary=is_bnd,
+            range_pcts=_compute_range_pcts(
+                raise_h, allin_h, call_h,
+                range_data.get("mixed_pcts", {}),
+            ),
         )
