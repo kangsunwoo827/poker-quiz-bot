@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Local web UI for editing poker range charts. Run and open http://localhost:8080"""
-import json, os, sys
+import json, os, sys, subprocess
 from pathlib import Path
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
@@ -380,8 +380,20 @@ class Handler(SimpleHTTPRequestHandler):
 
             out_dir = RANGES_DIR / fmt / "rfi"
             out_dir.mkdir(parents=True, exist_ok=True)
-            with open(out_dir / f"{pos}.json", 'w') as f:
+            json_path = out_dir / f"{pos}.json"
+            with open(json_path, 'w') as f:
                 json.dump(data, f)
+
+            # Auto commit + push to keep server and repo in sync
+            try:
+                subprocess.run(["git", "add", str(json_path)], cwd=ROOT, timeout=5)
+                subprocess.run(
+                    ["git", "commit", "-m", f"range: {fmt} {pos}"],
+                    cwd=ROOT, timeout=5,
+                )
+                subprocess.run(["git", "push"], cwd=ROOT, timeout=15)
+            except Exception:
+                pass  # save still succeeds even if git fails
 
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
