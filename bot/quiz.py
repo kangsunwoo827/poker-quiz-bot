@@ -189,6 +189,42 @@ class QuizManager:
 _RANKS_STR = "AKQJT98765432"
 _RANK_VAL = {r: i for i, r in enumerate(_RANKS_STR)}
 
+
+def _grid_pos(hand: str) -> tuple[int, int]:
+    """Return (row, col) in the 13x13 hand matrix."""
+    if len(hand) == 2:  # pair
+        i = _RANK_VAL[hand[0]]
+        return i, i
+    r1, r2 = _RANK_VAL[hand[0]], _RANK_VAL[hand[1]]
+    if hand.endswith("s"):
+        return min(r1, r2), max(r1, r2)   # upper triangle
+    return max(r1, r2), min(r1, r2)        # lower triangle
+
+
+def _grid_hand(r: int, c: int) -> str:
+    """Return hand name for (row, col) in the 13x13 grid."""
+    if r == c:
+        return _RANKS_STR[r] + _RANKS_STR[c]
+    if r < c:
+        return _RANKS_STR[r] + _RANKS_STR[c] + "s"
+    return _RANKS_STR[c] + _RANKS_STR[r] + "o"
+
+
+def _is_grid_boundary(hand: str, in_range: frozenset) -> bool:
+    """True if any of the 8 adjacent cells has a different action."""
+    row, col = _grid_pos(hand)
+    hand_in = hand in in_range
+    for dr in (-1, 0, 1):
+        for dc in (-1, 0, 1):
+            if dr == 0 and dc == 0:
+                continue
+            nr, nc = row + dr, col + dc
+            if 0 <= nr < 13 and 0 <= nc < 13:
+                neighbor = _grid_hand(nr, nc)
+                if (neighbor in in_range) != hand_in:
+                    return True
+    return False
+
 OPEN_RANGE_POSITIONS = ["UTG", "UTG+1", "MP", "LJ", "HJ", "CO", "BTN", "SB"]
 RANGES_DIR = DATA_DIR / "ranges"
 
@@ -340,47 +376,17 @@ class OpenRangeQuizManager:
         pos: str,
         fmt: str,
     ) -> dict:
-        """Compute per-hand quiz weights. Boundary hands get higher weight."""
-        _POS_TO_SCENARIO = {
-            "UTG": "rfi_utg", "MP": "rfi_mp", "CO": "rfi_co",
-            "BTN": "rfi_btn", "SB": "rfi_sb",
-        }
-        # Try EV-based boundary (only for 6max_100bb_highRake which has solver data)
-        if fmt == "6max_100bb_highRake":
-            scenario_id = _POS_TO_SCENARIO.get(pos, "")
-            ev_hands = ev_tables.get(scenario_id, {}).get("hands", {})
-            if ev_hands:
-                scores = {}
-                for h in ALL_HANDS_169:
-                    if h not in ev_hands: continue
-                    ev = ev_hands[h].get("ev_vs_best", {})
-                    fold_ev = ev.get("Fold", 0.0)
-                    non_fold = [v for k, v in ev.items() if k.lower() != "fold"]
-                    best_play = max(non_fold) if non_fold else fold_ev
-                    scores[h] = best_play - fold_ev
-                in_s  = [scores[h] for h in in_range if h in scores]
-                out_s = [scores[h] for h in ALL_HANDS_169 if h not in in_range and h in scores]
-                if in_s and out_s:
-                    bp = (min(in_s) + max(out_s)) / 2
-                    w = {}
-                    for h in ALL_HANDS_169:
-                        if h not in scores: continue
-                        dist = abs(scores[h] - bp)
-                        if dist <= 1.5:
-                            w[h] = 1.0 / (dist + 0.15)
-                    if w:
-                        return w
-        # Rank-based boundary fallback
+        """Compute per-hand quiz weights.
+
+        Grid-boundary: if any of the 8 adjacent cells in the 13x13 hand
+        matrix has a different action → boundary → 3x weight.
+        """
         if not in_range:
             return {h: 1.0 for h in ALL_HANDS_169}
-        in_ranks = sorted(_HAND_RANK[h] for h in in_range if h in _HAND_RANK)
-        boundary_rank = in_ranks[-1] if in_ranks else 84  # weakest in-range hand rank
         w = {}
         for h in ALL_HANDS_169:
-            rank = _HAND_RANK.get(h, 84)
-            dist = abs(rank - boundary_rank)
-            if dist <= self.BOUNDARY_WINDOW:
-                w[h] = 3.0 / (dist + 1)
+            if _is_grid_boundary(h, in_range):
+                w[h] = 3.0
             elif h in in_range:
                 w[h] = 0.3
             else:
@@ -434,10 +440,7 @@ class OpenRangeQuizManager:
             action = "Fold"
 
         all_play = raise_h | allin_h | call_h
-        rank    = _HAND_RANK.get(hand, 84)
-        in_r    = [_HAND_RANK[h] for h in all_play if h in _HAND_RANK]
-        bnd     = max(in_r) if in_r else 84
-        is_bnd  = abs(rank - bnd) <= self.BOUNDARY_WINDOW
+        is_bnd = _is_grid_boundary(hand, all_play)
 
         return OpenRangeQuestion(
             format_key=fmt,

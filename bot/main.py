@@ -34,11 +34,11 @@ PLAYERS_AFTER = {
 }
 
 FORMAT_META = {
-    "6max_100bb_highRake": {"game": "6-max Cash", "stack": "100bb", "rake": "PS 100z (high rake)"},
-    "6max_100bb":          {"game": "6-max Cash", "stack": "100bb", "rake": "PS 500z"},
-    "6max_40bb":           {"game": "6-max Cash", "stack": "40bb",  "rake": "PS 500z"},
-    "6max_200bb":          {"game": "6-max Cash", "stack": "200bb", "rake": "PS 500z"},
-    "9max_100bb":          {"game": "9-max Cash", "stack": "100bb", "rake": "Live"},
+    "6max_100bb_highRake": {"game": "6-max Cash", "stack": "100bb", "rake": "Rake 5% (max 2.5bb/hand)"},
+    "6max_100bb":          {"game": "6-max Cash", "stack": "100bb", "rake": "Rake 5% (max 1bb/hand)"},
+    "6max_40bb":           {"game": "6-max Cash", "stack": "40bb",  "rake": "Rake 5% (max 1bb/hand)"},
+    "6max_200bb":          {"game": "6-max Cash", "stack": "200bb", "rake": "Rake 5% (max 1bb/hand)"},
+    "9max_100bb":          {"game": "9-max Live Casino", "stack": "100bb", "rake": "Rake varies by venue"},
     "mtt_100bb":           {"game": "MTT 8-max",  "stack": "100bb", "rake": "0.125bb ante"},
     "mtt_60bb":            {"game": "MTT 8-max",  "stack": "60bb",  "rake": "0.125bb ante"},
     "mtt_50bb":            {"game": "MTT 8-max",  "stack": "50bb",  "rake": "0.125bb ante"},
@@ -205,12 +205,19 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "<b>Open Range Quiz — How to Play</b>\n\n"
-        "Each question shows your position and hand.\n"
-        "Decide: <b>Open</b> (raise 2.5bb) or <b>Fold</b>.\n\n"
-        "<b>Positions:</b> UTG · MP · CO · BTN · SB\n\n"
-        "<b>Boundary hands</b> (range edge) appear 3× more often.\n"
-        "After each answer you see the full range chart with your hand highlighted.\n\n"
-        "Ranges based on rangeconverter.com (6-max GTO charts).",
+        "Each question shows your position, stack, rake, and hand.\n"
+        "Decide: <b>Raise</b>, <b>Call</b>, or <b>Fold</b>.\n\n"
+        "<b>Scoring (start 100bb):</b>\n"
+        "✅ Correct: <b>+1~5bb</b> (random)\n"
+        "❌ Wrong: <b>-1~5bb</b> (random)\n"
+        "🔀 Mixed: <b>+0.5~2.5bb</b> (half reward)\n\n"
+        "<b>Boundary hands</b> ◆ — hands next to the range edge "
+        "(adjacent to a different action on the chart). "
+        "These appear more often.\n\n"
+        "After each answer you see the range chart + PDF reference.\n\n"
+        "<b>Commands:</b>\n"
+        "/quiz (/q) — Get a quiz\n"
+        "/stats — Bankroll, accuracy, streak",
         parse_mode=ParseMode.HTML,
     )
 
