@@ -1,1 +1,1 @@
-{"raise": ["AA", "KK", "QQ", "JJ", "TT", "99", "AKs", "AQs", "AJs", "ATs", "KQs", "KJs", "KTs", "QJs", "JTs", "AKo", "AQo"], "pct_raise": 10.06, "mixed": {"88": 0.5, "QTs": 0.5, "A5s": 0.5, "K9s": 0.5, "AJo": 0.5}}
+{"raise": ["99", "AA", "AKs", "AQs", "AJs", "ATs", "A9s", "A8s", "A5s", "A4s", "AKo", "KK", "KQs", "KJs", "KTs", "AQo", "QQ", "QJs", "JJ", "JTs", "TT"], "mixed": {"88": 0.5, "A7s": 0.5, "A6s": 0.5, "K9s": 0.5, "K5s": 0.5, "KQo": 0.5, "QTs": 0.5}, "pct_raise": 12.43}
