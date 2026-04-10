@@ -99,9 +99,6 @@ pending_quizzes: dict[int, object] = {}
 # Per-user recent hands: deque of (position, hand) tuples
 user_recent: dict[int, deque] = {}
 
-# Per-user session accuracy
-user_stats: dict[int, dict] = {}
-
 RECENT_LIMIT = 50
 
 
@@ -119,11 +116,6 @@ def _record_recent(user_id: int, position: str, hand: str):
     if user_id not in user_recent:
         user_recent[user_id] = deque(maxlen=RECENT_LIMIT)
     user_recent[user_id].append((position, hand))
-
-
-def _init_stats(user_id: int):
-    if user_id not in user_stats:
-        user_stats[user_id] = {"correct": 0, "total": 0}
 
 
 def _build_quiz_message(question) -> tuple[str, InlineKeyboardMarkup]:
@@ -196,7 +188,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Boundary hands are asked most often.\n\n"
         "<b>Commands:</b>\n"
         "/quiz (/q) — Get a quiz\n"
-        "/stats — Your session accuracy\n"
+        "/stats — Your stats & ranking\n"
+        "/ranking — Leaderboard\n"
         "/help — How to play",
         parse_mode=ParseMode.HTML,
     )
@@ -217,7 +210,8 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "After each answer you see the range chart + PDF reference.\n\n"
         "<b>Commands:</b>\n"
         "/quiz (/q) — Get a quiz\n"
-        "/stats — Bankroll, accuracy, streak",
+        "/stats — Bankroll, accuracy, ranking\n"
+        "/ranking — Leaderboard",
         parse_mode=ParseMode.HTML,
     )
 
@@ -230,7 +224,6 @@ async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     active_chats.add(chat_id)
     save_state(active_chats)
     bankroll_manager.get_or_create_user(user_id, username)
-    _init_stats(user_id)
 
     # Parse optional args: /quiz utg  or  /quiz 100bb utg
     pos_arg = None
@@ -303,16 +296,10 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
         was_correct=was_correct,
     )
 
-    _init_stats(user_id)
-    user_stats[user_id]["total"] += 1
-    if was_correct:
-        user_stats[user_id]["correct"] += 1
-
     _record_recent(user_id, pos, hand)
     pending_quizzes.pop(user_id, None)
 
-    stats = user_stats[user_id]
-    accuracy = stats["correct"] / stats["total"] * 100 if stats["total"] else 0
+    accuracy = br["correct_count"] / br["total_questions"] * 100 if br["total_questions"] else 0
 
     icon = "✅" if was_correct else "❌"
     if is_mixed:
@@ -384,7 +371,7 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
             caption=(
                 f"{icon} {pos} — {hand}  {bb_sign}{bb_change:.1f}bb\n"
                 f"Bankroll: {prev_br:.1f} → {bankroll:.1f}bb  {rank_txt}{streak_txt}\n"
-                f"Session: {stats['correct']}/{stats['total']} ({accuracy:.0f}%)"
+                f"Total: {br['correct_count']}/{br['total_questions']} ({accuracy:.0f}%)"
             ),
         )
     except Exception as e:
@@ -410,7 +397,6 @@ async def handle_next_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     username = query.from_user.username or query.from_user.first_name or str(user_id)
 
     bankroll_manager.get_or_create_user(user_id, username)
-    _init_stats(user_id)
 
     # Parse: next:{fmt}:{pos} — pick next from verified slots (same format, random position)
     parts = query.data.split(":")
@@ -591,14 +577,49 @@ async def stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     best_streak = db_stats["best_streak"]
     best_br = db_stats["best_bankroll"]
 
+    rank, total_players = bankroll_manager.get_rank(user_id)
+    rank_txt = f"Rank: #{rank}/{total_players}\n" if total_players > 1 else ""
     streak_txt = f"  🔥{streak}" if streak >= 3 else ""
     await update.message.reply_text(
         f"<b>Stats</b>\n\n"
         f"Bankroll: <b>{br:.0f}bb</b> (peak {best_br:.0f}bb){streak_txt}\n"
+        f"{rank_txt}"
         f"Correct: {correct}/{total} ({acc:.1f}%)\n"
         f"Best streak: {best_streak}",
         parse_mode=ParseMode.HTML,
     )
+
+
+async def ranking_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.effective_user.id
+
+    leaderboard = bankroll_manager.get_leaderboard(limit=10)
+    if not leaderboard:
+        await update.message.reply_text("No players yet — use /quiz to start!")
+        return
+
+    lines = ["<b>Leaderboard</b>\n"]
+    medals = {1: "\U0001f947", 2: "\U0001f948", 3: "\U0001f949"}
+    for i, entry in enumerate(leaderboard, 1):
+        medal = medals.get(i, f"#{i}")
+        name = escape_html(entry["username"] or "???")
+        streak_txt = f" \U0001f525{entry['streak']}" if entry["streak"] >= 3 else ""
+        lines.append(
+            f"{medal} <b>{name}</b> — {entry['bankroll']:.0f}bb "
+            f"({entry['accuracy']:.0f}%, {entry['total_questions']}Q){streak_txt}"
+        )
+
+    # Show caller's own rank if not in top 10
+    top_ids = {e["user_id"] for e in leaderboard}
+    if user_id not in top_ids:
+        rank, total = bankroll_manager.get_rank(user_id)
+        my_stats = bankroll_manager.get_user_stats(user_id)
+        if my_stats and my_stats["total_questions"] > 0:
+            lines.append(
+                f"\n---\nYou: #{rank}/{total} — {my_stats['bankroll']:.0f}bb"
+            )
+
+    await update.message.reply_text("\n".join(lines), parse_mode=ParseMode.HTML)
 
 
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
@@ -609,7 +630,8 @@ async def post_init(application):
     commands = [
         BotCommand("quiz", "Open range quiz (add position: /quiz utg)"),
         BotCommand("q", "Open range quiz"),
-        BotCommand("stats", "Session accuracy"),
+        BotCommand("stats", "Your stats & ranking"),
+        BotCommand("ranking", "Leaderboard"),
         BotCommand("help", "How to play"),
     ]
     await application.bot.set_my_commands(commands)
@@ -633,6 +655,7 @@ def main():
     application.add_handler(CommandHandler("quiz", quiz_command))
     application.add_handler(CommandHandler("q", quiz_command))
     application.add_handler(CommandHandler("stats", stats_command))
+    application.add_handler(CommandHandler("ranking", ranking_command))
     application.add_handler(CallbackQueryHandler(handle_open_range_answer, pattern=r"^rfi:"))
     application.add_handler(CallbackQueryHandler(handle_next_quiz, pattern=r"^next:"))
     application.add_handler(CallbackQueryHandler(handle_fix_prompt, pattern=r"^fix:"))
