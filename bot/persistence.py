@@ -12,11 +12,14 @@ def load_state() -> dict:
                 return json.load(f)
         except Exception:
             pass
-    return {"active_chats": []}
+    return {"active_chats": [], "subscribed_chats": []}
 
 
-def save_state(active_chats: set[int]):
+def save_state(active_chats: set[int], subscribed_chats: set[int] | None = None):
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    state = {"active_chats": list(active_chats)}
+    state = {
+        "active_chats": list(active_chats),
+        "subscribed_chats": list(subscribed_chats) if subscribed_chats is not None else [],
+    }
     with open(STATE_FILE, "w", encoding="utf-8") as f:
         json.dump(state, f, indent=2)

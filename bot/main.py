@@ -13,7 +13,10 @@ from telegram.ext import (
 from telegram.constants import ParseMode
 
 from config import TELEGRAM_BOT_TOKEN
-from quiz import QuizManager, OpenRangeQuizManager, OPEN_RANGE_POSITIONS
+from quiz import (
+    QuizManager, OpenRangeQuizManager, OPEN_RANGE_POSITIONS,
+    QuizQuestion, OpenRangeQuestion,
+)
 
 
 # Players left to act after hero opens (varies by format)
@@ -92,6 +95,11 @@ BB_MIXED_MIN, BB_MIXED_MAX = 0.5, 2.5
 
 _state = load_state()
 active_chats: set[int] = set(_state.get("active_chats", []))
+subscribed_chats: set[int] = set(_state.get("subscribed_chats", []))
+
+# Auto-broadcast interval (seconds). Override via env BROADCAST_INTERVAL_SEC.
+import os
+BROADCAST_INTERVAL_SEC = int(os.getenv("BROADCAST_INTERVAL_SEC", "3600"))
 
 # Per-user pending quiz
 pending_quizzes: dict[int, object] = {}
@@ -99,7 +107,24 @@ pending_quizzes: dict[int, object] = {}
 # Per-user recent hands: deque of (position, hand) tuples
 user_recent: dict[int, deque] = {}
 
+# Per-user recent scenarios: deque of (scenario_id, hand) tuples for QuizManager weighting
+user_recent_scenarios: dict[int, deque] = {}
+
 RECENT_LIMIT = 50
+
+# Narrative scenario routing
+SCENARIO_POOL: list[str] = sorted(quiz_manager.get_available_scenarios())
+SCENARIO_RATIO = 1.0  # always pick narrative scenario unless RFI hint (fmt/pos) given
+
+ACTION_EMOJI = {
+    "fold":  "❌ 폴드",
+    "limp":  "🟢 림프",
+    "call":  "🟡 콜",
+    "raise": "🔴 레이즈",
+    "3bet":  "🔴 3벳",
+    "4bet":  "🔴 4벳",
+    "check": "✅ 체크",
+}
 
 
 def escape_html(text: str) -> str:
@@ -173,13 +198,95 @@ def _build_quiz_message(question) -> tuple[str, InlineKeyboardMarkup]:
     return text, keyboard
 
 
+def _format_key_for_scenario(scenario) -> str:
+    """Map a scenario's stack/format hint to FORMAT_META key. Currently 6-max 100bb only."""
+    return "6max_100bb"
+
+
+def _format_action_step(step: dict, hero_position: str) -> str:
+    """Render one action_sequence step as a single narrative line."""
+    pos = step["position"]
+    verb = ACTION_EMOJI.get(step["action"], step["action"])
+    amt = f" ({step['amount_bb']}bb)" if "amount_bb" in step else ""
+    if step.get("hero"):
+        return f"<b>{pos}</b> {verb}{amt}  ← 너"
+    return f"{pos} {verb}{amt}"
+
+
+def _scenario_action_emoji(action_label: str) -> str:
+    """Pick a small emoji prefix for action button labels."""
+    a = action_label.lower()
+    if a.startswith("fold"):
+        return "❌"
+    if a.startswith("check"):
+        return "✅"
+    if a.startswith("call"):
+        return "🟡"
+    if a.startswith("limp"):
+        return "🟢"
+    if "all-in" in a or "allin" in a or a.startswith("push") or a.startswith("shove"):
+        return "💥"
+    return "🔴"
+
+
+def _build_scenario_message(question: QuizQuestion) -> tuple[str, InlineKeyboardMarkup]:
+    """Build narrative-style preflop scenario message (action-by-action)."""
+    sc = question.scenario
+    fkey = _format_key_for_scenario(sc)
+    meta = FORMAT_META.get(fkey, {"game": "6-max", "stack": "100bb", "rake": ""})
+    hand = escape_html(question.hand_display)
+
+    header = f"<b>{escape_html(sc.name)}</b>"
+    fmt_line = f"<code>{meta['game']} | Stack {meta['stack']} | {meta['rake']}</code>"
+
+    if sc.action_sequence:
+        action_lines = "\n".join(
+            _format_action_step(step, sc.hero_position) for step in sc.action_sequence
+        )
+    else:
+        action_lines = "<i>모두 폴드, 너에게 액션이 왔다.</i>"
+
+    text = (
+        f"{header}\n"
+        f"{fmt_line}\n\n"
+        f"{action_lines}\n\n"
+        f"👉 너는 <b>{sc.hero_position}</b>. 손패: <b>{hand}</b>\n"
+    )
+
+    buttons = []
+    for i, label in enumerate(sc.actions):
+        emoji = _scenario_action_emoji(label)
+        buttons.append(
+            InlineKeyboardButton(
+                f"{emoji} {label}",
+                callback_data=f"sc:{sc.id}:{question.hand}:{i}",
+            )
+        )
+    # Telegram inline buttons: split into rows of 2 if > 3 actions
+    if len(buttons) > 3:
+        keyboard = InlineKeyboardMarkup([buttons[:2], buttons[2:]])
+    else:
+        keyboard = InlineKeyboardMarkup([buttons])
+    return text, keyboard
+
+
+def _record_recent_scenario(user_id: int, scenario_id: str, hand: str):
+    if user_id not in user_recent_scenarios:
+        user_recent_scenarios[user_id] = deque(maxlen=RECENT_LIMIT)
+    user_recent_scenarios[user_id].append((scenario_id, hand))
+
+
+def _scenario_recent_history(user_id: int) -> list[tuple]:
+    return list(user_recent_scenarios.get(user_id, deque()))
+
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     chat_id = update.effective_chat.id
     username = update.effective_user.username or update.effective_user.first_name or str(user_id)
 
     active_chats.add(chat_id)
-    save_state(active_chats)
+    save_state(active_chats, subscribed_chats)
     bankroll_manager.get_or_create_user(user_id, username)
 
     await update.message.reply_text(
@@ -216,43 +323,94 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
-async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.effective_user.id
-    username = update.effective_user.username or update.effective_user.first_name or str(user_id)
-    chat_id = update.effective_chat.id
+async def _send_scenario_quiz_message(send_target, user_id: int, scenario_id: str) -> bool:
+    """Generate a narrative scenario question and send it. Returns True on success."""
+    question = quiz_manager.generate_question(
+        recent_history=_scenario_recent_history(user_id),
+        scenario_id=scenario_id,
+    )
+    if question is None:
+        return False
+    pending_quizzes[user_id] = question
+    text, keyboard = _build_scenario_message(question)
+    if hasattr(send_target, "edit_message_text"):
+        await send_target.edit_message_text(text, reply_markup=keyboard, parse_mode=ParseMode.HTML)
+    else:
+        await send_target.reply_text(text, reply_markup=keyboard, parse_mode=ParseMode.HTML)
+    return True
 
-    active_chats.add(chat_id)
-    save_state(active_chats)
-    bankroll_manager.get_or_create_user(user_id, username)
 
-    # Parse optional args: /quiz utg  or  /quiz 100bb utg
-    pos_arg = None
-    fmt_arg = None
-    if context.args:
-        for arg in context.args:
-            a = arg.upper()
-            if a in OPEN_RANGE_POSITIONS:
-                pos_arg = a
-            elif a in {f.upper() for f in open_range_quiz.FORMATS}:
-                fmt_arg = next((f for f in open_range_quiz.FORMATS if f.upper() == a), None)
-
-    # Pick from verified slots only
-    if not fmt_arg and not pos_arg:
-        fmt_arg, pos_arg = random.choice(VERIFIED_SLOTS)
-    elif fmt_arg and not pos_arg:
-        candidates = [p for f, p in VERIFIED_SLOTS if f == fmt_arg]
-        pos_arg = random.choice(candidates) if candidates else None
-    # If specific (fmt, pos) given, allow even if not verified
-
+async def _send_rfi_quiz_message(send_target, user_id: int, fmt_arg: str, pos_arg: str):
     question = open_range_quiz.generate_question(
         format_key=fmt_arg,
         position=pos_arg,
         recent=_get_recent_set(user_id, pos_arg or ""),
     )
     pending_quizzes[user_id] = question
-
     text, keyboard = _build_quiz_message(question)
-    await update.message.reply_text(text, reply_markup=keyboard, parse_mode=ParseMode.HTML)
+    if hasattr(send_target, "edit_message_text"):
+        await send_target.edit_message_text(text, reply_markup=keyboard, parse_mode=ParseMode.HTML)
+    else:
+        await send_target.reply_text(text, reply_markup=keyboard, parse_mode=ParseMode.HTML)
+
+
+async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.effective_user.id
+    username = update.effective_user.username or update.effective_user.first_name or str(user_id)
+    chat_id = update.effective_chat.id
+
+    active_chats.add(chat_id)
+    save_state(active_chats, subscribed_chats)
+    bankroll_manager.get_or_create_user(user_id, username)
+
+    # Parse optional args:
+    #   /quiz utg | /quiz 100bb utg            → RFI route
+    #   /quiz scenario | /quiz story           → force narrative scenario route
+    #   /quiz <scenario_id>                    → force a specific scenario (e.g. /quiz sb_vs_limp)
+    pos_arg = None
+    fmt_arg = None
+    forced_scenario_id = None
+    force_scenario_mode = False
+    if context.args:
+        for arg in context.args:
+            a_upper = arg.upper()
+            if a_upper in OPEN_RANGE_POSITIONS:
+                pos_arg = a_upper
+                continue
+            fmt_match = next((f for f in open_range_quiz.FORMATS if f.upper() == a_upper), None)
+            if fmt_match:
+                fmt_arg = fmt_match
+                continue
+            if arg.lower() in {"scenario", "story", "narrative", "rfi"}:
+                if arg.lower() == "rfi":
+                    force_scenario_mode = False
+                    pos_arg = pos_arg or None
+                else:
+                    force_scenario_mode = True
+                continue
+            if arg in quiz_manager.scenarios:
+                forced_scenario_id = arg
+                continue
+
+    # Route: explicit scenario id > forced scenario mode > 50/50 random > RFI
+    if forced_scenario_id and forced_scenario_id in SCENARIO_POOL:
+        if await _send_scenario_quiz_message(update.message, user_id, forced_scenario_id):
+            return
+
+    no_rfi_hint = pos_arg is None and fmt_arg is None
+    if (force_scenario_mode or (no_rfi_hint and random.random() < SCENARIO_RATIO)) and SCENARIO_POOL:
+        scenario_id = random.choice(SCENARIO_POOL)
+        if await _send_scenario_quiz_message(update.message, user_id, scenario_id):
+            return
+
+    # RFI fallback
+    if not fmt_arg and not pos_arg:
+        fmt_arg, pos_arg = random.choice(VERIFIED_SLOTS)
+    elif fmt_arg and not pos_arg:
+        candidates = [p for f, p in VERIFIED_SLOTS if f == fmt_arg]
+        pos_arg = random.choice(candidates) if candidates else None
+
+    await _send_rfi_quiz_message(update.message, user_id, fmt_arg, pos_arg)
 
 
 async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -270,7 +428,8 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     chosen = {"O": "Open", "P": "Push", "C": "Call", "F": "Fold"}.get(action_code, "Fold")
 
     question = pending_quizzes.get(user_id)
-    if not question or question.position != pos or question.hand != hand:
+    if (not isinstance(question, OpenRangeQuestion)
+            or question.position != pos or question.hand != hand):
         await query.answer("Quiz expired — use /quiz for a new one.", show_alert=True)
         return
 
@@ -389,6 +548,123 @@ async def handle_open_range_answer(update: Update, context: ContextTypes.DEFAULT
     )
 
 
+async def handle_scenario_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle answer for narrative scenario quizzes. Callback: sc:{scenario_id}:{hand}:{action_index}"""
+    query = update.callback_query
+    user_id = query.from_user.id
+    username = query.from_user.username or query.from_user.first_name or str(user_id)
+
+    parts = query.data.split(":", 3)
+    if len(parts) != 4:
+        await query.answer("Invalid data.", show_alert=True)
+        return
+    _, scenario_id, hand, idx_str = parts
+    try:
+        action_idx = int(idx_str)
+    except ValueError:
+        await query.answer("Invalid action.", show_alert=True)
+        return
+
+    question = pending_quizzes.get(user_id)
+    if (not isinstance(question, QuizQuestion)
+            or question.scenario.id != scenario_id
+            or question.hand != hand):
+        await query.answer("Quiz expired — use /quiz for a new one.", show_alert=True)
+        return
+
+    sc = question.scenario
+    if not (0 <= action_idx < len(sc.actions)):
+        await query.answer("Invalid action index.", show_alert=True)
+        return
+    chosen_label = sc.actions[action_idx]
+
+    strategy = question.strategy or {}
+    chosen_freq = strategy.get(chosen_label, 0.0)
+
+    if chosen_freq >= 0.99:
+        was_correct = True
+        is_mixed = False
+    elif chosen_freq > 0.0:
+        was_correct = True
+        is_mixed = True
+    else:
+        was_correct = False
+        is_mixed = False
+
+    prev_br = bankroll_manager.get_or_create_user(user_id, username)["bankroll"]
+    if is_mixed:
+        bb_change = round(random.uniform(BB_MIXED_MIN, BB_MIXED_MAX), 1)
+    elif was_correct:
+        bb_change = round(random.uniform(BB_MIN, BB_MAX), 1)
+    else:
+        bb_change = -round(random.uniform(BB_MIN, BB_MAX), 1)
+
+    br = bankroll_manager.record_answer(
+        user_id=user_id, username=username,
+        scenario_id=sc.id, hand=hand,
+        chosen_action=chosen_label, chosen_ev_normalized=bb_change,
+        best_action=question.best_action,
+        ev_vs_best=0.0 if was_correct else bb_change,
+        was_correct=was_correct,
+    )
+
+    _record_recent_scenario(user_id, sc.id, hand)
+    pending_quizzes.pop(user_id, None)
+
+    accuracy = br["correct_count"] / br["total_questions"] * 100 if br["total_questions"] else 0
+    icon = "🔀" if is_mixed else ("✅" if was_correct else "❌")
+    h_disp = escape_html(question.hand_display)
+
+    correct_actions = [a for a, f in strategy.items() if f > 0] or [question.best_action]
+    correct_str = ", ".join(correct_actions)
+    if is_mixed:
+        verdict = f"<b>{h_disp}</b> 는 mixed — {escape_html(correct_str)} 모두 OK."
+    elif was_correct:
+        verdict = f"정답! <b>{h_disp}</b> 는 {escape_html(sc.hero_position)}에서 <b>{escape_html(chosen_label)}</b>."
+    else:
+        verdict = f"오답. <b>{h_disp}</b> 는 {escape_html(sc.hero_position)}에서 <b>{escape_html(correct_str)}</b> 가 정답."
+
+    ev_vs_best = question.ev_vs_best or {}
+    ev_lines = []
+    for action, ev in sorted(ev_vs_best.items(), key=lambda kv: kv[1], reverse=True):
+        freq = strategy.get(action, 0.0) * 100
+        marker = " ◆" if action == chosen_label else ""
+        ev_lines.append(f"  {action}: {ev:+.2f}bb ({freq:.0f}%){marker}")
+    ev_block = "\n".join(ev_lines) if ev_lines else ""
+
+    bb_sign = "+" if bb_change >= 0 else ""
+    bankroll = br["bankroll"]
+    streak = br["streak"]
+    streak_txt = f"  🔥{streak}" if streak >= 3 else ""
+    rank, total_players = bankroll_manager.get_rank(user_id)
+    rank_txt = f"#{rank}/{total_players}" if total_players > 1 else ""
+
+    parts_out = [
+        f"{icon} <b>{escape_html(sc.name)} — {h_disp}</b>",
+        "",
+        verdict,
+    ]
+    if ev_block:
+        parts_out += ["", f"<code>{ev_block}</code>"]
+    parts_out += [
+        "",
+        f"{bb_sign}{bb_change:.1f}bb · Bankroll: {prev_br:.1f} → {bankroll:.1f}bb  {rank_txt}{streak_txt}",
+        f"Total: {br['correct_count']}/{br['total_questions']} ({accuracy:.0f}%)",
+    ]
+    result_text = "\n".join(parts_out)
+
+    await query.answer("✅ 정답" if was_correct else ("🔀 Mixed" if is_mixed else "❌ 오답"))
+    await query.edit_message_text(result_text, parse_mode=ParseMode.HTML)
+
+    # Next button (no fmt/pos hint → 50/50 routing on next call)
+    keyboard = [[InlineKeyboardButton("➡️ Next", callback_data="next:")]]
+    await context.bot.send_message(
+        chat_id=query.message.chat_id,
+        text="Ready?",
+        reply_markup=InlineKeyboardMarkup(keyboard),
+    )
+
+
 async def handle_next_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -398,26 +674,26 @@ async def handle_next_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     bankroll_manager.get_or_create_user(user_id, username)
 
-    # Parse: next:{fmt}:{pos} — pick next from verified slots (same format, random position)
+    # Parse: next: | next:{fmt}:{pos}
     parts = query.data.split(":")
-    fmt_arg = parts[1] if len(parts) >= 2 else None
+    fmt_arg = parts[1] if len(parts) >= 2 and parts[1] else None
     pos_arg = parts[2] if len(parts) >= 3 and parts[2] in OPEN_RANGE_POSITIONS else None
+    has_rfi_hint = bool(fmt_arg and pos_arg)
 
+    # Route: 50/50 narrative scenario unless an RFI hint was passed
+    if not has_rfi_hint and SCENARIO_POOL and random.random() < SCENARIO_RATIO:
+        scenario_id = random.choice(SCENARIO_POOL)
+        if await _send_scenario_quiz_message(query, user_id, scenario_id):
+            return
+
+    # RFI route
     if fmt_arg and (fmt_arg, pos_arg) in VERIFIED_SET:
         candidates = [p for f, p in VERIFIED_SLOTS if f == fmt_arg]
         pos_arg = random.choice(candidates) if candidates else pos_arg
     elif not fmt_arg or (fmt_arg, pos_arg) not in VERIFIED_SET:
         fmt_arg, pos_arg = random.choice(VERIFIED_SLOTS)
 
-    question = open_range_quiz.generate_question(
-        format_key=fmt_arg,
-        position=pos_arg,
-        recent=_get_recent_set(user_id, pos_arg or ""),
-    )
-    pending_quizzes[user_id] = question
-
-    text, keyboard = _build_quiz_message(question)
-    await query.edit_message_text(text, reply_markup=keyboard, parse_mode=ParseMode.HTML)
+    await _send_rfi_quiz_message(query, user_id, fmt_arg, pos_arg)
 
 
 async def handle_fix_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -560,6 +836,107 @@ async def handle_fix_apply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
+async def subscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Opt in to hourly auto-quiz delivery (private chats only)."""
+    chat = update.effective_chat
+    if chat.type != "private":
+        await update.message.reply_text(
+            "구독은 1:1(갠톡)에서만 사용할 수 있어. 봇과의 개인 대화에서 /subscribe 해줘."
+        )
+        return
+
+    user_id = update.effective_user.id
+    username = update.effective_user.username or update.effective_user.first_name or str(user_id)
+    chat_id = chat.id
+
+    active_chats.add(chat_id)
+    subscribed_chats.add(chat_id)
+    save_state(active_chats, subscribed_chats)
+    bankroll_manager.get_or_create_user(user_id, username)
+
+    interval_min = BROADCAST_INTERVAL_SEC // 60
+    await update.message.reply_text(
+        f"✅ 구독 완료! {interval_min}분마다 한 문제씩 보내줄게.\n"
+        f"중단하려면 /unsubscribe."
+    )
+
+
+async def unsubscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    chat_id = update.effective_chat.id
+    if chat_id in subscribed_chats:
+        subscribed_chats.discard(chat_id)
+        save_state(active_chats, subscribed_chats)
+        await update.message.reply_text("⏹️ 구독 해제. 더 이상 자동 발송 안 함.")
+    else:
+        await update.message.reply_text("이미 구독 중이 아니야. /subscribe 로 시작 가능.")
+
+
+async def sub_status_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    chat_id = update.effective_chat.id
+    interval_min = BROADCAST_INTERVAL_SEC // 60
+    if chat_id in subscribed_chats:
+        await update.message.reply_text(
+            f"🔔 구독 중 — {interval_min}분마다 자동 발송.\n해제: /unsubscribe"
+        )
+    else:
+        await update.message.reply_text(
+            f"🔕 미구독. /subscribe 로 {interval_min}분마다 한 문제씩 자동 받기."
+        )
+
+
+async def broadcast_quiz_job(context: ContextTypes.DEFAULT_TYPE):
+    """Send a narrative scenario quiz to every subscribed private chat."""
+    if not subscribed_chats:
+        return
+    targets = list(subscribed_chats)
+    logger.info(f"Auto-broadcast quiz to {len(targets)} subscriber(s)")
+
+    failed: list[int] = []
+    for chat_id in targets:
+        try:
+            # In private chats, chat_id == user_id — pending_quizzes uses user_id
+            user_id = chat_id
+
+            # Skip if a quiz is already pending for this user (don't pile up)
+            if user_id in pending_quizzes:
+                continue
+
+            if SCENARIO_POOL and random.random() < SCENARIO_RATIO:
+                scenario_id = random.choice(SCENARIO_POOL)
+                question = quiz_manager.generate_question(
+                    recent_history=_scenario_recent_history(user_id),
+                    scenario_id=scenario_id,
+                )
+                if question is None:
+                    continue
+                pending_quizzes[user_id] = question
+                text, keyboard = _build_scenario_message(question)
+            else:
+                fmt_arg, pos_arg = random.choice(VERIFIED_SLOTS)
+                question = open_range_quiz.generate_question(
+                    format_key=fmt_arg, position=pos_arg,
+                    recent=_get_recent_set(user_id, pos_arg or ""),
+                )
+                pending_quizzes[user_id] = question
+                text, keyboard = _build_quiz_message(question)
+
+            await context.bot.send_message(
+                chat_id=chat_id, text=text,
+                reply_markup=keyboard, parse_mode=ParseMode.HTML,
+            )
+        except Exception as e:
+            logger.warning(f"Auto-broadcast failed for chat {chat_id}: {e}")
+            # Telegram blocks: 403 → user blocked the bot. Auto-unsubscribe.
+            if "Forbidden" in str(e) or "blocked" in str(e).lower():
+                failed.append(chat_id)
+
+    if failed:
+        for cid in failed:
+            subscribed_chats.discard(cid)
+        save_state(active_chats, subscribed_chats)
+        logger.info(f"Auto-unsubscribed blocked chats: {failed}")
+
+
 async def stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     username = update.effective_user.username or update.effective_user.first_name or str(user_id)
@@ -632,10 +1009,24 @@ async def post_init(application):
         BotCommand("q", "Open range quiz"),
         BotCommand("stats", "Your stats & ranking"),
         BotCommand("ranking", "Leaderboard"),
+        BotCommand("subscribe", "1시간마다 한 문제씩 자동 받기"),
+        BotCommand("unsubscribe", "자동 발송 해제"),
+        BotCommand("sub_status", "자동 발송 구독 상태"),
         BotCommand("help", "How to play"),
     ]
     await application.bot.set_my_commands(commands)
     logger.info("Bot commands registered")
+
+    if application.job_queue is not None:
+        application.job_queue.run_repeating(
+            broadcast_quiz_job,
+            interval=BROADCAST_INTERVAL_SEC,
+            first=BROADCAST_INTERVAL_SEC,  # first run after 1 interval, not at boot
+            name="broadcast_quiz",
+        )
+        logger.info(f"Auto-broadcast scheduled every {BROADCAST_INTERVAL_SEC}s")
+    else:
+        logger.warning("JobQueue unavailable — auto-broadcast disabled")
 
 
 def main():
@@ -656,7 +1047,13 @@ def main():
     application.add_handler(CommandHandler("q", quiz_command))
     application.add_handler(CommandHandler("stats", stats_command))
     application.add_handler(CommandHandler("ranking", ranking_command))
+    application.add_handler(CommandHandler("subscribe", subscribe_command))
+    application.add_handler(CommandHandler("sub", subscribe_command))
+    application.add_handler(CommandHandler("unsubscribe", unsubscribe_command))
+    application.add_handler(CommandHandler("unsub", unsubscribe_command))
+    application.add_handler(CommandHandler("sub_status", sub_status_command))
     application.add_handler(CallbackQueryHandler(handle_open_range_answer, pattern=r"^rfi:"))
+    application.add_handler(CallbackQueryHandler(handle_scenario_answer, pattern=r"^sc:"))
     application.add_handler(CallbackQueryHandler(handle_next_quiz, pattern=r"^next:"))
     application.add_handler(CallbackQueryHandler(handle_fix_prompt, pattern=r"^fix:"))
     application.add_handler(CallbackQueryHandler(handle_fix_apply, pattern=r"^fixdo:"))
