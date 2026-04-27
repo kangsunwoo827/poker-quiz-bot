@@ -21,6 +21,7 @@ class Scenario:
     villain_position: Optional[str]
     stack_bb: int
     actions: list[str]
+    action_sequence: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -69,6 +70,7 @@ class QuizManager:
                 villain_position=s.get("villain_position"),
                 stack_bb=s["stack_bb"],
                 actions=s["actions"],
+                action_sequence=s.get("action_sequence", []),
             )
 
     def _load_ev_tables(self):

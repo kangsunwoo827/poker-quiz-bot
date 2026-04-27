@@ -7,7 +7,8 @@
     "hero_position": "UTG",
     "villain_position": null,
     "stack_bb": 100,
-    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"]
+    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"],
+    "action_sequence": []
   },
   {
     "id": "rfi_mp",
@@ -17,7 +18,10 @@
     "hero_position": "MP",
     "villain_position": null,
     "stack_bb": 100,
-    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"]
+    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"}
+    ]
   },
   {
     "id": "rfi_co",
@@ -27,7 +31,11 @@
     "hero_position": "CO",
     "villain_position": null,
     "stack_bb": 100,
-    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"]
+    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"}
+    ]
   },
   {
     "id": "rfi_btn",
@@ -37,7 +45,12 @@
     "hero_position": "BTN",
     "villain_position": null,
     "stack_bb": 100,
-    "actions": ["Fold", "Limp", "Raise 2bb", "Raise 2.5bb"]
+    "actions": ["Fold", "Limp", "Raise 2bb", "Raise 2.5bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "fold"}
+    ]
   },
   {
     "id": "rfi_sb",
@@ -47,7 +60,13 @@
     "hero_position": "SB",
     "villain_position": null,
     "stack_bb": 100,
-    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"]
+    "actions": ["Fold", "Limp", "Raise 2.5bb", "Raise 3bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "fold"},
+      {"position": "BTN", "action": "fold"}
+    ]
   },
   {
     "id": "bb_vs_utg",
@@ -57,7 +76,14 @@
     "hero_position": "BB",
     "villain_position": "UTG",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "raise", "amount_bb": 2.5},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "fold"},
+      {"position": "BTN", "action": "fold"},
+      {"position": "SB",  "action": "fold"}
+    ]
   },
   {
     "id": "bb_vs_mp",
@@ -67,7 +93,14 @@
     "hero_position": "BB",
     "villain_position": "MP",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "raise", "amount_bb": 2.5},
+      {"position": "CO",  "action": "fold"},
+      {"position": "BTN", "action": "fold"},
+      {"position": "SB",  "action": "fold"}
+    ]
   },
   {
     "id": "bb_vs_co",
@@ -77,7 +110,14 @@
     "hero_position": "BB",
     "villain_position": "CO",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "raise", "amount_bb": 2.5},
+      {"position": "BTN", "action": "fold"},
+      {"position": "SB",  "action": "fold"}
+    ]
   },
   {
     "id": "bb_vs_btn",
@@ -87,7 +127,14 @@
     "hero_position": "BB",
     "villain_position": "BTN",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "3bet 9bb", "3bet 12bb"]
+    "actions": ["Fold", "Call", "3bet 9bb", "3bet 12bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "fold"},
+      {"position": "BTN", "action": "raise", "amount_bb": 2.5},
+      {"position": "SB",  "action": "fold"}
+    ]
   },
   {
     "id": "sb_vs_co",
@@ -97,7 +144,13 @@
     "hero_position": "SB",
     "villain_position": "CO",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "3bet 9bb", "3bet 12bb"]
+    "actions": ["Fold", "Call", "3bet 9bb", "3bet 12bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "raise", "amount_bb": 2.5},
+      {"position": "BTN", "action": "fold"}
+    ]
   },
   {
     "id": "sb_vs_btn",
@@ -107,7 +160,13 @@
     "hero_position": "SB",
     "villain_position": "BTN",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "fold"},
+      {"position": "BTN", "action": "raise", "amount_bb": 2.5}
+    ]
   },
   {
     "id": "btn_vs_co",
@@ -117,7 +176,12 @@
     "hero_position": "BTN",
     "villain_position": "CO",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "raise", "amount_bb": 2.5}
+    ]
   },
   {
     "id": "co_vs_utg",
@@ -127,7 +191,11 @@
     "hero_position": "CO",
     "villain_position": "UTG",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"]
+    "actions": ["Fold", "Call", "3bet 8bb", "3bet 10bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "raise", "amount_bb": 2.5},
+      {"position": "MP",  "action": "fold"}
+    ]
   },
   {
     "id": "utg_vs_3bet",
@@ -137,7 +205,15 @@
     "hero_position": "UTG",
     "villain_position": "BB",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "4bet 22bb", "All-in"]
+    "actions": ["Fold", "Call", "4bet 22bb", "All-in"],
+    "action_sequence": [
+      {"position": "UTG", "action": "raise", "amount_bb": 2.5, "hero": true},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "fold"},
+      {"position": "BTN", "action": "fold"},
+      {"position": "SB",  "action": "fold"},
+      {"position": "BB",  "action": "3bet", "amount_bb": 10}
+    ]
   },
   {
     "id": "co_vs_btn_3bet",
@@ -147,7 +223,13 @@
     "hero_position": "CO",
     "villain_position": "BTN",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "4bet 20bb", "All-in"]
+    "actions": ["Fold", "Call", "4bet 20bb", "All-in"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "raise", "amount_bb": 2.5, "hero": true},
+      {"position": "BTN", "action": "3bet", "amount_bb": 8}
+    ]
   },
   {
     "id": "btn_vs_bb_3bet",
@@ -157,7 +239,15 @@
     "hero_position": "BTN",
     "villain_position": "BB",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "4bet 20bb", "All-in"]
+    "actions": ["Fold", "Call", "4bet 20bb", "All-in"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "fold"},
+      {"position": "BTN", "action": "raise", "amount_bb": 2.5, "hero": true},
+      {"position": "SB",  "action": "fold"},
+      {"position": "BB",  "action": "3bet", "amount_bb": 10}
+    ]
   },
   {
     "id": "btn_vs_sb_3bet",
@@ -167,7 +257,14 @@
     "hero_position": "BTN",
     "villain_position": "SB",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "4bet 20bb", "All-in"]
+    "actions": ["Fold", "Call", "4bet 20bb", "All-in"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "fold"},
+      {"position": "BTN", "action": "raise", "amount_bb": 2.5, "hero": true},
+      {"position": "SB",  "action": "3bet", "amount_bb": 10}
+    ]
   },
   {
     "id": "bb_squeeze",
@@ -177,7 +274,14 @@
     "hero_position": "BB",
     "villain_position": "CO",
     "stack_bb": 100,
-    "actions": ["Fold", "Call", "Squeeze 10bb", "Squeeze 12bb"]
+    "actions": ["Fold", "Call", "Squeeze 10bb", "Squeeze 12bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "raise", "amount_bb": 2.5},
+      {"position": "BTN", "action": "call",  "amount_bb": 2.5},
+      {"position": "SB",  "action": "fold"}
+    ]
   },
   {
     "id": "sb_vs_limp",
@@ -187,7 +291,13 @@
     "hero_position": "SB",
     "villain_position": "CO",
     "stack_bb": 100,
-    "actions": ["Fold", "Limp behind", "Raise 4bb", "Raise 5bb"]
+    "actions": ["Fold", "Limp behind", "Raise 4bb", "Raise 5bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "limp", "amount_bb": 1.0},
+      {"position": "BTN", "action": "fold"}
+    ]
   },
   {
     "id": "bb_vs_limp",
@@ -197,6 +307,13 @@
     "hero_position": "BB",
     "villain_position": "CO",
     "stack_bb": 100,
-    "actions": ["Check", "Raise 4bb", "Raise 5bb", "Raise 6bb"]
+    "actions": ["Check", "Raise 4bb", "Raise 5bb", "Raise 6bb"],
+    "action_sequence": [
+      {"position": "UTG", "action": "fold"},
+      {"position": "MP",  "action": "fold"},
+      {"position": "CO",  "action": "limp", "amount_bb": 1.0},
+      {"position": "BTN", "action": "fold"},
+      {"position": "SB",  "action": "fold"}
+    ]
   }
 ]
